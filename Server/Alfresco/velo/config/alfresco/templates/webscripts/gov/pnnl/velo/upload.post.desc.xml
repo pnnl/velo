@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Upload files or folders</shortname>
+  <description>Upload files or folders, replace content if it already exists.</description>
+  <url>/velo/upload?sourcePath={sourcePath)&amp;destPath={destPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

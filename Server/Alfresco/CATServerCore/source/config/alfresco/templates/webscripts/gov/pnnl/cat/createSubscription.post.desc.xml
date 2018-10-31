@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Subscription</shortname>
+  <description>Create Subscription</description>
+  <url>/cat/createSubscription</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

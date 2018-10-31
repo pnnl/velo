@@ -1,0 +1,1 @@
+The images folder is the default folder for all of the websites image files.  If other media types, such as videos, are to be used, they should be housed in a folder labeled "media."

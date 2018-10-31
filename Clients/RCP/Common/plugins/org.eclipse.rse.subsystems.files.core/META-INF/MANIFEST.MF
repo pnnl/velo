@@ -1,0 +1,349 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.files.core;singleton:=
+ true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.files.co
+ re";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.files.core.Activ
+ ator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.expressions,org.eclips
+ e.core.runtime,org.eclipse.core.resources,org.eclipse.rse.services;bu
+ ndle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-version="[3.
+ 0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.1.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.subsystems.files.core;x-frien
+ ds:="org.eclipse.rse.subsystems.files.dstore,org.eclipse.rse.subsyste
+ ms.files.local",org.eclipse.rse.internal.subsystems.files.core.model;
+ x-internal:=true,org.eclipse.rse.subsystems.files.core,org.eclipse.rs
+ e.subsystems.files.core.model,org.eclipse.rse.subsystems.files.core.s
+ ervicesubsystem,org.eclipse.rse.subsystems.files.core.subsystems,org.
+ eclipse.rse.subsystems.files.core.util
+Bundle-Version: 3.3.1.201211140039
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/FileServi
+ ceSubSystemConfiguration.class
+SHA1-Digest: 5O0WXpzbx62a7VNXzdmDVXcwm00=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemFileSubSyst
+ emConfigurationAPIProviderImpl.class
+SHA1-Digest: OrN1rC48y58vtVYFn0/ySheJlcY=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/model/SystemFileT
+ ransferModeRegistry.class
+SHA1-Digest: Z2lBpPvJ9EUQ9PQNzL58uyXMBoU=
+
+Name: org/eclipse/rse/subsystems/files/core/SystemIFileProperties.clas
+ s
+SHA1-Digest: k1WqidOcr4Wbja41uAPogv/YiLc=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileFact
+ ory.class
+SHA1-Digest: 0no5SPdGC68hx9ZVvpivibthv/w=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileSubS
+ ystem.class
+SHA1-Digest: wL6quMRBBTPZ/rzfvtLQC1z16Qc=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/ISystemRemoteEdit
+ Constants.class
+SHA1-Digest: GGmnDJZUGOTQTxIIws2cvsgWjBQ=
+
+Name: org/eclipse/rse/subsystems/files/core/util/ValidatorFileUniqueNa
+ me.class
+SHA1-Digest: SxGfP1zP/ohG/upOeFkeV5zRkrA=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/model/SystemFileT
+ ransferModeRegistry$1.class
+SHA1-Digest: O2MqRI9xiwXwycBa+z2TLF7DnPA=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFile.cla
+ ss
+SHA1-Digest: FNNWH7qBcYiTMlT64YNkO9vsR6A=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/SearchJob
+ .class
+SHA1-Digest: +eP//fAqCNvuaHPUDox1K3RlBQk=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/AbstractR
+ emoteFile.class
+SHA1-Digest: +aP2u/Uyr9uMCuhR2z02aVTFEaE=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemFileRemoteTyp
+ es.class
+SHA1-Digest: QelZDVZ+xBXewZ1euNARA6BxhhQ=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileSched
+ ulingRule.class
+SHA1-Digest: gJRzVTTVszkYA3JEr9g4hMtG6dM=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/Activator.class
+SHA1-Digest: IbvgSCfgM2xstTBTmP0Vq09n9K4=
+
+Name: org/eclipse/rse/subsystems/files/core/ILanguageUtilityFactory.cl
+ ass
+SHA1-Digest: 41L/WF+hIf23e5dsH/hZpmo/JJs=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/IFileServ
+ iceSubSystem.class
+SHA1-Digest: nE/c0rv2N2ftNNjG7mNSf9UQ5v0=
+
+Name: org/eclipse/rse/subsystems/files/core/ILanguageUtility.class
+SHA1-Digest: OZU6NotlEvfqkI2qEcv7sR9KR7Y=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.c
+ ore/pom.xml
+SHA1-Digest: uK66S+xzmTOYzOCrng9Eti/5N6M=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/SearchJob
+ $1.class
+SHA1-Digest: /51mH95E0qW8RIyXYNqGEvktSBw=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemFileResourc
+ es.class
+SHA1-Digest: z4Wp5b6D2IR0dJ/BT0D+Nk/Jj1Y=
+
+Name: org/eclipse/rse/subsystems/files/core/model/RemoteFileFilterStri
+ ng.class
+SHA1-Digest: Tr2xIpDmCD6TifKpyj0cXQiPyQg=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/FileSubSy
+ stemInputStream.class
+SHA1-Digest: WbGZn/XLGHvOsyR78ZMkGnpMxa4=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFolderChi
+ ldrenContentsType.class
+SHA1-Digest: spU6RdoQBdXAM78U0XFgXdrYkz8=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemFileSubSyst
+ emAPIProviderImpl.class
+SHA1-Digest: 6DLHt/QrForHdWAGX3+r2eA7i78=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemRemoteCommand
+ Message.class
+SHA1-Digest: r5QFNbJ31AkqnfZ8y0ke/B0kzN8=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/ISystemFilePrefer
+ encesConstants.class
+SHA1-Digest: t1HN6eaSHpAHYaq1rOWKMWTiCeo=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileSubSy
+ stem.class
+SHA1-Digest: gSesxBDJjt5inAAnDrYvSIx3/tg=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileExce
+ ptionMessages.class
+SHA1-Digest: GIZ7ukr3X/nqA/5sCU7Lw91r01c=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteSearchRe
+ sult.class
+SHA1-Digest: Pg/j0lq1VD/G/bUQ/6I403xU534=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileChild
+ renContentsType.class
+SHA1-Digest: g8y3dVTwR/cxy3gmw2gofqpFV58=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileEncod
+ ingManager.class
+SHA1-Digest: bwOQJj1DNQnPfjeAdLgI05MPv/Q=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteSearchRes
+ ultsContentsType.class
+SHA1-Digest: EEAU6F8AjLrVV6q+QJAUNALHqcI=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemFileTransferM
+ odeMapping.class
+SHA1-Digest: 97qsuHwQrrijb5bNKIXwjGMKbEE=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.c
+ ore/pom.properties
+SHA1-Digest: xkB7Hq5JTIOD5+c9jvqld2oqWF0=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/ISystemTextEditor
+ Constants.class
+SHA1-Digest: kZeQFKoq5Nj3P6SkKaAk4i6BF7w=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemRemoteCommand
+ .class
+SHA1-Digest: k4ANzJM0sjZPU/gDjfZ4NKcxSz0=
+
+Name: org/eclipse/rse/subsystems/files/core/util/SystemRemoteFileMatch
+ er.class
+SHA1-Digest: OGW3BDDDWs3nhrUMOXSX60Dy5QU=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileCodeE
+ xception.class
+SHA1-Digest: myYFSbVrvIYf8Tw46qO0UIqycTY=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFile.clas
+ s
+SHA1-Digest: CJdkxxWXztPQX+bAhvKaR65TF+Y=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileExce
+ ptionCodes.class
+SHA1-Digest: 7qG9m/8aI3+mZaguz3XPUqBSJHE=
+
+Name: org/eclipse/rse/subsystems/files/core/model/IRemotePath.class
+SHA1-Digest: gBlYReHXl1h1YjmE8UhJB/ytfHw=
+
+Name: plugin.properties
+SHA1-Digest: uHT7POtT5Aui0USl0fBvAtKU1iY=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IVirtualRemoteF
+ ile.class
+SHA1-Digest: biAhTUmwmeXkd/WQVcGiJ2m0OXE=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileRoot.
+ class
+SHA1-Digest: jLtOn2mUAM5sV7mkgRezEB6Vc7w=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileWrap
+ per.class
+SHA1-Digest: WNvpRKrBDITAJcc3eFasm8Ji0Zw=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileSubSy
+ stemConfiguration.class
+SHA1-Digest: E2EERQxFG5RYACcel+Fs8gEh8fA=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/FileSubSy
+ stemOutputStream.class
+SHA1-Digest: sJmJix8sD8dx8S/McJqQ20m4gZw=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteSearchRes
+ ultConfiguration.class
+SHA1-Digest: z5LAzxQagW+vAhF7wwYim23VCxA=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileConte
+ xt.class
+SHA1-Digest: K6zn8L9G4wG9M+S7Z80Gy1Ki9c8=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/model/SystemFileT
+ ransferModeMapping.class
+SHA1-Digest: lefR/Qz/6sKL3l+Iw9RE976lu9c=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/Activator$RSEDefa
+ ultEncodingProvider.class
+SHA1-Digest: 2eEE6koR5ZdooF2HJNXY0QMDAFw=
+
+Name: plugin.xml
+SHA1-Digest: muD9r2ayczmjtSnKYDnVovg4sz4=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/model/RemotePath.
+ class
+SHA1-Digest: lZ0Q3jqrRBLyxifXFgSf/n2rp9I=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileSubS
+ ystemConfiguration.class
+SHA1-Digest: X9qFsZLXyUfitlBNqSpB0yOaLSM=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/RemoteFilePropert
+ yTester.class
+SHA1-Digest: QiqGtA5+Otwhrp8wr56dizjfUnA=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteSearchCo
+ nstants.class
+SHA1-Digest: 1sv+a6MfrthUrBCS4RwVmmAjvL0=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/AbstractLanguageU
+ tilityFactory.class
+SHA1-Digest: 5S1T8BTO25K6285MzjrSMEjpGho=
+
+Name: org/eclipse/rse/subsystems/files/core/model/RemoteFileUtility.cl
+ ass
+SHA1-Digest: YPrq1jYDiytUus0+VAwwPbzEbhE=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemRemoteDirec
+ toryMatcher.class
+SHA1-Digest: FC9/LRPf+BT7PNEuDPHLNTLmOc0=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/RemoteFilePermiss
+ ionsAdapterFactory.class
+SHA1-Digest: wmOdAWOI+GTNoY2DrMvzYSCn7gY=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemFileResourc
+ es.properties
+SHA1-Digest: dcKiTsfua94EQWilVOAhLhn31mM=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/SystemFileAPIProv
+ iderImpl.class
+SHA1-Digest: X5HGoJcoevpVm149z59sovMlUi8=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/FileServi
+ ceSubSystem.class
+SHA1-Digest: vNVvBNVZmXV7Hdhpy98Rnn66ogM=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/Activator$1.class
+SHA1-Digest: TDVUb9O6VrC96Z+/j3/bmqxH8uI=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/IFileServ
+ iceSubSystemConfiguration.class
+SHA1-Digest: ILsTdHDo1uNZof/JkyJFl3TklZU=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteSearchRes
+ ult$RemoteSearchResultMatch.class
+SHA1-Digest: +YbujSX5FwujECTkmSqP3oEqF4A=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/ISystemFileMessag
+ eIds.class
+SHA1-Digest: 7cXbX1BzpeVLVrXIB+I4wDKdfpQ=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IRemoteFileCont
+ ext.class
+SHA1-Digest: P9sd91miul35I921sEST/QRfC14=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/IHostFileToRemo
+ teFileAdapter.class
+SHA1-Digest: 7IQcDb7MzausKlPZrasAW7NItLc=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemFileAPIProvid
+ er.class
+SHA1-Digest: IlkQY/81HLan6iPVZUZ6OPp8wiU=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/IJavaLanguageUtil
+ ity.class
+SHA1-Digest: YZpuCh4lSY1tUJ3z79eqzGYpMqI=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteSearchRes
+ ult.class
+SHA1-Digest: IarPpaE7nDv5pGsBAIiCSp89Xs8=
+
+Name: org/eclipse/rse/subsystems/files/core/subsystems/RemoteFileEmpty
+ .class
+SHA1-Digest: dVz1+7Pfcpgrecn1pv1tOM+ge2Q=
+
+Name: org/eclipse/rse/subsystems/files/core/model/ISystemFileTransferM
+ odeRegistry.class
+SHA1-Digest: 9qYJ4OWTXbp47ZM+epbTDesbP0M=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/AbstractJavaLangu
+ ageUtility.class
+SHA1-Digest: EPz01lTm1Kt7f7O474fjzjH2EXc=
+
+Name: org/eclipse/rse/subsystems/files/core/servicesubsystem/OutputRef
+ resh.class
+SHA1-Digest: 6wjTb/7AOYHtdKo8fZpXreyi28Q=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/AbstractLanguageU
+ tility.class
+SHA1-Digest: Hc0lM3g1p6c80Gh9Hqsk5rD4mfw=
+
+Name: org/eclipse/rse/internal/subsystems/files/core/model/RemotePathU
+ til.class
+SHA1-Digest: Q+K2EJLi5wvcoMxKLC26fUHQ0es=
+
+Name: org/eclipse/rse/subsystems/files/core/util/ValidatorFileFilterSt
+ ring.class
+SHA1-Digest: vgOuuVOrd/KzTbvZY8m6UtomgKQ=
+

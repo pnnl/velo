@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+	<bean id="harvestService" class="gov.pnnl.cat.harvester.internal.HarvestServiceImpl" depends-on="cat.dictionaryBootstrap">
+		<property name="dictionaryService">
+			<ref bean="dictionaryService" />
+		</property>
+		<property name="namespacePrefixResolver">
+			<ref bean="namespaceService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="authenticationComponent" />
+		</property>
+		<property name="personService">
+			<ref bean="personService" />
+		</property>
+		<property name="harvestTemplates">
+			<list>
+				<ref bean="GoogleHarvestTemplate" />
+				<ref bean="WebHarvestTemplate" />
+			</list>
+		</property>
+		<property name="harvesterEngineList">
+			<list>
+				<ref bean="googleHarvestEngine" />
+				<ref bean="webHarvestEngine" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- HarvestService wraps all of the harvestService methods in a transaction -->
+    <bean id="HarvestService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>gov.pnnl.cat.harvester.HarvestService</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="harvestService"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="HarvestService_transaction"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="HarvestService_transaction" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">${server.transaction.mode.default}</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="GoogleHarvestTemplate" class="gov.pnnl.cat.harvester.internal.HarvestTemplateImpl">
+		<property name="harvestTemplateIdString">
+			<value>{http://www.pnl.gov/cat/model/harvest/google/1.0}harvestRequest_google</value>
+		</property>
+		<property name="name">
+			<value>Google Harvest</value>
+		</property>
+	</bean>
+	<bean id="WebHarvestTemplate" class="gov.pnnl.cat.harvester.internal.HarvestTemplateImpl">
+		<property name="harvestTemplateIdString">
+			<value>{http://www.pnl.gov/cat/model/harvest/web/1.0}harvestRequest_web</value>
+		</property>
+		<property name="name">
+			<value>Web Harvest</value>
+		</property>
+	</bean>
+	
+	<bean id="googleHarvestEngine" class="gov.pnnl.cat.harvester.engine.uluka.UlukaHarvesterEngine" >
+		<property name="contentService">
+			<ref bean="contentService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="namespacePrefixResolver">
+			<ref bean="namespaceService" />
+		</property>
+		<property name="supportedHarvestTemplateStrings">
+			<list>
+				<value>harvest_google:harvestRequest_google</value>
+			</list>
+		</property>
+		<property name="harvestTemplateClasspathDir">
+			<value>alfresco/extension/cat/templates/harvester/uluka/google</value>
+		</property>
+		<property name="valueFormatter">
+			<ref bean="GoogleHarvestValueFormatter" />
+		</property>
+	</bean>
+	
+	<bean id="webHarvestEngine" class="gov.pnnl.cat.harvester.engine.uluka.UlukaHarvesterEngine">
+		<property name="contentService">
+			<ref bean="contentService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="namespacePrefixResolver">
+			<ref bean="namespaceService" />
+		</property>
+		<property name="supportedHarvestTemplateStrings">
+			<list>
+				<value>harvest_web:harvestRequest_web</value>
+			</list>
+		</property>
+		<property name="harvestTemplateClasspathDir">
+			<value>alfresco/extension/cat/templates/harvester/uluka/web</value>
+		</property>
+		<property name="valueFormatter">
+			<ref bean="WebHarvestValueFormatter" />
+		</property>
+	</bean>
+	
+	<bean name="GoogleHarvestValueFormatter" class="gov.pnnl.cat.harvester.engine.uluka.GoogleValueFormatter" />
+	<bean name="WebHarvestValueFormatter" class="gov.pnnl.cat.harvester.engine.uluka.WebValueFormatter" />
+		
+		
+	
+</beans>

@@ -1,0 +1,11 @@
+<webscript>
+
+  <shortname>Get File Contents</shortname>
+  <description>Get the file using a path or uuid and a content property</description>
+  <!-- NOTE url is different to accept filename on URL so browser can determine to save (as the given filename) or open the file -->
+  <url>/landingPage/getFileContents/{filename}?path={?path}&amp;uuid={?uuid}&amp;property={?property}</url>
+  <authentication>guest</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.connectorservice.sshglobus;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.connectorservice.ss
+ h";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.connectorservice.sshglobus.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rse.services;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.ui,
+ com.jcraft.jsch;bundle-version="[0.1.31,1.0.0)",
+ org.eclipse.jsch.core;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.rse.services.sshglobus;bundle-version="3.2.100",
+ org.eclipse.rse.globusonline;bundle-version="1.0.0"
+Bundle-Version: 2.1.300.201205062159
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+Export-Package: org.eclipse.rse.internal.connectorservice.sshglobus
+

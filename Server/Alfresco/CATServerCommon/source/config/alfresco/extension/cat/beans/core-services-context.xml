@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<!-- Core and miscellaneous bean definitions -->
+<beans>
+
+    <!--                 -->
+    <!-- Copy Service    -->
+    <!--                 -->
+
+	<!-- CAT adds a copy service interceptor for taxonomies -->
+    <bean id="copyServiceImpl" class="org.alfresco.repo.copy.CopyServiceImpl" init-method="init">
+        <property name="cannedQueryRegistry" ref="copyServiceCannedQueryRegistry"/>
+        <property name="dictionaryService" ref="dictionaryService" />
+        <property name="nodeService" ref="NodeService" />
+        <property name="policyComponent" ref="policyComponent" />
+        <property name="ruleService" ref="ruleService" />
+        <property name="permissionService" ref="permissionService" />
+        <property name="publicServiceAccessService" ref="publicServiceAccessService" />
+        <property name="internalNodeService" ref="mlAwareNodeService" />
+    </bean>
+
+	<!-- DMI copy Service -->
+    <!-- we add a method interceptor to handle copies to taxonomies more efficiently -->
+    <bean id="copyService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>org.alfresco.service.cmr.repository.CopyService</value>
+        </property>
+        <property name="target">
+            <ref bean="copyServiceImpl"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="copyService_taxonomy"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="copyService_taxonomy" class="gov.pnnl.cat.policy.taxonomy.TaxonomyCopyServiceInterceptor">
+        <property name="nodeService">
+    		<ref bean="nodeService"/>
+    	</property>
+    </bean>
+    
+    <!-- 
+    Overwrite alfresco's mailService bean because: 
+    in org.springframework.mail.javamail.JavaMailSenderImpl's doSend method, 
+    the transport.connect method was passing in anonymous for the username and an 
+    empty string for the password.  Passing in non-null values makes javax.mail 
+    attempt to authenticate even though the mail.smtp.auth property is set to false. 
+    (see http://forums.sun.com/thread.jspa?threadID=5423453)
+	So, the only way to make the username and password fields be null, is to not set the 
+	properties.
+     -->
+    <bean id="mailService" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host">
+            <value>${mail.host}</value>
+        </property>
+        <property name="port">
+            <value>${mail.port}</value>
+        </property>
+		<property name="protocol">
+            <value>${mail.protocol}</value>
+        </property>        
+        <!-- property name="username">
+            <value>${mail.username}</value>
+        </property-->
+        <!-- property name="password">
+            <value>${mail.password}</value>
+        </property-->
+        <property name="defaultEncoding">
+            <value>${mail.encoding}</value>
+        </property>
+		<property name="javaMailProperties">
+			<props>
+            <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+            <prop key="mail.smtp.debug">${mail.smtp.debug}</prop>
+            <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+            <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+            
+            <prop key="mail.smtps.auth">${mail.smtps.auth}</prop>
+            <prop key="mail.smtps.starttls.enable">${mail.smtps.starttls.enable}</prop>
+			</props>
+		</property>
+    </bean>
+    	
+</beans>

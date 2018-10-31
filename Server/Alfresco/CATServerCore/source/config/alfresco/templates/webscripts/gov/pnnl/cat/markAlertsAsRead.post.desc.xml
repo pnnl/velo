@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Mark Alerts As Read</shortname>
+  <description>Mark Alerts As Read</description>
+  <url>/cat/markAlertsAsRead</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,64 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.connectorservice.local
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.connectorservice.lo
+ cal";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.connectorservice.local.Acti
+ vator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle
+ -version="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.0.0,4.
+ 0.0)"
+Export-Package: org.eclipse.rse.internal.connectorservice.local;x-frie
+ nds:="org.eclipse.rse.subsystems.files.local,org.eclipse.rse.subsyste
+ ms.processes.local,org.eclipse.rse.subsystems.shells.local"
+Bundle-Version: 2.1.400.201205062159
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/connectorservice/local/ILocalSubSystem.
+ class
+SHA1-Digest: Rh2R8AqpwmENMmF+C1rdLqsdVCU=
+
+Name: org/eclipse/rse/internal/connectorservice/local/ConnectorService
+ Resources.class
+SHA1-Digest: 3QxqQrlcfJm/DgK2uz7cCJnBhUc=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.connectorservice.l
+ ocal/pom.xml
+SHA1-Digest: blOfykCyrE+MPnrLLABddoC9v20=
+
+Name: org/eclipse/rse/internal/connectorservice/local/LocalConnectorSe
+ rvice.class
+SHA1-Digest: Z8bwTR4XMhSrkaOlrExLotgcYC4=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.connectorservice.l
+ ocal/pom.properties
+SHA1-Digest: Ovfk7TXPX7dhOwPcKRRZOuuhr3M=
+
+Name: org/eclipse/rse/internal/connectorservice/local/Activator.class
+SHA1-Digest: bYyVfNFzP+VKkvoXAiOaXrmpzv0=
+
+Name: org/eclipse/rse/internal/connectorservice/local/LocalConnectorSe
+ rviceManager.class
+SHA1-Digest: gyyy0JNNBBaPR67yZXOOC5DwuWg=
+
+Name: org/eclipse/rse/internal/connectorservice/local/ConnectorService
+ Resources.properties
+SHA1-Digest: DHrk8cj0v7lqYUr4W5y9o/ACP0M=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: plugin.properties
+SHA1-Digest: 8aP8/ltzURs2amldoajj/AuivR8=
+

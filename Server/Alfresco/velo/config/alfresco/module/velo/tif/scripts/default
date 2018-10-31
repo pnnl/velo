@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm .status
+# In the simple case, the program simply runs with well known input
+# and output file names
+# The status must be written to a file named status
+##code## 2> job.err 1> job.out
+echo $? > .status

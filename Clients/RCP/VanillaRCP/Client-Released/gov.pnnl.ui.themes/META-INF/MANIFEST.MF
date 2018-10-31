@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PNNL Themes
+Bundle-SymbolicName: gov.pnnl.ui.themes;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.ui.themes.Activator
+Bundle-Vendor: PNNL
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.e4.ui.css.swt.theme
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-BundleShape: dir
+

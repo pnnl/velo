@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Move Resource</shortname>
+  <description>Move Resource</description>
+  <url>/velo/move?oldPath={oldPath}&amp;newParentPath={newParentPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

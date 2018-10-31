@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Util Plug-in
+Bundle-SymbolicName: gov.pnnl.cat.core.util; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.core.util.UtilPlugin
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ gov.pnnl.cat.logging,
+ org.apache.log4j,
+ org.apache.commons;bundle-version="1.0.0"
+Eclipse-LazyStart: true
+Export-Package: gov.pnnl.cat.core.util,
+ gov.pnnl.cat.core.util.exception,
+ gov.pnnl.cat.core.util.logger,
+ gov.pnnl.cat.core.util.logger.samples,
+ gov.pnnl.cat.core.util.webscripts
+Bundle-Vendor: Pacific Northwest National Laboratory
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

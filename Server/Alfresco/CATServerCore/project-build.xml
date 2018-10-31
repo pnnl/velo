@@ -1,0 +1,137 @@
+<project name="cat-core" default="deploy">
+
+	<target name="init">
+		<echo level="info">basedir = ${basedir}</echo>
+				
+		<!-- common build properties -->
+		<property name="dir.src" value="${basedir}/source" />
+		<property name="dir.src.java" value="${dir.src}/java" />
+		<property name="dir.src.tests" value="${dir.src}/tests" />
+		<property name="dir.src.metainf" value="${dir.src}/meta-inf" />
+		<property name="dir.src.config" value="${dir.src}/config" />
+		<property name="dir.build" value="${basedir}/build" />
+		<property name="dir.classes" value="${dir.build}/classes" />
+		<property name="dir.dist" value="${dir.build}/dist" />
+		<property name="dir.lib" value="${basedir}/lib" />
+		<property name="dir.sdk" value="${basedir}/../SDKAlfrescoEmbedded"/>
+		<property name="dir.cat.common" value="${basedir}/../CATServerCommon"/>
+		
+		<property name="file.name.jar" value="${ant.project.name}-${cat.version}.jar" />
+
+		<echo level="info">dir.src = ${dir.src}</echo>
+
+		<!-- set the classpath to load all the jars from SDK Alfresco Embedded -->
+		<path id="classpath">
+			<fileset dir="${dir.cat.common}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${dir.sdk}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${dir.classes}"/>
+			<fileset dir="${basedir}/../gov.pnnl.velo.commons/build/dist">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+
+	</target>
+
+	<target name="clean" depends="init" description="clean the compiled classes and libraries">
+		<delete dir="${dir.classes}"/>
+		<delete dir="${dir.dist}"/>
+	</target>
+
+	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		<mkdir dir="${dir.classes}" />
+		<javac destdir="${dir.classes}" deprecation="off" debug="on" target="1.7" source="1.7">
+			<src path="${dir.src.java}" />
+			<src path="${dir.src.tests}" />
+			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:-path"/>
+		</javac>
+
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src.java}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+		</copy>
+	</target>
+
+	<!--- Create the jar file for the server -->
+	<target name="package-jar" depends="compile-java" description="Packages the JAR file">
+		<mkdir dir="${dir.dist}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" basedir="${dir.classes}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" update="true">
+			<metainf dir="${dir.src.metainf}" />
+		</jar>
+	</target>
+	
+	<!-- Deploy a complete, clean build to CAT -->
+	<target name="deploy" depends="clean, deploy-incremental" />
+	
+	<!-- Deploy an incremental build to tomcat -->
+	<target name="deploy-incremental" depends="package-jar">
+		
+		<!-- remove old cat jar file from WEB-INF/lib -->
+		<!-- remove old versions of httpclient libs so we don't have conflicts -->
+		<delete failonerror="no">
+		    <fileset dir="${dir.webapps.alfresco.lib}" includes="**/cat-core*.jar,**/httpcore-4.1.3.jar,**/httpclient-4.1.1.jar,**/httpclient-cache-4.1.1.jar"/>
+		</delete>
+		
+		<!-- copy jar file to WEB-INF/lib -->
+		<copy file="${dir.dist}/${file.name.jar}" todir="${dir.webapps.alfresco.lib}"/>
+
+		<!-- deploy the 3rd party libraries -->
+		<copy todir="${dir.webapps.alfresco.lib}" overwrite="true" flatten="true">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>	
+				
+		<!-- deploy the config files -->
+		<copy todir="${dir.webapps.alfresco.classes}/alfresco/extension" overwrite="true">
+			<fileset dir="${dir.src.config}/alfresco/extension">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		
+		<!-- deploy custom webscripts -->
+		<copy todir="${dir.webapps.alfresco.classes}/alfresco/templates/webscripts" overwrite="true">
+         <fileset dir="${dir.src.config}/alfresco/templates/webscripts">
+            <include name="**/*.*" />
+         </fileset>
+      </copy>
+		
+		<!-- deploy custom authentication properties (to disable guess login) -->
+      <copy todir="${dir.webapps.alfresco.classes}/alfresco/subsystems/Authentication/alfrescoNtlm" overwrite="true">
+         <fileset dir="${dir.src.config}/alfresco/subsystems/Authentication/alfrescoNtlm">
+            <include name="**/*.*" />
+         </fileset>
+      </copy> 
+
+		<!-- deploy the cat-faces-config-custom.xml file -->
+		<copy file="${dir.src.config}/cat-faces-config-custom.xml" todir="${dir.webapps.alfresco}/WEB-INF" overwrite="true"/>
+
+	    <!-- remove old xstream jar files from WEB-INF/lib since we are using a newer version -->
+	    <ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="remove-jar" inheritall="false" inheritrefs="false">
+		   <property name="jarfile.name" value="xstream-1.2.2.jar" />
+		</ant>
+	    <ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="remove-jar" inheritall="false" inheritrefs="false">
+		   <property name="jarfile.name" value="xpp3-1.1.3_8.jar" />
+		</ant>
+		
+		<!-- remove old commons-fileupload jar from WEB-INF/lib since we are using a newer version -->
+	    <ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="remove-jar" inheritall="false" inheritrefs="false">
+		   <property name="jarfile.name" value="commons-fileupload-1.2.2.jar" />
+		</ant>
+		
+
+	</target>
+	
+
+</project>

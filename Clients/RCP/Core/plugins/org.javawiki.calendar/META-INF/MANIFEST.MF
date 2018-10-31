@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Calendar Plug-in
+Bundle-SymbolicName: org.javawiki.calendar; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.javawiki.calendar.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms
+Eclipse-LazyStart: true
+Export-Package: org.javawiki.calendar,
+ org.vafada.swtcalendar
+Bundle-Vendor: javawiki.org

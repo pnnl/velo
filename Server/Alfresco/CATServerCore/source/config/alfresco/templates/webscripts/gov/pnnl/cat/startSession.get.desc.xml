@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>StartSession</shortname>
+  <description>Returns a ticket for the authenticated user</description>
+  <url>/cat/startSession</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

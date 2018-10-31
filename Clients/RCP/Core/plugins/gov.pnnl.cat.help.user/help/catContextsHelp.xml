@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts> 
+	<context id="RepositoryExplorer"> 
+		<description>This is james testing his coded context sensitive help</description> 
+		<topic label="James-testing" href="http://www.google.com" /> 
+	</context>
+</contexts> 

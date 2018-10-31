@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+        
+  <bean id="tagTimerAlertWork" class="gov.pnnl.cat.jobs.alerts.TagTimerAlertWork" parent="basePolicy">
+     <property name="subscriptionService">
+        <ref bean="CatSubscriptionService"/>
+       </property>
+       <property name="nodeService">
+        <ref bean="nodeService"/>
+       </property>
+       <property name="alertService">
+        <ref bean="AlertService"/>
+       </property>
+       <property name="transactionService">
+        <ref bean="transactionComponent"/>
+       </property>
+       <property name="namespaceService">
+        <ref bean="namespaceService"/>
+       </property>
+  </bean>
+
+  <bean id="tagTimerAlertTrigger" class="org.alfresco.util.CronTriggerBean">
+        <property name="jobDetail">
+            <bean id="tagTimerAlertDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+                <property name="jobClass">
+                    <value>gov.pnnl.cat.jobs.alerts.TagTimerAlertJob</value>
+                </property>
+                <property name="jobDataAsMap">
+                    <map>
+                        <entry key="bean">
+                            <ref bean="tagTimerAlertWork" />
+                        </entry>
+                    </map>
+                </property>
+                <property name="name">
+                  <value>TagTimerAlertJob</value>
+                </property>                
+            </bean>
+        </property>
+        <property name="scheduler">
+            <ref bean="schedulerFactory" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 6 ? * FRI</value>
+        </property>
+    </bean>
+</beans>

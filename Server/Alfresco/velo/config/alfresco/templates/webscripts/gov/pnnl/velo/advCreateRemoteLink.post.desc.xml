@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Remote Links</shortname>
+  <description>Create a bunch of remote links in one batch</description>
+  <url>/velo/advCreateRemoteLink</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

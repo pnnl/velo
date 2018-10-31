@@ -1,0 +1,56 @@
+<alfresco-config>
+	<config evaluator="string-compare" condition="Action Wizards">
+		<aspects>
+			<aspect name="tax:taxonomyRoot" />
+			<aspect name="tax:classification" />
+			<aspect name="cat:project" />
+			<aspect name="cat:ignore" />
+			<aspect name="not:notifiable" />
+			<aspect name="dmi:ISM" />
+			<aspect name="sme:primaryDiscipline" />
+			<aspect name="sme:domainExpertise" />
+			<aspect name="criminal:criminalIntelData" />
+			<aspect name="criminal:criminalIntelDataRemoved" />
+			<aspect name="sdkdi:projectRoot" />
+			<aspect name="cm:ownable" />
+		</aspects>
+
+		<action-handlers>
+			<handler name="import-category"
+				class="org.alfresco.web.bean.actions.handlers.AddFeaturesHandler" />
+			<handler name="recursive-add-aspect"
+				class="org.alfresco.web.bean.actions.handlers.AddFeaturesHandler" />
+			<handler name="recursive-remove-aspect"
+				class="org.alfresco.web.bean.actions.handlers.RemoveFeaturesHandler" />
+		</action-handlers>
+
+	</config>
+
+	<config evaluator="aspect-name" condition="dmi:ISM">
+		<property-sheet>
+			<show-property name="dmi:disseminationControls" />
+		</property-sheet>
+	</config>
+
+	<config evaluator="aspect-name" condition="criminal:criminalIntelData">
+		<property-sheet>
+			<show-property name="criminal:materialType" />
+			<show-property name="criminal:securityLevel" />
+			<show-property name="criminal:expireDate" />
+			<show-property name="criminal:justificationComment" />
+			<show-property name="criminal:justificationDate" />
+			<show-property name="criminal:justificationUser" />
+		</property-sheet>
+	</config>
+
+	<config evaluator="aspect-name" condition="criminal:criminalIntelDataRemoved">
+		<property-sheet>
+			<show-property name="criminal:removedReason" />
+			<show-property name="criminal:removedDate" />
+			<show-property name="criminal:removedUser" />
+		</property-sheet>
+	</config>
+
+	
+
+</alfresco-config>

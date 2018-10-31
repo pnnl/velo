@@ -1,0 +1,3188 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.ui;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.ui";commitId=58100b
+ 0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.ui.RSEUIPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.expressions,
+ org.eclipse.core.resources,
+ org.eclipse.jface.text,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.rse.services,
+ org.eclipse.rse.core,
+ org.apache.log4j
+Export-Package: org.eclipse.rse.core.subsystems,
+ org.eclipse.rse.internal.ui;x-friends:="org.eclipse.rse.connectorservice.dstore,org.eclipse.rse.processes.ui",
+ org.eclipse.rse.internal.ui.actions;x-internal:=true,
+ org.eclipse.rse.internal.ui.dialogs;x-internal:=true,
+ org.eclipse.rse.internal.ui.filters;x-internal:=true,
+ org.eclipse.rse.internal.ui.filters.dialogs;x-internal:=true,
+ org.eclipse.rse.internal.ui.logging;x-internal:=true,
+ org.eclipse.rse.internal.ui.propertypages;x-internal:=true,
+ org.eclipse.rse.internal.ui.subsystems;x-internal:=true,
+ org.eclipse.rse.internal.ui.view;x-internal:=true,
+ org.eclipse.rse.internal.ui.view.monitor;x-internal:=true,
+ org.eclipse.rse.internal.ui.view.scratchpad;x-internal:=true,
+ org.eclipse.rse.internal.ui.view.search;x-internal:=true,
+ org.eclipse.rse.internal.ui.view.team;x-internal:=true,
+ org.eclipse.rse.internal.ui.widgets;x-internal:=true,
+ org.eclipse.rse.ui,
+ org.eclipse.rse.ui.actions,
+ org.eclipse.rse.ui.dialogs,
+ org.eclipse.rse.ui.filters,
+ org.eclipse.rse.ui.filters.actions,
+ org.eclipse.rse.ui.filters.dialogs,
+ org.eclipse.rse.ui.internal.model;x-internal:=true,
+ org.eclipse.rse.ui.messages,
+ org.eclipse.rse.ui.model,
+ org.eclipse.rse.ui.open,
+ org.eclipse.rse.ui.operations,
+ org.eclipse.rse.ui.propertypages,
+ org.eclipse.rse.ui.subsystems,
+ org.eclipse.rse.ui.validators,
+ org.eclipse.rse.ui.view,
+ org.eclipse.rse.ui.widgets,
+ org.eclipse.rse.ui.widgets.services,
+ org.eclipse.rse.ui.wizards,
+ org.eclipse.rse.ui.wizards.newconnection,
+ org.eclipse.rse.ui.wizards.registries
+Bundle-Version: 3.3.100.201305071605
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Import-Package: com.ibm.icu.lang,com.ibm.icu.text,com.ibm.icu.util
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/ui/actions/SystemProfileNameCopyAction.
+ class
+SHA1-Digest: gbY4Md9MMkL9kSwc89OxN+y7vT8=
+
+Name: org/eclipse/rse/ui/propertypages/SystemStringFieldEditor$2.class
+SHA1-Digest: kWXlLDDoZXB1t7OH/dYorNsWUVA=
+
+Name: org/eclipse/rse/ui/messages/SystemUIMessage.class
+SHA1-Digest: h+cdrsGhlDpinyyBStQLSn0C2Ms=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemProfileNameSelectActio
+ n.class
+SHA1-Digest: Sy97Yx+7mSiSN5n4VRUAzLGjjlg=
+
+Name: org/eclipse/rse/ui/wizards/ISystemWizard.class
+SHA1-Digest: 6nDqIy98pgNEb7qkH0nEqCyK8Sc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewDataDropAdapter.class
+SHA1-Digest: PHZJh+4qtVc4d65n7RCcSKRMPhI=
+
+Name: org/eclipse/rse/ui/ISystemThemeConstants.class
+SHA1-Digest: DWjU1j8I0RzjiHymNYOeWvB1Zp8=
+
+Name: org/eclipse/rse/ui/operations/SystemProgressDialogRunnableContex
+ t$2$1.class
+SHA1-Digest: swalaVr+6ti5YuuhMdYWzSC8tdw=
+
+Name: org/eclipse/rse/ui/internal/model/SystemScratchpad.class
+SHA1-Digest: lDE5JBAEbxJDE1mGqA1YUfeaytA=
+
+Name: icons/full/dlcl16/makeprofileinactive.gif
+SHA1-Digest: J1nHhwyE28hlXzIrDGRXwGXsAik=
+
+Name: org/eclipse/rse/ui/wizards/RSEDialogPageMessageLine.class
+SHA1-Digest: cW6/U9jUvHhjVSG1UQYPBxCpyZQ=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemShowInMonitorAction.cl
+ ass
+SHA1-Digest: 2hVDEWvBSuvQegjhXYlRnEyjkSk=
+
+Name: icons/full/obj16/systemfolder.gif
+SHA1-Digest: Kzlm0xk1tG8J2NC4EGwMe4DSx+w=
+
+Name: org/eclipse/rse/ui/widgets/services/ServiceServiceElement.class
+SHA1-Digest: SoaA8RfTeloUsWWfzthHKGon9DM=
+
+Name: org/eclipse/rse/internal/ui/view/SystemPropertySheetForm$1.class
+SHA1-Digest: uPhcWPlDpKF0syW9Dc7l3tM+iOA=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewWorkbook$1.c
+ lass
+SHA1-Digest: LUwCxtH7Pk3lMTYP+Gf6GULYDzE=
+
+Name: icons/full/dtool16/systemshowintable.gif
+SHA1-Digest: Wpedg0DXuyNiGfR+VAtqKKIM9YM=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardSelectionTreeElem
+ ent.class
+SHA1-Digest: lJQ1Y/P9F3LsvgaJ+WWB8SiBOC8=
+
+Name: org/eclipse/rse/ui/widgets/ISystemCombo.class
+SHA1-Digest: M30CFB+hcDF5OoP/mlTlixAftNw=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchTableView.cl
+ ass
+SHA1-Digest: 1EP7uuTdWSuylXBThkPZjB+bSEE=
+
+Name: systemmessages.xml
+SHA1-Digest: GuUDgsuzRXxhxtj6OUkBwZKXdPw=
+
+Name: icons/full/elcl16/down.gif
+SHA1-Digest: r4DflKgSBUA63W2HKX/qSJ7eNsE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewScratchpadAdapter.cla
+ ss
+SHA1-Digest: LLuMxBTxUMsqGQhyFxa5iOThk4o=
+
+Name: org/eclipse/rse/ui/actions/ISystemViewMenuListener.class
+SHA1-Digest: KCOkXcc8deS7cbciQtFI/LXfVg8=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemFilterAbstractFilterWiz
+ ardAction.class
+SHA1-Digest: ZlU7xAjUPgUPWn1vBRFbvvjV1k0=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewLabelPro
+ vider.class
+SHA1-Digest: OlZ5f7Joam5JuwZ3FabTpL8ANR4=
+
+Name: org/eclipse/rse/ui/model/ISystemRegistryUI.class
+SHA1-Digest: 5auDMi2eA3YuVqTihbyrMZKWsjY=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart.class
+SHA1-Digest: 2g2CoD5klKJt5P7bvCDXpYRzdQM=
+
+Name: org/eclipse/rse/ui/view/ISystemLongRunningRequestListener.class
+SHA1-Digest: VPGbrzs9bFcx33shWzcdgAemhmk=
+
+Name: org/eclipse/rse/internal/ui/view/ISystemMementoConstants.class
+SHA1-Digest: T2kZfqgTbxaDiBnn3OQBDkJIMug=
+
+Name: icons/full/obj16/systemempty.gif
+SHA1-Digest: rvrDHb57xQfN/6V0/hgUM7Y+BsU=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardDescriptor.class
+SHA1-Digest: EqOHOmAXwfDIVf3wP6kLs9kckrQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView$HeaderSelec
+ tionListener.class
+SHA1-Digest: SZopuIAl4vmjb2c2iTs37LPV/fA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeViewProvider.cla
+ ss
+SHA1-Digest: JyAYxLSmqR/CPMjusT9r7ms6Xas=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextPropertyDe
+ scriptor.class
+SHA1-Digest: 9/wYbK+TgySws3vY430vVNkdfsM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemExpandAction.class
+SHA1-Digest: 2Do4DS3pvB9kAyJX/fywDZJYqXE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$RestoreStateRunn
+ able.class
+SHA1-Digest: 2aytOqsgDNzJ7QVv01XcS2H3hfY=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterStringEditPane.class
+SHA1-Digest: MCpq34WIaR+meGSLGrP9sinppHo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewForm.class
+SHA1-Digest: F7uUycHqk86CKKS0iYk0cf/Jzvw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemPropertySheetForm.class
+SHA1-Digest: eesBAlMXljbDHC7dvy2Nlvp8uQ0=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewCategoryAdap
+ ter$1.class
+SHA1-Digest: vghJIZw2v7b6ueOjO344HYzgA2M=
+
+Name: org/eclipse/rse/ui/MassagerRemoveQuotes.class
+SHA1-Digest: 44jmNqF+hL5wOHx1Hm4dn1v2e08=
+
+Name: icons/full/cview16/team_view.gif
+SHA1-Digest: VWhH2ICAQplamnfQx3NEbk42zg8=
+
+Name: icons/full/elcl16/run.gif
+SHA1-Digest: 9nUFtkM1LiPz9RddB8tq+Zl7LlE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingOpenWithActio
+ n.class
+SHA1-Digest: D78Zg8JXh9CKUSfk641QfGB0T8o=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchUI.class
+SHA1-Digest: KAklQHo2x01xLa/9Zn7hSg0bZ+s=
+
+Name: org/eclipse/rse/ui/widgets/EnvironmentVariablesForm$EnvironmentV
+ ariable.class
+SHA1-Digest: bcJFr1qDqHvedTTPIlltnIAZv4g=
+
+Name: icons/full/etool16/newfilterpool_wiz.gif
+SHA1-Digest: AF7s9Fh3JJ2MBWxosGMfseri3Hc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCopyConnectionAction.c
+ lass
+SHA1-Digest: tkYW5rktPrxO9d0BziRbp8cWZck=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$Restore
+ StateRunnable.class
+SHA1-Digest: 18eQei6S6KWE4luTFtOjgX50z3o=
+
+Name: icons/full/elcl16/selectpool.gif
+SHA1-Digest: fxv+hXoPAgpXaDoos6fednDpJec=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemViewExpandToAllAction.
+ class
+SHA1-Digest: 6KBtodzGQlDjV39G2dqIFsGheNo=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemDeleteTableProvider.cl
+ ass
+SHA1-Digest: jPYBYSQHeoyS3rISMQLL8AZ3aEI=
+
+Name: org/eclipse/rse/ui/widgets/services/ConnectorServicesForm.class
+SHA1-Digest: boHZTt34qHgX3p8GJnjeU0psngw=
+
+Name: org/eclipse/rse/ui/validators/ValidatorSystemName.class
+SHA1-Digest: iTMdgWyqklC0pJRS8Ff+kx3dVzY=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemCopyTableRow.class
+SHA1-Digest: JuPv2Ow9jTcpeJK/MJ/sqUSLF4g=
+
+Name: icons/full/dlcl16/makeProfileActive.gif
+SHA1-Digest: 5DEdvKsqh+ntgESh9Y25tcP5lfw=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$SubSystemOperationJob$
+ ContextRunnable.class
+SHA1-Digest: J+/raItCiC/3jMZnlzBba0FzuBk=
+
+Name: org/eclipse/rse/ui/Mnemonics$1.class
+SHA1-Digest: MAjXafRaNDWAhvNAftK0ILoyq6c=
+
+Name: org/eclipse/rse/ui/widgets/SystemHostCombo$2.class
+SHA1-Digest: SlZbHDxXx8h1ZHLNY1Mdw++omNE=
+
+Name: org/eclipse/rse/ui/propertypages/SystemStringFieldEditor.class
+SHA1-Digest: 34qNq1hXzwwrm+tW/PrEbiwpsi4=
+
+Name: org/eclipse/rse/ui/operations/SystemFetchOperation$1GetExpandToF
+ ilter.class
+SHA1-Digest: FIVAu08UVQDol+poFJois6gL3ss=
+
+Name: icons/full/elcl16/refresh_nav.gif
+SHA1-Digest: q18GA/yOw/0tzCGP5qMz+TE4oSM=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSEMainNewConnectionWiz
+ ard.class
+SHA1-Digest: EUl41jIHCAw2cK3OTwliUo8NooQ=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemResolveFilterStringDia
+ log.class
+SHA1-Digest: PRwyXo+ECxpj+wLzFgb2D7xxU3M=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$2$1.class
+SHA1-Digest: 7PPsxRsNfzkaTWgBsRDzrISEBkc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemViewExpandToBaseAction
+ .class
+SHA1-Digest: zUR4hyU7qW8joAPv9vb/wHl5BFU=
+
+Name: org/eclipse/rse/internal/ui/subsystems/SubSystemConfigurationPro
+ xyAdapter.class
+SHA1-Digest: u/ROUk2m/2l2pLA8Oawe0tywshc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $2.class
+SHA1-Digest: o8dIm/8w/9LWiMiVn+J9VPJZ3uQ=
+
+Name: org/eclipse/rse/internal/ui/propertypages/ServerLauncherProperty
+ Page.class
+SHA1-Digest: iuv2Jgsk132OhDYMDtoESlRL7qE=
+
+Name: org/eclipse/rse/ui/wizards/SystemNewProfileWizardMainPage.class
+SHA1-Digest: yh52w87VRknclZ9fy7zWWOjFAlQ=
+
+Name: org/eclipse/rse/ui/MassagerAddQuotes.class
+SHA1-Digest: 2YZYAlnpcz9SNQfDJlQ6ivc02zQ=
+
+Name: org/eclipse/rse/ui/widgets/SystemHistoryCombo$3.class
+SHA1-Digest: UJhaAo76KmtSjRNqBvCuCZNysNE=
+
+Name: org/eclipse/rse/ui/operations/SystemJobRunnableContext$1.class
+SHA1-Digest: Rw2HNqQf+YXuYVx8rqaozK4Xw9E=
+
+Name: org/eclipse/rse/internal/ui/SystemProfileForm.class
+SHA1-Digest: BmLfZljR62vzgGEtLD92TOUZyXc=
+
+Name: icons/full/obj16/systemhelp.gif
+SHA1-Digest: YWfx6AwMxRTLU7dk0N0jwS0lPeI=
+
+Name: icons/full/obj16/service_obj.gif
+SHA1-Digest: V5PmqSCg3hGlJsxv26PnHRWj5N0=
+
+Name: org/eclipse/rse/ui/widgets/InheritButton$1.class
+SHA1-Digest: ij7zpgtb/RmKlY44HF6auX4us60=
+
+Name: icons/full/dlcl16/deletereference.gif
+SHA1-Digest: 2ip5ismCf35/26hyO8ktKAoao6w=
+
+Name: org/eclipse/rse/ui/actions/ISystemAction.class
+SHA1-Digest: eBkq1lFnvy3AGR1/IfFamkYOBB4=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Can
+ celAction.class
+SHA1-Digest: P9JDgUTRkus7MkwvA+m7YvuChUI=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterWorkWithFilterPo
+ olsRefreshAllAction.class
+SHA1-Digest: yanD5hmg2lm5u+n3V7PywNKvJpg=
+
+Name: icons/full/obj16/launcher_config_obj.gif
+SHA1-Digest: Kz4rczahmFLN1LvOx7ajhqdM1pY=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewSubSystemCon
+ figurationAdapter.class
+SHA1-Digest: 7RUDRmzxogKoxzXI70GlZK5Np08=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionPage$NewConnectionWizardViewerComparator.class
+SHA1-Digest: vrEUx5m16Pq2LuVQmZpMmRIvFHY=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Bro
+ wseAction.class
+SHA1-Digest: 8NaTfngif9hBzXQ4sgUHNgyMBig=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$RenameJob.class
+SHA1-Digest: fLowRJRf92UCyuSWGs2ji/4xjDo=
+
+Name: icons/full/obj16/systemblank.gif
+SHA1-Digest: u5Jr2UI6FK9Kcact+X4Uud33hrw=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$3.class
+SHA1-Digest: uiQ0ht7e+pamcnV8LMd68d/xk/o=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSEDefaultNewConnection
+ Wizard.class
+SHA1-Digest: BdEKSIfcoyqw2ajIQ+zbK7UD51M=
+
+Name: icons/full/dlcl16/editfilter.gif
+SHA1-Digest: m0/eQ1BRXbocqX6uIPaWqCIr2rw=
+
+Name: org/eclipse/rse/ui/filters/SystemChangeFilterPane$1.class
+SHA1-Digest: OpRvZA/EAAEDQ8IeVqzLlWhkZYk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$1.class
+SHA1-Digest: X70AL9yk2D6Icmurm+znsQlCmVw=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCollapseAllAction.clas
+ s
+SHA1-Digest: zPSIQMP5RB+cJw3y6KdRNyJrwPQ=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemChangeFilterActionMove
+ StringUp.class
+SHA1-Digest: wSLIrKhFUtvsoTztR1k3EoPxUuM=
+
+Name: org/eclipse/rse/ui/widgets/SystemCollapsableSection$RTwisteeLayo
+ ut.class
+SHA1-Digest: /nOGmMKLez/5Q1gDZqCzrUt45e8=
+
+Name: org/eclipse/rse/ui/view/SystemTableView$1.class
+SHA1-Digest: nNhDCESQOewlHFYE+30BEN0Uscg=
+
+Name: org/eclipse/rse/ui/view/IViewLinker.class
+SHA1-Digest: c1FoiP2sG/7r8OiVFGCTW2P75d8=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSelectFileTypesDialog$3.class
+SHA1-Digest: oyDz6l0zH4FuYkVtcEe6Gehs8dk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFormLabelAndContentPr
+ ovider.class
+SHA1-Digest: UCXIpg79wHmb57GyuRMMvT4rvwc=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm.class
+SHA1-Digest: Ar1ohYJ31EVh223ijJmsE6Z8Pdo=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseWizardAction.class
+SHA1-Digest: SjhPlsDubGBivbJOZEJMUyHjYkY=
+
+Name: org/eclipse/rse/internal/ui/view/SystemResourceSelectionForm.cla
+ ss
+SHA1-Digest: SX2bOkfU1UZbE16/O68hzxjkHoY=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ estoreStateRunnable$WaitForAdapterJob.class
+SHA1-Digest: s8FfIZaUWD/cnc0RW9LztqPbXg4=
+
+Name: org/eclipse/rse/ui/widgets/services/ServiceTableLabelProvider.cl
+ ass
+SHA1-Digest: tXSZdufCMwrqPN0URclzXTIWJ/g=
+
+Name: org/eclipse/rse/ui/widgets/services/ServiceTableContentProvider.
+ class
+SHA1-Digest: XK/krFb756xoVy62rWSOoGWv1b4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewRootInputAdapter.clas
+ s
+SHA1-Digest: TDNs0CmhpQ8O76CN/ts7cZeaDe8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterReferenceAdapte
+ r$1.class
+SHA1-Digest: jjJGMjx/eUgDPui3XUb5aesoEyU=
+
+Name: org/eclipse/rse/ui/subsystems/StandardCredentialsProvider.class
+SHA1-Digest: dptD0c4FKAjzOP0t0QrQGLN3S9A=
+
+Name: org/eclipse/rse/ui/ISystemRenameTarget.class
+SHA1-Digest: 1UHqd5ZTbacf84i+7R19dBDx5kc=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewContentP
+ rovider.class
+SHA1-Digest: 3ReHzTOdlLtqXugCXXeWDWcGTE0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView$1.class
+SHA1-Digest: ZsXu/YRdLdFXrqaSdKVYTp3/JGI=
+
+Name: org/eclipse/rse/ui/filters/actions/ISystemNewFilterActionConfigu
+ rator.class
+SHA1-Digest: erwkh/pT+pY9Afyq372539vaC94=
+
+Name: org/eclipse/rse/ui/widgets/IServerLauncherForm.class
+SHA1-Digest: j3nH/M8e/l66QJBkVwjW7ylsyY4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterCopyFilterString
+ Action.class
+SHA1-Digest: K35BKQYXQiPcy5noYzC5zvIg1LU=
+
+Name: icons/full/obj16/systemok.gif
+SHA1-Digest: Ka6cTIH6PVjzjBFO5FbyHku+EDU=
+
+Name: org/eclipse/rse/internal/ui/PreferencesMapper$MyPropertyChangeLi
+ stener.class
+SHA1-Digest: /LWhHKMaKqsQ19P3+yE6sUNXmb4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemWorkOfflineAction$1$1.
+ class
+SHA1-Digest: Cg/I3MrGfziuievF2ptxlPInwCw=
+
+Name: icons/full/eview16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemRenameDialog.class
+SHA1-Digest: 6V3lzTlUlAxSHHbsnLOOSDxw63I=
+
+Name: org/eclipse/rse/internal/ui/RSESystemTypeAdapterFactory.class
+SHA1-Digest: BMPvKiiOIo5GhCMWqD0UCjPPdiE=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$2.class
+SHA1-Digest: ou7BiLahX/0SElZJL8NoCKbHomY=
+
+Name: org/eclipse/rse/ui/SystemActionViewerFilter.class
+SHA1-Digest: CuInw72nL8GkgvihdyDJVuwTYqU=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemCopyProfileDialog$1.cl
+ ass
+SHA1-Digest: S2XPU/7kI6AcaN9jdO+2tPKmhTw=
+
+Name: org/eclipse/rse/ui/widgets/services/ServerLauncherPropertiesServ
+ iceElement.class
+SHA1-Digest: HUvZ0gQC+ez15RG2dJp1pzS+dRY=
+
+Name: org/eclipse/rse/ui/widgets/SystemEditPaneStateMachine.class
+SHA1-Digest: LiHCMoqA+8rF/Vq2O+sm3Rm+cB8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCommonDeleteAction.cla
+ ss
+SHA1-Digest: dKuqetqL0hEiPsUKgvQXwQ8JxT0=
+
+Name: org/eclipse/rse/ui/filters/ISystemChangeFilterPaneEditPaneSuppli
+ er.class
+SHA1-Digest: 4JcVVkvWhjMXtsMldkwGeHbS5dA=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog$1.class
+SHA1-Digest: mpe61bJIXpSaevsv2KqgyV339f0=
+
+Name: icons/full/dtool16/newconnection_wiz.gif
+SHA1-Digest: W1GV2HvcWSdzwBwB1hbBJngcu54=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterCascadingNewFilt
+ erPoolReferenceFPMgrAction.class
+SHA1-Digest: lT2TWQDzZtUAD5EscCVNa1CkyTY=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$MyMessage.class
+SHA1-Digest: igOzPlnsEoU5Gab+27XEXcQI+DM=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemTestFilterStringDialog
+ .class
+SHA1-Digest: zQBWF3IQ1XMh5jvVW9p4WvaQ6mc=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterNewFilte
+ rPoolWizardDefaultMainPage$1.class
+SHA1-Digest: n6Zb7Y8OYBIzFiLuPniewAjgkrc=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$5.class
+SHA1-Digest: q7fpUX7KrU3ysCg6a11E9PMQUj8=
+
+Name: org/eclipse/rse/ui/widgets/InheritableEntryField.class
+SHA1-Digest: R4p1Tc/fjH5/f3l5nso76K439xw=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ .class
+SHA1-Digest: RDAvJhIUD5P8WLetN9WHK4V436E=
+
+Name: org/eclipse/rse/ui/wizards/SubSystemServiceWizardPage.class
+SHA1-Digest: BvPZPRX0QCvIyjQZEyiNGIqusHY=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFilterString.class
+SHA1-Digest: pIvuQIjtsU0/XlILd5tmin0quVg=
+
+Name: org/eclipse/rse/ui/view/ISystemViewDropDestination.class
+SHA1-Digest: NjTo8L7U0rQFDQ3VJPsZasAKkSc=
+
+Name: org/eclipse/rse/internal/ui/SystemResources.class
+SHA1-Digest: PxTTQ+Lor1W8jsNTI8GVLleaVg4=
+
+Name: icons/full/view16/system_persp.gif
+SHA1-Digest: XusM98gOMaTYNUc0SQH9krM9sQY=
+
+Name: org/eclipse/rse/ui/model/SystemRemoteElementResourceSet.class
+SHA1-Digest: M6Q7vdEK+No9eEXctFJSgWL4LUM=
+
+Name: org/eclipse/rse/ui/dialogs/EnvironmentVariablesPromptDialog.clas
+ s
+SHA1-Digest: QK+nGwqBHbhpohSOH0ABn8l/mQ0=
+
+Name: icons/full/elcl16/searchremoveall.gif
+SHA1-Digest: /GoPVhCpQ+0VtZ7rmiudbpEXoyg=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDNDTransferRunnable$ShowE
+ rrorRunnable.class
+SHA1-Digest: RFT5tfZfmjiSnpfH8lpRkE679HU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemPreferenceShowFilterPo
+ olsAction.class
+SHA1-Digest: 5Gx/N9I7m1v73I7umW4CoR1EkRE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemExportConnectionAction
+ $ExportJob.class
+SHA1-Digest: Bd9PMsm0e6GUiuuIAOdb9mcTaM0=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemFilterPoolWizardInterfa
+ ce.class
+SHA1-Digest: Q0vrxWixAAqIEacNBeX5Ikfndp0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemSelectRemoteObjectAPIProv
+ iderImpl.class
+SHA1-Digest: sgzo8Ym3m2Bw5VgOwLX5qdQwPuU=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemConnectorService
+ sPropertyPage.class
+SHA1-Digest: dmecqaqi1g2kyd0r3zfZMmwNFGk=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEAbstractWizardSelection
+ TreeDataManager.class
+SHA1-Digest: 4z7plmKiB5M6xf5H2SN33kSkzw4=
+
+Name: icons/full/dlcl16/stop.gif
+SHA1-Digest: boytXNS/Xk94+fnXOhKn6FEAyUo=
+
+Name: org/eclipse/rse/ui/widgets/services/RSEModelServiceElement.class
+SHA1-Digest: FcnvHWd5KPr4K4fs2wRTSFzdvVU=
+
+Name: icons/full/dlcl16/workwithfilterpools.gif
+SHA1-Digest: OnrnoDNOaOAW7Bx3Xi2wYWhxQMQ=
+
+Name: org/eclipse/rse/ui/view/ISystemTree.class
+SHA1-Digest: +S3gUv20QzAkZIRkqX5COMnUE3w=
+
+Name: icons/full/obj16/warning.gif
+SHA1-Digest: ephugAqnGSA1Bn2gdY4602d9uxw=
+
+Name: org/eclipse/rse/ui/messages/StatusLineManagerAdapter.class
+SHA1-Digest: JHgRd5IBrpdhI1/AeQD6Po1QlCc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveFilterString
+ Action.class
+SHA1-Digest: RZuxqaRUydYvgRx8OVTB3cd+x7c=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemExportConnectionAction
+ .class
+SHA1-Digest: dtrb+rGbWH40GgfB0UZI7X5wl6s=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ResolveRelativeJob.cla
+ ss
+SHA1-Digest: ap1+Nm1DybZHpdLrMv3X463BTk4=
+
+Name: icons/full/obj16/systemfile.gif
+SHA1-Digest: rLBaG60DpfnehRTAqLVr+5bKiHc=
+
+Name: org/eclipse/rse/ui/IRSEAdapter.class
+SHA1-Digest: 5NWo6c0IEK5i+EBohjzNQqvi0mQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$RestoreRemoteObj
+ ects$GetExpandToFilter.class
+SHA1-Digest: N4XueLa9vyZiphXj0xkSU2rCtjw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemPerspectiveHelpers.class
+SHA1-Digest: Lhh8TeiBJDClP3U7Kxi/GnYjTOM=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.ui/pom.properties
+SHA1-Digest: VDRQXKCwJ6jMeHvHLRNYJW3nJ6c=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveFilterAction
+ .class
+SHA1-Digest: OdGjaoPV1YBXkohPZl1SKLYwVvw=
+
+Name: org/eclipse/rse/ui/SystemPreferencesManager.class
+SHA1-Digest: Ckj8gxeROPVaec+f0Cfq3AWKicc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemOpenExplorerPerspectiv
+ eAction.class
+SHA1-Digest: iQzv2hrfuyr023wVCEa7MN/SCJo=
+
+Name: org/eclipse/rse/internal/ui/propertypages/RemoteSystemsPreferenc
+ ePage.class
+SHA1-Digest: WJR89R5jerbHiOpWwZZhgmGbOTE=
+
+Name: org/eclipse/rse/ui/SystemWidgetHelpers$1.class
+SHA1-Digest: NnIFaj+9HU2AuEsAxLXRGwswZBY=
+
+Name: icons/full/obj16/systemconnectionlive.gif
+SHA1-Digest: 0qA/cOI6emSbLVoUXhgSOvxvGKc=
+
+Name: org/eclipse/rse/ui/validators/ValidatorServerPortInput.class
+SHA1-Digest: HOIeQw1pegSLrYWVGoi0Mcz9faw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$3.class
+SHA1-Digest: uyX8xtYoXIpQWoJFO6QnQ6WKQA8=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchTableViewPro
+ vider.class
+SHA1-Digest: 2f3/5XknkTjU7onXeprRFM+zVoE=
+
+Name: org/eclipse/rse/ui/SystemPreferencesManager$ModelChangeListener.
+ class
+SHA1-Digest: AnEOHTAy4niGqzSw21Fly8HxqMc=
+
+Name: org/eclipse/rse/ui/propertypages/SystemComboBoxFieldEditor$3.cla
+ ss
+SHA1-Digest: mVQ67lW7V1gLezWk7asihwLlxfI=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemWorkOfflineAction$1.cl
+ ass
+SHA1-Digest: qmXK/z7Zrcb+UkMbKOwjxj3BGWE=
+
+Name: org/eclipse/rse/ui/model/ISystemPromptableObject.class
+SHA1-Digest: VWUn/QH1ORjC4qftYimPh/ZBahk=
+
+Name: org/eclipse/rse/internal/ui/filters/SystemFilterPoolManagerUIPro
+ vider.class
+SHA1-Digest: 4FmyFyBfHI2C89WBYCTeE6kNOQo=
+
+Name: org/eclipse/rse/ui/MassagerFoldCase.class
+SHA1-Digest: JnHeE7iZa6udKiNJFjE94gXX7f4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemTestFilterStringAction
+ .class
+SHA1-Digest: pGzsc2uGzRZd60MT1txXdey+0GE=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEAbstractWizardRegistry.
+ class
+SHA1-Digest: CsbD0BuIB8pb6OHaOEpx23oqGS4=
+
+Name: icons/full/dlcl16/searchremoveselected.gif
+SHA1-Digest: 0Ti38UGxkUjNe5BpxPG2DqSeFiA=
+
+Name: org/eclipse/rse/ui/wizards/SystemNewProfileWizard.class
+SHA1-Digest: u4MoaSiRwGPXY+BRcSMQbC7ikvQ=
+
+Name: org/eclipse/rse/ui/ISystemVerifyListener.class
+SHA1-Digest: Wo9bj5qkLLEE3Wr9I0f8cXNNxsE=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Sel
+ ectColumnsAction$SelectColumnsDialog.class
+SHA1-Digest: LL1CzRfP7Z5+pkFcY6eXHKoY9CA=
+
+Name: org/eclipse/rse/ui/validators/ValidatorLongInput.class
+SHA1-Digest: GQqYX0+8zWPWLa2aJuQK/coo5hg=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterStringAdapter.c
+ lass
+SHA1-Digest: yTO/svdH6EP0+JgAa8SMn0N7Ksk=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemDeleteTableRow.class
+SHA1-Digest: GX+0PMcuBwmA2ANZZ0cqP8eNJio=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemLoggingPreferenc
+ ePage.class
+SHA1-Digest: nOdJ3ZvG/vLYG9RpHea6FiaSvi4=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizardConfigur
+ ator.class
+SHA1-Digest: 8qY29h0E6IuY0AHdwdwAHFkMMIQ=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterPoolWiza
+ rdDialog.class
+SHA1-Digest: 6WxTmB+ckyEbC5A4BuLA9Xy2xaQ=
+
+Name: icons/full/elcl16/systemprofile.gif
+SHA1-Digest: ZAPdhOsWCcEbWr3fSJDEh4E2Us4=
+
+Name: icons/full/ctool16/newprofile_wiz.gif
+SHA1-Digest: erA7dJBv7Q+FddV37hxySGCTxF8=
+
+Name: org/eclipse/rse/ui/operations/Policy.class
+SHA1-Digest: /hi+5xkxtGbV41b4RCGRMLrp808=
+
+Name: org/eclipse/rse/ui/propertypages/SystemKeyValueFieldEditor$4.cla
+ ss
+SHA1-Digest: I8wXf8qsTO7M8KznA+RG+DD83qM=
+
+Name: icons/full/elcl16/systemshowintable.gif
+SHA1-Digest: H6wCvEHsBaurlP6gLDIjQ6wBvuA=
+
+Name: org/eclipse/rse/ui/validators/SystemNumericVerifyListener.class
+SHA1-Digest: /l7Hm2TCI0oX7T6FyZYdxHcEjkw=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemWorkWithProfilesAction
+ .class
+SHA1-Digest: 1iyEc8cYY+TgzLIBRq29nHcGr/E=
+
+Name: org/eclipse/rse/ui/widgets/services/PropertySetServiceElement.cl
+ ass
+SHA1-Digest: vC5l+dTxz7mZZ+EMudV8EpTd9rA=
+
+Name: org/eclipse/rse/ui/actions/ISystemCopyTargetSelectionCallback.cl
+ ass
+SHA1-Digest: v7GowHkqPjkMIGNw3AL6d70SkmE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemChangeFilterActionDele
+ teString.class
+SHA1-Digest: iY+C387hFeO3O7+UyOEHPWaFHfU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SubSetActio
+ n.class
+SHA1-Digest: FLn5+JtUpEJGy+xiR8ilarvHZL0=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewResourceAdap
+ terFactory.class
+SHA1-Digest: cDdPBJf2wW/4zMpIitDsqPH0gFY=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPropertyTester.class
+SHA1-Digest: PDJkPJKvA584shy2G+ESava1wOg=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$8.class
+SHA1-Digest: XLDKCOdpC3R8mBvcvmDzBvfPAvU=
+
+Name: icons/full/obj16/systemfilterpool.gif
+SHA1-Digest: 8EfRq6f3xVrg28q33cBnOswUI0I=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewCategoryAdap
+ ter.class
+SHA1-Digest: pAqUsz9EMTzdUnIox8MYaiDxApo=
+
+Name: icons/full/wizban/newfile_wiz.gif
+SHA1-Digest: Kk//lacvGQln2sSWbZTMXkD/3EM=
+
+Name: icons/full/ctool16/newfile_wiz.gif
+SHA1-Digest: QcxM0kkl1Mo/T76FdX6dg4s4tA0=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPasswordPromptDialog.class
+SHA1-Digest: VLmkKpnvB6daI2qd+ouEzbsYcF8=
+
+Name: org/eclipse/rse/ui/propertypages/ISystemSubSystemPropertyPageCor
+ eForm.class
+SHA1-Digest: MyP1EW3dcQIZo9CpDv8ZzXdYBaA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$RestoreStat
+ eRunnable$2.class
+SHA1-Digest: c1Gvt+s7W7NTHIEmleEdFUJcjos=
+
+Name: icons/full/elcl16/searchremoveselected.gif
+SHA1-Digest: h0kZkzhUBBwSKCLEH4ItnWNDcLk=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingViewAction.cl
+ ass
+SHA1-Digest: Fb+JTONe4TgBZJxtPHSICyYcde0=
+
+Name: icons/full/obj16/systemrootdrive.gif
+SHA1-Digest: Z9hpFItfHT6up77WxY7U/+djHPw=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterRemoveFilterPool
+ ReferenceAction.class
+SHA1-Digest: ChqqezbUdt+oOGqrfYuwhf0t870=
+
+Name: org/eclipse/rse/internal/ui/view/SystemEmptyListAPIProviderImpl.
+ class
+SHA1-Digest: RaFtNm8rxltPUp64DLEPCEAgzP8=
+
+Name: icons/full/dtool16/new.gif
+SHA1-Digest: D1M95t68DHKQrRav/nFyxzRGXaA=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizardNamePage
+ .class
+SHA1-Digest: b6dxZhF9nLDOcdsSi+Y872/fAmU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewDataDragAdapter.class
+SHA1-Digest: 3/o2SBB3hbIfASGPPQHJqmnZzZU=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenPageDescriptor.class
+SHA1-Digest: BIKYQlTiCKbGJ7NU/HPzrNP36Mo=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamView.class
+SHA1-Digest: TWGPAaHslPW9WqztrbTNDx84i6g=
+
+Name: icons/full/obj16/systemfilterstring.gif
+SHA1-Digest: 5gmPITuerIafZ4WUeNszW3KVkiA=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemImportConnectionAction
+ $ImportJob$1.class
+SHA1-Digest: fG8F3ft2dCIjYr2j94EBEFnOY3w=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Sys
+ temSearchDoubleClickListener.class
+SHA1-Digest: wj/P3eJeBm+Q8R43gvh65z/e7M8=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageStatus.class
+SHA1-Digest: ATZ7XRKG8LAjT+jMfyqRko/5sv8=
+
+Name: icons/full/elcl16/clearselected.gif
+SHA1-Digest: h0kZkzhUBBwSKCLEH4ItnWNDcLk=
+
+Name: icons/full/dlcl16/lock.gif
+SHA1-Digest: Wca9f73s0rnWKxnoDS3QshysJFA=
+
+Name: icons/full/wizban/newfolder_wiz.gif
+SHA1-Digest: cDJMP5+7eDiplKhe+QU3rZ8CKHU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemMoveUpConnectionAction
+ .class
+SHA1-Digest: bLyw+muZsXVZ12lowwPNxFPC0vc=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionPage$1.class
+SHA1-Digest: EC1lytQv6GMp3zY7oISjuHquRQI=
+
+Name: icons/full/obj16/ssl_obj.gif
+SHA1-Digest: qzJIh7A/RPhWscguSed2wle5IYA=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemTeamReloadAction.class
+SHA1-Digest: lNo+yntpqqv0PPisIPt6mRk1/4g=
+
+Name: icons/full/obj16/systemprofile_active.gif
+SHA1-Digest: Dj72rKHV+WrmGU+Q8h9dhnQp0fc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemConnectAction.class
+SHA1-Digest: 7X26nxAJ6rqgPYGd4tb+zgcpa1w=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemShowPreferencesPageAct
+ ion.class
+SHA1-Digest: wKXRwvVr8S36JCBUnah0kLHDyYQ=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ efreshAction.class
+SHA1-Digest: gr2MLU/PVl5YTjtYE/tMI9QgEV8=
+
+Name: org/eclipse/rse/ui/widgets/SystemPortPrompt$1.class
+SHA1-Digest: yTQaJ5NAxRMzimsq3xZHtkOTwZI=
+
+Name: org/eclipse/rse/internal/ui/DefaultUIInteractionProvider$1.class
+SHA1-Digest: RD34wrLGnhdlQ2pENqeNexPTgjk=
+
+Name: org/eclipse/rse/ui/propertypages/SignonPreferencePage.class
+SHA1-Digest: Hzbzdgir+fT9F0Kg8encMRLKgmE=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemTeamViewSubSyste
+ mConfigurationPropertyPage.class
+SHA1-Digest: f3PmFg7ONblQkEixoNq2STCbs0U=
+
+Name: org/eclipse/rse/ui/view/ISystemRemoteElementAdapter.class
+SHA1-Digest: Rkomigo/jItdBvPRGIgNzqwEPk4=
+
+Name: icons/full/obj16/systemcommandslive_obj.gif
+SHA1-Digest: s1byN1f7RIgACDBJktgdoYn2Rn0=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPasswordPromptDialog$2.class
+SHA1-Digest: bYvy1R63ln6HXxb1gPw5dk4U+AI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$BackwardAct
+ ion.class
+SHA1-Digest: yRuTFtmaVit+O+TbOMFysgp18OI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewLabelAndContentProvid
+ er$1$1.class
+SHA1-Digest: u3t+HlfQI89TYceEyx73NEZBj04=
+
+Name: org/eclipse/rse/ui/validators/ISystemValidator.class
+SHA1-Digest: klV1n+B8/UAmEkkLEhO8cK1rhKw=
+
+Name: org/eclipse/rse/ui/model/ISystemShellProvider.class
+SHA1-Digest: 6Ln8wqkzyP6TTw16GZBNUsCuf8I=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$Polling
+ Thread$1.class
+SHA1-Digest: IiX/dzbyr9Q+c4rzyfpsbzFVT84=
+
+Name: org/eclipse/rse/internal/ui/view/SystemResourceSelectionInputPro
+ vider.class
+SHA1-Digest: z9zacu8aCphCiPZOWA6a1RxMYkI=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/ClearAction.class
+SHA1-Digest: KdeVPj8y2UUXDgxoQEZNFhdgJwY=
+
+Name: icons/full/obj16/systemfilter.gif
+SHA1-Digest: vuMXR7ywF0+XHFHheAwh/SU3oxE=
+
+Name: org/eclipse/rse/ui/widgets/SystemHistoryCombo$1.class
+SHA1-Digest: ykbQr/WvCjy+kB2ZObM/QFBv37I=
+
+Name: icons/full/obj16/properties_obj.gif
+SHA1-Digest: rOTJvxUAFOcJZ8gqFqmLhqkRDtY=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemClearPasswordAction.cl
+ ass
+SHA1-Digest: q2+tDpsBEN8MmgvgH5c3VjPlcZQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewColumnManager.cl
+ ass
+SHA1-Digest: jNv35aXSsBzRHp0mbyyA2tSoDJk=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemFilterAbstractFilterAct
+ ion.class
+SHA1-Digest: eeQXrpm2gjIF1rJfMuR/xoS/SrA=
+
+Name: icons/full/obj16/systemsearchresult.gif
+SHA1-Digest: BuQUHnctDhGOzrOloPU3Lb8/ZUo=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSimpleCopyDialog.class
+SHA1-Digest: /FGcB7btlQu8Jxclp9010KMmnAQ=
+
+Name: icons/full/dtool16/newfolder_wiz.gif
+SHA1-Digest: 9ALtPLcDXYcsXMMwhYmDm6wCJbw=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$SystemMessageDialogRun
+ nable.class
+SHA1-Digest: xles9t0JFObeZ9i306AM3H+wNnw=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog$TabFolderLayout.cl
+ ass
+SHA1-Digest: LCnPfiSjj6cG2qzP+RU8JivdyH8=
+
+Name: icons/full/ctool16/newfilter_wiz.gif
+SHA1-Digest: FVgXqf5jT/qzu9RgV/Lm+JmccKQ=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$1.class
+SHA1-Digest: Gc5jfPe/IoOlNFgGunFznHplu6w=
+
+Name: org/eclipse/rse/ui/subsystems/StandardConnectorService.class
+SHA1-Digest: nSg8ayBo1AoBqrkC4qseQ+HW+W0=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/TabFolderLayout.class
+SHA1-Digest: SYitgzdzZcHV+0PIq71/nSxWXsg=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterPoolDialogOutputs.class
+SHA1-Digest: DwKbgGqpklhCa/iWoAMIf5rjM1Q=
+
+Name: org/eclipse/rse/ui/internal/model/SystemRegistryUI.class
+SHA1-Digest: PpUZMzEP7+OY9VrwLZ5HsCzK9wE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ .class
+SHA1-Digest: iQETDDlyiWksNWRt9fAMLUikwB8=
+
+Name: org/eclipse/rse/ui/ISystemMassager.class
+SHA1-Digest: 2/XEyTntaO0mbCPkGG4q3x7tlwI=
+
+Name: org/eclipse/rse/ui/operations/SystemFetchOperation.class
+SHA1-Digest: U+4aEGnMQLa/UGWvXHLaPh51ot4=
+
+Name: org/eclipse/rse/ui/dialogs/SystemChangePasswordDialog.class
+SHA1-Digest: kwu2BlBRwbklWJHiI14nCH4cvAA=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSelectFileTypesDialog$1.class
+SHA1-Digest: S1f5VxzMz1z1w8UM3IWGJgNCEGQ=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageDialog$2.class
+SHA1-Digest: WBHtc/Bhy58fTt+a7gjB516BOAQ=
+
+Name: org/eclipse/rse/ui/propertypages/SystemBooleanFieldEditor.class
+SHA1-Digest: PvWKPq8znEq80DrudcJbij9Pjy8=
+
+Name: org/eclipse/rse/ui/widgets/InheritControl$1.class
+SHA1-Digest: 5PHHkgJAtM8GHxTj8P1EffHcTqk=
+
+Name: org/eclipse/rse/ui/validators/ValidatorArchiveName.class
+SHA1-Digest: MicpSdDTJFxttFqSzQ1HR4LdSe8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingBrowseWithAct
+ ion.class
+SHA1-Digest: lHuU60qfpOFKtQYZo48UO7+6TMk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $5.class
+SHA1-Digest: 66LIOH1+1yvrUByHahs3vSlFF7Y=
+
+Name: org/eclipse/rse/internal/ui/view/SystemPerspectiveLayout.class
+SHA1-Digest: X3XEs5eG9MUDMaexzP4BhrSXTEo=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemFilterAbstractFilterPoo
+ lAction.class
+SHA1-Digest: ZBB/zXE4VAbORoXqDM/asSF8aFg=
+
+Name: org/eclipse/rse/ui/RSESystemTypeAdapter.class
+SHA1-Digest: 4AH0K66OVMMDljNy2lu04/kqocc=
+
+Name: org/eclipse/rse/internal/ui/subsystems/SubSystemPropertyTester.c
+ lass
+SHA1-Digest: 8eoZvZ6wje+O4G3J3CL2ckfEyaU=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFilterName.class
+SHA1-Digest: bEbCUqLjgq49a0QruLtoSj1vX6Y=
+
+Name: org/eclipse/rse/ui/validators/ValidatorPortInput.class
+SHA1-Digest: PtfCzew23H/4rqgM/f6GGyDUwjs=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCommonSelectAllAction.
+ class
+SHA1-Digest: qnJIC7zvTo3dq0KHLJNxnvrNeUQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDropActionDelegate$1.clas
+ s
+SHA1-Digest: cAFtKgknDLP4Yt4e2jFdMIs1xkU=
+
+Name: org/eclipse/rse/ui/open/ISystemQuickOpenPageContainer.class
+SHA1-Digest: SQqsr1LvfqH5jylcZKbY5GU6Wgg=
+
+Name: org/eclipse/rse/ui/validators/ValidatorIntegerInput.class
+SHA1-Digest: L2f548gCoceiBn9bk1y7cyWM7rg=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ Provider.class
+SHA1-Digest: 8yx4zDrGUrWlNhY1hAk+YVE0RZ8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAPIProviderForSubSyst
+ ems.class
+SHA1-Digest: 0eBLm8RdDCIyQAiP41teAxujhUE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewFilter.class
+SHA1-Digest: Ckk2u+8s8GImLdEIhRlkY/iVwOE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPartGotoActionGroup.c
+ lass
+SHA1-Digest: 94zbonEwlK/aidlJbVGlqC6kw58=
+
+Name: org/eclipse/rse/ui/propertypages/SystemBasePropertyPage.class
+SHA1-Digest: Anmp0yq9Slyo8IIqJiVlOJBgGbo=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$S
+ electColumnsAction$SelectColumnsDialog.class
+SHA1-Digest: SI7LJI5vrPn2Filqd+j039+Igxg=
+
+Name: icons/full/view16/system_view.gif
+SHA1-Digest: yzeRi5lmHyQyI/v/N6NtHl/nAec=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewSubSystemCon
+ figurationNode.class
+SHA1-Digest: NgFGztqAOfMBTRGFWCYerMgqIKQ=
+
+Name: org/eclipse/rse/ui/propertypages/SystemSubSystemPropertyPageCore
+ Form.class
+SHA1-Digest: laEE+GyK0HzeKRlzBN68nh7CX0o=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SelectAllAc
+ tion.class
+SHA1-Digest: zbayblRQWnlbqE5gjhmQ42DiUdI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterPoolReferenceAd
+ apter.class
+SHA1-Digest: GXwZ9Uj33x8ZFDzMY7owekUcrfw=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingRemoteServers
+ Action.class
+SHA1-Digest: Wn6rTu+fa5OtF1hVKGN4CTpdjtk=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPasswordPersistencePrompt.class
+SHA1-Digest: FjMLmmur7fKJE6U2mSBIJERMfuE=
+
+Name: org/eclipse/rse/ui/IRemoteSelectionAddListener.class
+SHA1-Digest: UQ7SZA0q+4y1EAlyMyPKg/3Qu9w=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemConnectionSubSys
+ temsPropertyPage.class
+SHA1-Digest: 9gxfuCGFLcVOvMRJJ+JsyMhO+VI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDropActionDelegate.class
+SHA1-Digest: UeaKrHBKKrLi53j6jC/SciYz5uY=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$3.class
+SHA1-Digest: 5L+4i+oq6qdxxeKKJE884kpgy60=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemWorkOfflineAction.clas
+ s
+SHA1-Digest: Kia8xaCmBdgUIlJ3Yo57wGRXUBY=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFactory.class
+SHA1-Digest: S7wJBU1atgK7Tg2EmqhAbO1dAdo=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$MySystemMessage.cl
+ ass
+SHA1-Digest: caif+zt3+0kgA5LLpwtha6l6JG8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView$4.class
+SHA1-Digest: nWPkoSWwcZUCv19q1xlHmkd3NI0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDNDTransferRunnable.class
+SHA1-Digest: kAA8hwoz14JKXGPaukNSP/JCDf0=
+
+Name: org/eclipse/rse/ui/ISystemPreferencesConstants.class
+SHA1-Digest: 8D7Wxtze7u5GmYxjXG5q07WJbPI=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$DisconnectJob.class
+SHA1-Digest: v9ztlBdLtXTWdUWEBdAIDa1aj0o=
+
+Name: icons/full/dlcl16/systemprofile.gif
+SHA1-Digest: NC/xXJ4LJuC9ypXjIcrYngiGOQo=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemConnectionProper
+ tyPage.class
+SHA1-Digest: KZJMze0f7kKQxlx9x/caYq1Vdh4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterWorkWithFilterPo
+ olsAction.class
+SHA1-Digest: VJD/D6QRnXSuKKvgu68ZFDpK8mw=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemCopyProfileDialog.clas
+ s
+SHA1-Digest: goNS2lQ4tAy5n4kTxzDhB6QXiE8=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionPage$NewConnectionWizardStateFilter.class
+SHA1-Digest: 7OcNOmODjr64H1xAdts0g8x1A8w=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$5.class
+SHA1-Digest: OPE2U5bvJVrnapTk5XRqmsGSTjo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewNewConnectionPromptAd
+ apter.class
+SHA1-Digest: zHgYIxafymmDuRzNRKe0vz5ZHzY=
+
+Name: icons/full/elcl16/clear.gif
+SHA1-Digest: +t8/f2vNMeMGz3NcpdPCXlgSjzQ=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemPreferenceInitia
+ lizer.class
+SHA1-Digest: uFXi3BOUFEDEz8AnW7BS8uy8XyI=
+
+Name: icons/full/dlcl16/selectpool.gif
+SHA1-Digest: fLQDap9rCn9Xn2j0w/x7fYNS4oc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterReferenceAdapte
+ r.class
+SHA1-Digest: jF0b+3MWZS6OKCgrZZTovFLTwNs=
+
+Name: icons/full/wizban/newconnection_wiz.gif
+SHA1-Digest: B3W2GquD5olz67agHcx3jfTeqWc=
+
+Name: org/eclipse/rse/ui/widgets/services/ServicesForm.class
+SHA1-Digest: uTaQG55FmMzCX12FUvWEFtlFTws=
+
+Name: icons/full/obj16/info.gif
+SHA1-Digest: CpXNe92+/EmxI9jj/+ky1TT7j8A=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog$4.class
+SHA1-Digest: uUYXFxX7DKaKsJM56/NdnMl7Jdo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPromptableAdapter.cla
+ ss
+SHA1-Digest: qih0ernmTuNub/9YiygNetdXq80=
+
+Name: org/eclipse/rse/internal/ui/view/SafeTreeViewer.class
+SHA1-Digest: /PSK7xNV2lk1OOMyQXjHNCS4QYI=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$8.class
+SHA1-Digest: Q9KgsKREqYRgpiywrhkg0BdXnHw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$1.class
+SHA1-Digest: BK50ZmP8VTk7HMH+x60ZyQqyOo0=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$2.class
+SHA1-Digest: BSuFC2+Duk9DPhzKgzBnDnknJCM=
+
+Name: org/eclipse/rse/ui/operations/SystemSchedulingRule.class
+SHA1-Digest: OdhzYGp/Pt8YcYffbIFKF2GyiFg=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewProfileAdapt
+ er.class
+SHA1-Digest: BrxPR+nb3aEr6E6vJ8jMzE9EriA=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterNewFilterPoolAct
+ ion.class
+SHA1-Digest: JkGp8RkYS1yPROgaRKIKUwlP/Jc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAPIProviderForFilterP
+ ools.class
+SHA1-Digest: XhMqw8s9lTD8lstUDHm3q8GpTQs=
+
+Name: org/eclipse/rse/ui/propertypages/SystemComboBoxFieldEditor$1.cla
+ ss
+SHA1-Digest: Wg0xe9q6sgL3V7Yamk4YXfL4Zvc=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemWorkWithHistoryDialog.
+ class
+SHA1-Digest: Yf13vshzZyrRHL+/IpQ7bxVUyq0=
+
+Name: org/eclipse/rse/ui/view/ISystemViewRunnableObject.class
+SHA1-Digest: M2QTEt7CB5R4kmGtwIYMRxajoLE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemComboBoxCellEditor$3.clas
+ s
+SHA1-Digest: cn6MrdCRT1WV9LdzjGjuABbM2nY=
+
+Name: org/eclipse/rse/internal/ui/SystemTabFolderLayout.class
+SHA1-Digest: luZs1sIBRyTPG3A5oEDCK9JOhss=
+
+Name: icons/full/dtool16/newfile_wiz.gif
+SHA1-Digest: IxZ+0f2UUVQdIeME99Blzpx2LV4=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemWorkWithHistoryDialog$
+ 1.class
+SHA1-Digest: 6vrEBglFk0mS0Ap7hL3iPCdk47s=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterUIHelpers.class
+SHA1-Digest: lj5Q+qQWoSeppAPmtwA1klbQ2QE=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterNewFilte
+ rPoolWizard.class
+SHA1-Digest: CQ9gwqecbpm57N99N5v/2pO0fP0=
+
+Name: org/eclipse/rse/internal/ui/GenericMessages.class
+SHA1-Digest: kGedIW8raiUUmKPA2C7dMb58edU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$CheckPending.class
+SHA1-Digest: loCdjWfaX+MhMQLoJ1Kx8Dg+Abc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$FilterMatch.class
+SHA1-Digest: RheDsrAU7ZH/+IPQgbFuIGvxkEM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveUpFilterPool
+ ReferenceAction.class
+SHA1-Digest: pZXr07ffOBnsudeUdzlmoned5vM=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$3.class
+SHA1-Digest: Nolzpw8NAGRucDyJrC05d5dlbF4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingPulldownMenuA
+ ction.class
+SHA1-Digest: 1axCvML5zdikxfgaiAtHQL5NYPw=
+
+Name: icons/full/dlcl16/clearselected.gif
+SHA1-Digest: 0Ti38UGxkUjNe5BpxPG2DqSeFiA=
+
+Name: org/eclipse/rse/internal/ui/view/ElementComparer.class
+SHA1-Digest: Pacbgk9M3Vci2ouJ4S2QvHxMeUI=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemNewProfileAction.class
+SHA1-Digest: WoDV6l0Cb4t16k85VpUMlQpr7R4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$ExpandRemoteObjects.
+ class
+SHA1-Digest: w+VEznhXD5JnS/HPgMQk6rncDOc=
+
+Name: org/eclipse/rse/ui/wizards/registries/IRSEWizardRegistryElement.
+ class
+SHA1-Digest: koN0SeYo2nFp+8bdZ97J5ZuSxZs=
+
+Name: org/eclipse/rse/ui/validators/ValidatorPathName.class
+SHA1-Digest: gCqhP2Na54rTO4W9jkw78oPhRkQ=
+
+Name: org/eclipse/rse/internal/ui/logging/LoggingPreferencePage.class
+SHA1-Digest: aYFGj9Qj1GykzDQAlo5ZTeBAnmY=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionTreeDataManager.class
+SHA1-Digest: 7xnWZdL2G148Kt7rp8Y1pvtEkj8=
+
+Name: org/eclipse/rse/ui/view/ISystemEditableRemoteObject.class
+SHA1-Digest: pARtdP5bjDKSJxzG7BKcacQHB6Q=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingWorkWithActio
+ n.class
+SHA1-Digest: pqpS3hgs42d1NaoAhe9EwLUAJXY=
+
+Name: org/eclipse/rse/ui/propertypages/SystemKeyValueFieldEditor$2.cla
+ ss
+SHA1-Digest: 7anuRz/pA05RLKt6ZKCbR7av21E=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveUpFilterActi
+ on.class
+SHA1-Digest: ON+PTfhjIg+umhyX/wFpnLiI7v0=
+
+Name: icons/full/eview16/system_persp.gif
+SHA1-Digest: XusM98gOMaTYNUc0SQH9krM9sQY=
+
+Name: org/eclipse/rse/ui/wizards/AbstractSystemNewConnectionWizardPage
+ .class
+SHA1-Digest: WXk/hJP9Z5DBGF36oxN4AO9XtuI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$6.class
+SHA1-Digest: mrBxsjQbH7Bq+7HUc3f3GQ19y88=
+
+Name: icons/full/obj16/connectorservice_obj.gif
+SHA1-Digest: cv7+qRdS0fFf6Bmodmrhc5r6W30=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/ClearAction.class
+SHA1-Digest: rUKmqa17GnAK9OKNDO8IdkyKrSE=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ $2.class
+SHA1-Digest: lxKuvHsm5hh51shH8yWNrXRVTmg=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSEDefaultNewConnection
+ Wizard$1DefaultConfigurator.class
+SHA1-Digest: 7roF6beiL0EmqZ3yO5ZtXw9AaWE=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem.class
+SHA1-Digest: oWAhNoFO0PQSEepRaZ6ce3a6ZUQ=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$SubSystemOperationJob.
+ class
+SHA1-Digest: JiW1MM40Z9BdwAE3ztE63YMCjdw=
+
+Name: org/eclipse/rse/ui/propertypages/SystemStringFieldEditor$3.class
+SHA1-Digest: xU7Dkv7cLjRgP1/7XntkF6p7RS8=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemResourceAdaptablePro
+ file.class
+SHA1-Digest: tc7X3wSnJJaNGEo9QdvztaKcYsU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemDisconnectAction.class
+SHA1-Digest: w7gU4Hax6Llew5UaWSkt8K2HaXo=
+
+Name: org/eclipse/rse/internal/ui/dialogs/CopyRunnable.class
+SHA1-Digest: 1P5Mn3KjjXQrTRejsjADF9fH5nU=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$GetPropertyJob.class
+SHA1-Digest: nKudv6p9wzXhyJK4BWqKC9EaxJw=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewLabelProvide
+ r.class
+SHA1-Digest: bfsBxd6XIPAd7ekoZJUu5ej46Uw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$PositionToA
+ ction$PositionToDialog.class
+SHA1-Digest: coyPK8zVN7n4rsROy9rcoDQbOEg=
+
+Name: org/eclipse/rse/ui/actions/ISystemDialogAction.class
+SHA1-Digest: G4VBkfSq3X4qOz8qGKW1AzCt/W8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemRemoteServerStartActio
+ n.class
+SHA1-Digest: PZ9aAmjyLGp2NIbu264zM21pSlg=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorUI.class
+SHA1-Digest: 3Vcw9nQxVQkmH+VmVHns25IEzkE=
+
+Name: icons/full/eview16/team_view.gif
+SHA1-Digest: VWhH2ICAQplamnfQx3NEbk42zg8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemPropertySheetForm$2.class
+SHA1-Digest: Wx1I4C3dXzMJUed+jTftMb2WD+s=
+
+Name: org/eclipse/rse/internal/ui/logging/LoggingPreferenceLabels.prop
+ erties
+SHA1-Digest: TIH1sxYkphv7qhNfjDui+SRDNFs=
+
+Name: org/eclipse/rse/ui/subsystems/StandardCredentialsProvider$Prompt
+ ForCredentials.class
+SHA1-Digest: C+iaJruRMrfgvc3E9xSfZo1LCRg=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemFilterAbstractFilterPoo
+ lWizardAction.class
+SHA1-Digest: L46ByRK0hlxyUKGQwCdklLhL9Yo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemResolveFilterStringAPIPro
+ viderImpl.class
+SHA1-Digest: MLb4vSE+pZdfaz6Y7JETtYaTIxg=
+
+Name: org/eclipse/rse/ui/validators/ValidatorLongRangeInput.class
+SHA1-Digest: e5JKPyKK8SVkWjbR1twBDcLA2/A=
+
+Name: org/eclipse/rse/ui/validators/ISystemValidatorUniqueString.class
+SHA1-Digest: VfVPnpfRq3HR0vdz6Xc4z4taEm0=
+
+Name: org/eclipse/rse/ui/widgets/SystemPortPrompt.class
+SHA1-Digest: 5sj2IeKeTvy40iG3Vb5hiW5p37g=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemUnNamedFilterD
+ ialog.class
+SHA1-Digest: sAjUFWtzzSSFMw26rID7sVRt1VM=
+
+Name: org/eclipse/rse/ui/wizards/registries/IRSEWizardCategory.class
+SHA1-Digest: CBzORgRcW8Kn5fuK+yU3Yl8BWg8=
+
+Name: org/eclipse/rse/ui/operations/SystemProgressDialogRunnableContex
+ t$1.class
+SHA1-Digest: ewEzjjAyq3EGlXrFOxmkB2XC2WQ=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/ISystemNewConnectionWiz
+ ardPage.class
+SHA1-Digest: KYF6eT+eUp7amHcty/24SGZz2j8=
+
+Name: org/eclipse/rse/ui/ISystemPageCompleteListener.class
+SHA1-Digest: bYLkIbV6QAml3/g/drkO9NPdE+U=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterNewFilte
+ rPoolWizardMainPageInterface.class
+SHA1-Digest: Ihq9+kSHAzqSiZwORLCrlpCMusw=
+
+Name: icons/full/obj16/systemfileslive_obj.gif
+SHA1-Digest: Qgbh7OL/jgGD4Im6mzfkX0Gl26I=
+
+Name: org/eclipse/rse/internal/ui/RSEUIInitJob.class
+SHA1-Digest: nBn795lDOMhzLJcFqRLhnO/JG34=
+
+Name: icons/full/elcl16/stop.gif
+SHA1-Digest: 2Xb0FVLCa/EFoPd78Vn3glwD4tY=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$NullRunnableContext.cl
+ ass
+SHA1-Digest: OOKZWJ3Hr9oqhCV94uceNX1phwk=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardSelectionTreePatt
+ ernFilter.class
+SHA1-Digest: u+78sRtyKyg0irTQ7ni491bMVO8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterCascadingNewFilt
+ erPoolReferenceAction.class
+SHA1-Digest: Mr9S7CtC8MvUe7Oy+ov+mcZJZec=
+
+Name: messageFile.dtd
+SHA1-Digest: C3M2D9eX1vVG5e9YVbC65nOCET4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemConnectAction$ConnectJ
+ ob.class
+SHA1-Digest: kpRrIqvkujQxXetugVieg4pdz4M=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenUtil.class
+SHA1-Digest: O3+/xOwf4bVtNwHb5acTpw2zXag=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizardMainPage
+ .class
+SHA1-Digest: Xe7Gbr1/ozR8Tz75IdNGAUhRTqE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingReplaceWithAc
+ tion.class
+SHA1-Digest: Ghe5Ge/OJuBLDh+w0yI4I+o4Vp4=
+
+Name: org/eclipse/rse/ui/messages/ISystemMessageLine.class
+SHA1-Digest: Z8yc65IXjW6b5EmvNpvz6rCz4UM=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPromptDialog$1.class
+SHA1-Digest: CUO85wuOR9a8K3m2IzTb6spN4/I=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemChangeFilterActionMove
+ StringDown.class
+SHA1-Digest: Egki7x7bwGbx7vJJ/vP3uz4Z6yQ=
+
+Name: icons/full/obj16/systemfiles_obj.gif
+SHA1-Digest: eFjNSBWHfLZKt3F8HyYvDOeuU/U=
+
+Name: org/eclipse/rse/ui/validators/ValidatorLocalPath.class
+SHA1-Digest: hlYk+hZimS+zGfwYrRmw7corw7M=
+
+Name: org/eclipse/rse/ui/actions/SystemRefreshAction.class
+SHA1-Digest: wdcjciPK4ym5VUgO2jKQBwK4lbQ=
+
+Name: org/eclipse/rse/ui/filters/ISystemFilterStringEditPaneListener.c
+ lass
+SHA1-Digest: DruQNvtNIMBp5UkUO6H1GKVrfek=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterSelectFilterPool
+ sAction.class
+SHA1-Digest: G97/0ZEKBvCkITkcfq2U35BxIaM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemConnectAllSubSystemsAc
+ tion.class
+SHA1-Digest: 7YiLHRTSINQrrW9qBsXvO6u16ks=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseCopyAction.class
+SHA1-Digest: erGtX0GvTtgt3TcbXiZtnM0udTE=
+
+Name: org/eclipse/rse/ui/widgets/RemoteBaseServerLauncherForm.class
+SHA1-Digest: 4sIiFNviAzVyB3OojSvsFJHc6bY=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewRefreshAllAc
+ tion.class
+SHA1-Digest: 2jed7Yp8pd/dmdAmZ9aARcb2E2k=
+
+Name: org/eclipse/rse/internal/ui/view/SystemResourceSelectionForm$1.c
+ lass
+SHA1-Digest: 4OTSXyrxIfBq07OyPGSusyub9GY=
+
+Name: org/eclipse/rse/ui/propertypages/SystemComboBoxFieldEditor.class
+SHA1-Digest: UYf+XJdUWizpvgsEiQv/kCqV9J4=
+
+Name: org/eclipse/rse/ui/dialogs/ISystemPasswordPromptDialog.class
+SHA1-Digest: GOPAhMBLoxMpG1M3gdO4FJY4MsU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFormLabelAndContentPr
+ ovider$1MyRunnable.class
+SHA1-Digest: dNe6ufFVCZUIrr5y1Mwdad0Vin8=
+
+Name: icons/full/elcl16/makeprofileinactive.gif
+SHA1-Digest: lOv3rGkWLb0GHXgQL+KuHVrlfnA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterPoolAdapter.cla
+ ss
+SHA1-Digest: PN8ZO+tJt2QEnW3UKZMzyj9E9X0=
+
+Name: org/eclipse/rse/ui/wizards/registries/IRSEWizardDescriptor.class
+SHA1-Digest: KFln36vWhPMKjpaEnQ8dzDgtMsg=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFileName.class
+SHA1-Digest: pt9Zjm2M/MjyL73//cH5qwMRANk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$RestoreStat
+ eRunnable.class
+SHA1-Digest: wv7EKR6kdaVv1bcs18J2abPZiWo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewLabelAndContentProvid
+ er.class
+SHA1-Digest: VFE4rZFIx+fpfmKx2nvr8LNYvr4=
+
+Name: org/eclipse/rse/ui/operations/SystemDeferredTreeContentManager$1
+ .class
+SHA1-Digest: ZziqS7MDMdl3G1/hIwR/wOzc8MA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$6$1.class
+SHA1-Digest: dhSmnF7UNOYAvnSJfiTnYMjCXlw=
+
+Name: org/eclipse/rse/ui/view/SystemTableView.class
+SHA1-Digest: N3cT6v9O5+Or//nI3BHKlZmWkd4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewSubSystemAdapter.clas
+ s
+SHA1-Digest: 1lwZe1hJioKto2tEBy4nQAKj98g=
+
+Name: org/eclipse/rse/ui/propertypages/SignonPreferencePage$PasswordMo
+ dification.class
+SHA1-Digest: myVwg3LTNsp5r8zo/JF4sOh7yXU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingCompareWithAc
+ tion.class
+SHA1-Digest: jxAZElQuXEzxScCGtnWsrjlC1UM=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPromptDialog.class
+SHA1-Digest: b0T8jiM17F2JH59/2lkvbhJcZOI=
+
+Name: icons/full/elcl16/deletereference.gif
+SHA1-Digest: APAshhHRV2EH98z5SjHDwzdRyEk=
+
+Name: icons/full/elcl16/makeprofileactive.gif
+SHA1-Digest: Dj72rKHV+WrmGU+Q8h9dhnQp0fc=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ estoreStateRunnable$1.class
+SHA1-Digest: kJ8oM8/tlxqfXdaCc2ayXgvuohw=
+
+Name: org/eclipse/rse/ui/widgets/InheritControlLayout.class
+SHA1-Digest: MxXxgiztAtERe0IUPrkL8jrm5Qg=
+
+Name: org/eclipse/rse/ui/dialogs/SystemRenameSingleDialog$1.class
+SHA1-Digest: WyNASbesJzFlkRWxAOlvaYq74cM=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $3.class
+SHA1-Digest: csQxKrrM1Aq31T5aBW1FyqMRW5A=
+
+Name: icons/full/dtool16/newfilterpool_wiz.gif
+SHA1-Digest: uPzf6Enq6Jhu1t8WDyOszi7A/JQ=
+
+Name: org/eclipse/rse/ui/view/SystemAdapterHelpers.class
+SHA1-Digest: 0XNdC/1QVTlz+mr0Uvg1IHkFYMM=
+
+Name: org/eclipse/rse/ui/actions/LazyDownloadJob.class
+SHA1-Digest: d1x5vYcD/fWOm8lRcb+RtBuaqG0=
+
+Name: org/eclipse/rse/ui/SystemWidgetHelpers.class
+SHA1-Digest: 6yO10DY9o4HqTYoEOOCmzwj0D6U=
+
+Name: org/eclipse/rse/ui/ISystemDeleteTarget.class
+SHA1-Digest: 6LnIfqat6kmIKDf9wOh2phSn9XE=
+
+Name: org/eclipse/rse/ui/operations/SystemJobRunnableContext$2.class
+SHA1-Digest: mBY0GFukrW7Gwo3uOE6w0UXQlcA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewCompositeActionGroup.
+ class
+SHA1-Digest: zpEuz/pKDt6/JIEBuNTK2U2gNpU=
+
+Name: org/eclipse/rse/ui/widgets/InheritButton$2.class
+SHA1-Digest: iHC3Z/7YorfkQSwQMt+u1jKReZo=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemOpenRSEPerspectiveActi
+ on.class
+SHA1-Digest: xWHZ0dlpH9/3uIR9fJm6xzFH1lM=
+
+Name: org/eclipse/rse/ui/ISystemConnectionFormCaller.class
+SHA1-Digest: OIZ+xjdVVhgUmB4g7NUCe/O1AwM=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemDeleteDialog.class
+SHA1-Digest: EB1+jH/dmMRXjsZezAJ5Eom/jcI=
+
+Name: org/eclipse/rse/ui/SystemPreferencesManager$1.class
+SHA1-Digest: NiCCnHPwgEWwuBAFJ43Q9PwHL+g=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemOpenExplorerPerspectiv
+ eAction$1.class
+SHA1-Digest: l7TiOi2zDykX6KsHfvU8wXWphZw=
+
+Name: org/eclipse/rse/internal/ui/actions/ShowInSystemsViewDelegate$Sh
+ owChildrenInTree.class
+SHA1-Digest: ag3PHrC3k9RMOzQDsANx0uN4lmw=
+
+Name: icons/full/cview16/system_view.gif
+SHA1-Digest: yzeRi5lmHyQyI/v/N6NtHl/nAec=
+
+Name: org/eclipse/rse/ui/propertypages/SystemIntegerFieldEditor.class
+SHA1-Digest: 5jg2U0gDEkt7Pa4WR/hZOUgQvxQ=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$4.class
+SHA1-Digest: 9Gywf6kl3jQAMW7sZgqY5XBXKzY=
+
+Name: icons/full/obj16/systemconnection.gif
+SHA1-Digest: ZK78fMAmW5zIOajTwR2oFYWx1jg=
+
+Name: org/eclipse/rse/ui/filters/SystemChangeFilterPane$2.class
+SHA1-Digest: gaK7XXzgWMXiRR5BRbx988wQwjQ=
+
+Name: org/eclipse/rse/ui/validators/ValidatorUniqueString.class
+SHA1-Digest: tQyTiRdbDXIwPEn8SlME4zJ+5Ug=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterCopyFilterAction
+ .class
+SHA1-Digest: mSCj4uqsxmxhRk2swHeXiqvABcE=
+
+Name: org/eclipse/rse/ui/view/SystemTableView$2.class
+SHA1-Digest: 1q4DqSCHV6zIgWBVt3/D0KenYCo=
+
+Name: org/eclipse/rse/ui/view/ISystemSelectRemoteObjectAPIProviderCall
+ er.class
+SHA1-Digest: mVcQE0vgbJ73ai/r9URkRdnl3Kc=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewContentProvi
+ der.class
+SHA1-Digest: Zjir2FrKBJn0K6yU6FJxR4oMPDA=
+
+Name: org/eclipse/rse/ui/internal/model/SystemRunnableContextWrapper.c
+ lass
+SHA1-Digest: 0nO55+hU4U4arXKrfQ3aTzXBpuE=
+
+Name: icons/full/obj16/systemcancel.gif
+SHA1-Digest: pFrxTE1rW7hTV9fmEq2y7d3+pE8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$RestoreStat
+ eRunnable$RunOnceConnectedOnMainThread.class
+SHA1-Digest: i99lY3Cwc9e4JlB0oPeV6tyiK+Q=
+
+Name: org/eclipse/rse/internal/ui/view/SystemComboBoxPropertyDescripto
+ r.class
+SHA1-Digest: BXivGbNoPXklz69GvbqLLwWvKNY=
+
+Name: icons/full/etool16/new.gif
+SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$ExpandRemoteObjects$
+ 1.class
+SHA1-Digest: VklBurLEUX/hMFN//e7jDe1n3A4=
+
+Name: org/eclipse/rse/ui/internal/model/SystemNewConnectionPromptObjec
+ t.class
+SHA1-Digest: UfubYw0cshFhfWjuDfuT32ftTFI=
+
+Name: org/eclipse/rse/ui/SystemBasePlugin$WindowListener.class
+SHA1-Digest: K4Q6eiW5+vvjmFrlvHXDjv2Maak=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$1.class
+SHA1-Digest: Lmo8AQuUtd9NT3DL2e4voBXwew0=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$S
+ electColumnsAction.class
+SHA1-Digest: UbdQGSQgI1p2ZWR4xskUbCIuN6I=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardRegistryElement.c
+ lass
+SHA1-Digest: ++JiNqMl23qi7zPEvGIfDTeh2YI=
+
+Name: org/eclipse/rse/ui/widgets/services/ServicesForm$1.class
+SHA1-Digest: apD/GMXRMIcGjKxt80Oml1TvEZI=
+
+Name: icons/full/elcl16/lock.gif
+SHA1-Digest: nyGDjwdI7jZZerDGdJUJrw8Hph0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAPIProviderForFilters
+ .class
+SHA1-Digest: nn8sUv5rOK/9usktDfBVK0gnTb0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDecoratingLabelProvider.c
+ lass
+SHA1-Digest: jE/LU2akDDLzRxCLiwhetuMyyW4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView$2.class
+SHA1-Digest: P9t8jrG0kZAnCVLgSYOI2cfcfIc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAdapterFactory.class
+SHA1-Digest: RbTgG8+Ao3LTBGcuKfPOSVLsG6Y=
+
+Name: org/eclipse/rse/ui/actions/SystemTablePrintAction.class
+SHA1-Digest: rdoCNyJMa1q0As0UKsTi0vD5smM=
+
+Name: icons/full/etool16/newfilter_wiz.gif
+SHA1-Digest: FVgXqf5jT/qzu9RgV/Lm+JmccKQ=
+
+Name: icons/full/etool16/newfile_wiz.gif
+SHA1-Digest: QcxM0kkl1Mo/T76FdX6dg4s4tA0=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizardInfoPage
+ .class
+SHA1-Digest: V0IpTNt3SifMacrWRL3Q2rspchg=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$3.class
+SHA1-Digest: oxXCSw4+Nbn3ozqsQsYrC+EfrUU=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$MyImpromptuMessage
+ .class
+SHA1-Digest: tl/TrMo3J/tP1Mr6ey7R2ZGMX7A=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterStringEditPane$1.class
+SHA1-Digest: Enff5sp2BAzEjzG4RLVVfzvdMdw=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog.class
+SHA1-Digest: vVCoxb1hTTQ+yFxjKDTQiabMsXU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewForm$1.class
+SHA1-Digest: BY9LMZY/ELlCXM+DjlwhV8pABxo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewResources.properties
+SHA1-Digest: Bol4mSsLD7ZKYTe69mpNdu2C3zs=
+
+Name: org/eclipse/rse/ui/operations/SystemJobRunnableContext.class
+SHA1-Digest: zpEly6k+A4goZzAPauoaXr293rU=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchRemoveSelect
+ edMatchesAction.class
+SHA1-Digest: brWUl4tH7NNbfHCalci2g0O19tY=
+
+Name: org/eclipse/rse/ui/dialogs/SystemChangePasswordDialog$1.class
+SHA1-Digest: LTsAHeiE5W+lp24YLVdF09g2aE8=
+
+Name: icons/full/obj16/system_persp.gif
+SHA1-Digest: XusM98gOMaTYNUc0SQH9krM9sQY=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemImportConnectionAction
+ $ImportJob.class
+SHA1-Digest: YKhIyR0HZUBHYq1OPVJoTs3mSJY=
+
+Name: icons/full/ovr16/error_ovr.gif
+SHA1-Digest: 837WZOYq5P1nCsjer7IptxeeAX0=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog$2.class
+SHA1-Digest: f1Fbf8i4lzdojMxcSJnoC7DJezE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveDownFilterPo
+ olReferenceAction.class
+SHA1-Digest: tGVTW/C6ETMOGd3MWGoZEzCPDb0=
+
+Name: org/eclipse/rse/internal/ui/GenericMessages.properties
+SHA1-Digest: JKSj0jut2kP1OY+5lDMfCE7gQq8=
+
+Name: org/eclipse/rse/ui/widgets/services/RootServiceElement.class
+SHA1-Digest: 0P6w7wkB34mFq6jmWBFsE0kL4xg=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$6.class
+SHA1-Digest: IFe/8GPdZZrrs36DrwmLtltWBYY=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/ClearSelectedAction.cla
+ ss
+SHA1-Digest: RGHdHgzP+9FuVvNQAwHUOXa4fxM=
+
+Name: org/eclipse/rse/ui/widgets/services/ConnectorServicesForm$1.clas
+ s
+SHA1-Digest: RUKTO33xC2buSSEhFqZzthBEUws=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Sel
+ ectAllAction.class
+SHA1-Digest: nEveBeqRpnk7vpyEv2h564uDba0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewMenuListener.class
+SHA1-Digest: lqRP8zTUfRoMW3MgEXBsWgZESh4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemComboBoxCellEditor$1.clas
+ s
+SHA1-Digest: mfwqyEqQs2Fsg3HK42+XmZZYe0s=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenUI.class
+SHA1-Digest: 5FDDUifeNv8OkDjx9gFmNoWhLfs=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemFilterDialogInterface.c
+ lass
+SHA1-Digest: Guv2p9B1s9MLbywrv6ZAY0FZYQ4=
+
+Name: org/eclipse/rse/internal/ui/DefaultUIInteractionProvider.class
+SHA1-Digest: jOnRSWrHUbmkVtiamtOWQU0I3zI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$1.class
+SHA1-Digest: QIWAHDgK7b2VjFitcIXpygDkRP0=
+
+Name: icons/full/wizban/newprofile_wiz.gif
+SHA1-Digest: tNi06a/NWG9rrAEsXTXkCNv2Jpc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemConnectAllSubSystemsAc
+ tion$ConnectAllJob.class
+SHA1-Digest: kn0H1PTf0gMhw9867bHuesy4hKQ=
+
+Name: org/eclipse/rse/ui/dialogs/SystemRenameSingleDialog.class
+SHA1-Digest: 65NwYs4vPdFo1VvoS0gNzVZqgTE=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizard.class
+SHA1-Digest: Hn0KbArm3V2zA/fSnfuzd5iELJY=
+
+Name: org/eclipse/rse/ui/view/IRSEViewPart.class
+SHA1-Digest: fE0XJoiR8MKQ321aInPa7qy26hQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAPIProviderForConnect
+ ions.class
+SHA1-Digest: znCbN/BCrPtDKl8nxgoa0O8eRyQ=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$1.class
+SHA1-Digest: 7hTgL1giZa9r11J2EHc6fDjw7Ec=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSimpleContentProvider.class
+SHA1-Digest: fGowwtvTJGvXn87yCSOj6bOiia4=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardD
+ escriptor.class
+SHA1-Digest: rewqx5opgx302+gAevXCRrAC7ak=
+
+Name: org/eclipse/rse/ui/ISystemViewSupplier.class
+SHA1-Digest: hT5g6py+wDHfUOAAC8hVI9bbz70=
+
+Name: icons/full/etool16/systemshowintable.gif
+SHA1-Digest: H6wCvEHsBaurlP6gLDIjQ6wBvuA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewAPIProviderForFilterS
+ trings.class
+SHA1-Digest: M6dyFnGaMKpL15DNOOG6afoldZo=
+
+Name: icons/full/ctool16/newconnection_wiz.gif
+SHA1-Digest: KFWDg6N9BNUJoQ51l3omDXOIjCs=
+
+Name: org/eclipse/rse/internal/ui/SystemPropertyResources.class
+SHA1-Digest: pB93SrgQcN4FMwnuSBHBz84kZes=
+
+Name: org/eclipse/rse/ui/view/ContextObject.class
+SHA1-Digest: uBCFMF8ieRzRJ92xgl96YnlJrfU=
+
+Name: org/eclipse/rse/ui/dialogs/ISystemPromptDialog.class
+SHA1-Digest: CH4s1dgkKphowRi+bOt/NdwzfnE=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSimpleSelectDialog.class
+SHA1-Digest: 0gdveqxqGlmzSbyPL+wqQZ+rB0Q=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$4.class
+SHA1-Digest: 6SqI5vGagpYDfgzWQC3eUuGfQwg=
+
+Name: icons/full/elcl16/selectprofile.gif
+SHA1-Digest: dsXKg2RfDf6xN4zcYLN7loT2Oj4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SelectColum
+ nsAction$SelectColumnsDialog.class
+SHA1-Digest: u0X7jLqgE5BSRriKHlCl2sL4Is4=
+
+Name: org/eclipse/rse/ui/propertypages/SystemComboBoxFieldEditor$4.cla
+ ss
+SHA1-Digest: Ojq9zW+u/9evz4M7gwJqApNbiHY=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterWorkWith
+ FilterPoolsDialog$DeleteFilterPoolAction.class
+SHA1-Digest: IrJ5+sHA4F5bWTmSQgIagJezvm8=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPropertySetN
+ ode.class
+SHA1-Digest: YIMAeT6LkU1kl80pMQidlWpuZPg=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchHistoryActio
+ n.class
+SHA1-Digest: zbrShbRsJaZyCOpkn78W+x+05q0=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ConnectorServicePool.c
+ lass
+SHA1-Digest: kjJn5ta8IEleghec6LIZ7XoovDU=
+
+Name: org/eclipse/rse/ui/validators/ValidatorSourceType.class
+SHA1-Digest: 24c34xw7OI9AoP7835O03QJcoGU=
+
+Name: icons/full/dtool16/newprofile_wiz.gif
+SHA1-Digest: EPN2XCb3Qw1Z16akHifw51+Ot4I=
+
+Name: org/eclipse/rse/ui/propertypages/SystemStringFieldEditor$1.class
+SHA1-Digest: vXJxBvn/86cu0vrBdfEkIa6ug8o=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewConnectionAdapter.cla
+ ss
+SHA1-Digest: huWytNxqsRD0vi0jZCw/C5G8CiM=
+
+Name: org/eclipse/rse/ui/model/SystemResourceChangeEventUI.class
+SHA1-Digest: mpVaUWFquTJfBPHfbXfFH+LdkuI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$UpAction.cl
+ ass
+SHA1-Digest: IF+KP9Wsnff++fBXRwjevbDPgHc=
+
+Name: org/eclipse/rse/ui/SystemMenuManager.class
+SHA1-Digest: ghw0fUMmZD8PXwf4bJfFJlxaeYs=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPropertySetA
+ dapter.class
+SHA1-Digest: qLv750zJvh+Ahq2/bTJy3fxJDSs=
+
+Name: org/eclipse/rse/ui/widgets/SystemHistoryCombo.class
+SHA1-Digest: 3L/GfGk5JYa88ZhrvnR26/1MbxM=
+
+Name: org/eclipse/rse/ui/validators/ValidatorUserId.class
+SHA1-Digest: 78T2RNtv+g5JA0qd+1zY6gfWsjY=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SelectColum
+ nsAction.class
+SHA1-Digest: VvTZa9AJFyUzbOZJGvTYVFi9ffQ=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewMakeActivePr
+ ofileAction.class
+SHA1-Digest: i5bPGKvihmIX4+z1Ko7nStkS6Dc=
+
+Name: org/eclipse/rse/ui/dialogs/SystemRemoteResourceDialog.class
+SHA1-Digest: JPermu7ZfWu6RbMj4WWkwjdbq1E=
+
+Name: icons/full/view16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: org/eclipse/rse/ui/dialogs/ISystemTypedObject.class
+SHA1-Digest: bRP8IMhoqnNmVCcRcMrE73fTEC8=
+
+Name: org/eclipse/rse/ui/widgets/SystemHostCombo.class
+SHA1-Digest: mEd6vmiNew/GXjhFwFZFMIIWp7c=
+
+Name: org/eclipse/rse/ui/actions/SystemCopyToClipboardAction.class
+SHA1-Digest: 7Ol6peqOl2/zwF4y3NA9U3bm1Is=
+
+Name: org/eclipse/rse/core/subsystems/SubSystemConfiguration.class
+SHA1-Digest: ZK803GmqQRKYblpAiKmCpZnleSs=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$1.c
+ lass
+SHA1-Digest: s2ZPf71QoIpuNTHvwgpWcb1hO0k=
+
+Name: icons/full/elcl16/workwithfilterpools.gif
+SHA1-Digest: kbifER+aB6GxEVxyi4/vHDD00bs=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine.class
+SHA1-Digest: L2gLuJxYFnv+9okWmaq922bLByQ=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemRemoteServerStopAction
+ .class
+SHA1-Digest: q2dhNU14NNjReZd6gyMi9VagMHE=
+
+Name: icons/full/dlcl16/clear.gif
+SHA1-Digest: bXxJZjOaMDUrOmW90FpZEwmNsEM=
+
+Name: org/eclipse/rse/ui/actions/SystemPasteFromClipboardAction.class
+SHA1-Digest: bc/2rzE9YJvy6gkyawTLYv85v7U=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDNDTransferRunnable$Refre
+ shJob.class
+SHA1-Digest: ueB3TRsadI7a15yqQ4sgyX21cj8=
+
+Name: icons/full/elcl16/rename.gif
+SHA1-Digest: V+jyuOxORFp9UJKu2POm1lHqj9Y=
+
+Name: org/eclipse/rse/ui/propertypages/ServicesPropertyPage.class
+SHA1-Digest: 3ZVGj2QU6NB+yFPFXKr+Ti6QFyk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewMessageAdapter.class
+SHA1-Digest: fa8OpDuO0qiShYwjQW26P7pcIBY=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ Part$1.class
+SHA1-Digest: kRYwyDJCWe0Mw+RCVJ2q4GTJPfo=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardR
+ egistry$LazyInstanceHolder.class
+SHA1-Digest: WcpFY1yABjOjrpxmebkPe/jhGCI=
+
+Name: org/eclipse/rse/ui/actions/DisplayHidableSystemMessageAction.cla
+ ss
+SHA1-Digest: 2EJmDpjmUb/TQV4BO7diAz17zG0=
+
+Name: org/eclipse/rse/ui/widgets/GridUtil.class
+SHA1-Digest: I3aJ+a/XJurWO2pBMXerzGQ4aHs=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SubSetActio
+ n$SubSetDialog.class
+SHA1-Digest: 8JhaHFzfPw0CoWTnxDqA/qSjdDY=
+
+Name: org/eclipse/rse/ui/subsystems/package.html
+SHA1-Digest: P5dE5UDykUgQ30ZezhyhylCNkyM=
+
+Name: org/eclipse/rse/internal/ui/view/SystemComboBoxCellEditor.class
+SHA1-Digest: 7KfiRUhTzjuIuK3RwxS5wU1lIQM=
+
+Name: org/eclipse/rse/ui/widgets/SystemCollapsableSection.class
+SHA1-Digest: ra07Dl3ifov5cGNAMAix/8jpY8A=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveDownFilterAc
+ tion.class
+SHA1-Digest: HDHNBXTN5jBlpLAurz2/YJHLX8s=
+
+Name: org/eclipse/rse/ui/operations/SystemFetchOperation$ConnectorServ
+ icePool.class
+SHA1-Digest: nYyyMbJ4lML2hq+LDdgZYKuN5Pg=
+
+Name: org/eclipse/rse/ui/widgets/SystemHostCombo$1.class
+SHA1-Digest: ExIHzi8Ps51sWNWlxMkMbPPT6Pg=
+
+Name: org/eclipse/rse/ui/RSEAdapter.class
+SHA1-Digest: tkmsXPVmiExM7td61sFtJO2DWzA=
+
+Name: icons/full/ctool16/newfolder_wiz.gif
+SHA1-Digest: 4Rih+G9hwW+qO1PE/d3uAyKg2/U=
+
+Name: org/eclipse/rse/ui/widgets/RemoteServerLauncherForm.class
+SHA1-Digest: K73fs10K3K8krJijzDlrHaTo8+E=
+
+Name: org/eclipse/rse/internal/ui/propertypages/ServerConnectionSecuri
+ tyPropertyPage.class
+SHA1-Digest: MFeJyd3y2jle1FGChrngrm5CpjE=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseDialogAction.class
+SHA1-Digest: 8HZ1RohYsWi6h7voUVgAkzlyCLM=
+
+Name: org/eclipse/rse/ui/view/ISystemPropertyConstants.class
+SHA1-Digest: H/K21yiT9ZCFNZrGk08+IO0VCcw=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionPage$2.class
+SHA1-Digest: xJxXQNS1VlZUMu4m9E2qlOmNXkE=
+
+Name: org/eclipse/rse/ui/view/IContextObject.class
+SHA1-Digest: zPOc9XgceWww7UMh5Moxgvo0TY0=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemSubMenuManager.class
+SHA1-Digest: Cvv7XxOc18lMQ9NWrd8ubI1k28o=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemCopyDialog.class
+SHA1-Digest: CJd5umfR6vq76xPTleDq5fv71UY=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$ExpandedItem.class
+SHA1-Digest: Tcv0UXiJb+DliWM0OY03cghMEs4=
+
+Name: org/eclipse/rse/ui/dialogs/SystemWizardDialog.class
+SHA1-Digest: Oecd2T/TDNiHqMedT8i7X8DeNeU=
+
+Name: org/eclipse/rse/ui/view/AbstractSystemViewAdapter.class
+SHA1-Digest: yg8u3SStD2Xstk37htn0Zs8Yu3c=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $1.class
+SHA1-Digest: ecbBWL/ZmgIKyMmBKiS5oGsNB3M=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$Polling
+ Thread$2.class
+SHA1-Digest: FnKhOIkCYvePSJBnj+IHupTNiUc=
+
+Name: org/eclipse/rse/ui/widgets/SystemHistoryCombo$2.class
+SHA1-Digest: ZSi1nhWvIutDdtWvpLdVuMNXoyA=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingExpandToActio
+ n.class
+SHA1-Digest: /alxoDKppbaGUQ9f8o2WaPmwYxk=
+
+Name: icons/full/elcl16/up.gif
+SHA1-Digest: 7M8H+X+bQ9xfhY/y1mvb/xnTJuM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemPreferenceQualifyConne
+ ctionNamesAction.class
+SHA1-Digest: KAY7U0ixLvb6xL119yiPChlzl5o=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardR
+ egistry.class
+SHA1-Digest: DLRJAzBFarkxRg1kKY2kPZORmTo=
+
+Name: org/eclipse/rse/ui/propertypages/SystemTypeFieldEditor.class
+SHA1-Digest: LEAXXIVPL6+yLuZy5SQ9QuyUpbQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$RefreshActi
+ on.class
+SHA1-Digest: lVeoZTZhgF3fKjHJ5sNjtBu+Ja0=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritablePropertyData.c
+ lass
+SHA1-Digest: 6dVRhmqS5mwbVnOo8GoPR1b8Blw=
+
+Name: icons/full/cview16/system_persp.gif
+SHA1-Digest: XusM98gOMaTYNUc0SQH9krM9sQY=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterWorkWith
+ FilterPoolsDialog.class
+SHA1-Digest: ZxUoUhLj3uAAsruC+tIqBQJvqXM=
+
+Name: org/eclipse/rse/ui/internal/model/SystemNewConnectionPromptObjec
+ t$RSESystemTypeSorter.class
+SHA1-Digest: ZxdYq+LksnYLNO7kEzAZ1vchVEI=
+
+Name: org/eclipse/rse/internal/ui/RSEUIStartup.class
+SHA1-Digest: 3xCNvLWsDD1T8n9JyW1BkL62Oyg=
+
+Name: icons/full/dlcl16/clearall.gif
+SHA1-Digest: Lzga6O7BecvsbN4K4oCi9U+di1k=
+
+Name: org/eclipse/rse/ui/propertypages/SignonPreferencePage$PasswordCo
+ ntentProvider.class
+SHA1-Digest: 4Kz5NzmDFGGKkUYao50kC8CJpsM=
+
+Name: org/eclipse/rse/ui/view/SystemLongRunningRequestEvent.class
+SHA1-Digest: V6E36HcfXfxI2D45nOrCqL62e54=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemSeparatorAction.class
+SHA1-Digest: sFlH2e/X12Rtvcf9qeXDVvZXsW4=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageLine$2.class
+SHA1-Digest: 5ApkJ3aj/dsYyLVNePU4QTvMZOI=
+
+Name: org/eclipse/rse/ui/filters/dialogs/ISystemNewFilterWizardConfigu
+ rator.class
+SHA1-Digest: 4Z3OiCx4FV67kpsiuLNYuyAnmf8=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.ui/pom.xml
+SHA1-Digest: ZHHVkn/GYpbkDes70hSBW/rff74=
+
+Name: org/eclipse/rse/ui/subsystems/StandardCredentialsProvider$Prompt
+ ForNewPassword.class
+SHA1-Digest: oYaskMfix5ZtETMtIlcr9KtqZWk=
+
+Name: org/eclipse/rse/internal/ui/SystemPropertyResources.properties
+SHA1-Digest: 2FwdpFsRQD7qnBZ+BzRQBABp0Eo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDNDTransferRunnable$1.cla
+ ss
+SHA1-Digest: jPois1HyIoT/lH7EIX+jy7Apybg=
+
+Name: org/eclipse/rse/ui/view/AbstractSystemViewAdapter$NULL_ACTION_FI
+ LTER.class
+SHA1-Digest: 5FGWYdatpAfdebtl8Cbkncny5JE=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewWorkbook.cla
+ ss
+SHA1-Digest: k+yFGUfcJT+Pqy/i8ER2+1b7kw0=
+
+Name: org/eclipse/rse/ui/validators/ValidatorRemoteSelection.class
+SHA1-Digest: 5416OFBjJOj7s53zTLcSgDa1JJI=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSelectFileTypesDialog$2.class
+SHA1-Digest: QhM9IgXZnzDgaUMm1Vjo0o6t02c=
+
+Name: org/eclipse/rse/ui/propertypages/AbstractSystemSubSystemProperty
+ PageCoreForm.class
+SHA1-Digest: 41yrse3jcvhK/RoJDBkA+MrWqTg=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageDialog$3.class
+SHA1-Digest: F0dpxZcslU+X1lwOgPeu8J80nyc=
+
+Name: icons/full/dlcl16/move.gif
+SHA1-Digest: dC7hM6ApWhrYdZvehU7MBhL102g=
+
+Name: icons/full/wizban/newfilterpool_wiz.gif
+SHA1-Digest: eYxFvAFz2zn43rcP8pSksnLKiZM=
+
+Name: org/eclipse/rse/internal/ui/widgets/ServerConnectionSecurityForm
+ .class
+SHA1-Digest: UKhO49ihWYip2AQYbI5W+Svmg+s=
+
+Name: org/eclipse/rse/ui/widgets/InheritControl$2.class
+SHA1-Digest: b4ws+THoCKhx7EiRNjvsQOXHsnk=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingNewAction.cla
+ ss
+SHA1-Digest: GC+wdtbnmZq3MrwCBM3Z+CyDIR0=
+
+Name: icons/full/obj16/systemrootdriveopen.gif
+SHA1-Digest: 7KTNkdqPnTXfS6wi8l+r49qtvhc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $6.class
+SHA1-Digest: EN2mYX6tP+TofKNlpNQc6Vhyi18=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/BrowseAction.class
+SHA1-Digest: YCBNw3aNCBEaVhuKceSDC0UFnxc=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemTeamViewProfileP
+ ropertyPage.class
+SHA1-Digest: xVJ6RSoTt+K1sy9OwdXuiby8waM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemDisconnectAllSubSystem
+ sAction.class
+SHA1-Digest: N7n/P7mjbZjxHE7zAvCiJ9DHkVU=
+
+Name: org/eclipse/rse/ui/messages/SystemUIMessageFile.class
+SHA1-Digest: 7aQOqeenqgjkQ1Z84aqrsPHuJT0=
+
+Name: icons/full/etool16/newconnection_wiz.gif
+SHA1-Digest: KFWDg6N9BNUJoQ51l3omDXOIjCs=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewInputProvide
+ r.class
+SHA1-Digest: FqG9NDC42SaMwKXItmMWHt679Lk=
+
+Name: icons/full/view16/scratchpad_view.gif
+SHA1-Digest: IxfUDrGI8OMBoYFqH6TnIZwWY4Y=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterPoolDialogInterface.class
+SHA1-Digest: s0YPWSu9MbugEh0EzWQpE2L6xaU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemSubMenuManagerForTesti
+ ng.class
+SHA1-Digest: Ji87auX7wL1YJW44+/FF/tpK6XM=
+
+Name: org/eclipse/rse/ui/view/ISystemViewElementAdapter.class
+SHA1-Digest: xIcK0zYUeJEDLol9B/FtSyORz/U=
+
+Name: icons/full/dlcl16/monitor_view.gif
+SHA1-Digest: +D7Hffr/pTjK1/5gyumeypPI1Ko=
+
+Name: org/eclipse/rse/ui/widgets/IInheritableEntryFieldStateChangeList
+ ener.class
+SHA1-Digest: cCBZFYxzdlUoPWE5GqRiFQ2frqI=
+
+Name: org/eclipse/rse/internal/ui/SystemProfileForm$1.class
+SHA1-Digest: bM9Q2WXdAq7XgE1IGT71JP8XHiU=
+
+Name: org/eclipse/rse/ui/propertypages/SystemTeamViewCategoryPropertyP
+ age.class
+SHA1-Digest: jv5p64603tSXad+Fx2/MqSlA2HA=
+
+Name: org/eclipse/rse/internal/ui/actions/ShowInSystemsViewDelegate$Li
+ nkFromContainerJob.class
+SHA1-Digest: Ga9Bp8AvCTioo7aYAsNvKo3F+go=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$HistoryItem
+ .class
+SHA1-Digest: 3nw1ECcuXdCoILkKghpsbGbTr34=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSEAbstractNewConnectio
+ nWizard.class
+SHA1-Digest: meC/RJnjX5EeW2UAyLi8T0nrI0o=
+
+Name: org/eclipse/rse/ui/ISystemStringsInputAction.class
+SHA1-Digest: fOKVC4NoNfgplb+zKarDtcx+TWU=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSelectFileTypesDialog.class
+SHA1-Digest: 4OOehjfzdu7B2sfR5cn29k8I1kk=
+
+Name: org/eclipse/rse/ui/messages/ISystemMessageLineTarget.class
+SHA1-Digest: 4rKLCrzoc81qjoHdjUKKDgl+T/0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewDecoratingStyledCellL
+ abelProvider$1.class
+SHA1-Digest: LpYRNJTUR2bLgRGWrMS/2VYYwj4=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$1.class
+SHA1-Digest: t8SIKgeEKi4MkWdUhvK244BsOSI=
+
+Name: HelpContexts.xml
+SHA1-Digest: VVk7naoP067Pi1WcmCWNW66pyMY=
+
+Name: icons/full/obj16/systemprofile.gif
+SHA1-Digest: JoosnM5PEm6Q9exyDMbjTYEpgTw=
+
+Name: org/eclipse/rse/ui/propertypages/SystemTypeFieldEditor$TableKeyL
+ istener.class
+SHA1-Digest: 5XED6kAqyYyjtKAr77QN1d2edh4=
+
+Name: org/eclipse/rse/ui/validators/ValidatorConnectionName.class
+SHA1-Digest: H5rxeOJQ3W18AwVhp3HlHZEJdPM=
+
+Name: icons/full/dlcl16/selectprofile.gif
+SHA1-Digest: HOFqwxusHN5Qg5mL0zLrL8RMJnI=
+
+Name: org/eclipse/rse/ui/validators/IValidatorRemoteSelection.class
+SHA1-Digest: eaYyKlym4f7qYTMLKqpS8KxCqI0=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ChangeStatusJob.class
+SHA1-Digest: erTB4lKZo9nTwq2EM6Ugs6DW3dI=
+
+Name: org/eclipse/rse/ui/widgets/InheritButton.class
+SHA1-Digest: HZOMX/mvyFZmJEOqlhyYzYSR9D8=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView.class
+SHA1-Digest: Idwyo9RsVDCXnP3+s9w0DvofjeM=
+
+Name: icons/full/dlcl16/down.gif
+SHA1-Digest: 0h0HOynRlbXGQMjIqXF58mcDuiA=
+
+Name: org/eclipse/rse/ui/widgets/services/FactoryServiceElement.class
+SHA1-Digest: f4Y8PzWhfybhOi7vah6YruUijPo=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$4.class
+SHA1-Digest: ONNVi8Uj+mSH9I4z19RMvR/qljE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView.class
+SHA1-Digest: 4rlAX2gvTVym3wlB3CW48ekTLdA=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemRenameTableRow.class
+SHA1-Digest: 4Pgsg+OIdD8FcDFQV44ppYTG87Q=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ estoreStateRunnable$WaitForAdapterJob$1.class
+SHA1-Digest: R5Ev2BcYT/7MXgvOmmr3a5ZkJnw=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemFilterPoolRefere
+ ncePropertyPage.class
+SHA1-Digest: 6Ic+2pzdXZwIdrazkNFsno91Nh8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemChangeFilterActionCopy
+ String.class
+SHA1-Digest: zHFD95bQOs1mHNugIDt8fpozdOQ=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$SelectA
+ llAction.class
+SHA1-Digest: +ZYuL4MA1Vn8rdPsXlmIuZ1Dh4c=
+
+Name: org/eclipse/rse/ui/wizards/AbstractSystemWizardPage.class
+SHA1-Digest: G3KbjRrANtcNnvUHMpDUXmpe4LE=
+
+Name: org/eclipse/rse/ui/filters/SystemChangeFilterPane.class
+SHA1-Digest: 4T3RgGRTsHtmwTFmK7Mx8+4xhKA=
+
+Name: org/eclipse/rse/ui/SystemBasePlugin.class
+SHA1-Digest: Ix5FAHxU0J9RVy0YN0zpFu+/OEM=
+
+Name: org/eclipse/rse/ui/open/ISystemQuickOpenPage.class
+SHA1-Digest: TixCNhzmX2kx+iDXzNyXVLNlJqg=
+
+Name: org/eclipse/rse/ui/widgets/ISystemAddListener.class
+SHA1-Digest: rPhIeWlDsYw3sf/c6Ux/VYiuKH8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemShowInTableAction.clas
+ s
+SHA1-Digest: 3Y7X55C6omjBAMSB8gAImccIBf0=
+
+Name: org/eclipse/rse/ui/view/SubSystemConfigurationAdapter.class
+SHA1-Digest: q1R9mre+1Pg4RWX7zf04IJkT5Bw=
+
+Name: org/eclipse/rse/ui/ISystemIconConstants.class
+SHA1-Digest: zwO/JrJ8RhkwEjLe37iZeORhAOk=
+
+Name: org/eclipse/rse/ui/SystemBaseForm.class
+SHA1-Digest: zIsdJs0472Ofh1BL1tiX5za/GA4=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$6.class
+SHA1-Digest: 8mMqsoY5Vweq8ZGQNIdar9SUCd0=
+
+Name: org/eclipse/rse/ui/view/SystemTableView$HeaderSelectionListener.
+ class
+SHA1-Digest: aGbBdueXR9d/BsZwkEIpZsVBb8M=
+
+Name: org/eclipse/rse/internal/ui/SystemResources.properties
+SHA1-Digest: HOwpy+oi00IVv2+CYIMuayOARwo=
+
+Name: org/eclipse/rse/ui/view/ISystemResourceSelectionInputProvider.cl
+ ass
+SHA1-Digest: MZklld/BOn6WDLe56LaMYhVIrpY=
+
+Name: org/eclipse/rse/ui/view/SystemTableViewProvider.class
+SHA1-Digest: SxyEOQH3dmLrYdGSOWc2ViVFTEc=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/IRSENewConnectionWizard
+ Descriptor.class
+SHA1-Digest: ZFFnQu9M7fooKk6GCC5ZMmn2j60=
+
+Name: org/eclipse/rse/ui/validators/ValidatorSpecialChar.class
+SHA1-Digest: dr4AH7+MwCCoYwY2bN6yIw3CWeU=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemFilterPoolProper
+ tyPage.class
+SHA1-Digest: pDjRxMB0TayArCEj7V6WBitgDLU=
+
+Name: org/eclipse/rse/ui/internal/model/SystemRunnableContextWrapper$I
+ nternalRunnable.class
+SHA1-Digest: Qmf9WunspsU+VSjiLHBUkJH68/I=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemRunAction.class
+SHA1-Digest: Mjno8/W4m77q4aPdvi/iNnuC11A=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewCategoryNode
+ .class
+SHA1-Digest: qgaODcBFArN0NEHH6RKCLobj59c=
+
+Name: org/eclipse/rse/ui/widgets/ISystemCollapsableSectionListener.cla
+ ss
+SHA1-Digest: lEYcsWUrYiAJKyOanID5vklyzBM=
+
+Name: org/eclipse/rse/ui/widgets/EnvironmentVariablesForm.class
+SHA1-Digest: 9CubYI1pyopJ3TOneSv16+1ZgxM=
+
+Name: org/eclipse/rse/ui/propertypages/ISystemConnectionWizardErrorUpd
+ ater.class
+SHA1-Digest: AkxiK1FeF7osUFthM617IY89o/0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$2.class
+SHA1-Digest: qOTroTSsn+ZxUvx8jxXcczD8YRI=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCommonRenameAction.cla
+ ss
+SHA1-Digest: ggM66Plwo+BBp261n2YcHpvp12E=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchRemoveAllMat
+ chesAction.class
+SHA1-Digest: HXA698bmkge1FtqgnUyE2INrjiE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$PositionToA
+ ction.class
+SHA1-Digest: 08KjWP0B4aAMJRuFwhPtF0y1Blo=
+
+Name: org/eclipse/rse/ui/propertypages/SystemComboBoxFieldEditor$2.cla
+ ss
+SHA1-Digest: dO8OPVn6Fx9GxsO15PMBPr1T8BI=
+
+Name: org/eclipse/rse/ui/widgets/SystemPortPrompt$PortFieldStateChange
+ Listener.class
+SHA1-Digest: AG2ugQ/RM2nStGpukecrNfNspdA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$BrowseActio
+ n.class
+SHA1-Digest: R+zZL/R8GMfoNu0i4gB/3HISvmE=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$S
+ ubSetAction.class
+SHA1-Digest: abKn4TLyt8fpgaQWQY9VwZXUi1I=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$P
+ ositionToAction.class
+SHA1-Digest: EZQhBIDI542O7Tu5KT38APA8ifU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$SelectInput
+ Action.class
+SHA1-Digest: JKZYfu29IPVY1rOi+YTZ9eyqtdY=
+
+Name: icons/full/obj16/error.gif
+SHA1-Digest: 3aRN2jtVmbYs/+T4uGVq7jEi02g=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCommonDeleteAction$Del
+ eteEventRunnable.class
+SHA1-Digest: Xmfv1ZpT24M9FiLFw2bS+rIQ5Kw=
+
+Name: icons/full/elcl16/editfilter.gif
+SHA1-Digest: Q+XJMFgHN/IyyYW5rzh8JfkDSa4=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardCategory.class
+SHA1-Digest: 5zuYwoh1csRv4SC8LzI6tJULLVI=
+
+Name: org/eclipse/rse/internal/ui/SystemSortableSelection.class
+SHA1-Digest: f8txIATZfTqNYvsHWGQEzEfiF9U=
+
+Name: org/eclipse/rse/ui/view/AbstractSystemRemoteAdapterFactory.class
+SHA1-Digest: fIEK6kFAC6eh3RtzGkmZ+2IQM04=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemResolveFilterStringAct
+ ion.class
+SHA1-Digest: 1Gkvo2BWuXrt16KO9sRMaowkiWU=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemControlEnableState.cla
+ ss
+SHA1-Digest: /uuj1Ma+HSB408ReWz2XyBYhhTw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$ForwardActi
+ on.class
+SHA1-Digest: Z/8U1RYkenSDhzF/YWhVmy87Vho=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/ClearSelectedAction.
+ class
+SHA1-Digest: XshQ06nGlzZXtmls1/KqGs40+q0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewResources.class
+SHA1-Digest: 4ebakfPeqrW+EuKa6oE+Ryrvicg=
+
+Name: org/eclipse/rse/ui/MassagerFoldCaseUnlessQuoted.class
+SHA1-Digest: vRp+OlH+eCt9YkimYLEtCYeP/RM=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterNewFilte
+ rPoolWizardDefaultMainPage.class
+SHA1-Digest: gC9nfDjgONdvI9qFAXGYLgAJoQY=
+
+Name: org/eclipse/rse/internal/ui/actions/ShowInSystemsViewDelegate$Li
+ nkFromFilterJob.class
+SHA1-Digest: D4Q8/DT/1COHBJ8kArZKuEE2788=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage.class
+SHA1-Digest: AczR/RBQK25JXS0G+MZITZagBKM=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$CheckExistenceJob.cl
+ ass
+SHA1-Digest: hfcl9nKhTPyVpT8bsLDGdf5CBAk=
+
+Name: org/eclipse/rse/ui/propertypages/SystemKeyValueFieldEditor$3.cla
+ ss
+SHA1-Digest: pLZlxRsgodnGuKo+p1WiMjorKGE=
+
+Name: org/eclipse/rse/ui/widgets/services/ServiceElement.class
+SHA1-Digest: 7zVSUzk5n44veqcKrlVCidOCeHQ=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$P
+ ositionToAction$PositionToDialog.class
+SHA1-Digest: Fyq+iMx3EUfYwn3dRmOsMS3efcw=
+
+Name: org/eclipse/rse/ui/operations/SystemDeferredTreeContentManager.c
+ lass
+SHA1-Digest: I7GZsBIMV1yK1HeyX54xIEs1BsA=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemNewFilterWizardNamePage
+ $1.class
+SHA1-Digest: e0c4UhPuZTUsQZlRPWOIVQTGHrk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$7.class
+SHA1-Digest: hFzreW3cqBoJGf9RTAmeylwToy0=
+
+Name: org/eclipse/rse/ui/subsystems/ISubSystemConfigurationAdapter.cla
+ ss
+SHA1-Digest: 1jAtXz5jkCoFkC3wRxf1OLlE5xc=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemMoveDownConnectionActi
+ on.class
+SHA1-Digest: P33fDhw3rJdtYe/bLrgxHwaW04g=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewDummyObject.class
+SHA1-Digest: l836r8KtRZfR6QLRh4vOD05QcYI=
+
+Name: org/eclipse/rse/ui/validators/ValidatorProfileName.class
+SHA1-Digest: QnvgLbjxpigRSk7SxIYx33xDIS4=
+
+Name: icons/full/eview16/system_view.gif
+SHA1-Digest: yzeRi5lmHyQyI/v/N6NtHl/nAec=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewLabelAndContentProvid
+ er$1.class
+SHA1-Digest: pvBMczpp9IHlDWLZFSx26T9ISLo=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$RestoreStat
+ eRunnable$1.class
+SHA1-Digest: YvOrE2zZpTNItMMsqdxC/tLPgzU=
+
+Name: org/eclipse/rse/ui/dialogs/ICredentialsValidator.class
+SHA1-Digest: KYS5fhHPczS84PSPHGQdmh32+wA=
+
+Name: org/eclipse/rse/ui/SystemBasePlugin$WorkbenchListener.class
+SHA1-Digest: H5ARtIouLDx5bdLTMYok3HedpYA=
+
+Name: org/eclipse/rse/ui/wizards/AbstractSystemWizard.class
+SHA1-Digest: 6asPOPSIWZdZMw9El7kDrRQ8yR8=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemImportConnectionAction
+ .class
+SHA1-Digest: 8kOLKZE0DT4HcxG7lnIbJc+td+4=
+
+Name: org/eclipse/rse/ui/filters/SystemFilterPoolDialogInputs.class
+SHA1-Digest: Cdw0Jw8CLre04B9uE8evFtlmurw=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemControlEnableState$Ite
+ mState.class
+SHA1-Digest: OrWDhe0kTsH35clwM2OykZ7ek3A=
+
+Name: org/eclipse/rse/ui/filters/dialogs/ISystemFilterWizard.class
+SHA1-Digest: b2V5KsGQJyE/zdGdNyeRyVKOqSM=
+
+Name: org/eclipse/rse/internal/ui/widgets/SSLForm.class
+SHA1-Digest: a8bZeyHnCeXaqZL8R8Q61A01+OE=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$DisplayErrorMessageJob
+ .class
+SHA1-Digest: MdDg8CzNRO84HacI/I4xrvS4M30=
+
+Name: org/eclipse/rse/ui/validators/ValidatorIntegerRangeInput.class
+SHA1-Digest: FC1evYgKwtyBRCTvGq+LhU+LNz4=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseDummyAction.class
+SHA1-Digest: zdDOpAnzr9kMG95OX4PJqdm1cRM=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemChangeFilterAction.clas
+ s
+SHA1-Digest: SDQEvZpvm12U4qvhFq2wxi3gs3M=
+
+Name: org/eclipse/rse/ui/SystemActionViewerFilter$FilterCriterion.clas
+ s
+SHA1-Digest: rXcSrHu+QJeNj3kc2hEUkCnGDso=
+
+Name: org/eclipse/rse/ui/view/SystemTableView$RenameJob.class
+SHA1-Digest: KWu4Ez/jydDoBDpO5dwOl1lvg7Y=
+
+Name: org/eclipse/rse/ui/Mnemonics.class
+SHA1-Digest: KCcxzEWFFKqZC2mKdFpobM9xwFM=
+
+Name: org/eclipse/rse/ui/widgets/services/ConnectorServiceElement.clas
+ s
+SHA1-Digest: HITsHsqDx78Dd3MrCYy9bIhEjDY=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewMakeInActive
+ ProfileAction.class
+SHA1-Digest: e4WmpwAoh5hb/J10CyEVZyu7yzE=
+
+Name: org/eclipse/rse/ui/operations/SystemProgressDialogRunnableContex
+ t.class
+SHA1-Digest: v6Mt2ww/XhEXJV2B50LralEy2oY=
+
+Name: icons/full/dlcl16/run.gif
+SHA1-Digest: C1AdAIawbFtWKslpaftg0Fb7S9U=
+
+Name: icons/full/etool16/newfilterpoolref_wiz.gif
+SHA1-Digest: e2SiR+hpvaNhXwV7vzbQLDj1zOg=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionTreeElement.class
+SHA1-Digest: 6o2gW88Q0hcsBCRfy1Zb8rUDCKw=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemFilterDialogInputs.clas
+ s
+SHA1-Digest: iTdFE/uP4BmbS9ArV95bU1UozWE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewDecoratingStyledCellL
+ abelProvider.class
+SHA1-Digest: sm1xCqSVxL0UnoYcolWpPMyvBdE=
+
+Name: org/eclipse/rse/ui/operations/SystemProgressDialogRunnableContex
+ t$2.class
+SHA1-Digest: gTMif6+HVLJCTwmOG3WipCs5IBU=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDeferredTableTreeContentM
+ anager$RelayoutView.class
+SHA1-Digest: 6PtvSiUFJDUPo5K/308spP5Cstg=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageDialog.class
+SHA1-Digest: J5a+Js2zcH7kgOYwx+2ov6NdTkY=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemPreferenceRestoreState
+ Action.class
+SHA1-Digest: PqBAucPOsZBnm7GuUPGBV4Xr2pA=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$RemoteObject.cla
+ ss
+SHA1-Digest: yPXMlitTCebqmeAPFxm83B8B/L8=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchCopyToClipbo
+ ardAction.class
+SHA1-Digest: 339FtAJNDdzlH20yM5KKrhTFtBI=
+
+Name: plugin.properties
+SHA1-Digest: hpOES7vudyoqjIDfKd+k7aT8Vjk=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPasswordPromptDialog$1.class
+SHA1-Digest: Ws0BTZTQ3exuA4ofGlnX2QIfy18=
+
+Name: org/eclipse/rse/ui/dialogs/SystemPromptDialog$2.class
+SHA1-Digest: cWcDbdPzsMdIw3JdqpeUOxpDbLE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCollapseAction.class
+SHA1-Digest: hFT5+CKHEm3J7+qbldsHYwM0wS0=
+
+Name: icons/full/dtool16/newfilterpoolref_wiz.gif
+SHA1-Digest: cEt4A96nQi1sQorOPTEoGqIuL8o=
+
+Name: org/eclipse/rse/ui/widgets/ISystemEditPaneStates.class
+SHA1-Digest: z1g+X48Mw5rFah9ZB9i6wM31Wy4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemDeferredTableTreeContentM
+ anager.class
+SHA1-Digest: XX5f0an8VaUVaMaI65RMHD+cUu4=
+
+Name: icons/full/dlcl16/searchremovealll.gif
+SHA1-Digest: Lzga6O7BecvsbN4K4oCi9U+di1k=
+
+Name: plugin.xml
+SHA1-Digest: IRD1J+hj49SG1wcxbAv6GYDNEvI=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$ShowRestoredRemo
+ teObject.class
+SHA1-Digest: SaKoJwyQX0ShQdTDHZxxqXL9+7Q=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart.cla
+ ss
+SHA1-Digest: etCdyZwKzEdGDvedffmSVCfKVgo=
+
+Name: icons/full/dlcl16/up.gif
+SHA1-Digest: T3L8e1sNqbDjz7KGvcvnzBCTKaQ=
+
+Name: org/eclipse/rse/ui/propertypages/SystemSubSystemPropertyPageCore
+ Form$1.class
+SHA1-Digest: Eb9JdFAZzcENHyWnmdZlVt081oU=
+
+Name: org/eclipse/rse/ui/actions/DisplaySystemMessageAction.class
+SHA1-Digest: 1Ok2H00H5MiYMv0ffNdlgzmc170=
+
+Name: org/eclipse/rse/ui/filters/actions/SystemNewFilterAction.class
+SHA1-Digest: j/L1RqkasF9Sxb03novbzlXHPdc=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewFilterAdapter.class
+SHA1-Digest: 3r75z1mkzsyz8tjTnpuauC8Hc4g=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$ResourceChangedJob.c
+ lass
+SHA1-Digest: wNiRV/aRB3mpxhd7ODchHxuXzZY=
+
+Name: icons/full/elcl16/monitor_view.gif
+SHA1-Digest: i1NuAIAOgpUQ+4lP8xVHP7j5/VI=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseSubMenuAction.class
+SHA1-Digest: yncDKCK99BOMR5J0Sxy3weOqnt8=
+
+Name: org/eclipse/rse/ui/actions/ISystemWizardAction.class
+SHA1-Digest: DIw9uamCekCUXMDGq5Mn1wWoSb4=
+
+Name: icons/full/ctool16/newfilterpoolref_wiz.gif
+SHA1-Digest: e2SiR+hpvaNhXwV7vzbQLDj1zOg=
+
+Name: icons/full/wizban/newfilter_wiz.gif
+SHA1-Digest: YFTKMbcXuMZaGYpxZ3NtVp7/c4c=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ Part.class
+SHA1-Digest: CgnuBvmV8FKwOmOa/vP8Kdq2F2U=
+
+Name: org/eclipse/rse/ui/open/SystemOpenQuickOpenDialogAction.class
+SHA1-Digest: rsibXjdsiFwBGBr44YsBzbQf+Gw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart.class
+SHA1-Digest: B+GouoFZC2PMfOIadiUPLzlWOdE=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSelectAnythingDialog.class
+SHA1-Digest: Fg9Ua8SlFVtXZhigAmaKR4kdNLk=
+
+Name: icons/full/dlcl16/rename.gif
+SHA1-Digest: fE0LgjVeLFTeSi9+iqkxi/pSlsI=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$Collaps
+ ableListener.class
+SHA1-Digest: 9y8aE2ccRSrrg8+FiFV4YHOA9es=
+
+Name: org/eclipse/rse/ui/actions/SystemRefreshAllAction.class
+SHA1-Digest: ykrU6GB9lCJzEaLj+BpVvI+/1Zk=
+
+Name: icons/full/cview16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ResolveAbsolutesJob.cl
+ ass
+SHA1-Digest: iyR+bl8Bhqn04fp+c4Wkzm8Whtg=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$Polling
+ Thread.class
+SHA1-Digest: 2IStsn0iifkGFJdvmbqGO1gfMz8=
+
+Name: org/eclipse/rse/ui/actions/SystemBaseAction.class
+SHA1-Digest: FxfnWRKLOgkIMbUS3CD+b9wnTM8=
+
+Name: org/eclipse/rse/ui/messages/SystemMessageDialog$1.class
+SHA1-Digest: znnmPXplzgZAE4C7ljbj8L7cW+E=
+
+Name: org/eclipse/rse/ui/MassagerFoldCaseOutsideQuotes.class
+SHA1-Digest: cYQTtP1Yw3KPy8BHg4Fmv+nBTLw=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ estoreStateRunnable$2.class
+SHA1-Digest: AVY67HuJlM6fJerhmOleIb6fIDQ=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ResolveAbsoluteJob.cla
+ ss
+SHA1-Digest: OSmsHr3Oe2uj/6N1K8PWivZC8iw=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemFilterDialogOutputs.cla
+ ss
+SHA1-Digest: 8zophxDxc84Hps57bh7CvhA1ex0=
+
+Name: org/eclipse/rse/ui/view/ISystemTableViewColumnManager.class
+SHA1-Digest: W/5jduJKeH+zg31aYHQEnigzW4E=
+
+Name: org/eclipse/rse/internal/ui/view/SystemInheritableTextCellEditor
+ $4.class
+SHA1-Digest: tdIgsl1EU8FQQxD4V00NWg6UaVo=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$SetPropertiesJob.class
+SHA1-Digest: 2qtVjixUbxaq0bUjIoa28f+goRw=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterMoveFilterPoolAc
+ tion.class
+SHA1-Digest: kiZ09izhPUdM2jLXWSx2vORcP88=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$S
+ ubSetAction$SubSetDialog.class
+SHA1-Digest: B8xteitDXXymUq/GwE7DxT5ZhO0=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardSelectionTreeCont
+ entProvider.class
+SHA1-Digest: 3LcUl5EWeDwzYQRRG/0AjYzFN/g=
+
+Name: org/eclipse/rse/ui/operations/ISystemRunnableContext.class
+SHA1-Digest: 7OwZ1r/M3o4uth/uAFVRwsZJ31Q=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFilterPoolName.class
+SHA1-Digest: j1oxN4Cg4ZmFfyPOdO2gt+GIAlY=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchViewPart$Sel
+ ectColumnsAction.class
+SHA1-Digest: MqmCpJTQyJftmS4U5jVYVAX595o=
+
+Name: icons/full/etool16/newfolder_wiz.gif
+SHA1-Digest: 4Rih+G9hwW+qO1PE/d3uAyKg2/U=
+
+Name: icons/full/elcl16/clearall.gif
+SHA1-Digest: /GoPVhCpQ+0VtZ7rmiudbpEXoyg=
+
+Name: icons/full/dtool16/newfilter_wiz.gif
+SHA1-Digest: b3xrjuM90Xb43l94rgBt7kBghBg=
+
+Name: org/eclipse/rse/ui/filters/dialogs/SystemChangeFilterDialog.clas
+ s
+SHA1-Digest: vKY8w1aPtnIkOaEIeOb8q+oJdN4=
+
+Name: org/eclipse/rse/ui/propertypages/SystemChangeFilterPropertyPage.
+ class
+SHA1-Digest: AtKHyo94pmAo6zsJ84kODJFuv/o=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$R
+ estoreStateRunnable.class
+SHA1-Digest: X9staZT9j1kRoQntDnSJPXapKAY=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemOpenExplorerPerspectiv
+ eAction$1$1.class
+SHA1-Digest: kviy8ocYT21IMLpcYddTzwDC9JM=
+
+Name: org/eclipse/rse/ui/ISystemContextMenuConstants.class
+SHA1-Digest: BYr9VQxo1E1+FwpQlZ3r1GTebYU=
+
+Name: org/eclipse/rse/internal/ui/DefaultUIInteractionProvider$NullRun
+ nableContext.class
+SHA1-Digest: N4BwiaAd8qLHz7rCKz+MjKQKtd0=
+
+Name: org/eclipse/rse/ui/widgets/InheritControl.class
+SHA1-Digest: l0t8OKkpq1oPtcDdNyUzWa07KL4=
+
+Name: org/eclipse/rse/ui/view/ISystemRemoveElementAdapter.class
+SHA1-Digest: uHggRkYovdVWh464BwplrDtYAFI=
+
+Name: org/eclipse/rse/ui/view/SystemTableView$3.class
+SHA1-Digest: Qgb8XqwmQNnq/I5uFKeUMrDsXRY=
+
+Name: org/eclipse/rse/ui/propertypages/SystemKeyValueFieldEditor.class
+SHA1-Digest: QsId+kNQHg+vCQ96tafi3ue7vhM=
+
+Name: icons/full/obj16/arrowup_obj.gif
+SHA1-Digest: bAbUs1KqIppMIL1lJRSPC5cvzbk=
+
+Name: org/eclipse/rse/ui/view/SystemAbstractAPIProvider.class
+SHA1-Digest: 38J0g6HnZjAmJhMyffuiIkidgx0=
+
+Name: icons/full/ctool16/newfilterpool_wiz.gif
+SHA1-Digest: AF7s9Fh3JJ2MBWxosGMfseri3Hc=
+
+Name: org/eclipse/rse/ui/dialogs/SystemWizardDialog$1.class
+SHA1-Digest: hObnxUBv9U6CHRc9fPDeAh/m8H4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewPart$LockAction.
+ class
+SHA1-Digest: L+NnHFnyecaH62UFGRWGmt5KOhQ=
+
+Name: org/eclipse/rse/internal/ui/PreferencesMapper.class
+SHA1-Digest: +jQtdv0ilGkpen8LosDUlAK8wqw=
+
+Name: org/eclipse/rse/ui/actions/SystemNewConnectionAction.class
+SHA1-Digest: F7pVEDMyR1vQXBpejp0+jJbBX78=
+
+Name: org/eclipse/rse/internal/ui/filters/SystemFilterWorkWithFilterPo
+ olsTreeViewer.class
+SHA1-Digest: pXtSiM2u8WkePCZWqJvMegTpErU=
+
+Name: org/eclipse/rse/internal/ui/SystemResourceListener.class
+SHA1-Digest: MDWMubcAubtC9ybY+3Gb6H4AN28=
+
+Name: org/eclipse/rse/ui/propertypages/SystemFilterStringPropertyPage.
+ class
+SHA1-Digest: 5xG4+/Qs3wWXCE/6r1b5MbdbKVY=
+
+Name: org/eclipse/rse/internal/ui/filters/dialogs/SystemFilterWizardDi
+ alog.class
+SHA1-Digest: k2C0sYSIWJPUinrhfXN2j68NAOs=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/IRSEDynamicNewConnectio
+ nWizard.class
+SHA1-Digest: qqgMUEJTcyjFcAvzTQT2HdTCWPk=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$RestoreRemoteObj
+ ects.class
+SHA1-Digest: AAMQTkpILcK6eV4gOXPpjZ2uO40=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$2.class
+SHA1-Digest: pGzScsAMX+E2RRoCVfM4CSV+gXQ=
+
+Name: org/eclipse/rse/internal/ui/subsystems/SubSystemConfigurationPro
+ xyAdapterFactory.class
+SHA1-Digest: 4PlwYhnYEndi3VQ+UKIIe9Mf6bw=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPartFrameSource.class
+SHA1-Digest: i2dNY83pvpukaCRMJHnEc8kvZHs=
+
+Name: org/eclipse/rse/ui/widgets/EnvironmentVariablesForm$EnvironmentV
+ ariablesTableContentProvider.class
+SHA1-Digest: KLrl+tvLWrIgv1IlNqL6NwVOhVs=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSENewConnectionWizardS
+ electionPage.class
+SHA1-Digest: Tk5KRUE42IP+Gb1jl5CgaQnAc6c=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterPoolReferenceSel
+ ectAction.class
+SHA1-Digest: cXGyxpc6hCD2kGItWZsYOOLkYG0=
+
+Name: org/eclipse/rse/ui/widgets/services/ServicesForm$2.class
+SHA1-Digest: Q0B/6K4ciCuiRqzJWq0m9eyptyw=
+
+Name: org/eclipse/rse/internal/ui/view/SubSystemConfigurationAdapterFa
+ ctory.class
+SHA1-Digest: +A1BFFZWcVy2mc/n0D91rHlhkh4=
+
+Name: org/eclipse/rse/ui/operations/SystemFetchOperation$UpdateRegistr
+ y.class
+SHA1-Digest: gGRcVtCZdbgaj+ym5F9zHasEp8g=
+
+Name: org/eclipse/rse/ui/view/ISystemSelectAllTarget.class
+SHA1-Digest: fLcvKROKfBGBf5wBQsugtLmqgXE=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableTreeView$3.class
+SHA1-Digest: cY37reQzYE9t2120x8Dq6tp0ryM=
+
+Name: org/eclipse/rse/ui/operations/SystemFetchOperation$PromptForPass
+ word.class
+SHA1-Digest: PlxJnF10ijuzm8Q1E9mQvdQPVCQ=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$ConnectJob.class
+SHA1-Digest: hSkkQnr/G4x1VaPYHGy+DQH1SMU=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart$4.class
+SHA1-Digest: keuNM0hT1dI8ZknXwfx5NFAWb/E=
+
+Name: icons/full/obj16/systeminfo.gif
+SHA1-Digest: t9DwZ6l43L5wvgmn+EtISWNfQyo=
+
+Name: org/eclipse/rse/ui/ISystemMessages.class
+SHA1-Digest: DKsSktuMLzjDooX/5als9c1ZgvQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTableViewSorter.class
+SHA1-Digest: 3ljCdDB+1+35D2kKmLU8/brHSkI=
+
+Name: icons/full/obj16/key.gif
+SHA1-Digest: ND7m1xv+exgg/OyOvL/sbUIvsEs=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$DisconnectJob$PostDisc
+ onnect.class
+SHA1-Digest: priA7ZUU52zQLeRuIdM9nRoweBI=
+
+Name: icons/full/obj16/systemprocess.gif
+SHA1-Digest: HhsqRF4cIGbkuHJr+dKam7KVLsc=
+
+Name: org/eclipse/rse/ui/RSEUIPlugin.class
+SHA1-Digest: eXggMDgFnz8h60hfUCcrucHbGVY=
+
+Name: icons/full/obj16/arrowdown_obj.gif
+SHA1-Digest: 4KlJS1402o4P7wHl7rpNnkJjvPc=
+
+Name: org/eclipse/rse/ui/dialogs/SystemChangePasswordDialog$2.class
+SHA1-Digest: OPsVTSnZukMUN5HGMN6TplapUHU=
+
+Name: icons/full/ctool16/new.gif
+SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemClearAllPasswordsActio
+ n.class
+SHA1-Digest: BECCsCumBnA+kfKqsRlUlXc83JY=
+
+Name: org/eclipse/rse/ui/widgets/services/PropertyElement.class
+SHA1-Digest: wmC8JnMyB2nutzw76auzbCdpLDI=
+
+Name: org/eclipse/rse/ui/open/SystemQuickOpenDialog$3.class
+SHA1-Digest: NgQ6NYVk/gORTqvFKkgKh6NgfhI=
+
+Name: icons/full/obj16/systemcommands_obj.gif
+SHA1-Digest: dJsjcxQWyNyEcuo1w4CgLuJFtiQ=
+
+Name: icons/full/view16/team_view.gif
+SHA1-Digest: VWhH2ICAQplamnfQx3NEbk42zg8=
+
+Name: org/eclipse/rse/ui/wizards/registries/RSEWizardSelectionTreeLabe
+ lProvider.class
+SHA1-Digest: kqh5B8jcjg7TqVYCnQ5SR6rpx8w=
+
+Name: org/eclipse/rse/ui/wizards/SystemNewProfileWizardMainPage$1.clas
+ s
+SHA1-Digest: KRU+MvAnDbS/hrOFyfz6fW9gvaY=
+
+Name: org/eclipse/rse/ui/SystemConnectionForm$7.class
+SHA1-Digest: C9j+JS7edWH8dh8W7WXsK4eruyo=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$GetPropertiesJob.class
+SHA1-Digest: hDGuUYFCJRjjV+4c+hxa7Cp50uo=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingGoToAction.cl
+ ass
+SHA1-Digest: 0HkXLg0CiEcLorbi/VRMOduZk6I=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/MonitorViewPage$1.class
+SHA1-Digest: 1dNni3M2OvdDngIFpqiggIIrTOQ=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$CheckExistenceJob$1.
+ class
+SHA1-Digest: rEoZ/dQMCS99WZ7OBwV+OSwgODA=
+
+Name: org/eclipse/rse/ui/propertypages/SystemSubSystemPropertyPageCore
+ .class
+SHA1-Digest: fB/cn0NY1jScxTQMxJeBN2D7VA4=
+
+Name: org/eclipse/rse/internal/ui/view/SystemComboBoxCellEditor$2.clas
+ s
+SHA1-Digest: KgpRXUhLVj19NlxwukCqJPviSaM=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemMoveConnectionAction.c
+ lass
+SHA1-Digest: h84GEmtSJIhYVUcUh71cjVR9+58=
+
+Name: org/eclipse/rse/internal/ui/view/team/SystemTeamViewPart.class
+SHA1-Digest: kE6WpE4Ff/cOmK9nkGQrOlHxEbg=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$SetPropertyJob.class
+SHA1-Digest: eu2R+H8LJljtaVIYcaysnb7PyhM=
+
+Name: org/eclipse/rse/ui/internal/model/SystemRunnableContextWrapper$S
+ ystemRunnableWithProgress.class
+SHA1-Digest: zHrs3gtL8VIG81CQW5O3NBJy0mk=
+
+Name: org/eclipse/rse/internal/ui/view/search/SystemSearchClearHistory
+ Action.class
+SHA1-Digest: Qq/jcRP5+ks9gSl6wQliJZvynRg=
+
+Name: org/eclipse/rse/internal/ui/view/SystemViewPart$2.class
+SHA1-Digest: N19cM1Pwr8lloJs7XG5KlcTzZpE=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCascadingRemoteServerB
+ aseAction.class
+SHA1-Digest: yTEYRTBeo8iVDJGCbB/jG3UjBOU=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemChangeFilterActionPast
+ eString.class
+SHA1-Digest: VC7lQKbrySb3Np242mjBDcWwEHM=
+
+Name: org/eclipse/rse/ui/wizards/newconnection/RSEDefaultNewConnection
+ WizardMainPage.class
+SHA1-Digest: LhWlql7l8Fu7BTCD+SrcffYutmo=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemFilterCopyFilterPoolAc
+ tion.class
+SHA1-Digest: 8SgUaj/PCqAo0ZIcSeXlW2UAtuA=
+
+Name: org/eclipse/rse/internal/ui/logging/LoggingPreferenceLabels.clas
+ s
+SHA1-Digest: 5jr99LoIJM5k3OP6N9COsWxVEPw=
+
+Name: org/eclipse/rse/core/subsystems/SubSystem$2.class
+SHA1-Digest: xA8ofYI6nfqejvkM3137zNXwe1A=
+
+Name: org/eclipse/rse/ui/dialogs/SystemSimpleContentElement.class
+SHA1-Digest: 3bNrsYGeUkvfPq/YGeikxJCJg24=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart.c
+ lass
+SHA1-Digest: Ym5hdcyKn36KkbedTlutWu4NYt0=
+
+Name: icons/full/elcl16/move.gif
+SHA1-Digest: f8M8Kj7JUzxYizMm08PMV/nje3Y=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemRenameDialog$1.class
+SHA1-Digest: +o4uEEwZK54YAEl36BD2vRYk7Hs=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemCopyTableProvider.clas
+ s
+SHA1-Digest: UPrCJhcPBE6O9/Q9pt8Enpb54UU=
+
+Name: org/eclipse/rse/internal/ui/propertypages/SystemFilterPropertyPa
+ ge.class
+SHA1-Digest: e4lS8vW7jYXD8ABWxOUhH/WEmUE=
+
+Name: org/eclipse/rse/internal/ui/actions/ShowInSystemsViewDelegate.cl
+ ass
+SHA1-Digest: Gfp85LwZNeL03bJYhtDhHKkIAkk=
+
+Name: icons/full/etool16/newprofile_wiz.gif
+SHA1-Digest: erA7dJBv7Q+FddV37hxySGCTxF8=
+
+Name: org/eclipse/rse/ui/propertypages/SystemKeyValueFieldEditor$1.cla
+ ss
+SHA1-Digest: kM59G+xyqSh05KMZEYcn1wtuYKc=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/SystemMonitorViewPart$1
+ .class
+SHA1-Digest: fL/d/CtQfMLIMaIczQCT8fU7+QE=
+
+Name: org/eclipse/rse/internal/ui/view/monitor/BrowseAction.class
+SHA1-Digest: XqUXS8mlEp6gQiSbNSRHvdc8OFs=
+
+Name: org/eclipse/rse/ui/validators/ValidatorFolderName.class
+SHA1-Digest: tiKoyLmFE79WKJqaFP4AKYPlVQ0=
+
+Name: org/eclipse/rse/internal/ui/view/SystemTestFilterStringAPIProvid
+ erImpl.class
+SHA1-Digest: Y3nXk+ek/pSiG4etXjvFLNHDwjw=
+
+Name: org/eclipse/rse/ui/view/ISystemSelectRemoteObjectAPIProvider.cla
+ ss
+SHA1-Digest: FHwrVrEIxOYakqvQHjYt8tWJa7M=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemCommonDeleteAction$Del
+ eteJob.class
+SHA1-Digest: GaxF6KHWSxrSl1qbmexFucP3XK0=
+
+Name: org/eclipse/rse/internal/ui/view/ContextObjectWithViewer.class
+SHA1-Digest: UYkjJ7l1YQ67M2RdCVCGEbGgiCQ=
+
+Name: icons/full/obj16/system_search.gif
+SHA1-Digest: pcqhx5aVkEl/cWG+0qMlC5xoCA0=
+
+Name: org/eclipse/rse/internal/ui/dialogs/SystemRenameTableProvider.cl
+ ass
+SHA1-Digest: xiUk0u0KQ0ynlRnRa7SeeX2xcVs=
+
+Name: org/eclipse/rse/internal/ui/view/SystemView$5.class
+SHA1-Digest: ruIzpafnQ67nn+qHjDFMWpi80mM=
+
+Name: org/eclipse/rse/ui/widgets/InheritableEntryField$1.class
+SHA1-Digest: Qcy+ziRpj5Thr/8fPWpD6V+lGfE=
+
+Name: org/eclipse/rse/internal/ui/view/scratchpad/SystemScratchpadView
+ $1.class
+SHA1-Digest: Z4vIy40vA8e1DDEx5kXzzaysi9s=
+
+Name: org/eclipse/rse/ui/wizards/ISystemWizardPage.class
+SHA1-Digest: OPWZ+Ji0u90QwWlBDLWspe31YYk=
+
+Name: org/eclipse/rse/internal/ui/actions/SystemStringPromptAction.cla
+ ss
+SHA1-Digest: R2B4GfeFsGD0SFJ1/jJBmqSYvrU=
+

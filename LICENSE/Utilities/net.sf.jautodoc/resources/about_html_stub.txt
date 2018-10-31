@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>About</title>
+</head>
+<body lang="EN-US">
+<h2>About This Content</h2>
+<p>${date}</p>	
+<h3>License</h3>
+<p>Pacific Northwest National Laboratory makes available all content in this plug-in. Unless otherwise 
+indicated below, the Content is provided to you under the terms and conditions of the 
+Educational Community License, Version 2.0. A copy of the ECL is available 
+at <a href="http://opensource.org/licenses/ECL-2.0">http://opensource.org/licenses/ECL-2.0</a>.</p>

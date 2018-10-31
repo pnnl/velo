@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+    
+    <bean id="tree-crawler" class="gov.pnnl.cat.actions.crawler.TreeCrawlerActionExecutor" parent="action-executer">
+        <property name="nodeService">
+            <ref bean="NodeService" />
+        </property>
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+        <property name="authenticationComponent">
+            <ref bean="authenticationComponent" />
+        </property> 
+        <property name="publicAction">
+            <value>true</value>
+        </property>
+    </bean>
+    
+    <bean id="textTransformConvertTreeCrawler" class="gov.pnnl.cat.actions.crawler.TextTransformConvertNodeVisitor" parent="abstractNodeVisitor">
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+       </bean>
+ 
+  	<!--  visitor to reindex nodes -->
+ 	<bean id="reindexerNodeVisitor"
+ 		class="gov.pnnl.cat.actions.crawler.ReindexerNodeVisitor"
+ 		parent="abstractNodeVisitor">
+         <property name="nodeIndexer" ref="nodeIndexer" />
+ 	</bean>
+   
+  	<!--  visitor to inherit owner -->
+ 	<bean id="ownableNodeVisitor"
+ 		class="gov.pnnl.cat.actions.crawler.OwnableNodeVisitor"
+ 		parent="abstractNodeVisitor">
+ 		<property name="ownableService">
+ 			<ref bean="ownableService"></ref>
+ 		</property>
+ 	</bean>
+ 	
+ 	<!--  visitor to inherit cat:ignore aspect -->
+ 	<bean id="ignorableNodeVisitor"
+ 		class="gov.pnnl.cat.actions.crawler.IgnorableNodeVisitor"
+ 		parent="abstractNodeVisitor">
+ 		<property name="nodeService">
+ 			<ref bean="nodeService"></ref>
+ 		</property>
+ 	</bean>
+ 
+ 	<!--  visitor to calculate hash for each file -->
+ 	<bean id="hashNodeVisitor"
+ 		class="gov.pnnl.cat.actions.crawler.HashNodeVisitor"
+ 		parent="abstractNodeVisitor">
+ 		<property name="contentService">
+ 			<ref bean="contentService"></ref>
+ 		</property>
+ 		<property name="policyBehaviourFilter">
+            <ref bean="policyBehaviourFilter" />
+        </property>
+ 	</bean>
+
+ 	<!--  visitor to add .url to the name of each link node, so
+ 	      it can be opened in CIFS -->
+ 	<bean id="linkNameNodeVisitor"
+ 		class="gov.pnnl.cat.actions.crawler.LinkNameNodeVisitor"
+ 		parent="abstractNodeVisitor">
+ 	</bean>
+ 	
+ 	<!--  Action to recusively remove an aspect from nodes in a subtree -->
+    <bean id="recursive-remove-aspect" class="gov.pnnl.cat.actions.RecursiveRemoveAspectAction" parent="action-executer">
+	    <property name="nodeService">
+			<ref bean="nodeService"/>
+		</property>
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+    </bean>
+ 
+    <bean id="recursive-add-aspect" class="gov.pnnl.cat.actions.RecursiveAddAspectAction" parent="action-executer">
+	    <property name="nodeService">
+			<ref bean="nodeService"/>
+		</property>
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+    </bean>
+   
+   <!-- visitor to change thumbnails to new format -->
+   <bean id="upgradeThumbnailNodeVisitor"
+      class="gov.pnnl.cat.actions.crawler.UpgradeThumbnailsNodeVisitor"
+      parent="abstractNodeVisitor">
+      <property name="contentService">
+         <ref bean="contentService"></ref>
+      </property>
+      <property name="actionService">
+            <ref bean="actionService" />
+        </property>
+   </bean> 
+</beans>

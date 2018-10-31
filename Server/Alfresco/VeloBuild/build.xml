@@ -1,0 +1,262 @@
+<project name="velo-server-build" default="deploy-cat-server-and-modules-incremental">
+
+	<!-- Load the global build properties -->
+	<!-- Note that users can create a file for their host machine or user id
+	and that will take precedence over the default build.properties -->
+	<property environment="env" />
+	<property name="env.COMPUTERNAME" value="${env.HOST}" />
+	<property name="env.COMPUTERNAME" value="${env.HOSTNAME}" />
+
+	<echo>ant version: ${ant.version} </echo>
+	<echo>looking for build.${user.name}.properties </echo>
+	<property file="../VeloBuild/build.${user.name}.properties" />
+	<echo>looking for build.${env.COMPUTERNAME}.properties </echo>
+	<property file="../VeloBuild/build.${env.COMPUTERNAME}.properties" />
+	<echo>looking for build.${env.HOSTNAME}.properties </echo>
+	<property file="../VeloBuild/build.${env.HOSTNAME}.properties" />
+	<echo>looking for build.properties </echo>
+	<property file="../VeloBuild/build.properties"/>
+
+	<path id="build.classpath">
+		<fileset dir="../VeloBuild/lib" includes="*.jar" />
+	</path>
+
+	<taskdef classpathref="build.classpath" resource="net/sf/antcontrib/antlib.xml" />
+
+	<!-- Deploy just the cat extensions to alfresco -->
+	<target name="deploy-cat-server">
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerCore" target="deploy" inheritall="true" inheritrefs="false" useNativeBasedir="true" />
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerCommon" target="deploy" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerWebServices" target="deploy" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<ant antfile="project-build.xml" dir="${basedir}/../CATClientWebServices" target="deploy" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<antcall target="deployLogTemplate"/>
+	</target>
+
+	<target name="deploy-cat-server-incremental">
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerCore" target="deploy-incremental" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerCommon" target="deploy-incremental" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<ant antfile="project-build.xml" dir="${basedir}/../CATServerWebServices" target="deploy-incremental" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<ant antfile="project-build.xml" dir="${basedir}/../CATClientWebServices" target="deploy-incremental" inheritall="true" inheritrefs="false" useNativeBasedir="true"/>
+		<antcall target="deployLogTemplate"/>
+	</target>
+	
+	<target name="deployVeloCommons">
+		<ant antfile="build.xml" dir="${basedir}/../gov.pnnl.velo.commons" target="build-jar" inheritall="false" inheritrefs="false" useNativeBasedir="true"/>
+
+		<copy todir="${dir.webapps.alfresco.lib}" overwrite="true" flatten="true">
+			<fileset dir="${basedir}/../gov.pnnl.velo.commons/build/dist">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>	
+    </target>
+	
+	<target name="deployLogTemplate">
+		<!-- deploy log4j.properties file and set server root -->
+		<copy file="../VeloBuild/templates/log4j.properties" tofile="${dir.webapps.alfresco.classes}/log4j.properties" overwrite="true" />
+
+		<!-- change path to the log file -->
+		<replace summary="true" file="${dir.webapps.alfresco.classes}/log4j.properties">
+			<replacefilter token="$CAT_ALFRESCO_ROOT$" value="${dir.alfresco.root}" />
+		</replace>
+	</target>
+
+	<!-- Deploy the cat extensions and all modules to alfresco -->
+	<target name="deploy-war-and-modules" description="Deploy cat-velo war from update site and then build and deploy local modules.">
+		<antcall target="deploy-cat-alfresco-war-from-update-site"/>
+		<antcall target="deploy-modules"/>
+	</target>
+
+	<!-- Deploy catAlfresco.war from update site -->
+	<target name="deploy-cat-alfresco-war-from-update-site">
+		<property name="dir.dist" value="${basedir}/build/dist" />
+		<mkdir dir="${dir.dist}"/>
+
+		<!-- use ant get to retrieve the war file from the update site -->
+		<get src="${velo.update.site}/catAlfresco.war" dest="${dir.dist}/catAlfresco.war"/>
+
+		<antcall target="deploy-cat-alfresco-war-from-local-dir">
+			<param name="dir.war" value="${dir.dist}"/>
+		</antcall>
+	</target>
+
+	<!-- Deploy catAlfresco.war from local folder-->
+	<target name="deploy-cat-alfresco-war-from-local-dir">
+
+		<!-- clean out old webapp folder -->
+		<delete dir="${dir.webapps.alfresco}" />
+		<mkdir dir="${dir.webapps.alfresco}"/>
+
+
+		<!-- unwar the war to the alfresco webapp folder -->
+		<unwar src="${dir.war}/catAlfresco.war" dest="${dir.webapps.alfresco}" />
+
+		<!-- change path to the log file -->
+		<replace summary="true" file="${dir.webapps.alfresco.classes}/log4j.properties">
+			<replacefilter token="$CAT_ALFRESCO_ROOT$" value="${dir.alfresco.root}" />
+		</replace>
+
+	</target>
+
+	<!-- Deploy the cat extensions and all modules to alfresco -->
+	<target name="deploy-cat-server-and-modules"  depends="deployVeloCommons">
+		<antcall target="deploy-cat-server"/>
+		<antcall target="deploy-modules-internal"/>
+	</target>
+
+	<!-- Deploy the cat extensions and all modules to alfresco -->
+	<target name="deploy-cat-server-and-modules-incremental"  depends="deployVeloCommons">
+		<antcall target="deploy-cat-server-incremental"/>
+		<antcall target="deploy-modules-internal-incremental"/>
+	</target>
+
+	<!-- Reset the alfresco war so it wipes all our modules and extensions -->
+	<target name="restore-vanilla-alfresco">
+		<delete dir="${dir.webapps.alfresco}" />
+		<mkdir dir="${dir.webapps.alfresco}"/>
+		<mkdir dir="${basedir}/build/dist"/>
+
+		<!-- use ant get to retrieve the file from the update site -->
+		<get src="${alfresco.update.site}/alfresco.war" dest="${basedir}/build/dist/alfresco.war"/>
+		<unwar src="${basedir}/build/dist/alfresco.war" dest="${dir.webapps.alfresco}" />
+
+	</target>
+	
+	<target name="deploy-modules" depends="deployVeloCommons, deploy-modules-internal">
+	</target>
+
+	<!-- Deploy all listed modules to alfresco webapp -->
+	<target name="deploy-modules-internal">
+		<echo> deploying modules: ${deployed-modules} </echo>
+		<for list="${deployed-modules}" param="module.name">
+			<sequential>
+				<echo>warring module_@{module.name}</echo>
+				<trycatch reference="exception">
+					<try>
+						<echo> Calling custom build for @{module.name}</echo>
+						<ant antfile="../@{module.name}/build.xml" dir="../@{module.name}"  target="deploy" inheritall="true" inheritrefs="false">
+							<property name="module.dir" value="../@{module.name}"/>
+							<property name="module.name" value="@{module.name}"/>
+						</ant>
+					</try>
+					<catch>
+						<property name="exceptionprop" refid="exception" />
+						<echo> Warning: custom build of module @{module.name} failed: ${exceptionprop} </echo>
+						<echo> Calling default build for @{module.name}</echo>
+						<antcall target="deploy-module">
+							<param name="module.dir" value="../@{module.name}"/>
+							<param name="module.name" value="@{module.name}"/>
+						</antcall>
+					</catch>
+				</trycatch>
+			</sequential>
+		</for>
+	</target>
+
+	<!-- Deploy all listed modules to alfresco webapp -->
+	<target name="deploy-modules-internal-incremental">
+		<echo> deploying modules: ${deployed-modules} </echo>
+		<for list="${deployed-modules}" param="module.name">
+			<sequential>
+				<echo>warring module_@{module.name}</echo>
+				<trycatch reference="exception">
+					<try>
+						<echo> Calling custom build for @{module.name}</echo>
+						<ant antfile="../@{module.name}/build.xml" dir="../@{module.name}"  target="deploy-incremental" inheritall="true" inheritrefs="false">
+							<property name="module.dir" value="../@{module.name}"/>
+							<property name="module.name" value="@{module.name}"/>
+						</ant>
+					</try>
+					<catch>
+						<property name="exceptionprop" refid="exception" />
+						<echo> Warning: custom build of module @{module.name} failed: ${exceptionprop} </echo>
+						<echo> Calling default build for @{module.name}</echo>
+						<antcall target="deploy-module-incremental">
+							<param name="module.dir" value="../@{module.name}"/>
+							<param name="module.name" value="@{module.name}"/>
+						</antcall>
+					</catch>
+				</trycatch>
+			</sequential>
+		</for>
+	</target>
+
+	<!-- deploy a single module -->
+	<target name="deploy-module">
+		<echo>deploying module to ${module.dir}</echo>
+		<echo>module name ${module.name}</echo>
+		<echo>alfresco dir = ${dir.webapps.alfresco} </echo>
+		<ant antfile="../VeloBuild/module-build.xml" dir="${module.dir}" target="deploy" inheritall="true" inheritrefs="false"/>
+	</target>
+
+	<!-- deploy a single module -->
+	<target name="deploy-module-incremental">
+		<echo>deploying module to ${module.dir}</echo>
+		<echo>module name ${module.name}</echo>
+		<echo>alfresco dir = ${dir.webapps.alfresco} </echo>
+		<ant antfile="../VeloBuild/module-build.xml" dir="${module.dir}" target="deploy-incremental" inheritall="true" inheritrefs="false"/>
+	</target>
+
+	<!-- remove a jar file from WEB-INF/lib
+	     used by modules to delete overriden jar files -->
+	<target name="remove-jar">
+		<delete file="${dir.webapps.alfresco}/WEB-INF/lib/${jarfile.name}" />
+	</target>
+
+	<target name="override-core-classes">
+		<!-- Deploy code to WEB-INF/classes to override core classes -->
+		<copy  verbose="false" todir="${dir.webapps.alfresco}/WEB-INF/classes" overwrite="true">
+			<fileset dir="${basedir}/build/classes">
+				<include name="${package.name}/**/*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="create-cat-alfresco-war" depends="restore-vanilla-alfresco,deploy-cat-server-and-modules">
+
+		<!-- deploy log4j.properties file and set server root -->
+		<copy file="../VeloBuild/templates/log4j.properties" tofile="${dir.webapps.alfresco.classes}/log4j.properties" overwrite="true" />
+
+		<delete file="${basedir}/build/dist/catAlfresco.war" />
+		<war destfile="${basedir}/build/dist/catAlfresco.war" webxml="${dir.webapps.alfresco}/WEB-INF/web.xml" update="false">
+			<zipfileset dir="${dir.webapps.alfresco}" excludes="**/web.xml"/>
+		</war>
+	</target>
+
+	<target name="reset-database" depends="drop-database, create-database" description="Drops and re-creates the MySQL database" />
+
+	<target name="create-database" description="Creates the MySQL database">
+		<sql driver="${db.driver}" url="jdbc:mysql:///" classpathref="build.classpath" print="yes" userid="${db.username}" password="${db.password}">
+	         create database ${db.name};
+	    </sql>
+	</target>
+
+	<target name="drop-database" description="Drops the MySQL database and cleans the index files">
+		<echo>userid=${db.username}</echo>
+		<echo>password=${db.password}</echo>
+		<sql driver="${db.driver}" url="${db.url}" classpathref="build.classpath" print="yes" userid="${db.username}" password="${db.password}">
+	         drop database ${db.name};
+	    </sql>
+
+		<!-- cleanup filesystem content store -->
+		<echo>cleaning up content store</echo>
+		<delete quiet="false" failonerror="false" verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/contentstore" />
+		<delete verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/contentstore.deleted" />
+
+		<!-- cleanup solr indexes -->
+		<echo>cleaning up solr indexes</echo>
+		<delete quiet="true" verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/solr/workspace" />
+		<delete quiet="true"  verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/solr/archive" />
+		<delete quiet="true" verbose="true" includeEmptyDirs="true">
+			<fileset dir="${dir.alfresco.data_root}/solr/archive-SpacesStore/alfrescoModels" includes="**/*"/>
+		</delete>
+		<delete quiet="true" verbose="true" includeEmptyDirs="true">
+			<fileset dir="${dir.alfresco.data_root}/solr/workspace-SpacesStore/alfrescoModels" includes="**/*"/>
+		</delete>
+				
+		<!-- cleanup lucene indexes -->
+		<echo>cleaning up lucene indexes</echo>
+		<delete quiet="yes" verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/lucene-indexes" />
+		<delete quiet="yes" verbose="true" includeEmptyDirs="true" dir="${dir.alfresco.data_root}/backup-lucene-indexes" />		
+	</target>
+
+</project>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+<!-- overriding hiddenAspect bean in order to remove the filename patters (starts with . or starts with _) from
+     automatically getting the hiddenAspect applied.  The hiddenAspect prevents the node (content and props) from being indexed
+     and is only applied if the file is uploaded/modified via webDav/ftp etc.   -->
+     
+     <!-- also adding a couple specific folder names that we've seen windows create that SHOULD be ignored  -->
+<bean name="hiddenAspect" class="org.alfresco.repo.model.filefolder.HiddenAspect">
+      <property name="nodeService" ref="NodeService"/>
+      <property name="fileFolderService" ref="fileFolderService"/>
+      <property name="searchService" ref="searchService"/>
+
+      <property name="patterns">
+         <list>
+            <!-- Velo removed these filename patterns, DO NOT ignore them -->
+            <!-- bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="\._.*" />
+            </bean>
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="\..*" />
+                <property name="visibility" value="webdav,nfs,ftp" />
+                <property name="hiddenAttribute" value="cifs" />
+            </bean-->
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="Thumbs\.db" />
+                <property name="visibility" value="webdav,nfs,ftp" />
+                <property name="hiddenAttribute" value="cifs" />
+            </bean>
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="Desktop\.ini" />
+                <property name="visibility" value="webdav,nfs,ftp" />
+                <property name="hiddenAttribute" value="cifs" />
+            </bean>
+            <!-- completely hidden i.e. to all clients and does not apply to children -->
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="surf-config" />
+                <property name="cascadeHiddenAspect" value="false" />
+                <property name="cascadeIndexControlAspect" value="false" />
+            </bean>
+            
+            <!-- Velo added these ignored folder names -->
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value=".DS_Store" />
+                <property name="cascadeHiddenAspect" value="false" />
+                <property name="cascadeIndexControlAspect" value="false" />
+            </bean>
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="._.DS_Store" />
+                <property name="cascadeHiddenAspect" value="false" />
+                <property name="cascadeIndexControlAspect" value="false" />
+            </bean>
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value=".TemporaryItems" />
+                <property name="cascadeHiddenAspect" value="false" />
+                <property name="cascadeIndexControlAspect" value="false" />
+            </bean>
+            <bean class="org.alfresco.repo.model.filefolder.HiddenFileFilter">
+                <property name="filter" value="._.TemporaryItems" />
+                <property name="cascadeHiddenAspect" value="false" />
+                <property name="cascadeIndexControlAspect" value="false" />
+            </bean>
+         </list>
+      </property>
+   </bean>
+   
+</beans>

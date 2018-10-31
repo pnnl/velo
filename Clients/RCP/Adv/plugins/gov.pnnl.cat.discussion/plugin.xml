@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.discussion.views.DiscussionView"
+            icon="icons/message.png"
+            id="gov.pnnl.cat.discussion.view"
+            name="Comments"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="gov.pnnl.cat.core.resources.IResource"
+            class="gov.pnnl.cat.discussion.DiscussionAdapterFactory">
+         <adapter type="org.eclipse.ui.progress.IDeferredWorkbenchAdapter"/>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="gov.pnnl.cat.ui.rcp.perspectives.AdminDataBrowser">
+         <viewShortcut id="gov.pnnl.cat.discussion.view"/>
+         <view
+               closeable="true"
+               id="gov.pnnl.cat.discussion.view"
+               moveable="true"
+               relationship="stack"
+               relative="gov.pnnl.cat.ui.rcp.preview"
+               showTitle="true"
+               visible="true"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.discussion.wizard.AddCommentWizard"
+            descriptionImage="icons/48x48/message_add.png"
+            hasPages="true"
+            icon="icons/16x16/message_add.png"
+            id="gov.pnnl.cat.discussion.wizard.AddCommentWizard"
+            name="Comment"
+            project="false"/>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFile"
+            nodeTypeQName="{http://www.alfresco.org/model/forum/1.0}post">
+      </contentType>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/forum/1.0}forum">
+      </contentType>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/forum/1.0}topic">
+      </contentType>
+   </extension>
+
+</plugin>

@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Create or update resource(s)</shortname>
+  <description>Create or update all resources in a single transaction</description>
+  <url>/cat/createUpdateResources</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

@@ -1,0 +1,5 @@
+instructions.configure=\
+  addRepository(type:0,name:Velo Client,location:https${#58}//p02.velo.pnnl.gov/updates/velo-rcp,enabled:true);\
+  addRepository(type:1,name:Velo Client,location:https${#58}//p02.velo.pnnl.gov/updates/velo-rcp,enabled:true);\
+  addRepository(type:0,name:CAT Platform,location:https${#58}//p02.velo.pnnl.gov/updates/cat,enabled:true);\
+  addRepository(type:1,name:CAT Platform,location:https${#58}//p02.velo.pnnl.gov/updates/cat,enabled:true);\

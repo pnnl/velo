@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Inherit plugins and properties from ../build.master pom -->
+	<parent>
+		<groupId>gov.pnnl.velo</groupId>
+		<artifactId>build.master</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../build.master</relativePath>
+	</parent>
+
+	<artifactId>build.targetplatform</artifactId>
+	<packaging>eclipse-target-definition</packaging>
+	<name>Target Platform</name>
+	<!-- Note that the target platform CAN'T have a dynamically generated version (set via tycho set-versions plugin)
+	 because the set-versions plugin will not update the master plugin configuration to include the auto-generated version number.
+	 So we have to use a hard reference here. -->
+	<version>1.0.0</version>
+
+</project>

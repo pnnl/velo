@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Users</shortname>
+  <description>Delete Users</description>
+  <url>/cat/deleteUsers</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

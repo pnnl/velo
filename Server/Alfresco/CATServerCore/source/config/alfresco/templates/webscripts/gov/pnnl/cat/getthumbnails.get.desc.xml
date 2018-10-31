@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Get thumbnails for folder</shortname>
+  <description>Get all the thumbnails for files in the given folder</description>
+  <url>/cat/thumbnails/{uuid}?{includeSubfolders}&amp;{thumbnailName}&amp;{imagesOnly}&amp;{?startIndex}&amp;{?endIndex}</url>  
+  <format default="atom"/>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

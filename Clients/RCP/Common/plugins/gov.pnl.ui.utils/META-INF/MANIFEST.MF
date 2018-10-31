@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Utils Plug-in
+Bundle-SymbolicName: gov.pnl.ui.utils; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnl.ui.utils.UtilsActivator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ gov.pnnl.cat.logging,
+ org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: gov.pnl.ui.utils,
+ org.eclipse.jdt.internal.debug.ui
+Bundle-Vendor: Pacific Northwest National Laboratory

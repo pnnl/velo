@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="openWithMenu" name="%openWithMenu" schema="schema/openWithMenu.exsd"/>
+   <extension-point id="resourceViewerDropListener" name="Resource Viewer Drop Listener" schema="schema/resourceViewerDropListener.exsd"/>
+   <extension-point id="resourceAction" name="Resource Action" schema="schema/resourceAction.exsd"/>
+   <extension-point id="customPasteBehavior" name="customPasteBehavior" schema="schema/customPasteBehavior.exsd"/>
+   <extension-point id="customDoubleClickBehavior" name="customDoubleClickBehavior" schema="schema/customDoubleClickBehavior.exsd"/>
+   <extension-point id="customCompareBehavior" name="customCompareBehavior" schema="schema/customCompareBehavior.exsd"/>
+   <extension-point id="customDeleteBehavior" name="customDeleteBehavior" schema="schema/customDeleteBehavior.exsd"/>
+   <extension-point id="customChangePasswordBehavior" name="customChangePasswordBehavior" schema="schema/customChangePasswordBehavior.exsd"/>
+
+  <!-- Search extension point definitions -->
+   <extension-point name="Search Pages" id="searchPages" schema="schema/searchPages.exsd"/>
+   <extension-point name="Search Result Sorters" id="searchResultSorters" schema="schema/searchResultSorters.exsd"/>
+   <extension-point name="Search Result View Pages" id="searchResultViewPages" schema="schema/searchResultViewPages.exsd"/>
+   <extension-point id="catSearchPages" name="CAT Search Pages" schema="schema/catSearchPages.exsd"/>
+   <extension-point id="advancedSearchOptions" name="%advancedSearchOptions" schema="schema/advancedSearchOptions.exsd"/>
+   <extension-point id="customSaveAsBehavior" name="customSaveAsBehavior" schema="schema/customSaveAsBehavior.exsd"/>
+   <extension-point id="styledWorkbenchLabelProvider" name="styledWorkbenchLabelProvider" schema="schema/styledWorkbenchLabelProvider.exsd"/>
+   <extension-point id="thumbnailedFileExtension" name="thumbnailedFileExtension" schema="schema/thumbnailedFileExtension.exsd"/>
+   <extension-point id="documentLibraryPerspectiveProvider" name="documentLibraryPerspectiveProvider" schema="schema/documentLibraryPerspectiveProvider.exsd"/>
+   <extension-point id="treeRootProvider" name="treeRootProvider" schema="schema/treeRootProvider.exsd"/>
+   <extension-point id="supportEmailAddressProvider" name="supportEmailAddressProvider" schema="schema/supportEmailAddressProvider.exsd"/>
+   <extension-point id="smartFolderProvider" name="smartFolderProvider" schema="schema/smartFolderProvider.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.AdminDataBrowser"
+            icon="icons/16x16/data.gif"
+            id="gov.pnnl.cat.ui.rcp.perspectives.AdminDataBrowser"
+            name="Admin Data Browser"/>
+            
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.SearchPerspective"
+            icon="icons/16x16/find.gif"
+            id="gov.pnnl.cat.ui.rcp.perspectives.search"
+            name="Search"/> 
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.UsersPerspective"
+            icon="icons/16x16/person.gif"
+            id="gov.pnnl.cat.ui.rcp.perspectives.userperspective"
+            name="Users"/>
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.TeamsPerspective"
+            icon="icons/16x16/team.png"
+            id="gov.pnnl.cat.ui.rcp.perspectives.teamsperspective"
+            name="Teams"/>
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.EditorPerspective"
+            icon="icons/16x16/document_edit.png"
+            id="gov.pnnl.cat.ui.rcp.perspectives.EditorPerspective"
+            name="Text Editor">
+      </perspective>
+      <perspective
+            class="gov.pnnl.cat.ui.rcp.perspectives.DataBrowser"
+            icon="icons/16x16/file-manager.png"
+            id="gov.pnnl.cat.ui.rcp.perspectives.DataBrowser"
+            name="Data Browser">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+       <category
+             id="gov.pnnl.cat.search.category"
+             name="Search"/>
+        <view
+              allowMultiple="true"
+              category="gov.pnnl.cat.search.category"
+              class="gov.pnnl.cat.search.eclipse.search2.internal.ui.SearchResultsView"
+              icon="icons/find.gif"
+              id="gov.pnnl.cat.search.ui.SearchResultsView"
+              name="Search Results">
+        </view>
+       <view
+             allowMultiple="true"
+             category="gov.pnnl.cat.search.category"
+             class="gov.pnnl.cat.search.ui.SearchViewDesigner"
+             icon="icons/find.gif"
+             id="gov.pnnl.cat.search.ui.CatSearchView"
+             name="Search Query"/>     
+       <view
+            allowMultiple="true"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.ui.rcp.views.repositoryexplorer.AdminDataBrowser"
+            icon="icons/16x16/data.gif"
+            id="gov.pnnl.cat.ui.rcp.views.AdminDataBrowser"
+            name="Admin Data Browser"/>        
+      <view
+            allowMultiple="false"
+            category="org.eclipse.ui"
+            class="org.eclipse.ui.ExtensionFactory:progressView"
+            icon="icons/16x16/pview.gif"
+            id="org.eclipse.ui.views.ProgressView"
+            name="Progress"/>
+      <category
+            id="gov.pnnl.cat.ui.rcp.teamsCategory"
+            name="Teams"/>
+      <category
+            id="gov.pnnl.cat.ui.rcp.usersCategory"
+            name="Users"/>
+      <view
+            category="gov.pnnl.cat.ui.rcp.usersCategory"
+            class="gov.pnnl.cat.ui.rcp.views.users.UsersView"
+            icon="icons/16x16/person.gif"
+            id="gov.pnnl.cat.ui.rcp.views.users"
+            name="Users"/>
+      <view
+            category="gov.pnnl.cat.ui.rcp.usersCategory"
+            class="gov.pnnl.cat.ui.rcp.views.users.UserDetailsView"
+            icon="icons/16x16/person.gif"
+            id="gov.pnnl.cat.ui.rcp.views.users.details"
+            name="User Details"/>
+      <view
+            category="gov.pnnl.cat.ui.rcp.teamsCategory"
+            class="gov.pnnl.cat.ui.rcp.views.teams.TeamsView"
+            icon="icons/16x16/team.png"
+            id="gov.pnnl.cat.ui.rcp.views.team"
+            name="Teams"/>
+      <view
+            category="gov.pnnl.cat.ui.rcp.teamsCategory"
+            class="gov.pnnl.cat.ui.rcp.views.teams.TeamDetailsView"
+            icon="icons/16x16/team.png"
+            id="gov.pnnl.cat.ui.rcp.views.team.details"
+            name="Team Details"/>
+      <category
+            id="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            name="Data Management"/>         
+      <view
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.ui.rcp.views.repositoryexplorer.TableExplorerView"
+            icon="icons/16x16/folders.png"
+            id="gov.pnnl.cat.ui.rcp.views.TableExplorerView"
+            name="Folder Contents"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="true"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.ui.rcp.views.preview.PreviewView2"
+            icon="icons/16x16/table_view.png"
+            id="gov.pnnl.cat.ui.rcp.preview"
+            name="Preview Pane">
+      </view>
+      <view
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.ui.rcp.views.databrowser.DataBrowserView"
+            icon="icons/16x16/file-manager.png"
+            id="gov.pnnl.cat.ui.rcp.views.databrowser.DataBrowserView"
+            name="Data Browsing"
+            restorable="true">
+      </view>
+      <view
+            class="gov.pnnl.cat.ui.rcp.views.databrowser.NavigationView"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            id="gov.pnnl.cat.ui.rcp.views.databrowser.NavigationView"
+            name="Navigation">
+      </view>
+      <view
+            class="gov.pnnl.cat.ui.rcp.views.databrowser.ActionsView"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            id="gov.pnnl.cat.ui.rcp.views.databrowser.ActionsView"
+            name="Actions">
+      </view>
+      <view
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.ui.rcp.views.ResourceWebBrowser"
+            icon="icons/16x16/earth2.png"
+            id="gov.pnnl.cat.ui.rcp.views.ResourceWebBrowser"
+            name="Resource Web Browser"
+            restorable="true">
+      </view>
+   </extension>
+    <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="gov.pnnl.cat.ui.rcp.preferences.ViewPreferencePage"
+            id="gov.pnnl.cat.ui.rcp.preferences.ViewPreferencePage"
+            name="View Preferences"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="gov.pnnl.cat.search.basic.preferences.PreferenceInitializer"/>
+      <initializer class="gov.pnnl.cat.search.taxonomy.preferences.PreferenceInitializer"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.actionSets">
+       <actionSet
+             id="gov.pnnl.cat.ui.rcp.blankActionSet"
+             label="Blank Action"
+             visible="true">
+          <action
+                disabledIcon="icons/16x16/blank.gif"
+                icon="icons/16x16/blank.gif"
+                id="gov.pnnl.cat.ui.rcp.blankAction"
+                label="."
+                retarget="true"
+                style="push"
+                toolbarPath="blank"/>
+       </actionSet>
+       <actionSet
+             id="gov.pnnl.cat.ui.rcp.actions.accountMenuActionSet"
+             label="Account Menu"
+             visible="true">
+          <menu
+                id="accountMenu"
+                label="&amp;Account"
+                path="window"/>
+          <action
+                class="gov.pnnl.cat.ui.rcp.views.users.actions.EditMyProfileAction"
+                id="gov.pnnl.cat.ui.rcp.editProfileAction"
+                label="Edit My Profile"
+                menubarPath="accountMenu/"
+                style="push"
+                tooltip="Edit My Profile Information"/>
+          <action
+                class="gov.pnnl.cat.ui.rcp.views.users.actions.ChangeMyPasswordAction"
+                id="gov.pnnl.cat.ui.rcp.changePasswordAction"
+                label="Change My Password"
+                menubarPath="accountMenu/"
+                style="push"
+                tooltip="Change My Password"/>
+       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="gov.pnnl.cat.core.resources.IResource"
+            class="gov.pnnl.cat.ui.rcp.adapters.ResourceAdapterFactory">
+         <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+         <adapter type="gov.pnnl.cat.ui.rcp.views.adapters.ICatWorkbenchAdapter"/>
+         <adapter
+               type="gov.pnnl.cat.core.resources.IResource">
+         </adapter>
+         <adapter
+               type="gov.pnnl.cat.core.resources.IFolder">
+         </adapter>
+         <adapter
+               type="org.eclipse.ui.IActionFilter">
+         </adapter>
+         <adapter
+               type="java.net.URL">
+         </adapter>
+         <adapter type="gov.pnnl.cat.ui.rcp.adapters.ITransferObjectAdapter"/>       
+      </factory>
+      <factory
+            adaptableType="gov.pnnl.cat.ui.rcp.views.repositoryexplorer.treeexplorer.GenericContainer"
+            class="gov.pnnl.cat.ui.rcp.adapters.GenericContainerAdapterFactory">
+         <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+         <adapter type="gov.pnnl.cat.ui.rcp.views.adapters.ICatWorkbenchAdapter"/>
+      </factory>
+      <factory
+            adaptableType="gov.pnnl.cat.ui.rcp.adapters.CATFileIO"
+            class="gov.pnnl.cat.ui.rcp.adapters.CATFileIOAdapterFactory">
+         <adapter type="gov.pnnl.cat.ui.rcp.adapters.ITransferObjectAdapter"/>
+      </factory>
+      <factory
+            adaptableType="gov.pnnl.cat.core.resources.security.IUser"
+            class="gov.pnnl.cat.ui.rcp.adapters.users.UserAdapterFactory">
+         <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+         <adapter type="gov.pnnl.cat.ui.rcp.views.adapters.ICatWorkbenchAdapter"/>
+      </factory>
+      <factory
+            adaptableType="gov.pnnl.cat.core.resources.security.ITeam"
+            class="gov.pnnl.cat.ui.rcp.adapters.teams.TeamAdapterFactory">
+         <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+         <adapter type="gov.pnnl.cat.ui.rcp.views.adapters.ICatWorkbenchAdapter"/>
+      </factory>
+      <factory
+            adaptableType="gov.pnnl.cat.ui.rcp.views.databrowser.model.ISmartFolder"
+            class="gov.pnnl.cat.ui.rcp.views.databrowser.adapters.SmartFolderAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.model.IWorkbenchAdapter">
+         </adapter>
+         <adapter
+               type="gov.pnnl.cat.ui.rcp.views.adapters.ICatWorkbenchAdapter">
+         </adapter>
+      </factory>
+ 
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <!--key   can't get this key to work, the old sequence CTRL+N was already taken and when used opened the 'new' wizard
+            commandId="gov.pnnl.cat.ui.rcp.newfoldercommand"
+            schemeId="gov.pnnl.cat.ui.rcp.default"
+            sequence="M1+M2+N"/-->
+      <!-- COMPLICATED to get key bindings working! Need to use schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" for any non Velo/CAT commands
+      WRT "M1" mentioned below see http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fextension-points%2Forg_eclipse_ui_bindings.html 
+      -->
+      <key
+            commandId="org.eclipse.ui.help.dynamicHelp"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+H">
+      </key>
+      <scheme
+            id="gov.pnnl.cat.ui.rcp.default"
+            name="CAT"/>
+      <key
+            commandId="org.eclipse.ui.edit.findReplace"
+            schemeId="gov.pnnl.cat.ui.rcp.default"
+            sequence="Ctrl+F">
+      </key>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+      name="Search"
+      description="Search Command Category"
+      id="gov.pnnl.cat.search"/>      
+         
+      <category
+            id="gov.pnnl.cat.ui.rcp.category.catacceleratorkeys"
+            name="CAT Accelerator Keys"/>
+        
+     <command
+            categoryId="gov.pnnl.cat.search"
+            defaultHandler="gov.pnnl.cat.search.commands.OpenFileLocation"
+            id="gov.pnnl.cat.search.commands.OpenFileLocation"
+            name="Open File Location"/>       
+            
+      <command
+            categoryId="gov.pnnl.cat.ui.rcp.category.catacceleratorkeys"
+            id="gov.pnnl.cat.ui.rcp.newfoldercommand"
+            name="New Folder Accelerator Key"/>
+      <command
+            id="gov.pnnl.cat.cmd.edit.pasteshortcut"
+            name="Paste Shortcut">
+      </command>
+      <command
+            id="gov.pnnl.cat.cmd.newtab"
+            name="Open In New Tab">
+      </command>
+      <command
+            id="gov.pnnl.cat.cmd.copyurl"
+            name="Copy Download URL">
+      </command>
+      <command
+            id="gov.pnnl.cat.commands.Compare"
+            name="Compare With Each Other">
+      </command>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.openWithMenu">
+      <openwith
+            class="gov.pnnl.cat.ui.rcp.OpenWithActionBrowser"
+            id="gov.pnnl.cat.ui.rcp.openwithbrowser"
+            name="gov.pnnl.cat.ui.rcp.openwithbrowser"/>
+      <openwith
+            class="gov.pnnl.cat.ui.rcp.actions.OpenWithSystemEditor"
+            id="gov.pnnl.cat.ui.rcp.actions.OpenWithSystemEditor"
+            name="gov.pnnl.cat.ui.rcp.actions.OpenWithSystemEditor"/>            
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            canFinishEarly="true"
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.ui.rcp.wizards.NewFolderWizard"
+            descriptionImage="icons/48x48/folder_add.png"
+            hasPages="true"
+            icon="icons/16x16/folder_add.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.NewFolderWizard"
+            name="Folder"
+            project="false"/>
+      <wizard
+            canFinishEarly="false"
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.ui.rcp.wizards.NewTaxonomyWizard"
+            descriptionImage="icons/48x48/taxonomy_add.png"
+            hasPages="true"
+            icon="icons/16x16/taxonomy_add.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.NewTaxonomyWizard"
+            name="%taxonomyWizard.name"
+            project="false"/>
+      <category
+            id="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            name="CAT"/>
+      <wizard
+            canFinishEarly="false"
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.ui.rcp.wizards.NewUserWizard"
+            descriptionImage="icons/48x48/user_add.png"
+            hasPages="true"
+            icon="icons/16x16/user_add.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.NewUserWizard"
+            name="User"
+            project="false"/>
+      <wizard
+            canFinishEarly="false"
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.ui.rcp.wizards.NewTeamWizard"
+            descriptionImage="icons/48x48/team_add.png"
+            hasPages="true"
+            icon="icons/16x16/team_add.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.NewTeamWizard"
+            name="Team"
+            project="false"/>
+      <wizard
+            canFinishEarly="true"
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.ui.rcp.wizards.NewProjectWizard"
+            descriptionImage="icons/48x48/project_add.png"
+            hasPages="true"
+            icon="icons/16x16/project_add.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.NewProjectWizard"
+            name="Project"
+            project="false"/>
+   </extension>
+<extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="gov.pnnl.cat"
+            name="CAT">
+     <wizard
+            category="gov.pnnl.cat"
+            class="gov.pnnl.cat.ui.rcp.wizards.rse.ImportFilesWizard"
+            icon="icons/16x16/folder_into.png"
+            id="gov.pnnl.cat.ui.rcp.wizards.rse.ImportFilesWizard"
+            name="Import Files"/>          
+      <wizard
+            category="gov.pnnl.cat"
+            class="gov.pnnl.cat.ui.rcp.wizards.ImportTaxonomyWizard"
+            icon="icons/16x16/branch.gif"
+            id="gov.pnnl.cat.ui.rcp.wizards.ImportTaxonomyWizard"
+            name="%importTaxonomy.name"/>
+      </category>
+   </extension>
+<extension
+      point="org.eclipse.ui.decorators">
+   <decorator
+         icon="icons/8x8/link_decorator.gif"
+         id="gov.pnnl.cat.ui.rcp.linkDecorator"
+         label="Link Decorator"
+         lightweight="true"
+         location="BOTTOM_LEFT"
+         state="true">
+      <enablement>
+         <objectState
+               name="type"
+               value="link"/>
+      </enablement>
+   </decorator>
+</extension>
+
+<!-- NOTE: we are using a special comparator for property pages (see AbstractCatApplicationWorkbenchAdvisor) so that we
+ can control the sort order (default is alphabetical).  In order for this to work, the first 3 digits of the 
+ property page ID need to be an integer! -->
+<extension
+      point="org.eclipse.ui.propertyPages">
+   <page
+         category="org.eclipse.ui.propertypages.info.file"
+         class="gov.pnnl.cat.ui.rcp.properties.ResourcePropertyPage"
+         id="001gov.pnnl.cat.ui.rcp.properties.ResourcePropertyPage"
+         name="Resource">
+      <enabledWhen>
+         <adapt type="gov.pnnl.cat.core.resources.IResource"/>
+      </enabledWhen>
+   </page>
+   <page
+         category="org.eclipse.ui.propertypages.info.file"
+         class="gov.pnnl.cat.ui.rcp.properties.SecurityPropertyPage"
+         id="003gov.pnnl.cat.ui.rcp.properties.SecurityPropertyPage"
+         name="Permissions">
+      <enabledWhen>
+         <adapt type="gov.pnnl.cat.core.resources.IResource"/>
+      </enabledWhen>
+   </page>   
+   <!-- commenting this out, since it's for developers
+   <page
+         category="org.eclipse.ui.propertypages.info.file"
+         class="gov.pnnl.cat.ui.rcp.properties.AdvancedPropertiesPage"
+         id="gov.pnnl.cat.ui.rcp.properties.advanced"
+         name="Advanced">
+      <enabledWhen>
+         <adapt
+               type="gov.pnnl.cat.core.resources.IResource">
+         </adapt>
+      </enabledWhen>
+   </page>   
+   -->
+   <page
+         category="org.eclipse.ui.propertypages.info.file"
+         class="gov.pnnl.cat.ui.rcp.properties.TargetPropertiesPage"
+         id="002gov.pnnl.cat.ui.rcp.properties.TargetPropertiesPage"
+         name="Link"
+         objectClass="gov.pnnl.cat.core.resources.ILinkedResource">
+      <enabledWhen>
+         <adapt type="gov.pnnl.cat.core.resources.IResource"/>
+      </enabledWhen>
+      <filter
+            name="type"
+            value="link"/>
+   </page>
+
+   <page
+         class="gov.pnnl.cat.ui.rcp.properties.TeamPropertiesPage"
+         id="001gov.pnnl.cat.ui.rcp.properties.TeamPropertiesPage"
+         name="Team Properties"
+         objectClass="gov.pnnl.cat.core.resources.security.ITeam"/>
+   <page
+         class="gov.pnnl.cat.ui.rcp.properties.TeamMemberPropertiesPage"
+         id="002gov.pnnl.cat.ui.rcp.properties.TeamMemberPropertiesPage"
+         name="Member Properties"
+         objectClass="gov.pnnl.cat.core.resources.security.ITeam"/>
+   <page
+         class="gov.pnnl.cat.ui.rcp.properties.UserAccountPropertiesPage"
+         id="002gov.pnnl.cat.ui.rcp.properties.UserAccountPropertiesPage"
+         name="Account"
+         objectClass="gov.pnnl.cat.core.resources.security.IUser">
+   </page>
+   <page
+         class="gov.pnnl.cat.ui.rcp.properties.UserPersonPropertiesPage"
+         id="001gov.pnnl.cat.ui.rcp.properties.UserPersonPropertiesPage"
+         name="Person"
+         objectClass="gov.pnnl.cat.core.resources.security.IUser">
+   </page>
+</extension>
+<extension
+      point="gov.pnnl.cat.ui.rcp.resourceAction">
+   <resourceAction
+         class="gov.pnnl.cat.ui.rcp.actions.resourceActions.DefaultResourceActionBehavior"
+         id="gov.pnnl.cat.ui.rcp.resourceActions.defaultBehavior"
+         priority="1000">
+      <actionType
+            type="copy">
+      </actionType>
+      <actionType
+            type="link">
+      </actionType>
+      <actionType
+            type="move">
+      </actionType>
+      <actionType
+            type="upload">
+      </actionType>
+   </resourceAction>
+</extension>
+
+<extension
+      point="org.eclipse.ui.menus">
+   <menuContribution
+         locationURI="popup:gov.pnnl.cat.search.ui.SearchResultsView?after=open">         
+      <command
+            commandId="gov.pnnl.cat.search.commands.OpenFileLocation"
+            style="push">
+      </command>
+   </menuContribution>      
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=openIn">
+      <command
+            commandId="gov.pnnl.cat.cmd.copyurl"
+            icon="icons/16x16/world_link.png"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.file.saveAs"
+            label="Save As"
+            style="push">
+      </command> 
+      <!--   
+      <command
+            commandId="org.eclipse.ui.file.import"
+            label="Import..."
+            style="push">
+      </command>      
+      <command
+            commandId="org.eclipse.ui.file.export"
+            label="Export..."
+            style="push">
+      </command>
+      -->      
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=cut.ext">
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=cut.ext">
+      <command
+            commandId="org.eclipse.ui.edit.cut"
+            mnemonic="t"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.copy"
+            mnemonic="C"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.paste"
+            mnemonic="P"
+            style="push">
+      </command>
+      <command
+            commandId="gov.pnnl.cat.commands.Compare"
+            label="Compare With Each Other"
+            style="push">
+      </command>
+      <command
+            commandId="gov.pnnl.cat.cmd.edit.pasteshortcut"
+            mnemonic="S"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=selectDelete">
+      <command
+            commandId="org.eclipse.ui.edit.selectAll"
+            mnemonic="A"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.delete"
+            mnemonic="D"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.rename"
+            mnemonic="R"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=properties">
+      <command
+            commandId="org.eclipse.ui.file.properties"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="menu:edit?after=cut.ext">
+      <command
+            commandId="org.eclipse.ui.edit.cut"
+            mnemonic="t"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.copy"
+            mnemonic="C"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.paste"
+            mnemonic="P"
+            style="push">
+      </command>
+      <command
+            commandId="gov.pnnl.cat.cmd.edit.pasteshortcut"
+            mnemonic="S"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="menu:edit?after=selectDelete">
+      <command
+            commandId="org.eclipse.ui.edit.selectAll"
+            mnemonic="A"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.delete"
+            mnemonic="D"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.ui.edit.rename"
+            mnemonic="R"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="menu:file?after=properties">
+      <command
+            commandId="org.eclipse.ui.file.properties"
+            style="push">
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="menu:edit?after=find.ext">
+      <command
+            commandId="org.eclipse.ui.edit.findReplace"
+            mnemonic="F"
+            style="push">
+      </command>
+   </menuContribution>
+</extension>
+<extension
+      point="org.eclipse.ui.handlers">
+          
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.SaveAsHandler"
+         commandId="org.eclipse.ui.file.saveAs">
+      <activeWhen>
+         <and>
+            <with variable="selection">
+               <count value="1" />
+               <iterate operator="and">
+                  <adapt type="gov.pnnl.cat.core.resources.IResource" />
+               </iterate>
+            </with>
+         </and>
+      </activeWhen>          
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.CopyHandler"
+         commandId="org.eclipse.ui.edit.copy">
+      <activeWhen>      
+         <and>
+           <with variable="selection">
+              <count value="+"/>
+              <iterate operator="and">
+                    <adapt type="gov.pnnl.cat.core.resources.IResource" />
+              </iterate>
+           </with>
+         </and>   
+      </activeWhen>      
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.PasteHandler"
+         commandId="org.eclipse.ui.edit.paste">
+      <activeWhen>      
+         <and>
+           <with variable="selection">
+              <count value="+"/>
+              <iterate operator="and">
+                    <adapt type="gov.pnnl.cat.core.resources.IResource" />
+              </iterate>
+           </with>
+           <with variable="activePart">
+               <test
+                     args="paste"
+                     forcePluginActivation="true"
+                     property="gov.pnnl.cat.ui.rcp.expressions.IsPasteAllowedPropertyTester"
+                     value="true">
+               </test>
+           </with>           
+         </and>   
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.CutHandler"
+         commandId="org.eclipse.ui.edit.cut">
+      <activeWhen>      
+         <and>
+           <with variable="selection">
+              <count value="+"/>
+              <iterate operator="and">
+                    <adapt type="gov.pnnl.cat.core.resources.IResource" />
+              </iterate>
+           </with>
+         </and>   
+      </activeWhen>  
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.PasteShortcutHandler"
+         commandId="gov.pnnl.cat.cmd.edit.pasteshortcut">
+      <activeWhen>
+         <and>
+           <with variable="selection">
+              <count value="+"/>
+              <iterate operator="and">
+                    <adapt type="gov.pnnl.cat.core.resources.IResource" />
+              </iterate>
+           </with>
+           <with variable="activePart">
+               <test
+                     args="pasteShortcut"
+                     forcePluginActivation="true"
+                     property="gov.pnnl.cat.ui.rcp.expressions.IsPasteAllowedPropertyTester"
+                     value="true">
+               </test>
+           </with>            
+         </and>
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.RenameHandler"
+         commandId="org.eclipse.ui.edit.rename">        
+      <activeWhen>
+         <and>
+            <with variable="selection">
+               <count value="1" />
+               <iterate operator="and">
+                  <adapt type="gov.pnnl.cat.core.resources.IResource" />
+               </iterate>
+            </with>
+         </and>
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.DeleteHandler"
+         commandId="org.eclipse.ui.edit.delete">
+      <activeWhen>      
+         <and>
+           <with variable="selection">
+              <count value="+"/>
+              <iterate operator="and">
+                    <adapt type="gov.pnnl.cat.core.resources.IResource" />
+              </iterate>
+           </with>
+         </and>   
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.SelectAllHandler"
+         commandId="org.eclipse.ui.edit.selectAll">
+      <activeWhen>
+         <and>
+            <with variable="selection">
+               <iterate operator="and">
+                  <adapt type="gov.pnnl.cat.core.resources.IResource" />
+               </iterate>
+            </with>
+            <with variable="activePart">
+               <test
+                     property="gov.pnnl.cat.ui.rcp.expressions.isResourceTable">
+               </test>
+            </with>
+         </and>
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.OpenInNewTabHandler"
+         commandId="gov.pnnl.cat.cmd.newtab">
+      <activeWhen>
+         <and>
+            <with variable="selection">
+               <iterate operator="and">
+                  <adapt type="gov.pnnl.cat.core.resources.IResource" />
+               </iterate>
+            </with>
+            <with variable="activePart">
+               <and>
+                  <instanceof value="gov.pnnl.cat.ui.rcp.views.repositoryexplorer.ICatExplorerView" />
+               </and>
+            </with>
+         </and>
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.CopyUrlHandler"
+         commandId="gov.pnnl.cat.cmd.copyurl">
+      <activeWhen>
+         <and>
+            <with variable="selection">
+              <count value="1"/>
+               <iterate operator="and">
+                  <adapt  type="gov.pnnl.cat.core.resources.IResource"/>
+               </iterate>
+            </with>
+            <with variable="activePart">
+               <and>
+                  <instanceof value="gov.pnnl.cat.ui.rcp.views.repositoryexplorer.ICatExplorerView"/>
+               </and>
+            </with>
+         </and>
+      </activeWhen>
+   </handler>
+   <handler
+         class="org.eclipse.ui.internal.handlers.PropertyDialogHandler"
+         commandId="org.eclipse.ui.file.properties">
+      <activeWhen>
+         <with variable="selection">
+            <count value="1"/>
+            <iterate operator="and">
+               <adapt  type="gov.pnnl.cat.core.resources.IResource"/>
+            </iterate>
+         </with>
+      </activeWhen>
+   </handler>
+   <handler
+         class="gov.pnnl.cat.ui.rcp.handlers.CompareHandler"
+         commandId="gov.pnnl.cat.commands.Compare">
+      <activeWhen>
+         <and>
+            <with variable="selection">
+               <count value="2"/>
+               <iterate operator="and">
+                  <adapt type="gov.pnnl.cat.core.resources.IFile"/>
+               </iterate>
+            </with>
+         </and>
+      </activeWhen>      
+   </handler>
+</extension>
+<extension
+      point="org.eclipse.core.expressions.definitions">
+   <definition
+         id="isIResource">
+      <with
+            variable="selection">
+         <iterate>
+            <adapt
+                  type="gov.pnnl.cat.core.resources.IResource">
+            </adapt>
+         </iterate>
+      </with>
+   </definition>
+</extension>
+<extension
+      point="org.eclipse.core.expressions.propertyTesters">
+   <propertyTester
+         class="gov.pnnl.cat.ui.rcp.expressions.IsResourceTablePropertyTester"
+         id="gov.pnnl.cat.ui.rcp.expressions.isResourceTable"
+         namespace="gov.pnnl.cat.ui.rcp.expressions"
+         properties="isResourceTable"
+         type="org.eclipse.ui.IWorkbenchPart">
+   </propertyTester>
+   <propertyTester
+         class="gov.pnnl.cat.ui.rcp.expressions.IsPasteAllowedPropertyTester"
+         id="gov.pnnl.cat.ui.rcp.expressions.IsPasteAllowedPropertyTester"
+         namespace="gov.pnnl.cat.ui.rcp.expressions"
+         properties="IsPasteAllowedPropertyTester"
+         type="org.eclipse.ui.IWorkbenchPart">
+   </propertyTester>   
+   <propertyTester
+         class="gov.pnnl.cat.ui.rcp.expressions.HasAspectPropertyTester"
+         id="gov.pnnl.cat.ui.hasAspect"
+         namespace="gov.pnnl.cat.ui"
+         properties="hasAspect"
+         type="gov.pnnl.cat.core.resources.IResource">
+   </propertyTester>
+</extension>
+<extension
+      point="org.eclipse.ui.exportWizards">
+   <category
+         id="gov.pnnl.cat"
+         name="CAT">
+   </category>
+   <wizard
+         category="gov.pnnl.cat"
+         class="gov.pnnl.cat.ui.rcp.wizards.FileExportWizard"
+         icon="icons/16x16/folder.gif"
+         id="gov.pnnl.cat.wizard.exportFiles"
+         name="Local File System">
+         <description>
+         	Export resources to the local file system.
+         </description>
+   </wizard>
+</extension>
+<extension
+      point="org.eclipse.ui.editors">
+   <editor
+         class="gov.pnnl.cat.ui.rcp.editors.ResourceTextEditor"
+         default="false"
+         id="gov.pnnl.cat.ui.rcp.editors.ResourceTextEditor"
+         name="Resource Text Editor"
+         enabledForVelo="true">
+   </editor>
+</extension>
+<extension
+      point="org.eclipse.ui.keywords">
+      <keyword
+            label="Search"
+            id="org.eclipse.search.ui"/>
+ </extension>
+ 
+   <extension
+         point="gov.pnnl.cat.ui.rcp.catSearchPages">
+
+    <page
+          class="gov.pnnl.cat.search.basic.pages.SimpleSearch"
+          icon="icons/16x16/simpleSearch.gif"
+          id="gov.pnnl.cat.search.basic.pages.simpleSearch"
+          label="Simple Search"
+          menuPosition="0"/>        
+      <page
+            class="gov.pnnl.cat.search.advanced.pages.AdvancedSearch"
+            icon="icons/gear_find.gif"
+            id="gov.pnnl.cat.search.advanced.pages.advancedSearch"
+            label="Advanced Search"
+            menuPosition="2"/>
+   </extension>
+   
+      <extension
+            point="gov.pnnl.cat.ui.rcp.searchResultViewPages">
+         <viewPage
+               class="gov.pnnl.cat.search.advanced.results.AdvancedSearchResultPage"
+               id="gov.pnnl.cat.search.advanced.results.AdvancedSearchResultPage"
+               searchResultClass="gov.pnnl.cat.search.advanced.results.AdvancedSearchResult"/>
+       <viewPage
+             class="gov.pnnl.cat.search.basic.results.BasicSearchResultPage"
+             id="gov.pnnl.cat.search.basic.results.BasicSearchResultPage"
+             searchResultClass="gov.pnnl.cat.search.basic.results.BasicSearchResult"/>
+       <viewPage
+             class="gov.pnnl.cat.search.basic.results.BasicClusteredSearchResultPage"
+             id="gov.pnnl.cat.search.basic.results.ClusteredSearchResultPage"
+             searchResultClass="gov.pnnl.cat.search.basic.results.ClusteredSearchResult"/>
+             
+               
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="gov.pnnl.cat.ui.rcp.editors.ResourceFileStoreEditorInputFactory"
+            id="gov.pnnl.cat.ui.rcp.editors.ResourceFileStoreEditorInputFactory">
+      </factory>
+   </extension>
+ 
+</plugin>

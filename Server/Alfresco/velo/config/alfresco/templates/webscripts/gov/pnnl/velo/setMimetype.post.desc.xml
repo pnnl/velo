@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Set Mimetype</shortname>
+  <description>Change the mimetype on a resource</description>
+  <url>/velo/setMimetype?wikiPath={wikiPath}&amp;mimetype={mimetype}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

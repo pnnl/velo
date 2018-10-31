@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="patch.TaxonomyCategoryPatch" class="gov.pnnl.cat.patches.TaxonomyClassifiablePatch" parent="basePatch">
+	    <property name="id"><value>patch.TaxonomyCategoryPatch</value></property>
+	    <property name="description"><value>Converts taxonomies to use a new classification instead of cm:generalclassifiable.</value></property>
+	    <property name="fixesFromSchema"><value>0</value></property>
+	    <property name="fixesToSchema"><value>62</value></property>
+	    <property name="targetSchema"><value>63</value></property>
+	     <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="categoryService">
+    		<ref bean="categoryService"/>
+        </property>
+	</bean>
+
+
+	
+	<bean id="patch.TextTransformPatch" class="gov.pnnl.cat.patches.TextTransformPatch" parent="basePatch">
+	    <property name="id"><value>patch.TextTransformPatch</value></property>
+	    <property name="description"><value>Converts text transforms to new format, to prevent proliferation of folder nodes.</value></property>
+	    <property name="fixesFromSchema"><value>0</value></property>
+	    <property name="fixesToSchema"><value>64</value></property>
+	    <property name="targetSchema"><value>65</value></property>
+	     <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+    		<ref bean="actionService"/>
+        </property>
+	</bean>	
+	
+	<bean id="patch.OwnablePatch" class="gov.pnnl.cat.patches.OwnablePatch" parent="basePatch">
+	    <property name="id"><value>patch.OwnablePatch</value></property>
+	    <property name="description"><value>Makes owner property propagate down the team and user home folder trees.</value></property>
+	    <property name="fixesFromSchema"><value>0</value></property>
+	    <property name="fixesToSchema"><value>64</value></property>
+	    <property name="targetSchema"><value>65</value></property>
+	     <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+    		<ref bean="actionService"/>
+        </property>
+	</bean>	
+
+	<bean id="patch.HashPatch" class="gov.pnnl.cat.patches.HashPatch" parent="basePatch">
+	    <property name="id"><value>patch.HashPatch</value></property>
+	    <property name="description"><value>Calculates the MD5 hash for each content node.</value></property>
+	    <property name="fixesFromSchema"><value>0</value></property>
+	    <property name="fixesToSchema"><value>64</value></property>
+	    <property name="targetSchema"><value>65</value></property>
+	     <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+    		<ref bean="actionService"/>
+        </property>
+	</bean>	
+	<bean id="patch.LinkNamePatch" class="gov.pnnl.cat.patches.LinkNamePatch" parent="basePatch">
+	    <property name="id"><value>patch.LinkNamePatch</value></property>
+	    <property name="description"><value>Change link names to end with .url so they are openable via CIFS</value></property>
+	    <property name="fixesFromSchema"><value>0</value></property>
+	    <property name="fixesToSchema"><value>64</value></property>
+	    <property name="targetSchema"><value>65</value></property>
+	     <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+    		<ref bean="actionService"/>
+        </property>
+	</bean>
+   
+   <bean id="patch.ThumbnailPatch" class="gov.pnnl.cat.patches.ThumbnailPatch" parent="basePatch">
+       <property name="id"><value>patch.ThumbnailPatch</value></property>
+       <property name="description"><value>Change thunbmails from old thumbnailed to new renditioned aspect/assoc</value></property>
+       <property name="fixesFromSchema"><value>0</value></property>
+       <property name="fixesToSchema"><value>4004</value></property>
+       <property name="targetSchema"><value>4005</value></property>
+        <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+         <ref bean="actionService"/>
+        </property>
+   </bean>     
+   
+   <bean id="patch.MimetypePatch" class="gov.pnnl.cat.patches.MimetypePatch" parent="basePatch">
+       <property name="id" value="patch.MimetypePatch" />
+       <property name="description" value="Add all the mimetypes to the database to avoid http://issues.alfresco.com/jira/browse/ALF-6750" />
+        <property name="fixesFromSchema" value="0" />
+        <property name="fixesToSchema" value="4112" />
+        <property name="targetSchema" value="4113" />
+        <property name="force" value="true" />
+       <property name="mimetypeDAO"><ref bean="mimetypeDAO"/></property>
+       <property name="mimetypeService"><ref bean="mimetypeService"/></property>
+   </bean> 
+      	
+</beans>

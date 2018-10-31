@@ -1,0 +1,46 @@
+ *    '$RCSfile$'
+ *
+ *     '$Author: welker $'
+ *       '$Date: 2010-05-05 22:21:26 -0700 (Wed, 05 May 2010) $'
+ *   '$Revision: 24234 $'
+ *
+ *  For Details: http://www.kepler-project.org
+
+
+Description
+-----------
+The ssh package provides classes to execute commands on remote machines
+using an ssh connection. One connection can be used for several commands
+to a remote machine, so password is required at most once (public-key
+authentication is also allowed).
+
+The package allows the following operations:
+ - execute a command (stdout, stderr and exit code are returned after the execution)
+ - copy remote files/dirs to a local place
+ - copy local files/dirs to a remote place
+ - special execution commands
+   - create directory (translated to 'mkdir -p ...' and executed)
+   - delete files with mask (translated to 'rm -rf', but 
+     masking should be explicitely requested as well as recursion, 
+     moreover ., .., / are never allowed)
+
+The LocalExec class allows the same operations for local execution, using
+Java Runtime, with the same interface. Thus, remote and local operations can 
+be transparent within actors.
+
+
+Known actors that use this package
+----------------------------------
+org.kepler.actor.ssh.ExecCmd
+   - to execute a command remotely/locally
+org.kepler.actor.ssh.SshSession
+   - to open an ssh connection (called session) to a remote machine.
+org.kepler.actor.ssh.FileCopier
+   - to copy files/dirs from/to a remote host
+
+Further information for developers
+----------------------------------
+The <FIXME:not_yet_determined>/ssh.pdf technical report describes the goals, tricks,
+class hierarchy and class definitions for this package.
+
+

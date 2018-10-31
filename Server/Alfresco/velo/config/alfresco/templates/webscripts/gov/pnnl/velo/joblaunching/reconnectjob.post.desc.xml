@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Reconnect to a remote job</shortname>
+  <description>Reconnect to a remote job</description>
+  <!-- Parameters passed via json -->
+  <url>/velo/joblaunching/reconnect</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

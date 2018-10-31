@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source/java"/>
+	<classpathentry kind="src" path="source/tests"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jai_codec.jar"/>
+	<classpathentry kind="lib" path="lib/jai_core.jar"/>
+	<classpathentry kind="lib" path="lib/slsa.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-jms_1.1_spec-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/backport-util-concurrent-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/batik-awt-util.jar"/>
+	<classpathentry kind="lib" path="lib/batik-bridge.jar"/>
+	<classpathentry kind="lib" path="lib/batik-css.jar"/>
+	<classpathentry kind="lib" path="lib/batik-dom.jar"/>
+	<classpathentry kind="lib" path="lib/batik-ext.jar"/>
+	<classpathentry kind="lib" path="lib/batik-parser.jar"/>
+	<classpathentry kind="lib" path="lib/batik-gvt.jar"/>
+	<classpathentry kind="lib" path="lib/batik-svg-dom.jar"/>
+	<classpathentry kind="lib" path="lib/batik-script.jar"/>
+	<classpathentry kind="lib" path="lib/batik-util.jar"/>
+	<classpathentry kind="lib" path="lib/batik-xml.jar"/>
+	<classpathentry kind="lib" path="lib/concurrent.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-j2ee-management_1.0_spec-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/iText.jar"/>
+	<classpathentry kind="lib" path="lib/iTextAsian.jar"/>
+	<classpathentry kind="lib" path="lib/iTextAsianCmaps.jar"/>
+	<classpathentry kind="lib" path="lib/iTextHYPH.jar"/>
+	<classpathentry kind="lib" path="lib/itext-hyph-xml.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart.jar"/>
+	<classpathentry kind="lib" path="lib/xbean-spring-2.8.jar"/>
+	<classpathentry kind="lib" path="lib/rome-0.9.jar"/>
+	<classpathentry kind="lib" path="lib/rome-fetcher-0.9.jar"/>
+	<classpathentry kind="lib" path="/CATServerCommon/build/eclipse" sourcepath="/SDK AlfrescoEmbedded/lib-src/alfresco-repository-src.zip"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/org.springframework.jms-3.0.0.RELEASE.jar" sourcepath="lib/org.springframework.jms-sources-3.0.0.RELEASE.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SDKAlfrescoEmbedded"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.1.1.jar" sourcepath="lib/src/jackson-databind-2.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/commons-configuration-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/activemq-all-5.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/activemq-pool-5.9.0.jar" sourcepath="lib/src/activemq-parent-5.9.0-source-release.zip"/>
+	<classpathentry kind="lib" path="lib/activemq-jms-pool-5.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-cache-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gov.pnnl.velo.commons"/>
+	<classpathentry exported="true" kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="output" path="build/eclipse"/>
+</classpath>

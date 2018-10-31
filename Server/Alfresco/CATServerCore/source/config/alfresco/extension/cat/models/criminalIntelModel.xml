@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Definition of new Model -->
+<model name="criminal:model" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+   <!-- Optional meta-data about the model -->   
+   <description>Criminal Intel Model</description>
+   <version>1.0</version>
+
+   <!-- Imports are required to allow references to definitions in other models -->   
+   <imports>
+      <!-- Import Alfresco Dictionary Definitions -->
+      <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+      <!-- Import Alfresco Content Domain Model Definitions -->
+      <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+   </imports>
+
+   <!-- Introduction of new namespaces defined by this model -->
+   <!-- NOTE: The following namespace my.new.model should be changed to reflect your own namespace -->
+   <namespaces>
+      <namespace uri="http://www.pnl.gov/cat/model/criminal/1.0" prefix="criminal"/>
+   </namespaces>
+   
+   <constraints>
+		<constraint name="criminal:materialTypeConstraint" type="gov.pnnl.cat.criminalintel.MaterialTypeConstraint">
+   			<!-- the constraint implementation will use the IntelTypeBean's properties to test -->
+		</constraint>
+		<constraint name="criminal:securityLevelConstraint" type="gov.pnnl.cat.criminalintel.SecurityLevelConstraint">
+   			<!-- the constraint implementation will use the IntelTypeBean's properties to test -->
+		</constraint>
+ 	</constraints>
+ 	
+   <aspects>
+      <aspect name="criminal:criminalIntelData">
+      <title>Criminal Intelligence Data</title>
+      <properties>
+        <property name="criminal:materialType">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+          	<constraints>
+				<constraint ref="criminal:materialTypeConstraint"/>
+			</constraints>
+        </property>
+        <property name="criminal:securityLevel">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+          	<constraints>
+				<constraint ref="criminal:securityLevelConstraint"/>
+			</constraints>
+        </property>
+        <property name="criminal:expireDate">
+          <type>d:datetime</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="criminal:justificationComment">
+          <type>d:text</type>
+          <mandatory>false</mandatory>
+        </property>
+        <property name="criminal:justificationDate">
+          <type>d:datetime</type>
+          <mandatory>false</mandatory>
+        </property>
+        <property name="criminal:justificationUser">
+          <type>d:text</type>
+          <mandatory>false</mandatory>
+        </property>
+      </properties>
+    </aspect>
+    
+    <aspect name="criminal:criminalIntelDataRemoved">
+      <title>Previously marked as Criminal Intel</title>
+      <properties>
+        <property name="criminal:removedReason">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="criminal:removedDate">
+          <type>d:datetime</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="criminal:removedUser">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+      </properties>
+    </aspect>
+    
+   </aspects>
+   
+</model>

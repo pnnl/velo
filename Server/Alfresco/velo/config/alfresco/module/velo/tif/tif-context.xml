@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+ 
+  
+  <bean id="veloRegistryProvider" class="gov.pnnl.velo.tif.service.impl.RegistryConfigFileProviderDefault">
+    <property name="scriptsDir" value="WEB-INF/classes/alfresco/module/velo/tif/scripts"/>
+    <property name="codesDir" value="WEB-INF/classes/alfresco/module/velo/tif/codes"/>
+    <property name="machinesDir" value="WEB-INF/classes/alfresco/module/velo/tif/machines"/>
+    <property name="codeRegistry" ref="codeRegistry"/>
+    <property name="machineRegistry" ref="machineRegistry"/>
+    <property name="scriptRegistry" ref="scriptRegistry"/>
+  </bean>
+  
+  <bean id="registryBootstrap" class="gov.pnnl.velo.tif.service.impl.RegistryBootstrapAlfresco">
+     <property name="codeRegistry" ref="codeRegistry"/>
+     <property name="machineRegistry" ref="machineRegistry"/>
+     <property name="scriptRegistry" ref="scriptRegistry"/>
+     <property name="transactionService" ref="transactionService"/>
+  </bean>
+  
+  <!-- 
+  =====================================================================
+        beans that implement interfaces to inject into ServiceLocator
+  ===================================================================== 
+  -->
+  
+  <bean id="serviceLocator" class="gov.pnnl.velo.tif.service.TifServiceLocator">
+    <property name="codeRegistry" ref="codeRegistry"/>
+    <property name="machineRegistry" ref="machineRegistry"/>
+    <property name="scriptRegistry" ref="scriptRegistry"/>
+    <property name="jobLaunchingService" ref="jobLaunchingService"/>
+    <property name="jobConfigService" ref="jobConfigService"/>
+    <property name="veloWorkspace" ref="veloWorkspace"/>
+    <property name="credentialsPrompter" ref="credentialsPrompter"/>
+    <property name="cmsService" ref="CmsService"/>    
+  </bean>
+  
+  <bean id="cmsService" class="gov.pnnl.velo.tif.service.impl.CmsServiceVeloServer">
+        <property name="namespaceService" ref="NamespaceService" />
+      <property name="nodeService" ref="NodeService" />
+      <property name="contentService" ref="ContentService" />
+      <property name="searchService" ref="SearchService" />
+      <property name="transactionService" ref="transactionService" />
+      <property name="mimetypeService" ref="mimetypeService" />
+      <property name="copyService" ref="copyService"/>
+      <property name="authorityService" ref="authorityService" />
+      <property name="permissionService" ref="permissionService" />
+      <property name="ownableService" ref="ownableService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />      
+      <property name="nodeUtils" ref="nodeUtils" />      
+      <property name="dictionaryService" ref="dictionaryService" />      
+      <property name="fileFolderService" ref="FileFolderService" />      
+      <property name="versionService" ref="versionService" />
+      <property name="authenticationService" ref="AuthenticationService" />
+      <property name="personService" ref="personService" />
+  
+      <property name="createUpdateResourcesWebService" ref="webscript.gov.pnnl.cat.createUpdateResources.post" />
+      <property name="deleteWebService" ref="webscript.gov.pnnl.cat.delete.post" />
+      <property name="isIdenticalWebService" ref="webscript.gov.pnnl.cat.isIdentical.get" />
+      <property name="getChildrenWebService" ref="webscript.gov.pnnl.cat.getChildren.get" />
+  
+  </bean>
+  
+    <!-- CmsService wraps all of the alfrescoCmsService methods in a transaction -->
+    <bean id="CmsService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>gov.pnnl.velo.tif.service.CmsService</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="cmsService"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="CmsService_transaction"/>
+            </list>
+        </property>
+    </bean>
+  
+     <bean id="CmsService_transaction" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">${server.transaction.mode.default}</prop>
+            </props>
+        </property>
+    </bean>
+  
+  <bean id="veloWorkspace" class="gov.pnnl.velo.tif.service.impl.VeloWorkspaceAlfresco" />
+  <bean id="jobConfigService" class="gov.pnnl.velo.tif.service.impl.JobConfigServiceDefault" />
+  <bean id="credentialsPrompter" class="gov.pnnl.velo.tif.service.impl.CredentialsPrompterAlfresco" />
+  
+  <bean id="codeRegistry" class="gov.pnnl.velo.tif.service.impl.CodeRegistryAlfresco">
+    <property name="nodeUtils" ref="nodeUtils" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="contentService" ref="contentService" />
+  </bean>
+  
+  <bean id="machineRegistry" class="gov.pnnl.velo.tif.service.impl.MachineRegistryAlfresco">
+    <property name="nodeUtils" ref="nodeUtils" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="contentService" ref="contentService" />
+  </bean>
+
+  <bean id="scriptRegistry" class="gov.pnnl.velo.tif.service.impl.ScriptRegistryAlfresco">
+  <property name="nodeUtils" ref="nodeUtils" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="contentService" ref="contentService" />
+  </bean>
+  
+  <bean id="jobLaunchingService" class="gov.pnnl.velo.tif.service.impl.JobLaunchServiceVelo" init-method="init">  
+  	<property name="jobMonitorThread" ref="jobMonitorThread"/>
+  </bean>
+  
+  <bean id="jobMonitorThread" class="gov.pnnl.velo.tif.service.impl.JobMonitoringThread">
+  	<property name="runningJobThreadPool" ref="runningJobThreadPool"/>
+  	<property name="completedJobThreadPool" ref="completedJobThreadPool"/>
+  	<property name="cmsService" ref="CmsService"/> 
+  </bean>
+    
+  <!-- increase pool-sizes depending on the number of cores on server this code is running on -->
+  <task:scheduler id="runningJobThreadPool" pool-size="10" />
+  <task:scheduler id="completedJobThreadPool" pool-size="10" />
+  
+  <!-- webscripts -->
+  <bean id="webscript.gov.pnnl.velo.joblaunching.launchjob.post"
+      class="gov.pnnl.velo.tif.webscripts.LaunchJobWebScript" parent="velowebscript">
+  	<property name="jobLaunchingService" ref="jobLaunchingService"/>
+  </bean>
+
+  <bean id="webscript.gov.pnnl.velo.joblaunching.killjob.post"
+      class="gov.pnnl.velo.tif.webscripts.KillJobWebScript" parent="velowebscript">
+  	<property name="jobLaunchingService" ref="jobLaunchingService"/>
+  </bean>
+  
+  <bean id="webscript.gov.pnnl.velo.joblaunching.jobstatus.post"
+      class="gov.pnnl.velo.tif.webscripts.JobStatusWebScript" parent="velowebscript">
+  	<property name="jobLaunchingService" ref="jobLaunchingService"/>
+  </bean>
+  
+    <bean id="webscript.gov.pnnl.velo.joblaunching.reconnectjob.post"
+      class="gov.pnnl.velo.tif.webscripts.ReconnectJobWebScript" parent="velowebscript">
+  	<property name="jobLaunchingService" ref="jobLaunchingService"/>
+  </bean>
+  
+  <bean id="webscript.gov.pnnl.velo.joblaunching.checkSessionCache.post"
+      class="gov.pnnl.velo.tif.webscripts.CheckSshSessionCache" parent="velowebscript">
+  </bean>
+  
+  <bean id="webscript.gov.pnnl.velo.joblaunching.jobWebScript.post"
+      class="gov.pnnl.velo.tif.webscripts.JobWebScript" parent="velowebscript">
+  </bean>
+  <bean id="webscript.gov.pnnl.velo.joblaunching.jobWebScript.put"
+      class="gov.pnnl.velo.tif.webscripts.JobWebScript" parent="velowebscript">
+  </bean>
+  <bean id="webscript.gov.pnnl.velo.joblaunching.jobWebScript.get"
+      class="gov.pnnl.velo.tif.webscripts.JobWebScript" parent="velowebscript">
+  </bean>
+  <bean id="webscript.gov.pnnl.velo.joblaunching.jobWebScript.delete"
+      class="gov.pnnl.velo.tif.webscripts.JobWebScript" parent="velowebscript">
+  </bean>
+    
+  <bean id="jobHandlerVeloServerDefault" class="gov.pnnl.velo.tif.jobhandlers.JobHandlerVeloServerDefault" scope="prototype">
+    <property name="nodeService" ref="nodeService" />
+    <property name="contentService" ref="contentService" />
+  </bean>
+</beans>

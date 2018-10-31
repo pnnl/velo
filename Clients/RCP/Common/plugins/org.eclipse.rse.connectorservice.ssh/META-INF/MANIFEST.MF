@@ -1,0 +1,119 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.connectorservice.ssh; singleton:=
+ true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.connectorservice.ss
+ h";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.connectorservice.ssh.Activa
+ tor
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.rse.services.ssh;
+ bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.services;bundle-versio
+ n="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)"
+ ,org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)",org.eclipse.ui,com
+ .jcraft.jsch;bundle-version="[0.1.31,1.0.0)",org.eclipse.jsch.core;bu
+ ndle-version="[1.0.0,2.0.0)"
+Export-Package: org.eclipse.rse.internal.connectorservice.ssh;x-friend
+ s:="org.eclipse.rse.subsystems.files.ssh,org.eclipse.rse.subsystems.s
+ hells.ssh"
+Bundle-Version: 2.1.300.201205062159
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/ISshSubSystem.clas
+ s
+SHA1-Digest: iD6HTAY96Bv2/ZsZKWuVzQZx2kw=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e.class
+SHA1-Digest: kC4V+OScvN8OXeNhNNfiSzrJBJk=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/ISshConstants.clas
+ s
+SHA1-Digest: Ewej/JAkw2oNuCo4I4cpiABRJZE=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ eManager.class
+SHA1-Digest: JGhR7gfaJEVp5hDtpL8AhzRArgg=
+
+Name: icons/full/obj16/systemcommands_obj.gif
+SHA1-Digest: pRQl9W/TXtPvQTgJovHBA4qYDGk=
+
+Name: icons/full/wizban/keylock.gif
+SHA1-Digest: v9wBYZ27Nx7hpfW4mcdtMPw8JSM=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/Activator.class
+SHA1-Digest: 5chrpXn7HxPGss44wQvHNDnRDC8=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$SessionLostHandler.class
+SHA1-Digest: s8E6oJVgydTy6Bbmos9AE/pJDa0=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$MyUserInfo$1.class
+SHA1-Digest: 2d3xpWB7nKp1fm08MzeESIn/eqc=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$MyUserInfo$2.class
+SHA1-Digest: OI0pbfl76NBEZoiBTK4lf7rIqBU=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$MyUserInfo$3.class
+SHA1-Digest: jYu9AG/EMeU5a3ytXMFw5oAeKEI=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$MyUserInfo$4.class
+SHA1-Digest: Nxr3ybH4hci9rI+dSfew5DHh2qw=
+
+Name: plugin.properties
+SHA1-Digest: HlDO/J5t9fow0WfU6uzaV3a/Osw=
+
+Name: icons/full/obj16/systemcommandslive_obj.gif
+SHA1-Digest: BkgbadVkpNlspnr/U9OG+Bx9abE=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.connectorservice.s
+ sh/pom.xml
+SHA1-Digest: mc4fI2f1y0SnG06xePUGGNDP2EU=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorResour
+ ces.class
+SHA1-Digest: rXVKrRhftE+E1OL1pOEPPuSrCtg=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/UserValidationDial
+ og.class
+SHA1-Digest: SzJ0T0BY6fanlwghHiBUg2yRXTM=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/KeyboardInteractiv
+ eDialog.class
+SHA1-Digest: DydUWKdmCU8v0DjBa76ZyLZbdCQ=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.connectorservice.s
+ sh/pom.properties
+SHA1-Digest: pKl6c1DmZ23iWk2Rf3dR/1AQ1xY=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorResour
+ ces.properties
+SHA1-Digest: Xu3YBw5B/sbHgJreQ9vvL7czxo0=
+
+Name: plugin.xml
+SHA1-Digest: rU19kmU17fhSKU64MKKS+5o8aZE=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/SshConnectorServic
+ e$MyUserInfo.class
+SHA1-Digest: 2iQS1BGw547ZWqQGd/nEh0qqloE=
+
+Name: org/eclipse/rse/internal/connectorservice/ssh/UserValidationDial
+ og$1.class
+SHA1-Digest: iVEaBFR4Kc6xUz04ybsgsdsIiFs=
+

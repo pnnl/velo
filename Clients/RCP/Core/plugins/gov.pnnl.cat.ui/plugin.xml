@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="resourceImage" name="Resource Image" schema="schema/resourceImage.exsd"/>
+   
+   <!-- The UI password provider for Eclipse's secure storage (needed to store proxy settings)-->
+   <extension
+         id="org.eclipse.equinox.security.ui.defaultpasswordprovider"
+         name="VeloPasswordProvider"
+         point="org.eclipse.equinox.security.secureStorage">
+      <provider
+            class="gov.pnnl.cat.ui.common.rcp.VeloPasswordProvider"
+            description="The UI password provider for Eclipse's secure storage (needed to store proxy settings)"
+            priority="7">
+      </provider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.rse.core.modelInitializers">
+      <modelInitializer
+            class="gov.pnnl.cat.ui.common.rcp.RSEMachineConnectionInitializer"
+            type="workspace">
+      </modelInitializer>
+   </extension>
+ 
+</plugin>

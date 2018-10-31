@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         id="jwcal_application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.javawiki.calendar.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+   </extension>
+   <extension
+         id="jw_calendar"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.javawiki.calendar.jwcal_application"
+            name="jw_calendar"/>
+   </extension>
+
+</plugin>

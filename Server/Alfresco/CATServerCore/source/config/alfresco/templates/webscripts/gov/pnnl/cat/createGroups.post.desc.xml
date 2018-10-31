@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Groups</shortname>
+  <description>Create Groups</description>
+  <url>/cat/createGroups</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

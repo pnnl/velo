@@ -1,0 +1,14 @@
+<webscript>
+  <shortname>Get Preview</shortname>
+  <description>Get the preview for a single resource.  If the resource is an image, it will return
+  a thumbnail or the image itself if the thumbnail could not be created.  If the resource has a text
+  transform, it will return the text.  Otherwise, it will return "No Preview Available".  Preview will
+  be returned in json format:
+  {"preview":"No preview available.","image":false}
+  </description>
+  <url>/cat/getPreview?uuid={uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

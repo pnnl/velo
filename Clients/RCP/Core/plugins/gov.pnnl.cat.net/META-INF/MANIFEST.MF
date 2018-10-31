@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Network Connection
+Bundle-SymbolicName: gov.pnnl.cat.net
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.net.VeloNetworkPlugin
+Bundle-Vendor: Pacific Northwest National Laboratory
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources,
+ gov.pnnl.cat.logging,
+ org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: gov.pnnl.cat.net
+Bundle-ClassPath: net.jar,
+ .

@@ -1,0 +1,41 @@
+Steps to create a new web service in Alfresco:
+
+1) Fix the CAT Server Build/local-build.properties file to use local values
+
+2) Make a wsdl file.  Either copy one of the alfresco wsdls and edit accordingly
+   (which is easier if you are using mostly the same objects), or make a new wsdl.
+
+	TODO: do we need a nice wsdl editor?
+	TODO: if we decide to make wsdl from scratch, is wsdl2java ant task worth it?
+	
+3) Generate server side code.
+	a) Create a new ant task to generate your code (copy "gen-user-service-server" task
+	   and modify accordingly)
+	b) Add your task to the "gen-all-service-servers" depends list
+	c) Run your task
+	
+4) Modify the server-config.wsdd file to add your new web service
+	a) Copy <service name="UserService"...> element (at the bottom of the file) and paste after closing </service> tag
+	b) On the pasted <service> delete everything below <!-- generated below here -->  to the end of the </service> tag
+	c) Copy everything inside the <service> tag in your deploy.wsdd file in your service's 
+	   generated directory and past it below the <!-- generated below here -->  line in 
+	   server-config.wsdd
+    d) modify everything above the <!-- generated below here --> comment to match your new wsdl
+	
+5) Add your service bean declaration(s) to source/config/web-services-application-context.xml.  
+   Make sure if you copy an Alfresco service that uses a query cache, that you create your own 
+   cache bean.
+	
+6) Edit your web service implementation code to work with the generated code.
+
+7) Generate client side code
+	a) create ant task in CAT Client Web Service project
+	   (copy "gen-user-service-client" task and modify accordingly)
+	b) Add your task to the "gen-all-service-client" depends list
+	
+8) Edit AlfrescoWebServiceFactory to add your new web service.
+	
+9) Deploy your server files to TOMCAT and your client files to CAT
+   a) Run CAT Server Build/build.xml deploy target (if starting from scratch)
+   b) Run CAT Server Build/build.xml deploy-incremental target (if you only
+      made a few code changes - this will not start from clean build)

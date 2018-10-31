@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+    
+   <!-- Rules Service -->
+   
+   <bean id="ruleService" class="org.alfresco.repo.rule.RuleServiceImpl" init-method="init">
+        <property name="nodeService" ref="NodeService"/>
+        <property name="runtimeNodeService" ref="nodeService"/>
+        <property name="copyService" ref="copyService"/>
+        <property name="actionService" ref="ActionService"/>
+        <property name="runtimeActionService" ref="actionService"/>
+        <property name="dictionaryService" ref="dictionaryService"/>
+        <property name="policyComponent" ref="policyComponent"/>
+        <property name="permissionService" ref="permissionService"/>
+	    <property name="nodeRulesCache" ref="nodeRulesCache"/>
+	    
+	    <!-- Velo Change:  make rules able to be disabled via a parameter -->
+        <property name="rulesDisabled" value="${rules.disabled}"/>
+   </bean>
+</beans>

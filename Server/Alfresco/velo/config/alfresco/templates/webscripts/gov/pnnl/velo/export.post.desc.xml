@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Export nodes to file system</shortname>
+  <description>Export nodes recursively to file system local to alfresco</description>
+  <url>/velo/export?wikiNodePath={wikiPath}&amp;destination={destination}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

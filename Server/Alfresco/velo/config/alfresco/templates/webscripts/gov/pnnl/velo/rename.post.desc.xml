@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Rename Resource</shortname>
+  <description>Rename Resource</description>
+  <url>/velo/rename?wikiPath={wikiPath}&amp;newName={newName}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

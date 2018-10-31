@@ -1,0 +1,11 @@
+<!-- This web script is meant to feed the right size of a scalable file browser, where the right side shows only
+file contents (no folder) but the files are pageable since the list could be very large. -->
+<webscript>
+  <shortname>Get File Children</shortname>
+  <description>Get the file children in a way </description>
+  <url>/landingPage/getFileChildren?uuid={uuid}&amp;pageNumber={?pageNumber}&amp;maxItems={?maxItems}&amp;sortByProp={?sortByProp}&amp;order={?order}</url>
+  <authentication>guest</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

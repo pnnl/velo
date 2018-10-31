@@ -1,0 +1,23 @@
+#
+# Server properties
+#
+hostname=munky
+http.port=8082
+
+jms.port=61616
+
+#
+# Generated properties
+#
+http.url=http://${hostname}:${http.port}
+http.url.alfresco = ${http.url}/alfresco
+jms.url=http://${hostname}:${jms.port}
+
+
+# Required by AlfrescoWebserviceFactory
+webservice.location=${http.url.alfresco}/api
+
+# Required to distinguish servers if you have multiple
+# alfrescos running on the same machine
+notification.server.id=alfresco
+

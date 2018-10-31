@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<!-- Note that 0.23.0 failed - see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=471608#c9 -->
+		<tycho-version>0.22.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+     	<!-- Properties can be overridden from environment variables in Jenkins -->
+		<p2.dir>${env.WORKSPACE/p2}</p2.dir>
+		<p2.remote.site>https://maven.pnnl.gov/artifactory/p2-velo-rcp</p2.remote.site>
+		<project.name>Velo</project.name>
+		
+	</properties>
+
+	<!-- Maven's a piece of crap - apparently you have to set these explicitly 
+		because if you refer to the exact same properties you just defined above, 
+		it's too stupid to resolve, so it throws errors -->
+	<groupId>gov.pnnl.velo</groupId>
+	<artifactId>build.master</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<build>
+		<!-- Activate plugins -->
+		<plugins>
+			<!-- use tycho build extensions -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-versions-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+
+				<!-- specify the target platform to use -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<target>
+							<artifact>
+								<groupId>gov.pnnl.velo</groupId>
+								<artifactId>build.targetplatform</artifactId>
+							     <!-- Note that the target platform CAN'T have a dynamically generated version (set via tycho set-versions plugin)
+	                             because the set-versions plugin will not update the master plugin configuration to include the auto-generated version number.
+	                             So we have to use a hard reference here. -->
+								<version>1.0.0</version>
+								<relativePath>../build.targetplatform</relativePath>
+							</artifact>
+						</target>
+						<environments>
+							<environment>
+								<os>win32</os>
+								<ws>win32</ws>
+								<arch>x86_64</arch>
+							</environment>					
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment>
+								<os>macosx</os>
+								<ws>cocoa</ws>
+								<arch>x86_64</arch>
+							</environment>							  
+						</environments>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+	<modules>
+		<!-- First include the plugin/feature builds -->
+		<module>../build.plugins</module>
+
+		<!-- Then the product build -->
+		<module>../build.product</module>
+
+		<!-- Then the target platform -->
+		<module>../build.targetplatform</module>
+	</modules>
+</project>

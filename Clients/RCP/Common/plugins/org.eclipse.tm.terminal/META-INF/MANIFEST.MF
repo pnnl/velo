@@ -1,0 +1,483 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.tm.terminal; singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="terminal/plugins/org.eclipse.tm.terminal";commi
+ tId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.tm.internal.terminal.control.impl.Termin
+ alPlugin
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.ui
+Bundle-Version: 3.2.100.201305201712
+Export-Package: org.eclipse.tm.internal.terminal.connector;x-friends:=
+ "org.eclipse.tm.terminal.test",org.eclipse.tm.internal.terminal.contr
+ ol;x-friends:="org.eclipse.tm.terminal.view",org.eclipse.tm.internal.
+ terminal.control.actions;x-friends:="org.eclipse.tm.terminal.view",or
+ g.eclipse.tm.internal.terminal.control.impl;x-friends:="org.eclipse.t
+ m.terminal.test",org.eclipse.tm.internal.terminal.emulator;x-friends:
+ ="org.eclipse.tm.terminal.test",org.eclipse.tm.internal.terminal.mode
+ l;x-friends:="org.eclipse.tm.terminal.test",org.eclipse.tm.internal.t
+ erminal.preferences;x-friends:="org.eclipse.tm.terminal.view",org.ecl
+ ipse.tm.internal.terminal.provisional.api; x-friends:="org.eclipse.tm
+ .terminal.serial,  org.eclipse.tm.terminal.ssh,  org.eclipse.tm.termi
+ nal.telnet,  org.eclipse.tm.terminal.local,  org.eclipse.tm.terminal.
+ view,  org.eclipse.tm.terminal.test",org.eclipse.tm.internal.terminal
+ .provisional.api.provider; x-friends:="org.eclipse.tm.terminal.serial
+ ,  org.eclipse.tm.terminal.ssh,  org.eclipse.tm.terminal.telnet,  org
+ .eclipse.tm.terminal.local,  org.eclipse.tm.terminal.test",org.eclips
+ e.tm.internal.terminal.textcanvas;x-friends:="org.eclipse.tm.terminal
+ .test",org.eclipse.tm.terminal.model
+Build-Jdk: 1.6.0
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/TerminalConnect
+ orExtension.class
+SHA1-Digest: q3h6SVxE6s9gmnfqvl2H7uKvMag=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/Logger.class
+SHA1-Digest: fbtk12TXQaqSVxEvIsl7M1tlA5Q=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/AbstractTermina
+ lAction.class
+SHA1-Digest: o9FUXqkkpjMi2lsSr1cZCXSbqeY=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/AbstractSetting
+ sPage.class
+SHA1-Digest: zw1K/PiXcYZGdEgCOkNlJ4aNDVw=
+
+Name: org/eclipse/tm/internal/terminal/model/ISnapshotChanges.class
+SHA1-Digest: vtX6Odsonn+kIgp9MmszQsudOHA=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/ITerminalContro
+ l.class
+SHA1-Digest: FcRVneOxBpvE+4CYOWQu7bH/gM8=
+
+Name: org/eclipse/tm/internal/terminal/preferences/TerminalPreferenceP
+ age.class
+SHA1-Digest: BxD/nseLacUFZRI4Y2No+o0NMYw=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/ImageConsts.cla
+ ss
+SHA1-Digest: dJ8vEcOuvlU/kIYsnQEU6MJ4q4Y=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalToRemoteInjec
+ tionOutputStream$TerminalFilterOutputStream.class
+SHA1-Digest: XC341HNVzHb3r7C3OtwvzFYSU4k=
+
+Name: org/eclipse/tm/internal/terminal/model/TerminalTextDataFastScrol
+ l.class
+SHA1-Digest: /DyZXzLVpPAO/GtJsMsFI5kqZIE=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalConnector.cla
+ ss
+SHA1-Digest: Os8NUjAxJlyy+XwGvY4cCEc1pMY=
+
+Name: org/eclipse/tm/internal/terminal/control/CommandInputFieldWithHi
+ story$Proposal.class
+SHA1-Digest: b+h0aeFdPx9NxRSujXlfXEKyqQs=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$4
+ .class
+SHA1-Digest: lbbBOBH7YxyvHP7bWRCOsbiITe8=
+
+Name: org/eclipse/tm/internal/terminal/model/SnapshotChanges.class
+SHA1-Digest: a/GZPJjWdmWJmQshnX83nl8Jw48=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalInputStrea
+ m$BoundedByteBuffer.class
+SHA1-Digest: jvbHxDxosvWTCapsk0sF0geaNyg=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalConnector$1.c
+ lass
+SHA1-Digest: AwG9assjr28Utf+/4g0EU8Yq+F8=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/ILinelRenderer.class
+SHA1-Digest: VhLqMOvo6vPt/FgRVGx9ejpPLIo=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas$2.class
+SHA1-Digest: AsPeFonaWqablQvLB+HHZn1x3iA=
+
+Name: README.txt
+SHA1-Digest: iAPclk7SG5N/tMFYhn+7cx4tuGI=
+
+Name: org/eclipse/tm/terminal/model/StyleColor.class
+SHA1-Digest: 72bb+eQXJUCcEnVXXdhZVMC2MIs=
+
+Name: about.properties
+SHA1-Digest: XFWmHNSoMxOOBziT/NS8EObhEv4=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/VirtualCanvas$1.clas
+ s
+SHA1-Digest: tPvvMtYR8iUsY3FvM0VGslhAM3A=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalInputStrea
+ m$TerminalOutputStream.class
+SHA1-Digest: nvmVHq0Aa7yy1Lkw1mbS/g/Z5Fw=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/ITerminalConnec
+ tor.class
+SHA1-Digest: cWVa6ezdys46xcuPF1QlrWzn9xs=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/GridCanvas$1.class
+SHA1-Digest: T6vzkTNtm3Kmc0GMfVakVq5P+F8=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/provider/Termin
+ alConnectorImpl.class
+SHA1-Digest: mgDysu093VIh9A50rVs56fihH8k=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/ISettingsStore.
+ class
+SHA1-Digest: coplkPhiOmNtg2OOs40tNQTg3kQ=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/TerminalConnect
+ orExtension$1.class
+SHA1-Digest: VLBRt1aWr1bBQ49o5iIhHMDJ0Uo=
+
+Name: org/eclipse/tm/internal/terminal/control/CommandInputFieldWithHi
+ story$FieldAssist.class
+SHA1-Digest: WQvHCR2Qw/b2XMNOPFEJncJiOWQ=
+
+Name: org/eclipse/tm/terminal/model/ITerminalTextDataSnapshot$Snapshot
+ OutOfDateListener.class
+SHA1-Digest: Tbz/JqD127PKnzlW+XQD7Lr5JWk=
+
+Name: org/eclipse/tm/terminal/model/ITerminalTextDataSnapshot.class
+SHA1-Digest: cDMycNozdVUKtOBOj7aNy32/0hQ=
+
+Name: org/eclipse/tm/internal/terminal/emulator/LoggingOutputStream.cl
+ ass
+SHA1-Digest: aFlxLoV1+CzsjC+SqZM1EWWUzVk=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/TerminalState.c
+ lass
+SHA1-Digest: Mqz+dlRQWMEP3Xd/JXkme7BHqtw=
+
+Name: icons/elcl16/clear_co.gif
+SHA1-Digest: VlQe11EC8Oaogw6cJZ8novJsO8o=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$T
+ erminalFocusListener.class
+SHA1-Digest: VsJyHTRnA3nPEADQb1P8+YEGAhA=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$1
+ .class
+SHA1-Digest: 3fN8RwRzmeYO4v+oBJN80/i1Mfs=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/PreferenceSetti
+ ngStore.class
+SHA1-Digest: F1Rl42nC8RK/GMzBfdV6lDBgrHE=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/ITextCanvasModelList
+ ener.class
+SHA1-Digest: ZMq4Ah+y04rkonIv3HaOKOwV6VM=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$5
+ .class
+SHA1-Digest: EbT6NjJ7f79wXPm7FmDDfIcS4dY=
+
+Name: org/eclipse/tm/internal/terminal/control/CommandInputFieldWithHi
+ story$1.class
+SHA1-Digest: VwIFmyTRpbAmNyBAnpGpGmN2OIM=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas$3.class
+SHA1-Digest: ijVwyId7KcCP/7HlLpsQj4bot1Y=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/AbstractTextCanvasMo
+ del.class
+SHA1-Digest: GC+P5pvRjxWyjjw/uG55WxqY/hM=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/GridCanvas.class
+SHA1-Digest: GpcfSIc/SuB1c1CHPY2ePJIfIaQ=
+
+Name: org/eclipse/tm/terminal/model/ITerminalTextData.class
+SHA1-Digest: autmATJwIjZcvNLJ2/7H9vQQY58=
+
+Name: org/eclipse/tm/terminal/model/ITerminalTextDataReadOnly.class
+SHA1-Digest: n2gRbRXLUG7rPEakDnuxA0ZBf6c=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/VirtualCanvas$2.clas
+ s
+SHA1-Digest: JfG0loKHA7geqFdKOcdk0i3jbTo=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100BackendTraceDecor
+ ator.class
+SHA1-Digest: kOY0nuibVYQxuhNv4prfLN0OsQc=
+
+Name: org/eclipse/tm/internal/terminal/preferences/TerminalPreferenceI
+ nitializer.class
+SHA1-Digest: eDTRXBKZPKC6A5N5GXipN68HMNM=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalToRemoteInjec
+ tionOutputStream.class
+SHA1-Digest: xJu8VxQlctQibmOKmruQsg+hDYo=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalToRemoteInjec
+ tionOutputStream$BufferInterceptor.class
+SHA1-Digest: ZgbchxIm7MmDs8nWzE5KJxEdFJk=
+
+Name: org/eclipse/tm/terminal/model/TerminalTextDataFactory.class
+SHA1-Digest: ZGau3zWKUGXQUy3C6Y0icvjTQ7c=
+
+Name: org/eclipse/tm/internal/terminal/model/TerminalTextDataSnapshot.
+ class
+SHA1-Digest: 4EaEokEzguDaqEf8rLe9+gYREr4=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/ITextCanvasModel.cla
+ ss
+SHA1-Digest: avS5G+0XB1roHwQ8EmfKULQtp3M=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalInputStrea
+ m$1.class
+SHA1-Digest: 3MeG3TMe+0Huee5dOM1Cxdr8ux0=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100EmulatorBackend.c
+ lass
+SHA1-Digest: nL8dgc+GOkK0+jf+aJQiE+dEZiU=
+
+Name: org/eclipse/tm/internal/terminal/model/TerminalTextDataStore.cla
+ ss
+SHA1-Digest: BQsYSkm2vBJvBWrzvxbsUQ4eLg8=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl.c
+ lass
+SHA1-Digest: 8YqsBWT/9/RqWnlbrRDvvhIbyNs=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/ITerminalControlFo
+ rText.class
+SHA1-Digest: Pm/rMcSYs7+oE2/L+r/fNM1LMpc=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$T
+ erminalKeyHandler.class
+SHA1-Digest: m6onDtJA273vWj7cNnXZ+yq5OL8=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalPlugin.cla
+ ss
+SHA1-Digest: rCkifXGMVTPO0pvrMCQLh31H5Gg=
+
+Name: org/eclipse/tm/internal/terminal/control/ITerminalViewControl.cl
+ ass
+SHA1-Digest: SigU7pbLzysVJFB8kZWtmhC0TQg=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/ActionMessages.
+ class
+SHA1-Digest: o0NuEKzNibniQCmn0/uFEPU99Fs=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/ActionMessages.
+ properties
+SHA1-Digest: p+HLtnP+qNCDTt9UCzMp7FmGnNg=
+
+Name: icons/dlcl16/clear_co.gif
+SHA1-Digest: TgcAjGyWfMp0Pq94//ebrD5JZ7s=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/TerminalActionC
+ opy.class
+SHA1-Digest: 9dMsZK6sOfQkmqWNmFRTSlJi52c=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$2
+ .class
+SHA1-Digest: BSwuH2zACIe1NJe+T11ZflmztMo=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal/pom.xml
+SHA1-Digest: Q3yCcF8Mvev9xMhfInsFsWW9VfY=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalToRemoteInjec
+ tionOutputStream$Interceptor.class
+SHA1-Digest: pXrnLf+3cpGhc0eSAOrR0gX4UMk=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/LayeredSettings
+ Store.class
+SHA1-Digest: i8O8G3WTjkPkmG5EWhsIt0w0khY=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$6
+ .class
+SHA1-Digest: MjXf20fwRj1GffL3fsHIZUU3iy4=
+
+Name: org/eclipse/tm/internal/terminal/control/CommandInputFieldWithHi
+ story$2.class
+SHA1-Digest: 9Zn/bV8vrYB0TCa5jDzuYqLfo30=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/PipedInputStream$Bou
+ ndedByteBuffer.class
+SHA1-Digest: bcb9lEXIEqwHVh1ik9XIhBRHMLE=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas$4.class
+SHA1-Digest: goIKXe5iCbdGV/3EQ/iwPjAPTV4=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/tm/internal/terminal/model/TerminalTextData.class
+SHA1-Digest: FVR+LMXyVJePUH+9YqyNOjhWSPY=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/VirtualCanvas.class
+SHA1-Digest: kGmFM+zewmxjZ5vSr/EFoXLRbfE=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas$ResizeLis
+ tener.class
+SHA1-Digest: MJd4LBepu4BrLHmYEkbTJS21xlY=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalMessages.c
+ lass
+SHA1-Digest: M6oUPGfkogfR/5mJ4drGpbYCl4E=
+
+Name: org/eclipse/tm/internal/terminal/control/TerminalViewControlFact
+ ory.class
+SHA1-Digest: ntkc5Ql25UIUWa2Hl3mcF1Zo06M=
+
+Name: org/eclipse/tm/internal/terminal/preferences/PreferenceModifyLis
+ tener.class
+SHA1-Digest: uCSboSjnkuP3dhEZtSSc7CxzbJQ=
+
+Name: org/eclipse/tm/internal/terminal/preferences/ITerminalConstants.
+ class
+SHA1-Digest: IyH+IVj7Ken6KzC7YK7WF+jone4=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/ISettingsPage$L
+ istener.class
+SHA1-Digest: UB82LEQbwAM31hduwNJHjFQPtcw=
+
+Name: .options
+SHA1-Digest: h7lDd4lUjwtThKljg6pRupFa7/E=
+
+Name: org/eclipse/tm/internal/terminal/control/ICommandInputField.clas
+ s
+SHA1-Digest: utb5kRa0YIZ729cJxGs1oksy27o=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/TerminalActionC
+ ut.class
+SHA1-Digest: A4eO/PVGXgMgZyAyH33Y63cdxyM=
+
+Name: org/eclipse/tm/terminal/model/LineSegment.class
+SHA1-Digest: V2rSWmR+2cRfc8hUpnH518eCuw0=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/TerminalActionS
+ electAll.class
+SHA1-Digest: ukD926f2935V2jpTCb3J7ViXags=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/VirtualCanvas$3.clas
+ s
+SHA1-Digest: UEVtIE+eoxH+N1nlCKBqE9ysBUQ=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/PipedInputStream$Pip
+ edOutputStream.class
+SHA1-Digest: EewHckQglEacQB4Yi2X+N2tQ04g=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100Emulator.class
+SHA1-Digest: ByC+WNc4vNym55/uqH3jnqP+XV8=
+
+Name: org/eclipse/tm/internal/terminal/provisional/api/ISettingsPage.c
+ lass
+SHA1-Digest: bUV1acPJQX3rhMeWHjBbopUw4sA=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/TerminalActionP
+ aste.class
+SHA1-Digest: 4Yyj1ZF2X03Ce7DuZn7I5MLQlUc=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/PipedInputStream.cla
+ ss
+SHA1-Digest: C2/QILFYw3Ol2aZV7ZpGNfSkzyU=
+
+Name: org/eclipse/tm/terminal/model/Style.class
+SHA1-Digest: w9V+O/MjuJPBkKRtti+KPN45c0o=
+
+Name: org/eclipse/tm/internal/terminal/control/ITerminalListener.class
+SHA1-Digest: GhaokeOdTV00yUu33xgX/QVtiJU=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalInputStrea
+ m$2.class
+SHA1-Digest: 8gjJL1lBRWcdjyHWeuS9eOvuTMI=
+
+Name: HelpContexts.xml
+SHA1-Digest: qn4ElHoX7ZoqFrKfIi+pmHi6K64=
+
+Name: plugin.properties
+SHA1-Digest: KHm6ZBc59DQs6UEV5sOL9qDzoDA=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/tm/internal/terminal/control/CommandInputFieldWithHi
+ story.class
+SHA1-Digest: q39Sij0mn997SUtyZivY0drJgJ4=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextLineRenderer.cla
+ ss
+SHA1-Digest: 1KXh6Aj0FP0WYbqsKZTRWBlGn1g=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas.class
+SHA1-Digest: HBLW7jz933YGtk62lon5a1hOzK0=
+
+Name: icons/clcl16/clear_co.gif
+SHA1-Digest: VlQe11EC8Oaogw6cJZ8novJsO8o=
+
+Name: org/eclipse/tm/internal/terminal/model/SynchronizedTerminalTextD
+ ata.class
+SHA1-Digest: eXKDGNPk4iNaxK44pWJxW8HuO+o=
+
+Name: org/eclipse/tm/internal/terminal/connector/TerminalConnector$Fac
+ tory.class
+SHA1-Digest: TvC5SPCXjGysjtQfzEt2wer2t4s=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/StyleMap.class
+SHA1-Digest: dpz9+slkAdjfV08yHzKsHCFn84o=
+
+Name: plugin.xml
+SHA1-Digest: OdKaxpL5A9Y2cLXE8fRSzXCm9rk=
+
+Name: org/eclipse/tm/internal/terminal/emulator/VT100TerminalControl$3
+ .class
+SHA1-Digest: v/wRW2AiMJrRTj/pb2H6k+EutlA=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalMessages.p
+ roperties
+SHA1-Digest: XDLdMXhsRJ2co7Mt8Tod/xBUSAU=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/TextCanvas$1.class
+SHA1-Digest: nVCZZOqd7lu/JiQFDZL+eIR4GDU=
+
+Name: org/eclipse/tm/internal/terminal/emulator/IVT100EmulatorBackend.
+ class
+SHA1-Digest: dWvB8KMqO9rYKxwQ+GYSvMETbGc=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal/pom.proper
+ ties
+SHA1-Digest: z0NLZFwHwOEMm6y1evNEH+Jrbe0=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/PollingTextCanvasMod
+ el.class
+SHA1-Digest: /mTd8It/IuL+fGbbL1TYKeTnOgQ=
+
+Name: org/eclipse/tm/internal/terminal/model/TerminalTextDataWindow.cl
+ ass
+SHA1-Digest: 3tKnx6vcdC7dc3xpw602O1Y5gto=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/VirtualCanvas$4.clas
+ s
+SHA1-Digest: 9JQ/+3anPOYzd5hsXSgayKl7Whk=
+
+Name: org/eclipse/tm/internal/terminal/control/actions/TerminalActionC
+ learAll.class
+SHA1-Digest: 5nxnF+vw9yzVPcjtxUwTXonGkL8=
+
+Name: org/eclipse/tm/internal/terminal/textcanvas/PollingTextCanvasMod
+ el$1.class
+SHA1-Digest: L6Xo+3zStB1X1zKadFURccJ+1e0=
+
+Name: org/eclipse/tm/internal/terminal/control/impl/TerminalInputStrea
+ m.class
+SHA1-Digest: m7jHXJSgUvViDGHEr/RBhexH6o0=
+

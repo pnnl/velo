@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Groups</shortname>
+  <description>Delete Groups</description>
+  <url>/cat/deleteGroups</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

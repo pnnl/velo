@@ -1,0 +1,95 @@
+package gov.pnnl.cat.ui.rcp.preferences;
+
+import gov.pnnl.cat.logging.CatLogger;
+import gov.pnnl.cat.ui.rcp.CatPreferenceIDs;
+
+import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
+
+/**
+ * This class represents a preference page that
+ * is contributed to the Preferences dialog. By 
+ * subclassing <samp>FieldEditorPreferencePage</samp>, we
+ * can use the field support built into JFace that allows
+ * us to create a page that is small and knows how to 
+ * save, restore and apply itself.
+ * <p>
+ * This page is used to modify preferences only. They
+ * are stored in the preference store that belongs to
+ * the main plug-in class. That way, preferences can
+ * be accessed directly via the preference store.
+ */
+
+public class CatPreferencePage
+	extends FieldEditorPreferencePage
+	implements IWorkbenchPreferencePage {
+
+  private ScopedPreferenceStore preferences;
+  private BooleanFieldEditor autoLoginField;
+  private Logger logger = CatLogger.getLogger(this.getClass());
+  
+	public CatPreferencePage() {
+		super(GRID);
+//    setPreferenceStore(UtilUIPlugin.getDefault().getPreferenceStore());
+    preferences = new ScopedPreferenceStore(new InstanceScope(), CatPreferenceIDs.CAT_PREFERENCE_ID);
+		//setPreferenceStore(getPreferenceStore());//PreferenceClass.getDefault().getPreferenceStore());
+		setDescription("CAT Preferences");
+	}
+
+  protected Control createContents(Composite parent) {
+    Control control = super.createContents(parent);
+    return control;
+  }
+  
+	/**
+	 * Creates the field editors. Field editors are abstractions of
+	 * the common GUI blocks needed to manipulate various types
+	 * of preferences. Each field editor knows how to save and
+	 * restore itself.
+	 */
+	public void createFieldEditors() {
+    autoLoginField = new BooleanFieldEditor(PreferenceConstants.AUTO_LOGIN,
+        "&Login automatically at startup.",
+        getFieldEditorParent());
+    addField(	autoLoginField	);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
+	 */
+	public void init(IWorkbench workbench) {
+   
+	}
+	
+  
+  public boolean performOk(){
+    try{
+//      preferences.save();
+      storeValues();
+    }catch (Exception e) {
+      logger.error("Exception caught while trying to performOk." , e);
+    }
+    return super.performOk();
+  }
+  
+  protected IPreferenceStore doGetPreferenceStore() {
+//    return UtilUIPlugin.getDefault().getPreferenceStore();
+    //return PlatformUI.getPreferenceStore();
+    return preferences;
+ }
+
+  
+  private void storeValues() {
+    IPreferenceStore store = getPreferenceStore();
+    store.setValue(PreferenceConstants.AUTO_LOGIN, autoLoginField.getBooleanValue());
+  }
+  
+}

@@ -1,0 +1,1609 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<abc name="tests">
+
+	<component name="materials">
+		<section label="Lagrit semi-structured mesh generation">
+		<custom_table user_object="lagrit_rows">
+				<column label="Region">
+					<string key="region_name" enabled="false" help="Hello world" />
+				</column>
+				<column label="# division">
+					<integer key="divisions" default="1" absolute_min="1" required="true" default_unit="m" help="Hello world 2"/>
+				</column>
+				<column label="Spacing">
+					<choice key="spacing" default="proportional_spacing" required="true" help="Hello world 3">
+						<group label="Proportional" key="proportional_spacing" />
+					</choice>
+				</column>
+			</custom_table>
+		</section>
+	</component>
+
+<!-- 
+	<component name="materials">
+		<expanded_list user_object="material">
+			<key>
+				<string key="material_name" label="Name" />
+
+			</key>
+			<section>
+				<tabs>
+					<section label="General">
+						<section label="Mechanical Properties" collapsible="true">
+							<double key="particle_density" label="Particle density"
+								units="density" default_unit="kg/m^3" required="false" />
+
+							<double key="porosity" label="Porosity" required="true" />
+
+							<double key="tortuosity" label="Tortuosity" required="false" />
+
+						</section>
+
+
+						<section label="Hydraulic Properties" collapsible="true"
+							key="material_hydraulic_section">
+							<choice key="permeability_hydraulic" label="Type" default="Not set"
+								required="true">
+								<group label="Not set" />
+								<group label="Permeability" key="permeability">
+									<double key="permeability_x" label="x" units="area"
+										default_unit="m^2" absolute_min="0.0" required="true" />
+									<double key="permeability_y" label="y" units="area"
+										default_unit="m^2" absolute_min="0.0" required="true" />
+									<double key="permeability_z" label="z" units="area"
+										default_unit="m^2" absolute_min="0.0" required="true" />
+								</group>
+								<group label="Hydraulic Conductivity" key="hydraulic_conductivity">
+									<double key="hydraulic_x" label="x" units="flux"
+										default_unit="m/s" absolute_min="0.0" required="true" />
+									<double key="hydraulic_y" label="y" units="flux"
+										default_unit="m/s" absolute_min="0.0" required="true" />
+									<double key="hydraulic_z" label="z" units="flux"
+										default_unit="m/s" absolute_min="0.0" required="true" />
+								</group>
+							</choice>
+
+							<section label="Storativity" key="storativity_section">
+								<choice key="storativity" label="Aquifer" default="Confined"
+									required="true">
+									<group label="Confined" key="confined">
+										<double key="specific_storage" label="Specific Storage"
+											absolute_min="0.0" required="false" />
+									</group>
+									<group label="Unconfined" key="unconfined">
+										<double key="specific_yield" label="Specific Yield"
+											absolute_min="0.0" required="false" />
+										<double key="specific_storage" label="Specific Storage"
+											absolute_min="0.0" required="false" />
+									</group>
+								</choice>
+							</section>
+						</section>
+					</section>
+
+					<section label="Aqueous" key="material_aqueous_tab">
+
+						<section label="Saturation Function" collapsible="true">
+							<choice key="cap_pressure" label="Capillary Pressure Model"
+								default="Not set" required="true">
+								<group label="Not set" />
+								<group label="van Genuchten" key="van_genuchten">
+									<double key="van_genuchten_alpha" label="alpha" units="alpha"
+										default_unit="1/Pa" absolute_min="0.0" required="true" />
+									<double key="sr" label="Sr" required="true"
+										absolute_min="0.0" absolute_max="1.0" />
+									<double key="m" label="m" required="false" />
+									<double key="n" label="n" required="false" />
+								</group>
+								<group label="Brooks and Corey" key="brooks_corey">
+									<double key="lambda" label="lambda" required="true" />
+									<double key="brooks_corey_alpha" label="alpha" units="pressure"
+										default_unit="Pa" absolute_min="0.0" required="true" />
+									<double key="sr" label="sr" required="true"
+										absolute_min="0.0" absolute_max="1.0" />
+								</group>
+							</choice>
+						</section>
+
+						<section label="Relative Permeability" collapsible="true">
+							<choice key="rel_perm" label="Model" default="Not set"
+								required="true">
+								<group label="Not set" />
+								<group label="Burdine" key="burdine">
+									<double key="exp" label="Exponent" required="false" />
+								</group>
+								<group label="Mualem" key="mualem" />
+	
+							</choice>
+						</section>
+					</section>
+
+					<section label="Transport" key="material_transport_tab">
+						<section label="Dispersion" collapsible="true">
+							<double key="alpha_l" label="Longitudinal dispersivity"
+								units="length" default_unit="m" required="false" />
+							<double key="alpha_t" label="Transverse dispersivity"
+								units="length" default_unit="m" required="false" />
+						</section>
+						<section label="Solute Parameters" collapsible="true"
+							key="solute_parameters">
+							<set key="sorption_material_solute" type="solute" labeled="true"
+								label="Sorption Isotherms">
+								<choice key="model" label="Model" default="Not set"
+									required="true">
+									<group label="Not set" key="Not set" />
+									<group label="linear" key="linear">
+										<double key="kd" label="kd" units="kd" absolute_min="1e-12"
+											default_unit="L/Kg" required="true" />
+									</group>
+									<group label="langmuir" key="langmuir">
+										<double key="kd" label="kd" units="kd" default_unit="L/Kg"
+											required="true" />
+										<double key="b" label="b" required="true" />
+									</group>
+									<group label="freundlich" key="freundlich">
+										<double key="kd" label="kd" units="kd" default_unit="L/Kg"
+											required="true" />
+										<double key="n" label="n" required="true" />
+									</group>
+								</choice>
+							</set>
+						</section>
+					</section>
+				</tabs>
+			</section>
+		</expanded_list>
+	</component>
+	 -->
+	<!-- <component name="macros"> <expanded_list> <key> <string key="macro_name" label="Macros" /> </key> <section> <choice key="macro_type" label="Type" default="Time series" required="true"> <group label="Time 
+		interval"> <double key="time_start" label="Start" units="time" required="true" /> <double key="time_end" label="End (optional)" units="time" required="false" /> <double key="time_interval" label="Interval" 
+		units="time" required="true" /> </group> <group label="Time list"> <textarea key="time_list" label="Individual times" visible_rows="5" required="true" /> </group> <group label="Cycle interval"> <integer 
+		key="cycle_start" label="Start" required="true" /> <integer key="cycle_end" label="End (optional)" required="false" /> <integer key="cycle_interval" label="Interval" required="true" /> </group> <group 
+		label="Cycle list"> <textarea key="cycle_list" label="Individual cycles" visible_rows="5" required="true" /> </group> </choice> </section> </expanded_list> </component> <component name="Parameters"> <custom_table 
+		user_object="agni_parameter_group"> <column label="Parameter"> <string key="group_name" default="New Parameter" label="Name" /> <string key="nc_file" label="File" has_action="true" /> <string key="nc_identifier" 
+		label="Identifier" /> <integer key="nc_des_order" label="Order" /> <integer key="nc_index" label="Index" /> </column> <column label="Perturbation"> <double key="prior_value" label="Prior value" /> <double 
+		key="initial_value" label="Initial value" /> <choice key="perturbation_type" label="Perturbation type"> <group label="Relative" /> <group label="Absolute" /> </choice> <double key="factor" label="Perturbation 
+		factor" /> </column> <column label="Transformation"> <choice key="transformation_type" label="Transformation" required="true"> <group label="Absolute" /> <group label="Logarithm" /> </choice> <double key="transformation_for_param" 
+		label="TODO" /> </column> <column label="Distribution"> <choice key="distribution_type" label="Distribution"> <group label="Uniform" /> <group label="Normal" /> <group label="None" /> </choice> <double 
+		key="min" label="min" required="true" /> <double key="max" label="max" required="true" /> <double key="mean" label="mean" /> <double key="sdd" label="sdd" /> </column> </custom_table> </component> <component 
+		name="observations"> <custom_table user_object="agni_observation"> <column label="Variable"> <list key="observed_variables" label="Output Variables" selection="single" visible_rows="3" type="output_variables" 
+		absolute_min="1" /> </column> <column label="Named time set"> <choice key="macro_type" label="Specify As" default="Time list" required="true"> <group label="Time interval"> <double key="time_start" label="Start" 
+		units="time" required="true" default="1" /> <double key="time_end" label="End (optional)" units="time" required="false" default="3" /> <double key="time_interval" label="Interval" units="time" required="true" 
+		default="1" /> </group> <group label="Time list"> <textarea key="time_list" label="Individual times" visible_rows="5" required="true" default="1,2,3" /> </group> </choice> </column> </custom_table> </component> 
+		<component name="sa_methods"> <section label="Analysis Specifications" user_object="methods"> <choice key="analysis" label="Analysis" default="Global" required="true"> <group label="Global"> <choice key="method" 
+		label="Method" default="Morris one-at-a-time" required="true"> <group label="Morris one-at-a-time" /> <group label="Maximum entropy analysis" enabled="false" /> <group label="Classification tree" enabled="false" 
+		/> <group label="Sobol 1st order" enabled="false" /> </choice> </group> <group label="Local" /> </choice> </section> </component> <component name="uq_methods"> <section label="Analysis Specifications" 
+		user_object="methods"> <choice key="analysis" label="Analysis" default="Probabilistic predictions" required="true"> <group label="Probabilistic predictions"> <choice key="method" label="Method" default="Monte 
+		Carlo" required="true"> <group label="Monte Carlo" /> <group label="MCMC" /> <group label="Null-space Monte Carlo" enabled="false" /> </choice> </group> <group label="Directed parameter-space search" enabled="false" 
+		/> <group label="Conceptual model uncertainty evaluation" enabled="false" /> <group label="Scenario uncertainty evaluation" enabled="false" /> <group label="Model reducation strategies" enabled="false" 
+		/> <group label="Model structure uncertainty evaluation" enabled="false" /> <group label="Uncertainty reduction strategies" enabled="false" /> </choice> </section> </component> <component name="sa_options"> 
+		<section label="Ensemble Specifications" user_object="options"> <integer key="replicates" label="Replicates" required="true" default="6" /> <integer key="grid_resolution" label="Grid resolution" default="6" 
+		required="true" /> <integer key="forward_runs" label="Number of forward runs" default="12" required="true" enabled="false" /> <integer key="random_seed" label="Random seed" required="true" default="1" 
+		/> </section> </component> <component name="uq_options"> <section label="Ensemble Specifications" user_object="options"> <choice key="sampling_method" label="Sampling method" default="Latin hypercube" 
+		required="true"> <group label="Latin hypercube" /> <group label="Random" /> <group label="Orthogonal array" enabled="false" /> </choice> <integer key="forward_runs" label="Number of forward runs" required="true" 
+		enabled="false" /> <integer key="random_seed" label="Random seed" required="true" /> </section> <section label="Weighting Scheme" user_object="options"> <choice key="weighting_scheme" label="Scheme" default="Weights 
+		by sum of squared errors" required="true" enabled="false"> <group label="Weights by sum of squared errors" /> <group label="All weights = 1" /> <group label="User specified weights" /> </choice> </section> 
+		</component><component name="pe_methods"> <columns user_object="options"> <section label="Options"> <choice key="objective_function" label="Objective function" required="true"> <group label="Least squares(sum 
+		of the squared weighted residuals)" /> </choice> <choice key="minimization_algorithm" label="Minimization algorithm" required="true"> <group label="Levenberg-Marquardt" /> <group label="Simplex" enabled="false" 
+		/> </choice> </section> <section label="Sub Options"> <choice key="algorithm_options" label="Algorithm options" required="true"> <group label="Standard algorithm" /> <group label="Standard algorithm with 
+		broyden jacobian update" /> </choice> <double key="initial_levenberg_parameter" label="Initial Levenberg Parameter" default="1.0" required="true" /> <double key="marquardt_parameter" label="Marquardt Parameter" 
+		default="10" required="true" /> </section> <section label="Derivatives"> <choice key="derivative_type" label="Type" required="true"> <group label="Numerical"> <double key="perturbation_factor" label="Perturbation 
+		factor" default="0.01" required="true" /> <choice key="derivative_type" label="Type" required="true"> <group label="Relative" /> <group label="Absolute" /> </choice> <choice key="finite_difference" label="Finite" 
+		required="true"> <group label="Backward" /> <group label="Forward" /> <group label="Centered" /> </choice> </group> <group label="Automatic differentiation" /> <group label="Adjoints" /> <group label="Analytical 
+		derivatives" /> </choice> </section> <section label="Stopping Criteria"> <integer key="maximum_iterations" label="Maximum number of iterations" default="100" required="true" /> <integer key="maximum_simulations" 
+		label="Maximum number of simulation runs" default="200" required="true" /> <integer key="maximum_unsuccessful_steps" label="Maximum number of unsuccessful steps" default="10" required="true" /> <double 
+		key="parameter_step_tolerance" label="Parameter step tolerance" default="1.0E-12" required="true" /> <double key="objective_function_tolerance" label="Objective function tolerance" default="1.0E-12" required="true" 
+		/> <double key="gradient_tolerance" label="Gradient tolerance" default="1.0E-12" required="true" /> </section> </columns> </component> 
+		
+		 <component name="uq_analysis"> <section> <choice key="plot_type" label="Plot type" default="Not set" required="true"> <group label="Not set" /> <group label="Line plot"> <choice key="data_type_line" 
+		label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" 
+		type="realization" required="true" /> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> 
+		<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select 
+		times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one 
+		series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> 
+		<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> 
+		<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> 
+		<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> 
+		<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not 
+		set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice 
+		key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> <group label="Measured"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="variable" type="variable" 
+		label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" 
+		/> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" 
+		label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" 
+		visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group 
+		label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" 
+		/> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> </choice> </group> <group label="Location - x"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> 
+		<group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> <group label="Location - z"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> 
+		<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> 
+		<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not 
+		set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice 
+		key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> </choice> </group> <group label="Measured and simulated"> 
+		<list key="realization" label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" 
+		/> <choice key="series_type" label="vs." default="Not set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual 
+		times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" 
+		required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> </choice> </group> <group label="Scatter plot"> <choice key="data_type_scatter" label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> 
+		<group label="Parameter vs. parameter"> <choice key="parameter_x" type="parameter" label="X-axis" required="true" /> <choice key="parameter_y" type="parameter" label="Y-axis" required="true" /> </group> 
+		<group label="Parameter vs. simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="parameter" type="parameter" 
+		label="Plot parameter" required="true" /> <choice key="simulated" type="variable" label="vs." required="true" /> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" 
+		/> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice 
+		key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" 
+		label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" 
+		/> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <double key="upper_threshold" 
+		label="Upper threshold" required="false" /> <double key="lower_threshold" label="Lower threshold" required="false" /> </group> </choice> </group> <group label="Histogram"> <choice key="data_type_histogram" 
+		label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Parameter"> <list key="parameters" label="Plot parameters" selection="multiple" visible_rows="3" 
+		type="parameter" required="true" /> </group> <group label="Simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="simulated" 
+		type="variable" label="Variable" required="true" /> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual 
+		points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> 
+		<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not 
+		set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice 
+		key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> </choice> <integer label="Number of bins" key="number_bins" 
+		required="true" default="10" /> </group> </choice> </section> </component> -->
+
+
+<!-- 
+	<component name="sr_analysis">
+		<section>
+			<choice key="plot_type" label="Plot type" default="Not set" required="true">
+				<group label="Not set" />
+				<group label="Line plot">
+					<choice key="data_type_line" label="Data type" labeled="true" default="Not set" required="true">
+						<group label="Not set" />
+						<group label="Simulated">
+							<choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" />
+							<choice key="series_type" label="vs." default="Not set" required="true">
+								<group label="Not set" />
+								<group label="Time">
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual 
+		times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points 
+		by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - x">
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, 
+		one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple 
+		plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - y">
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points 
+		by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple 
+		series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - z">
+									<choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple 
+		plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple 
+		series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+							</choice>
+						</group>
+						<group label="Measured">
+							<choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" />
+							<choice key="series_type" label="vs." default="Not set" required="true">
+								<group label="Not set" />
+								<group label="Time">
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named 
+		timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by 
+		shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - x">
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, 
+		one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple 
+		plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - y">
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points 
+		by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple 
+		series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location - z">
+									<choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple 
+		plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple 
+		series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+							</choice>
+						</group>
+						<group label="Measured and simulated">
+							<choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" />
+							<choice key="series_type" label="vs." default="Not 
+		set" required="true">
+								<group label="Not set" />
+								<group label="Time">
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by 
+		shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+								<group label="Location">
+									<choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Individual points">
+											<list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Points by shared xy-coordinates">
+											<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, 
+		one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" />
+											<choice key="display_locations_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple 
+		plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+									<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true">
+										<group label="Not set" />
+										<group label="Named timesets">
+											<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="Individual times">
+											<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One 
+		plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+										<group label="All">
+											<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" />
+											<choice key="display_times_as" label="Display as" default="One plot, one series" required="true">
+												<group label="One plot, one series" />
+												<group label="Multiple plots" />
+												<group label="Multiple series" />
+											</choice>
+										</group>
+									</choice>
+								</group>
+							</choice>
+						</group>
+					</choice>
+				</group>
+			</choice>
+		</section>
+	</component>
+ -->
+	<!-- <component name="sa_analysis"> <section> <choice key="plot_type" label="Plot type" default="Not set" required="true"> <group label="Not set" /> <group label="Line plot"> <choice key="data_type_line" 
+		label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" 
+		type="realization" required="true" /> <choice key="variable" type="variable" label="Plot variable" required="true" /> <choice key="series_type" label="vs." default="Not set" required="true"> <group label="Not 
+		set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" 
+		visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice 
+		key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> </choice> </group> <group label="Measured"> <list key="realization" 
+		label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" 
+		label="vs." default="Not set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not 
+		set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" 
+		default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> 
+		<list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" 
+		visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" 
+		/> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> </choice> </group> <group label="Measured and simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" 
+		type="realization" required="true" /> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> 
+		<list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select 
+		times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one 
+		series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> 
+		<list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> 
+		<list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, 
+		one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" 
+		label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> </choice> </group> <group label="Scatter plot"> <choice key="data_type_scatter" label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> 
+		<group label="Parameter vs. parameter"> <choice key="parameter_x" type="parameter" label="X-axis" required="true" /> <choice key="parameter_y" type="parameter" label="Y-axis" required="true" /> </group> 
+		<group label="Parameter vs. simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" type="realization" required="true" /> <choice key="parameter" type="parameter" 
+		label="Plot parameter" required="true" /> <choice key="simulated" type="variable" label="vs." required="true" /> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" 
+		/> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice 
+		key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" 
+		label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" 
+		/> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> </choice> 
+		</group> <group label="Histogram"> <choice key="data_type_histogram" label="Data type" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Parameter"> <list key="parameters" 
+		label="Plot parameters" selection="multiple" visible_rows="3" type="parameter" required="true" /> </group> <group label="Simulated"> <list key="realization" label="Realization" selection="multiple" visible_rows="3" 
+		type="realization" required="true" /> <choice key="simulated" type="variable" label="Variable" required="true" /> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" 
+		/> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice 
+		key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> 
+		</group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" 
+		label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" 
+		/> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" 
+		/> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> </choice> 
+		<integer label="Number of bins" key="number_bins" required="true" default="10" /> </group> </choice> </section> </component>
+		
+	 Entire section <component name="pe_analysis"> <section> <choice key="plot_type" 
+		label="Plot type" default="Not set" required="true"> <group label="Not set" /> <group label="Line plot"> <choice key="data_type_line" label="Data type" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Simulated"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named 
+		timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" 
+		required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by 
+		shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> <group label="Measured"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named 
+		timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" 
+		required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by 
+		shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> <group label="Measured and simulated"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not 
+		set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by 
+		shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> </choice> </group> <group label="Histogram"> <choice key="data_type_histogram" label="Data type" labeled="true" default="Not set" required="true"> <group label="Residual"> <choice 
+		key="variable" type="variable" label="Variable" required="true" /> </group> </choice> <integer label="Number of bins" key="number_bins" required="true" default="10" /> </group> <group label="Scatter plot"> 
+		<choice key="data_type_scatter" label="Data type" labeled="true" default="Not set" required="true"> <group label="Measured vs. simulated"> <choice key="variable" type="variable" label="Variable" required="true" 
+		/> <choice key="x_equals_y" label="Add x=y line" default="true" required="true"> <group label="true" /> <group label="false" /> </choice> </group> </choice> </group> </choice> </section> </component> -->
+
+	<!-- <component name="testing_nested_choices"> <choice key="nested_choice_level_1" label="Level 1 choice" default="Not set" required="true"> <group label="Not set" /> <group label="Level 1 menu item" 
+		key="level_1_menu_item"> <choice key="nested_choice_level_2" label="Level 2 choice" default="Not set" required="true"> <group label="Not set" /> <group label="Level 2 menu item" key="leve_2_menu_item"> 
+		<choice key="nested_choice_level_3" label="Level 3 choice" default="Not set" required="true"> <group label="Not set" /> <group label="Level 3 menu item" key="leve_3_menu_item"> <choice key="nested_choice_level_4" 
+		label="Level 4 choice" default="Not set" required="true"> <group label="Not set" /> <group label="Level 4 menu item" key="leve_4_menu_item" /> </choice> </group> </choice> </group> </choice> </group> </choice> 
+		</component> -->
+
+	<!-- <component name="pe_analysis"> <choice key="plot_type" label="Plot type" default="Not set" required="true"> <group label="Not set" /> <group label="Line plot"> <choice key="data_type_line" label="Data 
+		type" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Simulated"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> 
+		<choice key="series_type" label="vs." default="Not set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual 
+		times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" 
+		required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> <group label="Measured"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not set" 
+		required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named 
+		timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" 
+		required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by 
+		shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> <group label="Measured and simulated"> <choice key="variable" type="variable" label="Plot variable" labeled="true" required="true" /> <choice key="series_type" label="vs." default="Not 
+		set" required="true"> <group label="Not set" /> <group label="Time"> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by 
+		shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - x"> <choice 
+		key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select 
+		points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" 
+		selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, 
+		one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group 
+		label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One 
+		plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" 
+		label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One 
+		plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - y"> <choice key="locations_by" label="Location selection by" labeled="true" default="Not set" required="true"> 
+		<group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points 
+		by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display 
+		as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> <list 
+		key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one 
+		series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> <choice key="times_by" label="Time selection 
+		by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" selection="multiple" visible_rows="3" type="time" 
+		required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="All"> 
+		<list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> 
+		<group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> </group> <group label="Location - z"> <choice key="locations_by" label="Location 
+		selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Individual points"> <list key="individual_points" label="Select points" selection="multiple" visible_rows="3" 
+		type="observed_region" required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple 
+		plots" /> <group label="Multiple series" /> </choice> </group> <group label="Points by shared xy-coordinates"> <list key="location_wells" label="Select points" selection="multiple" visible_rows="3" type="observed_region" 
+		required="true" /> <choice key="display_locations_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple 
+		series" /> </choice> </group> <group label="All"> <list key="mixed_locations" label="Select points" selection="multiple" visible_rows="3" type="observed_region" required="true" /> <choice key="display_locations_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		<choice key="times_by" label="Time selection by" labeled="true" default="Not set" required="true"> <group label="Not set" /> <group label="Named timesets"> <list key="time_series" label="Select times" 
+		selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" 
+		/> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> <group label="Individual times"> <list key="individual_times" label="Select times" selection="multiple" visible_rows="3" 
+		type="time" required="true" /> <choice key="display_times_as" label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> 
+		<group label="Multiple series" /> </choice> </group> <group label="All"> <list key="mixed_times" label="Select times" selection="multiple" visible_rows="3" type="time" required="true" /> <choice key="display_times_as" 
+		label="Display as" default="One plot, one series" required="true"> <group label="One plot, one series" /> <group label="Multiple plots" /> <group label="Multiple series" /> </choice> </group> </choice> 
+		</group> </choice> </group> </choice> </group> </choice> </component> -->
+	<!-- <component name="Parameters"> <custom_table user_object="agni_parameter_group"> <column label="Group"> <string key="group_name" default="Unnamed group" label="Group" /> <string key="nc_file" label="File" 
+		has_action="true" /> <string key="nc_identifier" label="Identifier" /> <integer key="nc_des_order" label="Order" /> <integer key="nc_index" label="Index" /> </column> <column label="Perturbation"> <double 
+		key="prior_value" label="Prior value" /> <double key="initial_value" label="Initial value" /> <choice key="perturbation_type" label="Perturbation type"> <group label="Relative" /> <group label="Absolute" 
+		/> </choice> <double key="factor" label="Perturbation factor" /> </column> <column label="Transformation"> <choice key="transformation_type" label="Transformation type" required="true"> <group label="Absolute" 
+		/> <group label="Logarithm" /> </choice> <double key="transformation_for_param" label="TODO" /> </column> <column label="Distribution"> <choice key="distribution_type" label="Distribution type"> <group 
+		label="Uniform" /> <group label="Normal" /> <group label="None" /> </choice> <double key="min" label="min" required="true" /> <double key="max" label="max" required="true" /> <double key="mean" label="mean" 
+		/> <double key="sdd" label="sdd" /> </column> </custom_table> </component> -->
+	<!-- public static final ToolKey TRANSFORMATION_TYPE = new ToolKey("transformation_type", "type", "Transformation"); public static final ToolKey PERTURBATION_TYPE = new ToolKey("perturbation_type", "type", 
+		"Increment type"); public static final ToolKey DISTRIBUTION_TYPE = new ToolKey("distribution_type", "Distribution type"); public static final ToolKey PERTURBATION_FACTOR = new ToolKey("perturbation_factor", 
+		"factor", "Factor"); public static final ToolKey RELATIVE = new ToolKey("relative", "Relative"); public static final ToolKey ABSOLUTE = new ToolKey("absolute", "Absolute"); public static final ToolKey 
+		LOGARITHM = new ToolKey("logarithm", "Logarithm"); public static final ToolKey PRIOR_VALUE = new ToolKey("prior_value", "Prior value"); public static final ToolKey INITIAL_VALUE = new ToolKey("initial_value", 
+		"Initial value"); public static final ToolKey LOWER_BOUND = new ToolKey("lower_bound", "Lower bound"); public static final ToolKey UPPDER_BOUND = new ToolKey("upper_bound", "Upper bound"); public static 
+		final ToolKey NONE = new ToolKey("none", "None"); public static final ToolKey UNIFORM = new ToolKey("uniform", "Uniform"); public static final ToolKey NORMAL = new ToolKey("normal", "Normal"); public static 
+		final ToolKey MINIMUM = new ToolKey("minimum", "min", "Minimum"); public static final ToolKey MAXIMUM = new ToolKey("maximum", "max", "Maximum"); public static final ToolKey MEAN = new ToolKey("mean", 
+		"mean", "Mean"); public static final ToolKey STANDARD_DEVIATION = new ToolKey("standard_deviation", "sdd", "Standard deviation"); -->
+	<!-- <component name="Observations"> <custom_table user_object="agni_observation"> <column label="Variable"> <list key="observed_variables" label="Output Variables" selection="single" visible_rows="3" 
+		type="output_variables" absolute_min="1" /> </column> <column label="Named time set"> <choice key="macro_type" label="Specify As" default="time_list" required="true"> <group label="Time interval"> <double 
+		key="time_start" label="α" units="time" required="true" default="1" /> <double key="time_end" label="End (optional)" units="time" required="false" default="3" /> <double key="time_interval" label="Interval" 
+		units="time" required="true" default="1" /> </group> <group label="Time list"> <textarea key="time_list" label="Individual times" visible_rows="5" required="true" default="1,2,3" /> </group> <group label="Cycle 
+		interval"> <integer key="cycle_start" label="Start" required="true" /> <integer key="cycle_end" label="End (optional)" required="false" /> <integer key="cycle_interval" label="Interval" required="true" 
+		/> </group> <group label="Cycle list"> <textarea key="cycle_list" label="Individual cycles" visible_rows="5" required="true" /> </group> </choice> </column> </custom_table> </component> -->
+	<!-- <component name="Point Table"> <custom_table user_object="point" visible_rows="1"> <column label="Point X"> <double label="Point X" key="x" units="length" /> </column> <column label="Y"> <double 
+		label="Y" key="y" /> </column> <column label="Z"> <double label="Z" key="z" /> </column> </custom_table> </component> <component name="Solute Table"> <custom_table user_object="point" visible_rows="2"> 
+		<column label="Solute name"> <double key="solute_name" label="Solute" /> </column> <column label="Data"> <double key="coefficient_of_diffusion" label="Diffusion coefficient" required="false" default_unit="m^2/s" 
+		units="diffusivity" /> <double key="first_order_decay_constant" label="First order decay constant" required="false" /> </column> </custom_table> </component> <component name="solutes"> <expanded_list> 
+		<key> <string key="solute_name" label="Solute" required="true" /> </key> <section> <double key="coefficient_of_diffusion" label="Diffusion coefficient" required="false" default_unit="m^2/s" units="diffusivity" 
+		/> <double key="first_order_decay_constant" label="First order decay constant" required="false" /> </section> </expanded_list> </component> -->
+
+	<!-- <component name="SA Methods" hierarchy_name="Methods"> <section label="Analysis Specifications" user_object="methods"> <choice key="analysis" label="Analysis" default="global" required="true"> <group 
+		label="Global"> <choice key="method" label="Method" default="morris_one_at_a_time" required="true"> <group label="Morris one-at-a-time" /> <group label="Maximum entropy analysis" enabled="false" /> <group 
+		label="Classification tree" enabled="false" /> <group label="Sobol 1st order" enabled="false" /> </choice> </group> <group label="Local" /> </choice> </section> </component> <component name="UQ Methods" 
+		hierarchy_name="Methods"> <section label="Analysis Specifications" user_object="methods"> <choice key="analysis" label="Analysis" default="Probabilistic predictions" required="true"> <group label="Probabilistic 
+		predictions"> <choice key="method" label="Method" default="Monte Carlo" required="true"> <group label="Monte Carlo" /> <group label="MCMC" /> <group label="Null-space Monte Carlo" enabled="false" /> </choice> 
+		</group> <group label="Directed parameter-space search" enabled="false" /> <group label="Conceptual model uncertainty evaluation" enabled="false" /> <group label="Scenario uncertainty evaluation" enabled="false" 
+		/> <group label="Model reducation strategies" enabled="false" /> <group label="Model structure uncertainty evaluation" enabled="false" /> <group label="Uncertainty reduction strategies" enabled="false" 
+		/> </choice> </section> </component> <component name="Parameters"> <custom_table user_object="agni_parameter_group"> <column label="Parameters"> <string key="group_name" default="Unnamed group" label="Group" 
+		/> <textarea key="parameter_group" label="Parameters" visible_rows="3" has_action="true" /> </column> <column label="Perturbation"> <double key="prior_value" label="Prior value" could_be_file="true"/> 
+		<double key="initial_value" label="Initial value" /> <choice key="perturbation_type" label="Perturbation type"> <group label="Relative" /> <group label="Absolute" /> </choice> <double key="factor" label="Perturbation 
+		factor" /> </column> <column label="Transformation"> <choice key="transformation_type" label="Transformation type" required="true"> <group label="Absolute" /> <group label="Logarithm" /> </choice> <double 
+		key="transformation_for_param" label="TODO" /> </column> <column label="Distribution"> <choice key="distribution_type" label="Distribution type"> <group label="Uniform" /> <group label="Normal" /> <group 
+		label="None" /> </choice> <double key="min" label="min" required="true" /> <double key="max" label="max" required="true" /> <double key="mean" label="mean" /> <double key="sdd" label="sdd" /> </column> 
+		</custom_table> </component> -->
+
+	<!-- <component name="SA Options" hierarchy_name="Options"> <section label="Ensemble Specifications" user_object="options"> <integer key="replicates" label="Replicates" required="true" default="6" /> 
+		<integer key="grid_resolution" label="Grid resolution" default="6" required="true" /> <integer key="forward_runs" label="Number of forward runs" default="12" required="true" enabled="false" /> <integer 
+		key="random_seed" label="Random seed" required="true" default="1" /> </section> </component> <component name="PE Methods" hierarchy_name="Options"> <columns user_object="options"> <section label="Options"> 
+		<choice key="objective_function" label="Objective function" required="true"> <group label="Least squares(sum of the squared weighted residuals)" /> </choice> <choice key="minimization_algorithm" label="Minimization 
+		algorithm" required="true"> <group label="Levenberg-Marquardt" /> <group label="Simplex" enabled="false" /> </choice> </section> <section label="Sub Options"> <choice key="algorithm_options" label="Algorithm 
+		options" required="true"> <group label="Standard algorithm" /> <group label="Standard algorithm with broyden jacobian update" /> </choice> <double key="initial_levenberg_parameter" label="Initial Levenberg 
+		Parameter" default="1.0" required="true" /> <double key="marquardt_parameter" label="Marquardt Parameter" default="10" required="true" /> </section> <section label="Derivatives"> <choice key="derivative_type" 
+		label="Type" required="true"> <group label="Numerical"> <double key="perturbation_factor" label="Perturbation factor" default="0.01" required="true" /> <choice key="derivative_type" label="Type" required="true"> 
+		<group label="Relative" /> <group label="Absolute" /> </choice> <choice key="finite_difference" label="Finite" required="true"> <group label="Backward" /> <group label="Forward" /> <group label="Centered" 
+		/> </choice> </group> <group label="Automatic differentiation" /> <group label="Adjoints" /> <group label="Analytical derivatives" /> </choice> </section> <section label="Stopping Criteria"> <integer key="maximum_iterations" 
+		label="Maximum number of iterations" default="100" required="true" /> <integer key="maximum_simulations" label="Maximum number of simulation runs" default="200" required="true" /> <integer key="maximum_unsuccessful_steps" 
+		label="Maximum number of unsuccessful steps" default="10" required="true" /> <double key="parameter_step_tolerance" label="Parameter step tolerance" default="1.0E-12" required="true" /> <double key="objective_function_tolerance" 
+		label="Objective function tolerance" default="1.0E-12" required="true" /> <double key="gradient_tolerance" label="Gradient tolerance" default="1.0E-12" required="true" /> </section> </columns> </component> 
+		<component name="Expanded"> <expanded_list> <key> <double key="level_1_list" label="Level 1 label" units="length" required="true" /> </key> <section key="example_expanded_list_details"> <comment>time dependent 
+		part</comment> <expanded_list> <key> <double key="level_2_list" label="Level 2 label" units="length" required="true" /> </key> <section> <tabs label="Material test"> <section label="General"> <choice key="general_choice1" 
+		label="Choice Test" default="BBB" required="true"> <group label="AAA" /> <group label="BBB" /> </choice> <double key="general_field_4" label="Density" units="density" /> <double key="general_field_6" label="Diffusivity" 
+		units="diffusivity" /> </section> <section label="Transport"> <double key="transport_field_1" label="T1" units="density" /> <double key="transport_field_2" label="T2" units="density" /> </section> </tabs> 
+		</section> </expanded_list> </section> </expanded_list> </component> <component name="Garbage"> <columns> <tabs label="Column example" key="columns_1"> <section label="A" key="seciton_a"> <double key="m" 
+		label="m" /> <integer key="xdata_2" label="Surface" /> <integer key="xdata_1" label="Surface" /> </section> <section label="B" key="seciton_b"> <double key="n" label="n" /> </section> </tabs> <section 
+		label="Section 1" key="section_1"> <file key="surface_file" label="Surface" /> <integer key="data_2" label="Surface" /> <integer key="data_1" label="Surface" /> <double key="m" label="m" /> <double key="n" 
+		label="n" /> <list key="source_region2" label="Regions" type="Region A, Region B, Region C, Region D" default="A" required="true" visible_rows="3" selection="multiple" /> <choice key="choice_key1" label="Choice 
+		Test" default="C" required="true"> <group label="AA" /> <group label="BB"> <check_box key="check_box" label="Check" required="true" /> <double key="double_field" label="Double field" units="area" default_unit="m^2" 
+		required="true" /> <double key="double_field_5" label="Volumetric flux" units="length" /> <choice key="inner_choice" label="Inner Choice" default="B" required="true"> <group label="A" enabled="false" /> 
+		<group label="B" /> <group label="C"> <check_box key="inner_check_box" label="Inner Check" default="false" required="true" /> </group> </choice> </group> <group label="C" > <double key="double_field" label="Shard 
+		Double field" units="area" default_unit="m^2" required="true" /> <double key="double_field_5" label="Shard Volumetric flux" units="length" /> </group> <group label="D" /> </choice> <integer key="int_field" 
+		label="Integer field" default="0" required="true" /> <textarea key="field_key" label="Field" visible_rows="3" required="true" /> <string key="reference_key" label="Reference" required="true" /> </section> 
+		<section label="Set example" key="section_2"> <set type="A, B, C, D" key="set_1"> <check_box key="inner_check_box" label="Inner Check" default="false" required="true" /> <double key="double_field_6" label="Cubic 
+		length ratio" units="length" /> </set> </section> <section label="Set example" key="section_2"> <set type="A, B, C, D" key="set_1"> <choice key="xxx" label="xxx" required="true" type="region"> </choice> 
+		</set> </section> </columns> </component> <component name="Units Example"> <section label="Some stuff"> <comment> here too</comment> <section label="part1" collapsible="true"> <choice key="general_choice2" 
+		label="Choice Test" default="yyy_key" internal_default="zzz_key" required="true"> <group label="xxx" /> <group label="yyy" key="yyy_key" /> <group label="zzz" key="zzz_key" /> </choice> <double key="double_field_1" 
+		label="Alpha" default_unit="F" units="temperature" /> <double key="double_field_2" label="Area" units="temperature" default_unit="C" /> <double key="double_field_3" label="Compressibility" units="time" 
+		/> <double key="double_field_4" label="Concentration" units="velocity" /> <double key="double_field_5" label="Cubic length ratio" units="length" /> <double key="double_field_6" label="Length" units="length" 
+		default_unit="cm" /> <double key="double_field_7" label="Mass" units="mass" /> <double key="double_field_8" label="Permeability" units="pressure" /> <double key="double_field_9" label="Pressure" units="pressure" 
+		/> </section> <section label="innards" key="xxx" collapsible="true"> <double key="double_field_8a" label="Permeability inner" units="pressure" /> <double key="double_field_9a" label="Pressure inner" units="pressure" 
+		/> </section> </section> <section label="More stuff"> <double key="double_field_10" label="Temperature" units="temperature" enabled="false" /> <double key="double_field_11" label="Time" units="time" /> 
+		<double key="double_field_12" label="Viscosity" units="velocity" /> </section> </component> <component name="Complex Units Example" hierarchy_name="Units"> <section> <integer key="double_field_4" label="Density" 
+		units="density" /> <integer key="double_field_1" label="Diffusivity" units="diffusivity" /> <integer key="double_field_2" label="Flux" units="flux" /> <integer key="double_field_3" label="Inverse density" 
+		units="inverse density" /> <integer key="double_field_6" label="Mass flux" units="mass flux" /> <integer key="double_field_7" label="Pressure gradient" units="pressure gradient" /> <integer key="double_field_8" 
+		label="Velocity" units="velocity" /> <integer key="double_field_5" label="Volumetric flux" units="volumetric flux" /> </section> </component> 
+		-->
+
+	<component name="UQ Options" hierarchy_name="Options">
+		<section label="Ensemble Specifications" user_object="options">
+			<choice key="sampling_method" label="Sampling method" default="lh_grp" required="false">
+				<group label="Latin hypercube" key="lh_grp">
+					<double key="lh1" label="lh1" units="temperature" default_unit="F" />
+					<double key="lh2" label="lh2" units="temperature" default_unit="F" />
+					<double key="lh3" label="lh2" units="temperature" default_unit="F" />
+				</group>
+				<group label="Random" />
+				<group label="Orthogonal array" enabled="false" />
+			</choice>
+			<integer key="forward_runs" label="Number of forward runs" required="true" enabled="false" />
+			<integer key="random_seed" label="Random seed" required="true" />
+			<double key="lh3" label="lh2" units="temperature" default_unit="F" />
+		</section>
+		<section label="Weighting Scheme" user_object="options" key="sectiontest">
+			<choice key="weighting_scheme" label="Scheme" default="by1" required="true" enabled="true">
+				<group label="Weights by sum of squared errors" key="square" />
+				<group label="All weights = 1" key="by1" />
+				<group label="User 
+		specified weights" />
+			</choice>
+		</section>
+		<comment>hahaha</comment>
+		<section key="settest">
+			<comment>hahaha</comment>
+			<set label="Set Example" type="emptyset" key="set_settest">
+				<check_box key="inner_check_box1" label="Inner Check" default="false" required="true" />
+				<double key="double_field_s1" label="Cubic length ratio" units="length" />
+			</set>
+		</section>
+	</component>
+	<component name="ABCExample">
+		<section>
+			<double key="component_double" label="Double at component level" units="length" />
+			<double key="test" label="2nd Double at component level" could_be_file="true" />
+		</section>
+		<section label="Section with 
+		key" key="key_section">
+			<double key="key_section_double" label="Double under key'd section" could_be_file="true" />
+		</section>
+		<section label="Section without key">
+			<double key="no_key_section_double" label="Double under non key'd section" could_be_file="false" />
+		</section>
+	</component> 
+
+	<ruleset>
+		<comment>hahaha</comment>
+		<calculation key="key_section_double" expression="test/$x" />
+		<comment>hahaha</comment>
+		<calculation key="xa" expression="xc/3.14" />
+		<contextrule key="component_double" action="warn">
+			<expression>no_key_section_double &gt;=$xxx</expression>
+			<message>oh oh should have been greater than 5</message>
+		</contextrule>
+
+	</ruleset>
+
+</abc>

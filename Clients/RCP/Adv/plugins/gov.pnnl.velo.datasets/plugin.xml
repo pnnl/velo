@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension point="org.eclipse.ui.editors">
+	  <editor
+	      id="gov.pnnl.velo.sapphire.osti.OSTI"
+	      name="OSTI Metadata Editor"
+	      icon="icons/SapphireFile.png"
+	      filenames="osti.xml"
+	      default="true"
+	      enabledForVelo="true">
+	      <class class="gov.pnnl.velo.sapphire.ui.VeloEditorForXml">
+	        <parameter name="sdef" value="gov.pnnl.velo.sapphire.osti.OSTI"/>
+	        <parameter name="pageName" value="OSTI Editor Page"/>
+	        <parameter name="hideOutline" value="true"/>
+	      </class>
+	  </editor>
+    </extension>
+    <extension point="org.eclipse.ui.editors">
+      <editor
+      id="gov.pnnl.velo.sapphire.dataset.DatasetMetadata"
+      name="Data Set Metadata Editor"
+      icon="icons/SapphireFile.png"
+      filenames="dataset.xml"
+      default="true"
+      enabledForVelo="true">
+	  <class class="gov.pnnl.velo.sapphire.editor.VeloSapphireEditorForXml">
+        <parameter name="sdef" value="gov.pnnl.velo.sapphire.dataset.DatasetMetadata"/>
+        <parameter name="pageName" value="Dataset Metadata"/>
+      </class>
+      
+    </editor>
+   </extension>
+    <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="gov.pnnl.velo.dataset.perspectives.DatasetEditing"
+            icon="icons/16x16/edit.png"
+            id="gov.pnnl.velo.dataset.perspectives.DatasetEditing"
+            name="Dataset Editing">
+      </perspective>
+    </extension>
+    <extension
+          point="org.eclipse.ui.views">
+       <view
+             class="gov.pnnl.velo.dataset.views.DatasetNavigator"
+             icon="icons/16x16/index.png"
+             id="gov.pnnl.velo.dataset.views.DatasetNavigator"
+             name="Dataset Navigator"
+             restorable="true">
+       </view>
+       <view
+             class="gov.pnnl.velo.dataset.views.StepsToPublish"
+             icon="icons/16x16/outline_co.gif"
+             id="gov.pnnl.velo.dataset.views.StepsToPublish"
+             name="Steps To Publish Dataset"
+             restorable="true">
+       </view>
+       <view
+             class="gov.pnnl.velo.dataset.views.NavigationView"
+             id="gov.pnnl.velo.dataset.views.NavigationView"
+             name="Navigation"
+             restorable="true">
+       </view>
+       <view
+             class="gov.pnnl.velo.dataset.views.ActionsView"
+             id="gov.pnnl.velo.dataset.views.ActionsView"
+             name="Action Bar"
+             restorable="true">
+       </view>
+    </extension>
+	<extension
+         point="org.eclipse.ui.handlers">  
+         <handler
+            class="gov.pnnl.velo.dataset.handler.OpenInDatasetEditingPerspective"
+            commandId="gov.pnnl.velo.dataset.handler.OpenInDatasetEditingPerspective">
+	      <enabledWhen>
+	     	 <with
+	               variable="selection">
+	            <count
+	                  value="1">
+	            </count>
+	         </with>
+	      </enabledWhen>  
+	      <activeWhen>
+	            <with
+	                  variable="selection">
+	               <and>
+	                   <iterate ifEmpty="false" operator="and">
+                          <adapt
+                               type="gov.pnnl.cat.core.resources.IResource">
+                            <test
+                             forcePluginActivation="true"
+                             property="gov.pnnl.cat.ui.hasAspect"
+                             args="{http://www.pnl.gov/velo/model/dataset/1.0}dataset"
+                             value="true">
+                             </test>   
+                         </adapt>
+                       </iterate>
+	               </and>
+	            </with>
+	      </activeWhen>          
+      </handler>
+  	</extension>
+	<extension
+      point="org.eclipse.ui.commands">
+      <command
+            id="gov.pnnl.velo.dataset.handler.OpenInDatasetEditingPerspective"
+            name="Open In Dataset Editing Perspective">
+      </command> 
+      <command
+            id="gov.pnnl.velo.dataset.handler.InvokeNewDatasetWizard"
+            defaultHandler="gov.pnnl.velo.dataset.handler.InvokeNewDatasetWizard"
+            name="Invoke New Dataset Wizard">
+      </command>
+      <command
+            defaultHandler="gov.pnnl.velo.dataset.handler.PublishDataset"
+            id="gov.pnnl.velo.dataset.handler.PublishDataset"
+            name="Publish Dataset">
+      </command>     
+	</extension>
+	<extension
+         point="org.eclipse.ui.menus"> 
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=openIn">
+         <command
+               commandId="gov.pnnl.velo.dataset.handler.OpenInDatasetEditingPerspective"
+               icon="icons/16x16/edit.png"
+               label="Edit Dataset"
+               style="push"
+               tooltip="Open In Dataset Editing Perspective">
+         </command>
+      </menuContribution>
+      <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=velo.new.ext">  
+         <command
+               commandId="gov.pnnl.velo.dataset.handler.InvokeNewDatasetWizard"
+               icon="icons/16x16/index_new.png"
+               label="New Dataset"
+               style="push"
+               tooltip="New Dataset">
+         </command>
+         
+      </menuContribution>
+      </extension>
+    
+      
+<!-- copied how to get the publish button to show up only on the dataset editing perspective from 
+https://openchrom.wordpress.com/2011/08/20/showhide-menu-and-toolbar-entries-depending-on-the-selected-perspective/
+-->    
+<!--  
+<extension
+         point="org.eclipse.ui.menus"> 
+		<menuContribution
+		  locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+		  <toolbar
+		    id="gov.pnnl.velo.datasets.toolbar">
+		    <command
+	            commandId="gov.pnnl.velo.dataset.handler.PublishDataset"
+	            icon="icons/16x16/share_button.png"
+	            label="Publish Dataset"
+	            mode="FORCE_TEXT"
+	            style="push">
+			      <visibleWhen
+			        checkEnabled="false">
+			        <reference
+			          definitionId="gov.pnnl.velo.dataset.perspectives.isDatasetEditingPerspectiveDefinition">
+			        </reference>
+			      </visibleWhen>
+		    </command>
+		    <command
+	            commandId="org.eclipse.ui.file.save"
+	            icon="icons/16x16/save_edit.png"
+	            label="Save"
+	            mode="FORCE_TEXT"
+	            style="push">
+			      <visibleWhen
+			        checkEnabled="false">
+			        <reference
+			          definitionId="gov.pnnl.velo.dataset.perspectives.isDatasetEditingPerspectiveDefinition">
+			        </reference>
+			      </visibleWhen>
+		    </command>
+		    
+		  </toolbar>
+		</menuContribution>           
+</extension>
+
+<extension
+  point="org.eclipse.core.expressions.propertyTesters">
+  <propertyTester
+    class="gov.pnnl.velo.dataset.perspectives.PerspecticePropertyTester"
+    id="gov.pnnl.velo.dataset.perspectives.PerspecticePropertyTester"
+    namespace="gov.pnnl.velo.dataset.perspectives.PerspecticePropertyTester"
+    properties="isDatasetEditingPerspective"
+    type="java.lang.Object">
+  </propertyTester>
+</extension>
+<extension
+  point="org.eclipse.core.expressions.definitions">
+  <definition
+    id="gov.pnnl.velo.dataset.perspectives.isDatasetEditingPerspectiveDefinition">
+    <with
+      variable="activeWorkbenchWindow.activePerspective">
+      <test
+        forcePluginActivation="true"
+        property="gov.pnnl.velo.dataset.perspectives.PerspecticePropertyTester.isDatasetEditingPerspective">
+      </test>
+    </with>
+  </definition>
+</extension>
+-->
+
+<!-- end of config to get publish button to show up in dataset editing perspective --> 
+
+
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          canFinishEarly="false"
+          class="gov.pnnl.velo.dataset.wizards.NewDatasetWizard"
+          hasPages="true"
+          icon="icons/16x16/index.png"
+          id="gov.pnnl.velo.dataset.wizards.NewDatasetWizard"
+          name="New Dataset">
+    </wizard>
+  </extension>
+  
+  <!--
+  <extension
+         point="gov.pnnl.cat.ui.rcp.customDoubleClickBehavior">
+      <CustomDoubleClickBehavior
+            class="gov.pnnl.velo.dataset.behavior.DatasetFolderCustomDoubleClickBehavior">
+      </CustomDoubleClickBehavior>
+   </extension>
+  --> 
+   <extension
+         point="gov.pnnl.cat.ui.resourceImage">
+      <resourceImageFactory
+            class="gov.pnnl.velo.dataset.images.DatasetImageFactory">
+      </resourceImageFactory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="gov.pnnl.velo.dataset.perspectives.DatasetEditing">
+         <view
+               id="org.eclipse.ui.browser.view"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.editorss"
+               visible="false">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         id="gov.pnnl.velo.dataset.smartfolder.provider.MyDatasets"
+         name="gov.pnnl.velo.dataset.smartfolder.provider.MyDatasets"
+         point="gov.pnnl.cat.ui.rcp.smartFolderProvider">
+      <SmartFolderProvider
+            class="gov.pnnl.velo.dataset.smartfolder.provider.MyDatasets">
+      </SmartFolderProvider>
+   </extension> 
+    
+  
+</plugin>

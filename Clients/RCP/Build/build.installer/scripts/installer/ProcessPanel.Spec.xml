@@ -1,0 +1,24 @@
+<processing>
+  <job name="check java 32" conditionId="!MEMORY_CONFIGURABLE">
+    <executefile name="$JAVA_EXE">
+      <arg>-jar</arg>
+      <arg>gov/pnnl/velo/installer/CheckJava.jar</arg>
+      <arg>-version</arg>
+      <arg>1.7</arg>
+      <arg>-arch</arg>
+      <arg>32</arg>
+    </executefile>
+  </job>
+  <job name="check java 64" conditionId="MEMORY_CONFIGURABLE">
+    <executefile name="$JAVA_EXE">
+      <arg>-jar</arg>
+      <arg>gov/pnnl/velo/installer/CheckJava.jar</arg>
+      <arg>-version</arg>
+      <arg>1.7</arg>
+      <arg>-arch</arg>
+      <arg>64</arg>
+    </executefile>
+  </job>
+  <onFail previous="true" next="false" />
+  <onSuccess previous="true" next="true" />
+</processing>

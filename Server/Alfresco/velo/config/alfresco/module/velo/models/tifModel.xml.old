@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Currently this model is not being used - leaving it here for reference only
+when we finish provenance as some of this may need to be used at some point -->
+<model name="tif:model" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+  <!-- Optional meta-data about the model -->
+  <description>Registry Model</description>
+  <version>1.0</version>
+
+  <!-- Imports are required to allow references to definitions in other models -->
+  <imports>
+    <!-- Import Alfresco Dictionary Definitions -->
+    <import uri="http://www.alfresco.org/model/dictionary/1.0"
+      prefix="d" />
+    <!-- Import Alfresco Content Domain Model Definitions -->
+    <import uri="http://www.alfresco.org/model/content/1.0"
+      prefix="cm" />
+  </imports>
+
+  <!-- Introduction of new namespaces defined by this model -->
+  <!-- NOTE: The following namespace my.new.model should be changed to reflect 
+    your own namespace -->
+  <namespaces>
+    <namespace uri="http://www.pnnl.gov/velo/model/tif/1.0"
+      prefix="tif" />
+  </namespaces>
+
+  <types>
+  </types>
+
+
+  <aspects>
+  
+    <aspect name="tif:machine">
+      <title>Machine</title>
+      <parent>cm:titled</parent>
+      <properties>
+        <!-- Is this machine currently operable.  Could it be down for some reason like a disk crash? -->
+        <property name="tif:active">
+          <title>Active</title>
+          <type>d:boolean</type>
+        </property>
+        <property name="tif:inactiveExplanation">
+          <title>Explanation of why machine is inactive</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:allocationAccountRequired">
+          <title>Allocation Account Required</title>
+          <type>d:boolean</type>
+        </property>
+        <property name="tif:schedulerName">
+          <title>Name of Scheduler</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:schedulerPath">
+          <title>Path to Scheduler</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:os">
+          <title>OS</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:numNodes">
+          <title>Number of Nodes</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:processorsPerNode">
+          <title>Number of Processors per Node</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:fullDomainName">
+          <title>Full Domain Name</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:ip">
+          <title>IP Address</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:queues">
+          <title>Queues supported by the scheduler</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <property name="tif:userHomePath">
+          <title>Path to where user home dirs are</title>
+          <type>d:text</type>
+        </property>
+      </properties>  
+      <mandatory-aspects>
+         <aspect>tif:content</aspect>
+      </mandatory-aspects>
+    </aspect>
+
+    <!-- Optional aspect that should be set on a machine node if the machine has the archive enabled -->
+    <aspect name="tif:archiveEnabled">
+      <title>Archive Enabled Machine</title>
+      <properties>
+        <property name="tif:archiveRootPath">
+          <title>Path to where the archive root folder is on the server.</title>
+          <type>d:text</type>
+        </property>
+      </properties>
+    </aspect>
+
+    <aspect name="tif:code">
+      <title>Tool</title>
+      <parent>tif:registryObject</parent>
+      <properties>
+        <property name="tif:supportedOperatingSystems">
+          <title>Supported Operating Systems</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <property name="tif:supportedArchitectures">
+          <title>Supported Architectures</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <!-- TODO: uri to what?  this seems like it should be part of a general provenance object aspect -->
+        <property name="tif:uri">
+          <title>URI</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:exePath">
+          <title>Executable Path</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:executable">
+          <title>Executable</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:recordRuns">
+          <title>RecordRuns</title>
+          <type>d:boolean</type>
+        </property>
+        <!-- TODO: do we need remoteExecute??? Seems like a useless param -->
+        <property name="tif:remoteExecute">
+          <title>RemoteExecute</title>
+          <type>d:boolean</type>
+        </property>
+        <property name="tif:outputs">
+          <title>Output Regex plus link or copy</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <property name="tif:inputs">
+          <title>Input Regex</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <property name="tif:machines">
+          <title>Machines that this tool runs on</title>
+          <type>d:text</type>
+          <multiple>true</multiple>
+        </property>
+        <property name="tif:defaultJobHandler">
+          <title>qualified classname for the default Job Handler</title>
+          <type>d:text</type>
+        </property>
+      </properties>
+      <associations>
+      <!-- I'm not sure that we need this association, since it is redundant -->
+        <association name="tif:runsOnMachine">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>      
+      <mandatory-aspects>
+         <aspect>tif:content</aspect>
+         <aspect>tif:version</aspect>
+         <aspect>tif:codeID</aspect>
+      </mandatory-aspects>
+    </aspect>
+
+    <aspect name="tif:toolInstance">
+      <title>Tool Instance</title>
+      <parent>cm:titled</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasParentTool">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+        <association name="tif:ranOnMachine">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+      </associations>
+      <mandatory-aspects>
+         <aspect>tif:codeID</aspect>
+      </mandatory-aspects>
+    </aspect>
+       
+    <aspect name="tif:dataSet">
+      <title>Data Set</title>
+      <parent>tif:toolInstance</parent>
+
+      <properties>
+        <property name="tif:dataSetType"><!-- could do a constraint for values (Observation, Simulation, or Derived) but leaving that up to the UI for now -->
+          <title>Data Set Type</title>
+          <type>d:text</type> 
+        </property><!--  version info defined in process aspect but this isn't a process, so we need it here as well -->
+      </properties>
+      
+      <mandatory-aspects>
+         <aspect>tif:hasInput</aspect>
+      </mandatory-aspects>
+    </aspect>
+
+   <aspect name="tif:codeID">
+      <title>Code ID</title>
+      <properties>
+         <property name="tif:codeID">
+            <title>Code ID</title>
+            <type>d:text</type>
+         </property>
+      </properties>
+   </aspect>
+   
+   
+ <!-- old oascis aspects only here in order for patch to function -->
+
+    <aspect name="tif:hasRelationship">
+      <title>Has Relationship</title>
+      <properties>
+      </properties>
+    </aspect>
+
+    <aspect name="tif:hasInput">
+      <title>Has Input</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasInput">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+
+   <aspect name="tif:hasReference">
+      <title>Has Reference</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasReference">
+          <source>
+            <mandatory>false</mandatory>
+            <many>false</many> <!-- not sure about this... -->
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+
+    <aspect name="tif:derivedFrom">
+      <title>Derived From</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:derivedFrom">
+          <source>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+
+    <aspect name="tif:hasOutput">
+      <title>Has Output</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasOutput">
+          <source>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+    
+    <aspect name="tif:hasRemoteLink">
+      <title>Has Remote Link</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasRemoteLink">
+          <source>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+    
+    <aspect name="tif:hasScriptTemplate">
+      <title>Has Script Template</title>
+      <parent>tif:hasRelationship</parent>
+      <properties>
+      </properties>
+      <associations>
+        <association name="tif:hasScriptTemplate">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+    
+    <!-- These are aspects that will have add'l aspects from above added so as to 
+          include assocations -->
+    
+    <aspect name="tif:scriptTemplate">
+      <title>Script Template</title>
+      <parent>cm:titled</parent>
+      <!-- not clear on the association, notes say one per machine/process but should
+      that be modeled here or in the machine and process? -->
+    </aspect>
+   
+    <aspect name="tif:simulationInstance">
+      <title>Simulation Instance</title>
+      <parent>cm:titled</parent>
+      <properties>
+        <property name="tif:instanceId">
+          <title>Instance ID</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:startTime">
+          <title>Start Time</title>
+          <type>d:datetime</type>
+        </property>
+        <property name="tif:endTime">
+          <title>End Time</title>
+          <type>d:datetime</type>
+        </property>
+        <property name="tif:invoker">
+          <title>Invoker</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:state">
+          <title>State</title>
+          <type>d:text</type>
+        </property>
+        <property name="tif:jobInfo">
+          <title>Job Info</title>
+          <type>d:text</type>
+        </property>       
+      </properties>
+      <associations>
+        <association name="tif:hasParentProcess">
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </target>
+        </association>
+        <association name="tif:hasErrorLog">
+          <source>
+            <mandatory>false</mandatory>
+            <many>false</many>
+          </source>
+          <target>
+            <class>cm:cmobject</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+      
+         <mandatory-aspects>
+            <aspect>tif:content</aspect>
+            <aspect>tif:codeID</aspect>
+         </mandatory-aspects>
+    </aspect>
+    
+     <aspect name="tif:simulation">
+      <title>Simulation</title>
+      <parent>tif:tool</parent>
+    </aspect>
+ 
+  </aspects>
+
+</model>

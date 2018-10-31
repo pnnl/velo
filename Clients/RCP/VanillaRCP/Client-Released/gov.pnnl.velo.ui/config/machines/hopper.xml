@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<machine>
+	<name>hopper</name>
+	<fullDomainName>hopper.nersc.gov</fullDomainName>
+	
+	<connectionProtocols>
+		<connectionProtocol type="ssh"/>
+	</connectionProtocols>
+	
+	<!-- if run directory not provided by user, run dir will be set to userHomeParent/username/toolTitle_timestamp -->
+	<userHomeParent>/scratch/scratchdirs</userHomeParent>
+	<nodes>6384</nodes>
+	<procsPerNode>24</procsPerNode>
+	<scheduler name="PBS" allocation="true" path="" kill="qdel">
+		<queue name="debug" default="true">
+			<timeLimit>00:30:00</timeLimit>
+			<defaultTimeLimit>00:05:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>512</maxNodes>
+		</queue>
+		<queue name="thruput">
+			<timeLimit>168:00:00</timeLimit>
+			<defaultTimeLimit>00:30:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>2</maxNodes>
+		</queue>
+		<queue name="regular">
+			<timeLimit>48:00:00</timeLimit>
+			<defaultTimeLimit>01:00:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>256</maxNodes>
+		</queue>
+		<queue name="premium">
+			<timeLimit>12:00:00</timeLimit>
+			<defaultTimeLimit>01:00:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>2048</maxNodes>
+		</queue>
+	</scheduler>
+	<codes>
+		<code id="agni" version="default">
+			<!--  default values for this machine and this code, this overrides defaults set in the code registry -->
+			<jobLaunching>
+				<command>/global/project/projectdirs/m1012/agni/install/hopper/bin/Agni --infile=agni.xml</command>
+			    <remoteInputs>
+			    	<!-- machine registry is where you register code-specific remote input files -->
+				    <!-- <fileset file="/ASCEM/"/> -->
+		         </remoteInputs>
+			</jobLaunching>
+		</code>
+		<code id="amanzi" version="default">
+			<!--  default values for this machine and this code, this overrides defaults set in the code registry -->
+			<jobLaunching>
+				<command>/project/projectdirs/m1012/amanzi/install/hopper/release-0.84/bin/amanzi</command>
+			</jobLaunching>
+		</code>		
+	</codes>
+	
+	<services>
+		<service id="VisIt" url="dynamic" description="VisIt service that clients can connect to for parallel vis.">
+			<parameters>
+			  <parameter name="installDirectory">/usr/common/graphics/visit/visit_web/visweb/bin</parameter>
+		    </parameters>		
+		</service>
+	</services>
+	
+	
+	<!-- Catch all for custom parameters you want to associate with your machine -->
+	<customParameters>
+		<parameter name="mpi_call">aprun</parameter>
+		<parameter name="accessibleFromVeloServer">true</parameter>
+	</customParameters>
+</machine>

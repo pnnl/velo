@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Collection</shortname>
+  <description>Returns a list of children in the folder with some simple metadata.</description>
+  <url>/velo/getCollection?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,140 @@
+/*******************************************************************************
+ * .
+ *                           Velo 1.0
+ *  ----------------------------------------------------------
+ * 
+ *            Pacific Northwest National Laboratory
+ *                      Richland, WA 99352
+ * 
+ *                      Copyright (c) 2013
+ *            Pacific Northwest National Laboratory
+ *                 Battelle Memorial Institute
+ * 
+ *   Velo is an open-source collaborative content management
+ *                and job execution environment
+ *              distributed under the terms of the
+ *           Educational Community License (ECL) 2.0
+ *   A copy of the license is included with this distribution
+ *                   in the LICENSE.TXT file
+ * 
+ *                        ACKNOWLEDGMENT
+ *                        --------------
+ * 
+ * This software and its documentation were developed at Pacific 
+ * Northwest National Laboratory, a multiprogram national
+ * laboratory, operated for the U.S. Department of Energy by 
+ * Battelle under Contract Number DE-AC05-76RL01830.
+ ******************************************************************************/
+package gov.pnnl.velo.tif.service;
+
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+
+import gov.pnnl.velo.model.Resource;
+
+
+/**
+ * TODO: add short list of methods from Zoe's list
+ * (We will not include relationships or versions
+ * for initial version.)
+ *  
+ */
+public interface CmsService {
+  
+  // getProperty
+  /**
+   * @param contextPath
+   * @param fullyQualifiedName
+  
+   * @return an 0bject of type String, Date, Boolean, Integer, or Double */
+  public Object getProperty(String contextPath, String fullyQualifiedName);
+
+  
+  // getProperties
+  /**
+   * Method getProperties.
+   * @param contextPath String
+   * @param propertiesToGet String[]
+   * @return Map<String,Object>
+   */
+  public Map<String, Object> getProperties(String contextPath, String... propertiesToGet);
+
+  
+  // setProperty
+  /**
+   * @param contextPath
+   * @param fullyQualifiedName
+   * @param value - can be String, Date, Boolean, Double, or Integer
+   */
+  public void setProperty(String contextPath, String fullyQualifiedName, Object value);
+
+  
+  // setProperties  
+  /**
+   * Method setProperties.
+   * @param contextPath String
+   * @param properties Map<String,Object>
+   */
+  public void setProperties(String contextPath, Map<String, Object> properties);
+
+  // removeProperties
+  /**
+   * Method removeProperties.
+   * @param contextPath String
+   * @param propNames List<String>
+   */
+  public void removeProperties(String contextPath, List<String> propNames);
+  
+  // getChildren
+  /**
+   * Method getCollection.
+   * @param contextPath String
+   * @return List<Resource>
+   */
+  public List<Resource> getChildren(String contextPath);
+
+  // resourceExists
+
+  /**
+   * Check if a file exists on the server
+   * @param contextPath
+  
+   * @return boolean
+   */
+  public boolean resourceExists(String contextPath);
+
+  // addFolder
+
+  /**
+   * @param parentContextPath - path to parent folder where new folder will be created
+   * (i.e., /projects/TestProject)
+   * @param name - name of new folder
+   */
+  public void addFolder(String parentContextPath, String name);
+
+  /**
+   * @param parentContextPath - path to parent folder where new folder will be created
+   * (i.e., /projects/TestProject)
+   * @param mimetype - mimetype of new folder
+   * @param name - name of new folder
+   */
+  public void addFolder(String parentContextPath, String mimetype, String name);
+
+  // uploadFiles
+  /**
+   * Method uploadFiles.
+   * @param files List<File>
+   * @param destinationParentContextPath String
+   */
+  public void uploadFiles(List<File> files, String destinationParentContextPath);
+
+  // getFile(CmsPath path)
+  /**
+   * Get the remote resource pointed to by contextPath copied to a local temp file.  It is up to caller
+   * to delete temp file when done.
+   * @param contextPath - relative context path to resource (i.e., /projects/TestProject/file1.txt)
+   * @return - local temp file */
+  public File getFile(String contextPath);
+  
+}

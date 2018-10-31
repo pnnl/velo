@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2010, 2011 SAP AG and others. All rights reserved. This 
+	program and the accompanying materials are made available under the terms 
+	of the Eclipse Public License v1.0 which accompanies this distribution, and 
+	is available at http://www.eclipse.org/legal/epl-v10.html Contributors: SAP 
+	AG - initial API and implementation -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Inherit plugins and properties from ../build.master pom -->
+	<parent>
+		<groupId>gov.pnnl.velo</groupId>
+		<artifactId>build.master</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../build.master</relativePath>
+	</parent>
+
+	<artifactId>build.product</artifactId>
+	<packaging>eclipse-repository</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<formats>
+						<win32>zip</win32>
+						<linux>tar.gz</linux>
+						<macosx>tar.gz</macosx>
+					</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!--  This plugin copies the maven p2 build from the target folder into a separate local folder -->
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-p2-extras-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>copy-to-central-site</id>
+						<phase>install</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>
+								<repository>
+									<url>${project.baseUri}/target/repository</url>
+								</repository>
+							</source>
+							<append>true</append>
+							<destination>${p2.dir}/${project.version}</destination>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- This plugin updates the composite metadata in the local p2.dir so that it will match what is pushed out
+			to the p2 remote site -->
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-eclipserun-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<appArgLine>-application org.eclipse.ant.core.antRunner</appArgLine>
+					<argLine>-Dp2.dir=${p2.dir} -Dproject.name=${project.name} -Dp2.remote.site=${p2.remote.site} -Dversion=${project.version}</argLine>
+					<dependencies>
+						<dependency>
+							<artifactId>org.apache.ant</artifactId>
+							<type>eclipse-plugin</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.ant.core</artifactId>
+							<type>eclipse-plugin</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.equinox.ds</artifactId>
+							<type>eclipse-plugin</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.equinox.p2.extras.feature</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+					</dependencies>
+					<repositories>
+						<repository>
+							<id>eclipse 4.5</id>
+							<layout>p2</layout>
+							<url>http://download.eclipse.org/eclipse/updates/4.5</url>
+						</repository>
+					</repositories>
+				</configuration>
+				<executions>
+					<execution>
+						<id>run-publish</id>
+						<phase>install</phase>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

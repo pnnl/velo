@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="CAT Server Core/build/velo-notifications.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/CAT Server Core/velo-notifications-jar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <javaElement handleIdentifier="=CAT Server Core/source\/java&lt;gov.pnnl.cat.util"/>
+        <javaElement handleIdentifier="=CAT Server Core/source\/java&lt;gov.pnnl.cat.events.common"/>
+        <javaElement handleIdentifier="=CAT Server Core/source\/java&lt;gov.pnnl.cat.policy.notifiable.message"/>
+        <javaElement handleIdentifier="=CAT Server Core/source\/java&lt;gov.pnnl.cat.jms.common"/>
+        <javaElement handleIdentifier="=CAT Server Core/source\/java&lt;gov.pnnl.cat.events.subscription"/>
+    </selectedElements>
+</jardesc>

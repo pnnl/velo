@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+This is the shortcut specification for unix systems. Its considered default so on
+Systems that are not shortcut compatible the information is taken from here.
+-->
+<shortcuts>
+<programGroup defaultName="${PRODUCT_DISPLAY_NAME}" location="applications"/>
+<shortcut
+	type="Application"
+	encoding="UTF-8"
+	terminal="false"
+    name = ""${PRODUCT_DISPLAY_NAME}""
+    target = "$INSTALL_PATH\"${PRODUCT_NAME}""
+    commandLine = ""
+    workingDirectory= "$INSTALL_PATH"
+    description="Launch "${PRODUCT_DISPLAY_NAME}""
+    iconIndex="0"
+    initialState="normal"
+    programGroup="yes"
+    desktop="yes"
+    applications="no"
+    startMenu="no"
+    startup="no"/>
+</shortcuts>

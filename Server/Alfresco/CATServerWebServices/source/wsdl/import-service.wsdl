@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="import-service"
+   targetNamespace="http://www.pnl.gov/cat/ws/service/imprt/1.0"
+   xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+   xmlns:imprt="http://www.pnl.gov/cat/ws/service/imprt/1.0"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:cms="http://www.alfresco.org/ws/model/content/1.0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   
+   <!-- ************************************** -->
+   <!-- Copyright Alfresco Software, Inc. 2005 -->
+   <!-- ************************************** -->
+   <wsdl:import namespace="http://www.alfresco.org/ws/model/content/1.0" location="../wsdl/types.xsd"/>
+   <wsdl:types>
+      <schema elementFormDefault="qualified" targetNamespace="http://www.pnl.gov/cat/ws/service/imprt/1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+          
+         <complexType name="ImportFault">
+            <sequence>
+               <element name="errorCode" type="xsd:int"/>
+               <element name="message" type="xsd:string"/>
+            </sequence>
+         </complexType>
+         <element name="ImportFault" type="imprt:ImportFault"/>
+         
+         <!-- Method Definitions -->         
+         <element name="urlImportAction">
+            <complexType>
+               <sequence>
+                  <element name="urlListAsXml" type="xsd:string"/>
+                  <element name="targetFolder" type="cms:Reference"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="urlImportActionResponse">
+            <complexType />
+         </element>
+         
+                  <!-- Method Definitions -->         
+         <element name="testMethod">
+            <complexType>
+               <sequence>
+                  <element name="urlListAsXml" type="xsd:string"/>
+                  <element name="targetFolder" type="cms:Reference"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="testMethodResponse">
+            <complexType />
+         </element>
+           
+        </schema>
+   </wsdl:types>
+   
+   <!-- Message definitions -->
+   
+   <wsdl:message name="urlImportActionRequest">
+      <wsdl:part element="imprt:urlImportAction" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="urlImportActionResponse">
+      <wsdl:part element="imprt:urlImportActionResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="testMethodRequest">
+      <wsdl:part element="imprt:testMethod" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="testMethodResponse">
+      <wsdl:part element="imprt:testMethodResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="ImportFault">
+      <wsdl:part element="imprt:ImportFault" name="fault"/>
+   </wsdl:message>
+   
+   <!-- Port and binding definitions -->
+   
+   <wsdl:portType name="ImportServiceSoapPort">
+      <wsdl:operation name="urlImportAction">
+         <wsdl:documentation>Import URLs</wsdl:documentation>
+         <wsdl:input message="imprt:urlImportActionRequest" name="urlImportActionRequest"/>
+         <wsdl:output message="imprt:urlImportActionResponse" name="urlImportActionResponse"/>
+         <wsdl:fault message="imprt:ImportFault" name="ImportFault"/>
+      </wsdl:operation>    
+ 
+       <wsdl:operation name="testMethod">
+         <wsdl:documentation>Import URLs</wsdl:documentation>
+         <wsdl:input message="imprt:testMethodRequest" name="testMethodRequest"/>
+         <wsdl:output message="imprt:testMethodResponse" name="testMethodResponse"/>
+         <wsdl:fault message="imprt:ImportFault" name="ImportFault"/>
+      </wsdl:operation>   
+
+   </wsdl:portType>
+   
+   <wsdl:binding name="ImportServiceSoapBinding" type="imprt:ImportServiceSoapPort">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="urlImportAction">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/imprt/1.0/urlImportAction"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="ImportFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/imprt/1.0" use="literal" name="ImportFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+      <wsdl:operation name="testMethod">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/imprt/1.0/testMethod"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="ImportFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/imprt/1.0" use="literal" name="ImportFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+          </wsdl:binding>
+
+	<!-- Service definition -->
+	
+    <wsdl:service name="ImportService">
+       <wsdl:documentation>Import service for importing content.</wsdl:documentation>
+       <wsdl:port binding="imprt:ImportServiceSoapBinding" name="ImportService">
+          <wsdlsoap:address location="http://localhost:8080/alfresco/api/ImportService"/>
+       </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

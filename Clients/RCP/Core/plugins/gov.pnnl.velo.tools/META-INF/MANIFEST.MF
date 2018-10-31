@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tools
+Bundle-SymbolicName: gov.pnnl.velo.tools;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.velo.tools.ToolsPlugin
+Bundle-Vendor: PNNL
+Eclipse-BuddyPolicy: registered
+Eclipse-RegisterBuddy: com.thoughtworks.xstream, org.springframework, gov.pnnl.cat.core.resources
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources,
+ gov.pnnl.velo,
+ gov.pnnl.cat.ui.rcp,
+ org.apache.log4j,
+ gov.pnnl.cat.logging,
+ gov.pnnl.cat.ui,
+ org.eclipse.core.expressions,
+ org.springframework,
+ org.apache.commons
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: icons/,
+ velo-tools.jar
+Export-Package: gov.pnnl.velo.tools,
+ gov.pnnl.velo.tools.adapters,
+ gov.pnnl.velo.tools.behavior,
+ gov.pnnl.velo.tools.behavior.Default,
+ gov.pnnl.velo.tools.menus,
+ gov.pnnl.velo.tools.summary,
+ gov.pnnl.velo.tools.tif,
+ gov.pnnl.velo.tools.ui,
+ gov.pnnl.velo.tools.ui.adapters,
+ gov.pnnl.velo.tools.util
+

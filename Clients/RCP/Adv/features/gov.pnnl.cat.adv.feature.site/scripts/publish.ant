@@ -1,0 +1,29 @@
+<project default="update.p2">
+	<target name="update.p2">
+		<echo>Source: ${source.repository}</echo>
+		<p2.composite.repository>
+			<repository location="file:///${composite.repository}" name="${comp.repository.name}" />
+		</p2.composite.repository>
+
+		<p2.mirror>
+			<repository location="file:///${app.repository}/${build.version}" name="${app.repository.name}" />
+			<source>
+				<repository location="file:///${source.repository}" />
+			</source>
+		</p2.mirror>
+
+		<p2.composite.repository>
+			<repository location="file:///${app.repository}" name="${app.repository.name}" />
+			<add>
+				<repository location="${app.remote.repository}/${build.version}" />
+			</add>
+		</p2.composite.repository>
+
+		<p2.composite.repository>
+			<repository location="file:///${composite.repository}" name="${comp.repository.name}" />
+			<add>
+				<repository location="${app.remote.repository}/${build.version}" />
+			</add>
+		</p2.composite.repository>
+	</target>
+</project>

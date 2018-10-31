@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<installation version="1.0">
+	<!-- Ant properties in this file can be referenced with @{}, otherwise use 
+		variables below in installer files with ${} -->
+	<info>
+		<appname>@{product.name}</appname>
+		<appversion>@{product.version}</appversion>
+		<uninstaller name="uninstall.jar" path="${INSTALL_PATH}/Uninstaller" write="yes" />
+		<javaversion>1.7+</javaversion>
+	</info>
+
+	<guiprefs width="600" height="480" resizable="yes">
+		<laf name="kunststoff">
+			<os family="unix" />
+		</laf>
+
+		<modifier key="useHeadingPanel" value="yes" />
+		<modifier key="useHeadingForSummary" value="yes" />
+		<modifier key="headingImageOnLeft" value="no" />
+		<modifier key="headingLineCount" value="2" />
+		<modifier key="headingFontSize" value="1.5" />
+		<modifier key="headingBackgroundColor" value="0x00ffffff" />
+		<modifier key="headingPanelCounter" value="text" />
+		<modifier key="headingPanelCounterPos" value="inHeading" />
+	  	<modifier key="useButtonIcons" value="yes"/>
+  		<modifier key="useLabelIcons" value="no"/>
+  		<modifier key="labelGap" value="2"/>
+        <modifier key="layoutAnchor" value="NORTHWEST"/>
+        <modifier key="firstYGap" value="0" />
+ 
+	</guiprefs>
+
+	<locale>
+		<langpack iso3="eng" />
+	</locale>
+
+	<!-- Need to convert environment variables passed from ant int IzPack variables so they can be accessed in panels and resources -->
+	<variables>
+		<variable name="PRODUCT_NAME" value="@{product.name}" />
+		<variable name="PRODUCT_DISPLAY_NAME" value="@{product.display.name}" />
+		<variable name="PRODUCT_VERSION" value="@{product.version}" />
+		<variable name="HOST_NAME" value="@{hostname}" />
+		<variable name="HTTP_PORT" value="@{http.port}" />
+		<variable name="ALFRESCO_WEBAPP_NAME" value="@{alfresco.webapp.name}" />
+		<variable name="WIKI_URL" value="@{wiki.url}" />
+		<variable name="LOG_FILE_NAME" value="@{logfile.name}" />
+		<variable name="MEMORY_CONFIGURABLE" value="@{memory.configurable}" />		
+        <variable name="MAX_MEMORY" value="@{memory.max}" /> <!-- Set a default value for max memory as this will not be configurable for 32-bit JVM -->
+        <variable name="custom_java_path" value="" />
+        <variable name="ACTIVEMQ_WEBAPP_NAME" value="@{activemq.webapp.name}" />
+        <variable name="NOTIFICATION_SERVER_ID" value="@{notification.server.id}" />
+	</variables>
+	
+	<dynamicvariables>
+		<variable name="REPOSITORY_PROPERTIES_FILE" value="$INSTALL_PATH/@{filepath.repository.properties}" />								
+	</dynamicvariables>
+	
+	<resources>
+		<res src="@{basedir}/scripts/installer/Unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml"/>
+		<res src="@{basedir}/scripts/installer/shortcutSpec.xml" id="shortcutSpec.xml"/>
+		
+		<res id="userInputSpec.xml" src="@{basedir}/scripts/installer/userInputSpec.xml" />
+		<res id="conditions.xml" src="@{basedir}/scripts/installer/conditions.xml" />		
+  		<res src="@{basedir}/scripts/installer/ProcessPanel.Spec.xml" id="ProcessPanel.Spec.xml"/>
+  		<res src="@{basedir}/scripts/installer/langpack.eng.xml" id="CustomLangpack.xml_eng" />
+  		<res id="Heading.image" src="@{basedir}/scripts/installer/box_software.png" />
+  		<res id="Installer.image" src="@{basedir}/scripts/installer/background.png" />
+  		<res id="HTMLHelloPanel.info" src="@{basedir}/scripts/installer/panel-hello.html"/>
+  		
+  		<!-- The default install directory -->
+  		<res src="@{basedir}/scripts/installer/installpath.windows.txt" id="TargetPanel.dir.windows" />
+  		<res src="@{basedir}/scripts/installer/installpath.unix.txt" id="TargetPanel.dir.unix"/>
+  		
+	</resources>
+    
+	<panels>
+		<panel classname="HTMLHelloPanel" />
+		<!-- <panel classname="LicencePanel"/> -->
+		<panel classname="TargetPanel" />
+		<panel classname="UserInputPanel" condition="MEMORY_CONFIGURABLE"/>
+		<panel classname="SummaryPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="ShortcutPanel" />
+		<panel classname="SimpleFinishPanel" />
+	</panels>
+
+	<listeners>
+		<listener installer="SummaryLoggerInstallerListener">
+			<os family="windows" />
+		</listener>
+	</listeners>
+
+	<packs>
+		<pack name="Main Application" required="yes" installGroups="New Application">
+			<description>The ${product.name} application.</description>
+			<fileset dir="@{product.dir}" targetdir="$INSTALL_PATH" include="*"/>
+		</pack>
+		<pack name="Post-Install Tasks" required="yes">
+			<description>Post-install variable substitution, etc.</description>
+			<singlefile src="@{basedir}/scripts/installer/repository.properties" override="true" target="$INSTALL_PATH/repository.properties" />
+			<parsable type="plain" targetfile="$INSTALL_PATH/repository.properties" />
+						
+			<!-- Windows -->
+			<parsable type="plain" targetfile="$INSTALL_PATH/@{product.name}.ini" >
+				<os family="windows" />
+			</parsable>
+		    <executable targetfile="$INSTALL_PATH/@{product.name}.exe" stage="never">
+		    	<os family="windows" />
+		    </executable>
+		
+		    <!-- Linux -->
+			<parsable type="plain" targetfile="$INSTALL_PATH/@{product.name}.ini" >
+				<os name="linux"/>
+			</parsable>
+		    <executable targetfile="$INSTALL_PATH/@{product.name}" stage="never">
+		    	<os name="linux" />
+		    </executable>
+
+		    <!-- MacOS -->			
+			<parsable type="plain" targetfile="$INSTALL_PATH/@{product.name}.app/Contents/Eclipse/@{product.name}.ini" >
+				<os family="mac" />
+			</parsable>
+		    <executable targetfile="$INSTALL_PATH/@{product.name}.app/Contents/MacOS/@{product.name}" stage="never">
+		    	<os family="mac" />
+		    </executable>
+		    <executable targetfile="$INSTALL_PATH/jre/lib/jli/libjli.dylib" stage="never">
+		    	<os name="mac" />
+		    </executable>		    
+		</pack>
+	</packs>
+
+	<!-- The native libraries to add. This is required for creating shortcuts 
+		on Windows -->
+	<native type="izpack" src="@{basedir}/scripts/lib/ShellLink.dll" name="ShellLink.dll">
+		<os family="windows"/>	  	
+	</native>
+  
+    <native type="izpack" src="@{basedir}/scripts/lib/ShellLink_x64.dll" name="ShellLink_x64.dll">
+   		<os family="windows"/>
+	</native>
+
+</installation>

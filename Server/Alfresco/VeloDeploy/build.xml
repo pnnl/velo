@@ -1,0 +1,109 @@
+<project name="velo-remote-server-deploy" default="deploy">
+
+	<!-- Load the global build properties -->
+	<!-- Note that users can create a file for their host machine or user id
+	and that will take precedence over the default build.properties -->
+	<property environment="env" />
+	<property name="env.COMPUTERNAME" value="${env.HOST}" />
+	<property name="env.COMPUTERNAME" value="${env.HOSTNAME}" />
+
+	<echo>looking for build.${user.name}.properties </echo>
+	<property file="${basedir}/build.${user.name}.properties" />
+	<echo>looking for build.${env.COMPUTERNAME}.properties </echo>
+	<property file="${basedir}/build.${env.COMPUTERNAME}.properties" />
+	<property file="${basedir}/build.properties"/>
+
+	<path id="build.classpath">
+		<fileset dir="../VeloBuild/lib" includes="*.jar" />
+	</path>
+
+	<condition property="isWindows" value="true">
+		<os family="windows" />
+	</condition>
+
+	<condition property="isLinux" value="true">
+		<os family="unix" />
+	</condition>
+	
+	<!-- create deployment-specific war file -->
+	<target name="create-custom-war">
+
+		<!-- remove any old war file -->
+		<delete file="${dir.custom.war}/${alfresco.webapp.name}.war" />
+
+		<!-- unwar the CAT war to the alfresco webapp folder -->
+		<unwar src="${dir.cat.war}/catAlfresco.war" dest="${dir.custom.war}/${alfresco.webapp.name}" />
+		
+		<!-- change path to the log file -->
+		<replace summary="true" file="${dir.custom.war}/${alfresco.webapp.name}/WEB-INF/classes/log4j.properties">
+			<replacefilter token="$CAT_ALFRESCO_ROOT$" value="${dir.alfresco.root}" />
+		</replace>
+		
+		<!-- Deploy custom modules -->
+		<ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="deploy-modules-internal" inheritall="true" inheritrefs="false">
+		  <property name="dir.webapps.alfresco" value="${dir.custom.war}/${alfresco.webapp.name}" />
+	    </ant>
+		
+		<!-- rewar the custom war -->
+		<war destfile="${dir.custom.war}/${alfresco.webapp.name}.war" webxml="${dir.custom.war}/${alfresco.webapp.name}/WEB-INF/web.xml" update="false">
+			<zipfileset dir="${dir.custom.war}/${alfresco.webapp.name}" excludes="**/web.xml"/>
+		</war>
+		
+		<!-- remove the unwarred folder -->
+		<delete dir="${dir.custom.war}/${alfresco.webapp.name}" />
+	</target>
+	
+	<!-- Deploy catAlfresco.war from local folder-->
+	<target name="deploy">
+		<!-- stop the server -->
+		<antcall target="alfresco-stop"/>
+			
+		<!-- clean out old webapp folder -->
+		<delete file="${dir.webapps.alfresco}" />
+		<mkdir dir="${dir.webapps.alfresco}"/>
+		
+		<!-- unwar the war to the alfresco webapp folder -->
+		<unwar src="${dir.cat.war}/catAlfresco.war" dest="${dir.webapps.alfresco}" />
+		
+		<!-- change path to the log file -->
+		<replace summary="true" file="${dir.webapps.alfresco.classes}/log4j.properties">
+			<replacefilter token="$CAT_ALFRESCO_ROOT$" value="${dir.alfresco.root}" />
+		</replace>
+		
+		<!-- start the server -->
+		<antcall target="alfresco-start"/>
+	</target>
+
+	<target name="alfresco-start">
+		<antcall target="alfresco-start-windows" />
+		<antcall target="alfresco-start-linux" />
+	</target>
+	
+	<target name="alfresco-start-windows" if="isWindows">
+		<exec dir="${dir.tomcat}/bin" executable="startup.bat" failonerror="true" resolveexecutable="true">
+		</exec>
+	</target>
+	
+	<target name="alfresco-start-linux" if="isLinux">
+		<exec dir="${dir.alfresco.root}" executable="alfresco.sh" failonerror="true" resolveexecutable="true">
+			<arg value="start" />
+		</exec>
+	</target>
+
+	<target name="alfresco-stop" >
+		<antcall target="alfresco-stop-windows" />
+		<antcall target="alfresco-stop-linux" />		
+	</target>
+	
+	<target name="alfresco-stop-windows" if="isWindows">
+		<exec dir="${dir.tomcat}/bin" executable="shutdown.bat" failonerror="false" resolveexecutable="true">
+		</exec>
+	</target>
+	
+	<target name="alfresco-stop-linux" if="isLinux">
+		<exec dir="${dir.alfresco.root}" executable="alfresco.sh" failonerror="false" resolveexecutable="true">
+			<arg value="stop" />
+		</exec>
+	</target>
+	
+</project>

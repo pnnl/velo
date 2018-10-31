@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<!-- Core and miscellaneous bean definitions -->
+<beans>
+
+	<!-- You must extend common-placeholder-configurer or properties won't get loaded correctly -->
+    <bean id="cat-properties" parent="common-placeholder-configurer">
+        <property name="locations">
+            <list>
+                <!-- notification related properties -->
+                <value>classpath:alfresco/extension/cat/properties/notification.properties</value>
+                
+                <!-- include tag timer properties file -->
+                <value>classpath:alfresco/extension/cat/properties/tagtimer.properties</value>
+
+                <!-- include pipeline properties file -->
+                <value>classpath:alfresco/extension/cat/properties/pipeline.properties</value>
+
+                <!-- include threadPool properties file -->
+                <value>classpath:alfresco/extension/cat/properties/threadPool.properties</value>
+
+                <!-- general performance properties - used to override default alfresco behavior -->
+                <value>classpath:alfresco/extension/cat/properties/performance.properties</value>
+
+                <!-- upload web script properties to tune performance -->
+                <value>classpath:alfresco/extension/cat/properties/upload.properties</value>
+                
+                <!-- SMTP mail properties -->
+                <value>classpath:alfresco/subsystems/email/OutboundSMTP/outboundSMTP.properties</value>
+                                
+            </list>
+        </property>
+    </bean>
+
+   	<!-- Registration of new models -->	
+    <bean id="cat.dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+        <property name="models">
+            <list>                
+                <value>alfresco/extension/cat/models/notificationModel.xml</value>
+                <value>alfresco/extension/cat/models/taxonomyModel.xml</value>
+                <value>alfresco/extension/cat/models/catModel.xml</value>
+                <value>alfresco/extension/cat/models/processExplorerModel.xml</value>
+                <value>alfresco/extension/cat/models/alertModel.xml</value>
+                <value>alfresco/extension/cat/models/harvestModel.xml</value>
+                <value>alfresco/extension/cat/models/tagTimerModel.xml</value>
+                <value>alfresco/extension/cat/models/criminalIntelModel.xml</value>
+            </list>
+        </property>
+    </bean>
+  
+  
+    <!-- Import the dependent bean config files in the correct order -->
+    <import resource="classpath:alfresco/extension/cat/bootstrap/bootstrap-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/core-services-context.xml" />    
+    <import resource="classpath:alfresco/extension/cat/beans/node-services-context.xml" />    
+    <import resource="classpath:alfresco/extension/cat/beans/authentication-services-context.xml" />    
+    <import resource="classpath:alfresco/extension/cat/beans/content-services-context.xml" />       
+    <import resource="classpath:alfresco/extension/cat/beans/util-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/general-policy-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/taxonomy-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/jms-common-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/notification-context.xml" />    
+    <import resource="classpath:alfresco/extension/cat/beans/cat-context.xml" />     
+    <import resource="classpath:alfresco/extension/cat/beans/extensible-policy-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/crawler-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/cat-crawler-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/alerts-context.xml" />
+
+    <import resource="classpath:alfresco/extension/cat/patch/patch-services-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/harvest-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/scheduled-jobs-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/tagtimer-context.xml" />
+
+    <import resource="classpath:alfresco/extension/cat/beans/criminalintel-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/thumbnail-service-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/web-scripts-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/custom-audit-services-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/rule-services-context.xml" />
+    <import resource="classpath:alfresco/extension/cat/beans/model-specific-services-context.xml" />
+</beans>

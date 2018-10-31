@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Has Permissions</shortname>
+  <description>Check if current user has the specified permissions for the given node</description>
+  <url>/cat/hasPermissions?path={path}&amp;permissions={comma separated list of permissions as defined in PermissionService}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

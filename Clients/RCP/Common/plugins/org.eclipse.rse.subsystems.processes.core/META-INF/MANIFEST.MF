@@ -1,0 +1,109 @@
+Manifest-Version: 1.0
+art: true
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.processes.core;singlet
+ on:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.processe
+ s.core";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Require-Bundle: org.eclipse.rse.services;bundle-version="[3.0.0,4.0.0)
+ ",org.eclipse.core.runtime,org.eclipse.swt,org.eclipse.ui,org.eclipse
+ .rse.core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-ve
+ rsion="[3.0.0,4.0.0)"
+Bundle-Activator: org.eclipse.rse.internal.subsystems.processes.core.A
+ ctivator
+Export-Package: org.eclipse.rse.internal.subsystems.processes.core;x-i
+ nternal:=true,org.eclipse.rse.internal.subsystems.processes.core.subs
+ ystem;x-internal:=true,org.eclipse.rse.subsystems.processes.core.subs
+ ystem,org.eclipse.rse.subsystems.processes.core.subsystem.impl,org.ec
+ lipse.rse.subsystems.processes.servicesubsystem
+Bundle-Version: 3.1.300.201205062159
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/subsystems/processes/servicesubsystem/IProcessSe
+ rviceSubSystem.class
+SHA1-Digest: naw34d3dmFnMOT/zTjKSHEY8HS8=
+
+Name: org/eclipse/rse/internal/subsystems/processes/core/subsystem/Sys
+ temProcessesCoreResources.properties
+SHA1-Digest: 404aXNRyr/Azuyeslczgq1FDVD0=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/IRemoteProce
+ ssSubSystemConfiguration.class
+SHA1-Digest: gwx0xd76HwRxWLkqupfPjJ1IRt8=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/IRemoteProce
+ ssSubSystem.class
+SHA1-Digest: QjLmvsXGEYQW0Sc0qoqMvc//BaE=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/IRemoteProce
+ ssContext.class
+SHA1-Digest: 3UWo9ZYyirGLfnwVulWD9obzbJs=
+
+Name: org/eclipse/rse/internal/subsystems/processes/core/subsystem/Sys
+ temProcessesCoreResources.class
+SHA1-Digest: FrXyIljBQuR1/HjCv9LmLGAIL94=
+
+Name: org/eclipse/rse/subsystems/processes/servicesubsystem/IProcessSe
+ rviceSubSystemConfiguration.class
+SHA1-Digest: JEuPhIsLkfnTg44QZB1RXHoKwqs=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/subsystems/processes/servicesubsystem/ProcessSer
+ viceSubSystemConfiguration.class
+SHA1-Digest: MnY2wkZe/WFcE1xDA9C6N/iyxYM=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.process
+ es.core/pom.properties
+SHA1-Digest: zUSgYd2lJ1q+RYt/zvSWMJfz0Q8=
+
+Name: plugin.properties
+SHA1-Digest: FZmMj4lPrARBoioSlpeJMTQBmIA=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/impl/RemoteP
+ rocessSubSystemImpl.class
+SHA1-Digest: FhAdvyQWDAe10O4vRjIWXhoZxPA=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/impl/RemoteP
+ rocessContext.class
+SHA1-Digest: Phmi6/rH7wOJmiJ9xTDXlbxFsVI=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/impl/RemoteP
+ rocessImpl.class
+SHA1-Digest: xvVItaBvzjy2FvehXnPnAGcL1Ng=
+
+Name: org/eclipse/rse/internal/subsystems/processes/core/Activator.cla
+ ss
+SHA1-Digest: 66z7hrPwdNb/X/eC8pco4hUCif4=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/IHostProcess
+ ToRemoteProcessAdapter.class
+SHA1-Digest: dU6TZ1+EfdmFjf7QlJErZso/mCw=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/IRemoteProce
+ ss.class
+SHA1-Digest: L6uO++/JKFQVjqYYzDb+3MnXolM=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.process
+ es.core/pom.xml
+SHA1-Digest: ph5TK53seKlKlMF06ITySy5XM8M=
+
+Name: org/eclipse/rse/subsystems/processes/core/subsystem/impl/RemoteP
+ rocessSubSystemConfiguration.class
+SHA1-Digest: aNy3zkXsv+lZGzEBGalXFuNHg6k=
+
+Name: org/eclipse/rse/subsystems/processes/servicesubsystem/ProcessSer
+ viceSubSystem.class
+SHA1-Digest: 8cxWmP352rdsl+gcq7c+0XLHHgs=
+

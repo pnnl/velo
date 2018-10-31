@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Kill a remote job</shortname>
+  <description>Kill a remote job</description>
+  <!-- Parameters passed via json -->
+  <url>/velo/joblaunching/kill</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

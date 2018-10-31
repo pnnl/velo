@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>check session cache</shortname>
+  <description>check if remote session is cached for given user,host,port</description>
+  <url>/velo/joblaunching/checkSessionCache?user={user}&amp;host={host}&amp;port={port}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.rse.doc.user;singleton:=true
+Bundle-Version: 3.4.100.201305031537
+Bundle-ClassPath: org.eclipse.rse.doc.user_3.4.100.201305031537.jar
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Created-By: Apache Maven
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org.eclipse.tm.git;path="rse/doc/org.eclipse.rse.doc.user";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Build-Jdk: 1.6.0
+Archiver-Version: Plexus Archiver
+Built-By: hudsonbuild

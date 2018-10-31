@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Logging Plug-in
+Bundle-SymbolicName: gov.pnnl.cat.logging;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.logging.LoggingPlugin
+Bundle-Localization: plugin
+Require-Bundle: org.apache.log4j,
+ org.eclipse.core.runtime,
+ org.apache.commons,
+ org.eclipse.ui
+Export-Package: gov.pnnl.cat.logging,
+ gov.pnnl.cat.logging.commands
+Bundle-ClassPath: catlogger.jar
+Eclipse-LazyStart: true
+Bundle-Vendor: Pacific Northwest National Laboratory
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

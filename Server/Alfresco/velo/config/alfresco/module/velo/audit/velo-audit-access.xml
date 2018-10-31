@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Audit Application Definition 'velo-access'
+  -
+  - Extracts high level audit records on export
+  - of user visible objects.
+  -
+  - The following alfresco-global.properties must be set:
+  -
+  -   # Enable audit in general
+  -   audit.enabled=true
+  -
+  -   # Enable the velo-access audit application
+  -   audit.velo-access.enabled=true
+  -->
+<Audit
+    xmlns="http://www.alfresco.org/repo/audit/model/3.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.alfresco.org/repo/audit/model/3.2 alfresco-audit-3.2.xsd"
+    >
+
+    <DataExtractors>
+       <DataExtractor name="simpleValue" registeredName="auditModel.extractor.simpleValue"/>
+    </DataExtractors>
+
+    <PathMappings>
+        <PathMap source="/velo-access" target="/velo-access"/>
+    </PathMappings>
+
+    <Application name="velo-access" key="velo-access">
+    <!-- change key from 'value' to 'node' and 'action'? -->
+        <AuditPath key="node">
+            <RecordValue key="value" dataExtractor="simpleValue"/>
+        </AuditPath>
+        <AuditPath key="action">
+            <RecordValue key="value" dataExtractor="simpleValue"/>
+        </AuditPath>
+        <AuditPath key="path">
+            <RecordValue key="value" dataExtractor="simpleValue"/>
+        </AuditPath>
+    </Application>
+</Audit>

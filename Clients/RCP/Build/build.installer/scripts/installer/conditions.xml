@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<conditions>
+    <condition type="variable" id="proxy">
+        <name>installConfig</name>
+        <value>proxy</value>
+    </condition>
+    <condition type="variable" id="MEMORY_CONFIGURABLE">
+        <name>MEMORY_CONFIGURABLE</name>
+        <value>true</value>
+    </condition>
+</conditions>

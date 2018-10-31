@@ -1,0 +1,108 @@
+<project name="cat-common" default="deploy">
+
+	<target name="init">
+		<echo level="info">basedir = ${basedir}</echo>
+				
+		<!-- common build properties -->
+		<property name="dir.src" value="${basedir}/source" />
+		<property name="dir.src.java" value="${dir.src}/java" />
+		<property name="dir.src.config" value="${dir.src}/config" />
+		<property name="dir.build" value="${basedir}/build" />
+		<property name="dir.classes" value="${dir.build}/classes" />
+		<property name="dir.dist" value="${dir.build}/dist" />
+		<property name="dir.lib" value="${basedir}/lib" />
+		<property name="dir.sdk" value="${basedir}/../SDKAlfrescoEmbedded"/>
+		<property name="dir.cat.core.classes" value="${basedir}/../CATServerCore/build/classes"/>		
+		
+		<property name="file.name.jar" value="${ant.project.name}-${cat.version}.jar" />
+
+		<echo level="info">dir.src = ${dir.src}</echo>
+
+		<!-- set the classpath to load all the jars from SDK Alfresco Embedded -->
+		<path id="classpath">
+			<fileset dir="${dir.sdk}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${basedir}/../gov.pnnl.velo.commons/build/dist">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${dir.cat.core.classes}"/>	
+			<fileset dir="${basedir}/../CATServerCore/lib">
+				<include name="**/*.jar" />
+			</fileset>			
+			<pathelement location="${dir.classes}"/>
+		</path>
+
+	</target>
+
+	<target name="clean" depends="init" description="clean the compiled classes and libraries">
+		<delete dir="${dir.classes}"/>
+		<delete dir="${dir.dist}"/>
+	</target>
+
+	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		<mkdir dir="${dir.classes}" />
+		<javac destdir="${dir.classes}" deprecation="off" debug="on" target="1.7" source="1.7">
+			<src path="${dir.src.java}" />
+			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:-path"/>
+		</javac>
+
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src.java}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+		</copy>
+	</target>
+
+	<!--- Create the jar file for the server -->
+	<target name="package-jar" depends="compile-java" description="Packages the JAR file">
+		<mkdir dir="${dir.dist}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" basedir="${dir.classes}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" update="true">
+			<!--<metainf dir="${dir.src.metainf}" />-->
+		</jar>
+	</target>
+	
+	<!-- Deploy a complete, clean build to CAT -->
+	<!-- The CAT Core deploy MUST be run BEFORE COMMON deployment! -->
+	<target name="deploy" depends="clean, deploy-incremental" />
+	
+	<!-- Deploy an incremental build to tomcat -->
+	<target name="deploy-incremental" depends="compile-java">
+		
+		<delete failonerror="no">
+		    <fileset dir="${dir.webapps.alfresco.lib}" includes="**/cat-common*.jar"/>
+		</delete>
+		
+		<copy todir="${dir.webapps.alfresco.classes}" overwrite="true">
+			<fileset dir="${dir.classes}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+		<!-- deploy the 3rd party libraries we're overwriting of Alfresco's -->
+		<copy todir="${dir.webapps.alfresco.lib}" overwrite="true">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>	
+		
+		<!-- deploy the config files -->
+		<copy todir="${dir.webapps.alfresco.classes}/alfresco/extension" overwrite="true">
+			<fileset dir="${dir.src.config}/alfresco/extension">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		
+		<!-- deploy the web.xml file -->
+		<copy file="${dir.src.config}/web.xml" todir="${dir.webapps.alfresco}/WEB-INF" overwrite="true"/>
+
+	</target>
+
+</project>

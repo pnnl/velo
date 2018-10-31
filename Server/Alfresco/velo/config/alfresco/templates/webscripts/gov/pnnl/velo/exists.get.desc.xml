@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Exists</shortname>
+  <description>Returns true if the resource at the given path exists on the server.</description>
+  <url>/velo/exists?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,87 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.files.local;singleton:
+ =true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.files.lo
+ cal";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.files.local.Acti
+ vator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.services.lo
+ cal;bundle-version="[2.1.0,3.0.0)",org.eclipse.rse.connectorservice.l
+ ocal;bundle-version="[2.1.0,3.0.0)",org.eclipse.rse.subsystems.files.
+ core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-versi
+ on="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.subsystems.files.local;x-inte
+ rnal:=true,org.eclipse.rse.internal.subsystems.files.local.model;x-in
+ ternal:=true,org.eclipse.rse.subsystems.files.local
+Bundle-Version: 2.1.300.201205062159
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/subsystems/files/local/LocalSearchResul
+ tConfiguration.class
+SHA1-Digest: MSO6FDygTPqmxwpC5E+hk3VhLaQ=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/LocalJavaLanguag
+ eUtility.class
+SHA1-Digest: jdC/iXeodrnagXQ5ALTymcIs2bI=
+
+Name: icons/full/obj16/systemfileslive_obj.gif
+SHA1-Digest: cKRwmFBEFySIfogidg1+TpT4PjA=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/model/LocalFileA
+ dapter.class
+SHA1-Digest: mkkt2sQ4tF11N8yLJyjt2RZD1VE=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/Activator.class
+SHA1-Digest: tkcFBwCGX/3GhdsNvMrkx2qfRBw=
+
+Name: plugin.properties
+SHA1-Digest: aCMSFD17F5ILAYQxzQCCodTA+TY=
+
+Name: org/eclipse/rse/subsystems/files/local/LocalFileSubSystemConfigu
+ ration.class
+SHA1-Digest: Qw5DsPcPhTqy72gpTsbvkILAW1E=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.l
+ ocal/pom.properties
+SHA1-Digest: qeI3O78zCoc422tBjEBKZdeRxKk=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.l
+ ocal/pom.xml
+SHA1-Digest: FLKk+osH9RhlRFAIKMjmw1P02/o=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/model/LocalFile.
+ class
+SHA1-Digest: gzZfwNVAhGrS88DT7K4hfn4LgzQ=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/LocalLanguageUti
+ lityFactory.class
+SHA1-Digest: A83pD0dadone9rAHTSRTavICAWI=
+
+Name: icons/full/obj16/systemfiles_obj.gif
+SHA1-Digest: YeYluB8JKZUr6pbWXiWFUMxhLas=
+
+Name: plugin.xml
+SHA1-Digest: MDh373F0QH/9j+2BnFv2khNmORw=
+
+Name: org/eclipse/rse/subsystems/files/local/package.html
+SHA1-Digest: 4IzJONKX3ZwCRSLpYeDzTXiBVTE=
+
+Name: org/eclipse/rse/internal/subsystems/files/local/model/LocalVirtu
+ alFile.class
+SHA1-Digest: uVIiy+gnfXpHha4X12Z4WmfdfRY=
+

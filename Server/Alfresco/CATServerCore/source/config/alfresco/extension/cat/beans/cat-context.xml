@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	 <!-- utils for initiating the file processing pipeline -->
+   
+	 <bean id="pipelineUtils"
+		class="gov.pnnl.cat.pipeline.FileProcessingPipelineUtil">
+        <property name="processingPipeline" ref="fileProcessingPipeline" />
+        <property name="mimetypeService" ref="mimetypeService" />
+        <property name="nodeService" ref="dbNodeService" />
+    </bean>
+   
+    <!-- File Processing Pipeline -->
+    <bean id="fileProcessingPipeline" class="gov.pnnl.cat.pipeline.impl.FileProcessingPipelineImpl" >
+      <property name="notificationUtils" ref="notificationUtils" />
+      <property name="mediumPriorityThreadPool" ref="mediumPriorityThreadPool" />
+      <property name="bigFileThreadPool" ref="bigFileThreadPool" />
+      <property name="nodeService" ref="nodeService" />
+      <property name="transactionService" ref="transactionComponent" />
+      <property name="policyBehaviourFilter" ref="policyBehaviourFilter" />
+      
+      <!--  Files bigger than this will be placed on the Big File Thread Pool  -->
+      <property name="maxRegularFileSize">
+           <value>${maxRegularFileSize}</value>
+      </property>
+      
+      <!--  PDF files bigger than this will be placed on the Big File Thread Pool  -->
+      <property name="maxPdfFileSize">
+           <value>${maxPdfFileSize}</value>
+      </property>
+      
+      <!--  xlsx files bigger than this will not be text extracted or metadata extracted -->
+      <property name="maxXlsxFileSize">
+           <value>${maxXlsxFileSize}</value>
+      </property>     
+    </bean>
+
+   <!-- File Processors -->
+    <!-- convenience abstract bean for injecting common policy dependencies -->
+    <bean id="abstractFileProcessor" abstract="true" parent="basePolicy">
+      <property name="pipeline" ref="fileProcessingPipeline" />
+      <property name="enabled"><value>true</value></property>
+    </bean>
+
+    <bean id="md5Processor" class="gov.pnnl.cat.pipeline.impl.MD5Processor"
+         parent="abstractFileProcessor">
+      <property name="priority"><value>1</value></property>
+      <property name="mandatory"><value>true</value></property>
+    </bean>    
+    <bean id="versionProcessor" class="gov.pnnl.cat.pipeline.impl.VersionProcessor"
+         parent="abstractFileProcessor">
+      <property name="priority"><value>2</value></property>
+      <property name="mandatory"><value>true</value></property>
+      <property name="autoVersion"><value>${velo.autoVersion}</value></property>
+    </bean>    
+    
+    <bean id="thumbnailProcessor" class="gov.pnnl.cat.pipeline.impl.ThumbnailProcessor"
+         parent="abstractFileProcessor">
+      <property name="priority"><value>3</value></property>
+      <property name="mandatory"><value>false</value></property>
+      <property name="enabled"><value>${velo.autoThumbnails}</value></property>
+      <property name="thumbnailService" ref="ThumbnailService"/>
+      <property name="policyBehaviourFilter" ref="policyBehaviourFilter"/>
+      <property name="mediumPriorityThreadPool" ref="mediumPriorityThreadPool"/>
+    </bean>    
+    
+    <!-- This processor is having major problems in Alfresco 4 - commenting out until they are resolved
+    <bean id="metadataExtractionProcessor" class="gov.pnnl.cat.pipeline.impl.MetadataExtractionProcessor"
+         parent="abstractFileProcessor">
+      <property name="priority"><value>4</value></property>
+      <property name="mandatory"><value>false</value></property>
+      <property name="metadataExtracterRegistry">
+      	<ref bean="metadataExtracterRegistry" />
+      </property>
+	  <property name="badCharacterRemover">
+	    <ref bean="badCharacterRemover" />
+  	  </property>
+  	  
+      // polling increment to check if processor still alive 
+      <property name="processorPollingIncrement">
+         <value>${processorPollingIncrement}</value>
+      </property>
+
+      // time to cancel processor if it is still running after this time
+      <property name="processorTimeout">
+         <value>${processorTimeout}</value>
+      </property>  
+    </bean>
+    -->
+    <bean id="textTransformProcessor" class="gov.pnnl.cat.pipeline.impl.TextTransformProcessor"
+         parent="abstractFileProcessor">
+      <property name="priority"><value>5</value></property>
+      <property name="mandatory"><value>false</value></property>
+       <!-- polling increment to check if processor still alive -->
+      <property name="processorPollingIncrement">
+         <value>${processorPollingIncrement}</value>
+      </property>
+
+      <!-- time to cancel processor if it is still running after this time -->
+      <property name="processorTimeout">
+         <value>${processorTimeout}</value>
+      </property>  
+      <property name="transformerDebug" ref="transformerDebug" />
+    </bean>    
+     
+	<!-- cat Outlook text transformer -->
+	<bean id="transformer.Outlook"
+		class="gov.pnnl.cat.transformers.OutlookContentTransformer"
+		parent="baseContentTransformer" />
+
+<!-- This currently isn't working because we removed the bin/ocr folder wtih the tesseract executable
+if we need to restore this functionality, we can restore the bin/ocr folder from here:
+https://cvs.pnl.gov/svn/CAT/CAT/branches/Alfresco-3.4.c_Final/CAT Server/Alfresco/CATServerCore/bin/ocr
+but we need to put that in a separate module instead of core cat
+
+	<bean id="transformer.Tesseract"
+		class="gov.pnnl.cat.transformers.TIFFtoTextConverter"
+		parent="baseContentTransformer">
+		<property name="exePath">
+			<value>${ocr.exe}</value>
+		</property>
+	</bean>
+--> 
+	
+	<!-- cat favorites behavior -->
+<!--
+	<bean id="favoritesAspectBehavior"
+		class="gov.pnnl.cat.policy.favorites.FavoritesAspect"
+		parent="basePolicy">
+		<property name="allowUserDelete">
+			<value>false</value>
+		</property>
+	</bean>
+-->   
+   <!-- cat custom thumbnail policy (not sure if we will use this anymore)-->
+   <!-- 
+   <bean id="catThumbnailPolicy" class="gov.pnnl.cat.policy.thumbnail.ThumbnailPolicy">
+      <property name="nodeService" ref="nodeService" />
+      <property name="policyComponent" ref="policyComponent"/>
+      <property name="contentService" ref="contentService" />
+   </bean>
+ -->
+	<!-- cat personal library behavior -->
+<!-- 
+	<bean id="personalLibraryAspectBehavior"
+		class="gov.pnnl.cat.policy.personallibrary.PersonalLibraryAspect"
+		parent="basePolicy">
+		<property name="allowUserDelete">
+			<value>false</value>
+		</property>
+	</bean>
+ -->
+	
+	<!-- cat homefolder behavior -->
+<!-- Take this out because it is annoying
+	<bean id="homeFolderAspectBehavior"
+		class="gov.pnnl.cat.policy.homefolder.HomeFolderAspect"
+		parent="basePolicy" />
+-->				
+<!-- Take this out because it is a performance problem and only 
+	an edge case
+	<bean id="ownerBehavior"
+		class="gov.pnnl.cat.policy.homefolder.OwnerBehavior" parent="basePolicy" />
+-->
+	<bean id="catIgnoreBehavior"
+		class="gov.pnnl.cat.policy.ignore.CatIgnoreBehavior" parent="basePolicy" />
+
+	<!-- profile image transforms -->
+	<bean id="profileImageBehavior"
+		class="gov.pnnl.cat.policy.images.ProfileImageBehavior"
+		parent="basePolicy">
+		<property name="contentService">
+			<ref bean="ContentService" />
+		</property>
+		<property name="imageMagickContentTransformer">
+			<ref bean="transformer.ImageMagick" />
+		</property>
+        <property name="worker">
+           <ref bean="transformer.worker.ImageMagick" />
+        </property>		
+		<property name="commandOptions">
+			<value>-resize "300x300>"</value>
+		</property>
+		<property name="mimetype">
+			<value>image/png</value>
+		</property>
+		<property name="imagePropQName">
+			<value>{http://www.pnl.gov/cat/model/content/1.0}profileImage</value>
+		</property>
+	</bean>
+
+	<!-- cat person behavior -->
+	<bean id="personBehavior"
+		class="gov.pnnl.cat.policy.people.PersonType" parent="basePolicy" />
+
+	<!-- cat teams behavior -->
+	<bean id="teamsAuthorityContainerBehavior"
+		class="gov.pnnl.cat.policy.teams.AuthorityContainerType"
+		parent="basePolicy" />
+
+	<!-- cat project behavior -->
+	<bean id="projectAspectBehavior"
+		class="gov.pnnl.cat.policy.project.ProjectAspect" parent="basePolicy" />
+
+	<!-- I18N (we are forced to use this to define action title and description in the UI) -->
+	<bean id="catActionResourceBundles"
+		class="org.alfresco.i18n.ResourceBundleBootstrapComponent">
+		<property name="resourceBundles">
+			<list>
+				<value>alfresco.extension.cat.messages.action-config</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- url list import action -->
+	<bean id="import-urllist"
+		class="gov.pnnl.cat.actions.UrlImportAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="importService">
+			<ref bean="importService" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="importService" class="gov.pnnl.cat.imprt.ImportServiceImpl">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="publicNodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent" />
+		</property>
+		<property name="localUrlBaseList">
+			<value>${local.url.base}</value>
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService" />
+		</property>
+	</bean>
+
+	<!-- Action to send documents to a taxonomy for keyword categorization -->
+	<!-- TODO: the name isn't very obvious... need a refactor -->
+	<!-- I'm not sure where to put this, so I just stuck it in here -->
+	<bean id="send-to-taxonomy"
+		class="gov.pnnl.cat.actions.SendToTaxonomyAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.alfresco.org/model/content/1.0}folder</value>
+				<value>{http://www.alfresco.org/model/content/1.0}link</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!--  SLSA Converter Action for Curt -->
+	<!-- text transformer action -->
+	<bean id="slsa-converter"
+		class="gov.pnnl.cat.actions.SlsaConverterAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="contentService">
+			<ref bean="ContentService" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- action to count the # of files in the repository -->
+	<bean id="count-files"
+		class="gov.pnnl.cat.actions.CountFilesAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="searchService">
+			<ref bean="searchService" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+			</list>
+		</property>
+	</bean>
+		
+	<bean id="text-extraction-action" 
+		class="gov.pnnl.cat.actions.TextExtractionAction"
+		parent="action-executer">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="contentService">
+			<ref bean="ContentService" />
+		</property>
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.alfresco.org/model/content/1.0}folder</value>
+			</list>
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent" />
+		</property>
+		<property name="mediumPriorityThreadPool">
+			<ref bean="mediumPriorityThreadPool" />
+		</property>
+	</bean>
+	
+</beans>

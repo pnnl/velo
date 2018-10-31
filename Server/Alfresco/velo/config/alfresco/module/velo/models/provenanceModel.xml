@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Definition of new Model -->
+<model name="veloProv:model"
+   xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+   <!-- Optional meta-data about the model -->
+   <description>Velo Provenance Model</description>
+   <version>1.0</version>
+
+   <!-- Imports are required to allow references to definitions in other models -->
+   <imports>
+      <!-- Import Alfresco Dictionary Definitions -->
+      <import uri="http://www.alfresco.org/model/dictionary/1.0"
+         prefix="d" />
+      <!-- Import Alfresco Content Domain Model Definitions -->
+      <import uri="http://www.alfresco.org/model/content/1.0"
+         prefix="cm" />
+   </imports>
+
+   <!-- Introduction of new namespaces defined by this model -->
+   <namespaces>
+      <namespace uri="http://www.pnl.gov/velo/model/provenance/1.0"
+         prefix="veloProv" />
+   </namespaces>
+
+   <types>
+   </types>
+
+   <aspects>
+      <aspect name="veloProv:relationships">
+         <title>Provenance Relationships</title>
+         <associations>
+            <association name="veloProv:hasInput">
+               <title>Has Input</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:inputOf">
+               <title>Input Of</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:hasOutput">
+               <title>Has Output</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:outputOf">
+               <title>Output Of</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <!-- deprecated -->
+            <association name="veloProv:hasReference">
+               <title>Has Reference</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <!-- deprecated -->
+            <association name="veloProv:hasSource">
+               <title>Has Source</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:sourceOf">
+               <title>Source Of</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:hasProduct">
+               <title>Has Product</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+            <association name="veloProv:productOf">
+               <title>Product Of</title>
+               <source>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </source>
+               <target>
+                  <class>cm:cmobject</class>
+                  <mandatory>false</mandatory>
+                  <many>true</many>
+               </target>
+            </association>
+         </associations>
+      </aspect>
+   
+   </aspects>
+   
+</model>

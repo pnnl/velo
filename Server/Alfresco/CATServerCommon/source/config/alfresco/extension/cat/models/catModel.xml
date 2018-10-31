@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Definition of new Model -->
+<model name="cat:model"
+	xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>CAT Model</description>
+	<version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0"
+			prefix="cm" />
+
+		<import uri="http://www.pnl.gov/dmi/model/taxonomy/1.0"
+			prefix="tax" />
+	</imports>
+
+	<!-- Introduction of new namespaces defined by this model -->
+	<!-- NOTE: The following namespace my.new.model should be changed to reflect your own namespace -->
+	<namespaces>
+		<namespace uri="http://www.pnl.gov/cat/model/content/1.0"
+			prefix="cat" />
+		<namespace uri="http://www.pnl.gov/cat/model/transform/1.0"
+			prefix="trans" />
+		<namespace uri="http://www.pnl.gov/cat/model/transform/text/1.0"
+			prefix="trans_txt" />
+	</namespaces>
+
+	<types>
+
+		<!-- Special node to hold non-indexed, transformed content -->
+		<!--  TODO: this is deprecated.  Can we delete it? -->
+		<type name="cat:transform">
+			<title>Transformed Content</title>
+			<parent>cm:cmobject</parent>
+			<properties>
+				<property name="cat:transformedContent">
+					<type>d:content</type>
+					<mandatory>false</mandatory>
+					<!--- Do not index this content, since it is redundant -->
+					<index enabled="false" />
+				</property>
+				<property name="cat:transformer">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="cat:transformError">
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="cat:transformLabel">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</type>
+
+		<!-- Team Profile (similar to cm:person person profile) -->
+		<type name="cat:team">
+			<title>Team</title>
+			<parent>cm:cmobject</parent>
+			<properties>
+				<property name="cat:teamName">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+			<mandatory-aspects>
+				<aspect>cm:titled</aspect>
+				<aspect>cat:profile</aspect>
+			</mandatory-aspects>
+		</type>
+
+		<!-- Override Alfresco definition -->
+		<!-- CAT Person adds some additional properties to the user profile -->
+
+
+	</types>
+
+
+	<aspects>
+		<!-- so we can share profile properties between users & teams -->
+		<aspect name="cat:profile">
+			<title>Profile</title>
+			<properties>
+				<property name="cat:homeFolder">
+					<type>d:noderef</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="cat:email">
+					<type>d:text</type>
+				</property>
+				<property name="cat:profileImage">
+					<type>d:content</type>
+					<mandatory>false</mandatory>
+					<index enabled="false" />
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="cat:ignore">
+			<title>CAT Ignore</title>
+		</aspect>
+		
+		<aspect name="cat:autoVersionable">
+			<title>nodes that have autoVersionable will get automatically versioned every time they change</title>
+		</aspect>		
+
+		<aspect name="cat:favoritesRoot">
+			<title>Favorites Root Folder</title>
+		</aspect>
+
+		<aspect name="cat:personalLibraryRoot">
+			<title>Personal Library Root Folder</title>
+		</aspect>
+
+		<aspect name="cat:configRoot">
+			<title>Configuration Files Root Folder</title>
+		</aspect>
+
+		<!-- Home Folder Aspect - Applies to team and user home -->
+		<aspect name="cat:homeFolder">
+			<title>Home Folder</title>
+		</aspect>
+
+		<aspect name="cat:userHomeFolder">
+			<title>User Home Folder</title>
+			<parent>cat:homeFolder</parent>
+		</aspect>
+
+		<aspect name="cat:teamHomeFolder">
+			<title>User Team Folder</title>
+			<parent>cat:homeFolder</parent>
+		</aspect>
+
+		<!-- Project Aspect -->
+		<aspect name="cat:project">
+			<title>Project</title>
+			<parent>cm:titled</parent>
+		</aspect>
+
+		<!-- Base aspect for transforms.  For reference only.  No shared properties with children. -->
+		<aspect name="trans:transform">
+			<title>Transform</title>
+		</aspect>
+
+    <!-- Indicates that a file has had its full text indexed at least once.  Not necessarily that the
+    index currently matches the file content. -->
+    <aspect name="cat:needsFullTextIndexed">
+      <title>Needs Full Text to be Indexed</title>
+    </aspect>
+
+		<!--  Text transform.  -->
+		<!--  All new transform aspects must have same name "transform, just use a different namespace -->
+		<!--  All new transforms must have the same properties, just use a different namespace -->
+		<aspect name="trans_txt:transform">
+			<title>Text Transform</title>
+			<parent>trans:transform</parent>
+			<properties>
+				<property name="trans_txt:transformedContent">
+					<type>d:content</type>
+					<mandatory>false</mandatory>
+					<!--- Do not index this content, since it is redundant -->
+				   <index enabled="true">
+	                  <atomic>true</atomic>
+	                  <stored>false</stored>
+	                  <tokenised>true</tokenised>
+               	   </index>
+				</property>
+				<!--  The name of the Alfresco action used to perform the transform -->
+				<property name="trans_txt:transformer">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<!-- An error message, if transform failed.  If not, this will be null. -->
+				<property name="trans_txt:transformError">
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<!-- A nicely formatted string that can be used in the UI to reflect the transform type -->
+				<property name="trans_txt:transformLabel">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>				
+			    <!-- Set if the content actually changed -->
+				<property name="trans_txt:needsTransform">
+					<type>d:boolean</type>
+					<mandatory>false</mandatory>
+				</property>		
+			</properties>
+		</aspect>
+
+		<!-- Clustered search clusters - temporary property not actually applied, but we
+			need a definition in the DictionaryService for web service marshalling -->
+		<aspect name="cat:clusters">
+			<title>Clustered search cluster results</title>
+			<properties>
+				<property name="cat:clusters">
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+					<multiple>true</multiple>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="cat:identifiable">
+			<title>Unique document identifying characteristics</title>
+			<properties>
+				<property name="cat:hash">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+      
+      <!-- TODO: currently CAT client doesn't show Alfresco remote link types (lnk:lnk)  
+      in the UI, so we are using our own aspect for now.  Later we should fix the
+      UI and use Alfresco links in case they add more functionality in the future. -->
+      <aspect name="cat:remoteLink">
+         <title>Link to Remote File</title>
+         <parent>cm:titled</parent>
+         <properties>
+            <!-- deprecated do not use -->
+            <property name="cat:linkUrl">
+               <title>Link URL</title>
+               <type>d:text</type>
+               <mandatory>true</mandatory>
+            </property>
+            <property name="cat:remoteMachine">
+               <title>Link URL</title>
+               <type>d:text</type>
+               <mandatory>true</mandatory>
+            </property>
+            <property name="cat:remoteFilePath">
+               <title>Link URL</title>
+               <type>d:text</type>
+               <mandatory>true</mandatory>
+            </property>            
+         </properties>
+      </aspect>
+      
+		<aspect name="cat:editedByAdmin">
+			<title>When admin performs edit operations on behalf of another user. </title>
+			<properties>
+				<property name="cat:createdOnBehalfOf">
+					<type>d:text</type>
+				</property>
+				<property name="cat:modifiedOnBehalfOf">
+					<type>d:text</type>
+				</property>				
+			</properties>
+		</aspect>
+
+	</aspects>
+
+</model>

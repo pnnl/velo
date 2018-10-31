@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="group-service"
+   targetNamespace="http://www.pnl.gov/cat/ws/service/group/1.0"
+   xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+   xmlns:group="http://www.pnl.gov/cat/ws/service/group/1.0"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:cms="http://www.alfresco.org/ws/model/content/1.0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   
+   <!-- ************************************** -->
+   <!-- Copyright Alfresco Software, Inc. 2005 -->
+   <!-- ************************************** -->
+   <wsdl:import namespace="http://www.alfresco.org/ws/model/content/1.0" location="../wsdl/types.xsd"/>
+   <wsdl:types>
+      <schema elementFormDefault="qualified" targetNamespace="http://www.pnl.gov/cat/ws/service/group/1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+         <!-- Type Definitions -->
+         <complexType name="GroupDetails">
+            <sequence>
+               <element name="groupPath" type="xsd:string"/>
+               <element name="members" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+			   <element name="subGroupPaths" type="xsd:string" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+			   <element name="parentPath" type="xsd:string" nillable="true"/>
+			   <element name="properties" type="cms:NamedValue" maxOccurs="unbounded" minOccurs="0"/>		   
+            </sequence>
+         </complexType>
+         <element name="GroupDetails" type="group:GroupDetails"/>         
+
+         <complexType name="TeamDetails">
+         	<complexContent>
+         	   <extension base="group:GroupDetails">
+              </extension>
+            </complexContent>
+         </complexType>
+         <element name="TeamDetails" type="group:TeamDetails"/>
+
+         <complexType name="GroupFilter">
+            <sequence>
+               <element name="groupPath" type="xsd:string"/>
+            </sequence>
+         </complexType>
+         <element name="GroupFilter" type="group:GroupFilter"/>
+
+         <complexType name="GroupQueryResults">
+            <sequence>
+               <element name="querySession" type="xsd:string" nillable="true"/>
+               <element name="groupDetails" type="group:GroupDetails" maxOccurs="unbounded" minOccurs="0"/>
+            </sequence>
+         </complexType>
+         <element name="GroupQueryResults" type="group:GroupQueryResults"/>
+
+         <complexType name="NewGroupDetails">
+            <sequence>
+               <element name="groupPath" type="xsd:string"/>
+               <element name="members" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+               <element name="properties" type="cms:NamedValue" maxOccurs="unbounded" minOccurs="0"/>
+            </sequence>
+         </complexType>
+         <element name="NewGroupDetails" type="group:NewGroupDetails"/>         
+
+         <complexType name="NewTeamDetails">
+         	<complexContent>
+         	   <extension base="group:NewGroupDetails">
+              </extension>
+            </complexContent>
+         </complexType>
+         <element name="NewTeamDetails" type="group:NewTeamDetails"/>
+         
+         <complexType name="AdministrationFault">
+            <sequence>
+               <element name="errorCode" type="xsd:int"/>
+               <element name="message" type="xsd:string"/>
+            </sequence>
+         </complexType>
+         <element name="AdministrationFault" type="group:AdministrationFault"/>
+         
+         <!-- Method Definitions -->
+         
+         <element name="queryGroups">
+            <complexType>
+               <sequence>
+                  <element name="filter" type="group:GroupFilter"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="queryGroupsResponse">
+            <complexType>
+               <sequence>
+                  <element name="result" type="group:GroupQueryResults"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="fetchMoreGroups">
+            <complexType>
+               <sequence>
+                  <element name="querySession" type="xsd:string"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="fetchMoreGroupsResponse">
+            <complexType>
+               <sequence>
+                  <element name="result" type="group:GroupQueryResults"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="getGroup">
+            <complexType>
+               <sequence>
+                  <element name="groupPath" type="xsd:string"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="getGroupResponse">
+            <complexType>
+               <sequence>
+                  <element name="result" type="group:GroupDetails"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="createGroups">
+            <complexType>
+               <sequence>
+                  <element name="newGroups" type="group:NewGroupDetails" maxOccurs="unbounded" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="createGroupsResponse">
+            <complexType>
+               <sequence>
+                  <element name="result" type="group:GroupDetails" maxOccurs="unbounded" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="updateGroups">
+            <complexType>
+               <sequence>
+                  <element name="groups" type="group:GroupDetails" maxOccurs="unbounded" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="updateGroupsResponse">
+            <complexType>
+               <sequence>
+                  <element name="result" type="group:GroupDetails" maxOccurs="unbounded" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="deleteGroups">
+            <complexType>
+               <sequence>
+                  <element name="groupPaths" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="deleteGroupsResponse">
+            <complexType>
+               <sequence/>
+            </complexType>
+         </element>
+
+      </schema>
+   </wsdl:types>
+   
+   <!-- Message definitions -->
+   
+   <wsdl:message name="queryGroupsRequest">
+      <wsdl:part element="group:queryGroups" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="queryGroupsResponse">
+      <wsdl:part element="group:queryGroupsResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="fetchMoreGroupsRequest">
+      <wsdl:part element="group:fetchMoreGroups" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="fetchMoreGroupsResponse">
+      <wsdl:part element="group:fetchMoreGroupsResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="getGroupRequest">
+      <wsdl:part element="group:getGroup" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getGroupResponse">
+      <wsdl:part element="group:getGroupResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="createGroupsRequest">
+      <wsdl:part element="group:createGroups" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="createGroupsResponse">
+      <wsdl:part element="group:createGroupsResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="updateGroupsRequest">
+      <wsdl:part element="group:updateGroups" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="updateGroupsResponse">
+      <wsdl:part element="group:updateGroupsResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="deleteGroupsRequest">
+      <wsdl:part element="group:deleteGroups" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="deleteGroupsResponse">
+      <wsdl:part element="group:deleteGroupsResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="AdministrationFault">
+      <wsdl:part element="group:AdministrationFault" name="fault"/>
+   </wsdl:message>
+   
+   <!-- Port and binding definitions -->
+   
+   <wsdl:portType name="GroupServiceSoapPort">
+      <wsdl:operation name="queryGroups">
+         <wsdl:documentation>Gets the details of the requested groups.</wsdl:documentation>
+         <wsdl:input message="group:queryGroupsRequest" name="queryGroupsRequest"/>
+         <wsdl:output message="group:queryGroupsResponse" name="queryGroupsResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="fetchMoreGroups">
+         <wsdl:documentation>Fetch the next bathc of groups from an existing group query.</wsdl:documentation>
+         <wsdl:input message="group:fetchMoreGroupsRequest" name="fetchMoreGroupsRequest"/>
+         <wsdl:output message="group:fetchMoreGroupsResponse" name="fetchMoreGroupsResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="getGroup">
+         <wsdl:documentation>Get the details of a specified group.</wsdl:documentation>
+         <wsdl:input message="group:getGroupRequest" name="getGroupRequest"/>
+         <wsdl:output message="group:getGroupResponse" name="getGroupResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="createGroups">
+         <wsdl:documentation>Create new groups with the details provided.</wsdl:documentation>
+         <wsdl:input message="group:createGroupsRequest" name="createGroupsRequest"/>
+         <wsdl:output message="group:createGroupsResponse" name="createGroupsResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="updateGroups">
+         <wsdl:documentation>Updates the details of the specified groups.</wsdl:documentation>
+         <wsdl:input message="group:updateGroupsRequest" name="updateGroupsRequest"/>
+         <wsdl:output message="group:updateGroupsResponse" name="updateGroupsResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="deleteGroups">
+         <wsdl:documentation>Delete the specified groups.</wsdl:documentation>
+         <wsdl:input message="group:deleteGroupsRequest" name="deleteGroupsRequest"/>
+         <wsdl:output message="group:deleteGroupsResponse" name="deleteGroupsResponse"/>
+         <wsdl:fault message="group:AdministrationFault" name="AdministrationFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   
+   <wsdl:binding name="GroupServiceSoapBinding" type="group:GroupServiceSoapPort">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="queryGroups">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/queryGroups"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="fetchMoreGroups">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/fetchMoreGroups"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="getGroup">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/getGroup"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="createGroups">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/createGroups"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="updateGroups">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/updateGroups"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="deleteGroups">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/group/1.0/deleteGroups"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AdministrationFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/group/1.0" use="literal" name="AdministrationFault"/>
+         </wsdl:fault>
+      </wsdl:operation>      
+    </wsdl:binding>
+
+	<!-- Service definition -->
+	
+    <wsdl:service name="GroupService">
+       <wsdl:documentation>Group service.</wsdl:documentation>
+       <wsdl:port binding="group:GroupServiceSoapBinding" name="GroupService">
+          <wsdlsoap:address location="http://localhost:8080/alfresco/api/GroupService"/>
+       </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

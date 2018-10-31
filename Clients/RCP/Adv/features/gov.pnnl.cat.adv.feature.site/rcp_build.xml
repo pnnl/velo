@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="gov.pnnl.cat.adv" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">	
+	<import file="scripts/rcp_build.xml"/>
+
+	<target name="info">
+		<echo>BASEDIR: ${basedir}</echo>
+		<echo>RCP DIR: ${build.rcp.dir}</echo>
+		<echo>ECLIPSE HOME: ${eclipse.home}</echo>
+		<echo>CONFIG: ${basedir}\config</echo>
+
+		<echo>CAT_VERSION ${cat.build.version}</echo>
+		<echo>CAT_VERSION_SHORT ${cat.build.version.short}</echo>
+		<echo>CAT_BUILD_DATE ${builddatedetailed}</echo>
+		<echo>JAVA: ${java.version}</echo>
+		<echo>JAVA: ${java.home}</echo>
+	</target>
+	
+	<target name="custom.build.setup" />
+</project>

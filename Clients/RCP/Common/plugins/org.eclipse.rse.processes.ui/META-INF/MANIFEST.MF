@@ -1,0 +1,198 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.processes.ui;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.processes.ui";commi
+ tId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.processes.ui.ProcessesPlugi
+ n
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
+ re.resources,org.eclipse.ui.ide,org.eclipse.ui.views,org.eclipse.debu
+ g.core,org.eclipse.ui.workbench.texteditor,org.eclipse.jface,org.ecli
+ pse.jface.text,org.eclipse.search,org.eclipse.compare,org.eclipse.ui,
+ org.eclipse.ui.views,org.eclipse.rse.subsystems.shells.core;bundle-ve
+ rsion="[3.0.0,4.0.0)",org.eclipse.rse.subsystems.files.core;bundle-ve
+ rsion="[3.0.0,4.0.0)",org.eclipse.rse.subsystems.processes.core;bundl
+ e-version="[3.0.0,4.0.0)",org.eclipse.rse.services;bundle-version="[3
+ .0.0,4.0.0)",org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",org.
+ eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.processes.ui;x-internal:=true
+ ,org.eclipse.rse.internal.processes.ui.actions;x-internal:=true,org.e
+ clipse.rse.internal.processes.ui.dialogs;x-internal:=true,org.eclipse
+ .rse.internal.processes.ui.propertypages;x-internal:=true,org.eclipse
+ .rse.internal.processes.ui.view;x-internal:=true,org.eclipse.rse.proc
+ esses.ui
+Bundle-Version: 3.0.400.201205062159
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/processes/ui/view/RemoteProcessSubSyste
+ mConfigurationAdapterFactory.class
+SHA1-Digest: ZCYScJh6gJAXDDYWSZFnp7/xETo=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/SystemKillTablePro
+ vider.class
+SHA1-Digest: BX8st9JPY9LyWiy9rSzyy/fLnyk=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/SystemKillDialog$1
+ .class
+SHA1-Digest: k3nYXIXAMCJ9NzqS7hzVQ1LMyvY=
+
+Name: org/eclipse/rse/internal/processes/ui/propertypages/ProcessServi
+ cesPropertyPage.class
+SHA1-Digest: RKdHq06dErqnsMYJvY6oo9ZNwtE=
+
+Name: messageFile.dtd
+SHA1-Digest: C3M2D9eX1vVG5e9YVbC65nOCET4=
+
+Name: org/eclipse/rse/internal/processes/ui/view/SystemViewProcessAdap
+ terFactory.class
+SHA1-Digest: VouWq2uirAdgWITCtrBVCCkMHO8=
+
+Name: icons/full/obj16/processsubsystem_obj.gif
+SHA1-Digest: PMfCqBn7/MDrKANmMuHlg8LhENs=
+
+Name: HelpContexts.xml
+SHA1-Digest: jaV5xDn2QsrY0BUBhdOxDhQs8Rc=
+
+Name: plugin.properties
+SHA1-Digest: otXq6wyrKeuxd3i+FhsU1pEHlyY=
+
+Name: org/eclipse/rse/internal/processes/ui/view/SystemProcessesViewRe
+ sources.class
+SHA1-Digest: UYbdUTgivS9hCtedAEafnRrX/rc=
+
+Name: icons/full/obj16/inactiveprocess_obj.gif
+SHA1-Digest: PtKgWoHTgqOsfSuA1E7Q3bpU8xA=
+
+Name: org/eclipse/rse/internal/processes/ui/SystemProcessesResources.p
+ roperties
+SHA1-Digest: 5PvrcQRBagj+vvbpMBocC96vURA=
+
+Name: org/eclipse/rse/internal/processes/ui/SystemProcessesResources.c
+ lass
+SHA1-Digest: QvcsgR/YkGBMC6Z76IX18+zjjVY=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.processes.ui/pom.p
+ roperties
+SHA1-Digest: WysuOANXsPhH+LGcGqYCCXFisSs=
+
+Name: icons/full/obj16/activeprocess_obj.gif
+SHA1-Digest: JtCQ/ZsmHJO1jFIy1Z1zp2PCPuU=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane.c
+ lass
+SHA1-Digest: jHfJOa7Z920KfCHCJYY+slTiEKs=
+
+Name: plugin.xml
+SHA1-Digest: Bo+9VUFpo12wGLjVTb26hXCnl5I=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/SystemKillTableRow
+ .class
+SHA1-Digest: BWT1DNXtXVfBgH6ppixhgxOTvP8=
+
+Name: icons/full/obj16/activeprocess.gif
+SHA1-Digest: E9ZrpY2fvT+GFk9QGNn4R8FrhiI=
+
+Name: processmessages.xml
+SHA1-Digest: Gqsru5SWpj02NOwLDZ9HtaQTv5I=
+
+Name: org/eclipse/rse/internal/processes/ui/ProcessesPlugin.class
+SHA1-Digest: 6gGsL7JLgdHhhCXTpPE7q7WlqKA=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$1
+ .class
+SHA1-Digest: /FWzgDba7Z8bdmwPl+X1zviXm6k=
+
+Name: org/eclipse/rse/internal/processes/ui/view/SystemProcessStatesCo
+ ntentProvider.class
+SHA1-Digest: F8kQz2k7vHqD2n7TmmSvnyhvaNE=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$2
+ .class
+SHA1-Digest: hTjKnbbnPK3n0ILBcwKzmt/GGc4=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$3
+ .class
+SHA1-Digest: wJiYM4iGfTqg/yNb1kuJQxfIxTE=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$4
+ .class
+SHA1-Digest: 9QCPsYMumqN5NmaiFUjQrjbpTVk=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$5
+ .class
+SHA1-Digest: ChcochzTICvXFrKqYVsskMLJO5c=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$6
+ .class
+SHA1-Digest: 82GKSIJM2B6LSyPQWwpjrELD8sY=
+
+Name: org/eclipse/rse/processes/ui/SystemProcessFilterStringEditPane$7
+ .class
+SHA1-Digest: hdWcrBqr52y5GXxJZwMXOwPCl6Q=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/RemoteProcessesDia
+ log.class
+SHA1-Digest: NHV50oo/DPLx9cHD5VLXhVgyAao=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.processes.ui/pom.x
+ ml
+SHA1-Digest: wRHvY3u6aSuHmf0iEJRSiRMrhLE=
+
+Name: icons/full/obj16/processsubsystemlive_obj.gif
+SHA1-Digest: 2GlT3GTlB8NZZxv3gh92kdrbhko=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/SystemKillDialog.c
+ lass
+SHA1-Digest: mL6hOAfO9DF8YvUGwd3q0DMSc1k=
+
+Name: org/eclipse/rse/internal/processes/ui/view/ISystemProcessPropert
+ yConstants.class
+SHA1-Digest: gCoPr6vBPDKrqhwrAy++MuIcF/I=
+
+Name: org/eclipse/rse/internal/processes/ui/view/SystemViewRemoteProce
+ ssAdapter.class
+SHA1-Digest: I0yY2vCliX532iIuQ78FG6mR+1c=
+
+Name: org/eclipse/rse/internal/processes/ui/actions/SystemProcessUpdat
+ eFilterAction.class
+SHA1-Digest: eMfE6zO2Jt9HkO1btpMYJWbDD3k=
+
+Name: org/eclipse/rse/internal/processes/ui/view/SystemProcessesViewRe
+ sources.properties
+SHA1-Digest: ad7YEIl3xyzTb9OKbF4mw4wjujc=
+
+Name: org/eclipse/rse/internal/processes/ui/actions/SystemKillProcessA
+ ction.class
+SHA1-Digest: gAfL/MM8hN2YIsjEM2pyAH0z4pg=
+
+Name: icons/full/dlcl16/killprocessj.gif
+SHA1-Digest: ZdBQI+Vm0mpzHiESFRg4ZOE8koA=
+
+Name: org/eclipse/rse/internal/processes/ui/actions/SystemNewProcessFi
+ lterAction.class
+SHA1-Digest: uHaHkP1n7UAfsGU0QUOziuA6McU=
+
+Name: org/eclipse/rse/internal/processes/ui/dialogs/RemoteProcessesDia
+ log$1.class
+SHA1-Digest: 482R/be27g58XMr7NtGMsG9p5WE=
+
+Name: icons/full/elcl16/killprocessj.gif
+SHA1-Digest: p+UYyM3ZtsAmQ6tI38l8rhqy+OA=
+
+Name: org/eclipse/rse/internal/processes/ui/view/RemoteProcessSubSyste
+ mConfigurationAdapter.class
+SHA1-Digest: XTqwvZdGF12cBT0vdwCMirDC9HQ=
+

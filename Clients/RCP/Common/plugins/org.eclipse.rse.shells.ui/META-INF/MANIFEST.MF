@@ -1,0 +1,343 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.shells.ui;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.shells.ui";commitId
+ =58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.shells.ui.ShellsUIPlugin
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.core.resources,
+ org.eclipse.ui.views,org.eclipse.jface.text,org.eclipse.ui.workbench.
+ texteditor,org.eclipse.ui.editors,org.eclipse.ui.forms,org.eclipse.ui
+ .ide,org.eclipse.rse.files.ui;bundle-version="[3.0.0,4.0.0)",org.ecli
+ pse.rse.subsystems.shells.core;bundle-version="[3.0.0,4.0.0)",org.ecl
+ ipse.rse.subsystems.files.core;bundle-version="[3.0.0,4.0.0)",org.ecl
+ ipse.rse.core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundl
+ e-version="[3.1.0,4.0.0)",org.eclipse.core.expressions
+Export-Package: org.eclipse.rse.internal.shells.ui;x-internal:=true,or
+ g.eclipse.rse.internal.shells.ui.actions;x-internal:=true,org.eclipse
+ .rse.internal.shells.ui.handlers;x-internal:=true,org.eclipse.rse.int
+ ernal.shells.ui.propertypages;x-internal:=true,org.eclipse.rse.intern
+ al.shells.ui.view;x-internal:=true,org.eclipse.rse.shells.ui,org.ecli
+ pse.rse.shells.ui.view
+Bundle-Version: 3.0.500.201305031537
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor$DelayedIsInCo
+ deAssistUntoggler.class
+SHA1-Digest: 9mCGUoOC509bKqStSPjWRsSEciA=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart.c
+ lass
+SHA1-Digest: x2nFSWZHw8sFhrZV5wQEfXfF5kw=
+
+Name: org/eclipse/rse/internal/shells/ui/handlers/LaunchShellCommandHa
+ ndler.class
+SHA1-Digest: M+WAb6uSDIg559Q2j19+hJ590og=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$C
+ ommandDialog$1.class
+SHA1-Digest: BieLaNW5idp15EhuFK17UmhvdD4=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$P
+ romptForPassword.class
+SHA1-Digest: kVjWJLBpNH+O+0ku2dViMdaWMfw=
+
+Name: icons/full/elcl16/exportshelloutput.gif
+SHA1-Digest: nP9BtAjyOjw4j3RrPcfvr0tjkGs=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor$2.class
+SHA1-Digest: DPr18tKsKmJbNEOuWkbW31gBiTk=
+
+Name: icons/full/obj16/systemshelllive.gif
+SHA1-Digest: FG7C56P31JjN3u5Ea/TbScSdU2c=
+
+Name: icons/full/cview16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: icons/full/eview16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction.c
+ lass
+SHA1-Digest: lIOPj52SuUlY8ERjjkIPERYh3ys=
+
+Name: org/eclipse/rse/internal/shells/ui/ShellResources.properties
+SHA1-Digest: kOKBqF3pIJK31a7cRzGC8GI50Tk=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$2
+ .class
+SHA1-Digest: lYYIvZT6Wp9W3NdOjsGTWXKrC0M=
+
+Name: icons/full/obj16/systemcommandslive_obj.gif
+SHA1-Digest: s1byN1f7RIgACDBJktgdoYn2Rn0=
+
+Name: org/eclipse/rse/shells/ui/view/ISystemCommandTextModifyListener.
+ class
+SHA1-Digest: JGaxVLU7HD54nqIGKKMAyR2ndiM=
+
+Name: org/eclipse/rse/internal/shells/ui/propertypages/EnvironmentVari
+ ablesPropertyPage.class
+SHA1-Digest: heQ9YALosrZUw4QS7PdOUXTbeUg=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$U
+ pdateOutputRunnable.class
+SHA1-Digest: IF4S5ufPDX6UTjSaSH1RRZE5mNY=
+
+Name: icons/full/obj16/systemshell.gif
+SHA1-Digest: 8NT4coNqLYiE4tC+M+rZC34uxLs=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemBaseShellAction
+ .class
+SHA1-Digest: uJZuMwDzUgSuIOmqtX3kSoVxwYE=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 2.class
+SHA1-Digest: wBtZUcmBOW/TPfiKkymZKtwa/ls=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewPage$2.class
+SHA1-Digest: pP2ucz2Ml9Rv6MZ893E4N8GEFbU=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemExportShellHist
+ oryAction.class
+SHA1-Digest: FIkYZ65Ziwxv+vYMs1HBbPsBfyg=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 4.class
+SHA1-Digest: Xu7ASrqZKHEvfQQiDO6lc4rayI4=
+
+Name: org/eclipse/rse/shells/ui/view/CommandEntryContentAssistProcesso
+ r.class
+SHA1-Digest: rBOShEuSq0QNX9hDHo8WCAgNKfM=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 6.class
+SHA1-Digest: lxJ0gCiecf8B8d2UV7wdKUq9b/Y=
+
+Name: org/eclipse/rse/shells/ui/view/SystemViewRemoteOutputAdapter.cla
+ ss
+SHA1-Digest: yjXIqM0Q1c4IRgU8nqivZr31GUY=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 8.class
+SHA1-Digest: JvT8+wogzWjbyrD0Q9wHxr9GZ5w=
+
+Name: icons/full/obj16/systemcommands_obj.gif
+SHA1-Digest: dJsjcxQWyNyEcuo1w4CgLuJFtiQ=
+
+Name: org/eclipse/rse/internal/shells/ui/view/ShellServiceSubSystemCon
+ figurationAdapter.class
+SHA1-Digest: Knv9J3mZPuCy/r0EIsHVnNAhYug=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemViewRemoteErrorAda
+ pter.class
+SHA1-Digest: Vl/fwcB6487zIZZm7rgy/VYZsqc=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$C
+ ommandSubSystemDisconnectedRunnable.class
+SHA1-Digest: DLEOTGZ6dPnz3rK5IeYcmvDNXHM=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$C
+ ommandSubmenuManager.class
+SHA1-Digest: eQQGuCpVjMEZkTCLR+wAkT/hEZg=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$C
+ ommandDialog.class
+SHA1-Digest: dS8Bmd8qTsXHQ88FCrKqTqEhRvI=
+
+Name: icons/full/obj16/systemenvvarlibpath.gif
+SHA1-Digest: 5TF7ftfUsp4Z3KdTaSlgyQoFpuk=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemExportShellOutp
+ utAction.class
+SHA1-Digest: MNxGF4FcIqyvG33GGaRLe4NL8xg=
+
+Name: org/eclipse/rse/shells/ui/view/TabFolderLayout.class
+SHA1-Digest: +0XO2GX5+cI8IjHg0ZVpdtRAkyU=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsUI.class
+SHA1-Digest: TEc4i+WYbKPUZB3zgYXPhgXYSLg=
+
+Name: icons/full/obj16/systemenvvar.gif
+SHA1-Digest: lbjyJgwlHnlTnjGQCV2elSPJEYY=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.shells.ui/pom.xml
+SHA1-Digest: KyDOKB1+nnXbATVADNFgjfDGmw4=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemViewOutputAdapterF
+ actory.class
+SHA1-Digest: tp2O9B5F05D8VPy6a7+y6+Nkv58=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$S
+ hellAction.class
+SHA1-Digest: lR1OiWiTHfeGlC+fmxYCNv0mbNI=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor$1.class
+SHA1-Digest: dRwTXk68kWBAuoH+QkSy1DYk/Dw=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandsView.class
+SHA1-Digest: 2sy6t3jZ4Cy3bbNoGfDtDqNp7g4=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor$3.class
+SHA1-Digest: VVzTFzknI0cMA6791ubg7KPCmEU=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewWorkbook$1.c
+ lass
+SHA1-Digest: muLsxb6Y+UHIrWn9QCgxjr0UyBU=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.shells.ui/pom.prop
+ erties
+SHA1-Digest: lvNW9j4u9zuevUwC9c0byDzd7Rk=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm.
+ class
+SHA1-Digest: oFMSxHP7T4cfKH7y9CfViOZDd2E=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$1
+ .class
+SHA1-Digest: 8pnfsZU06CftsYR87Btl1dEX2t0=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewPage.class
+SHA1-Digest: 1NIVKFg4bl5RiB5TatTYgqxA5Oo=
+
+Name: plugin.properties
+SHA1-Digest: CpyC1Iucq+22Z5aNFrZKmTpcvac=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemShowInShellView
+ Action.class
+SHA1-Digest: wBcjikyXAmeRvPivmu+63OGyxzU=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$3
+ .class
+SHA1-Digest: N4JbobivFIO59JzrQNw6JeBqHAw=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemTerminateShellA
+ ction.class
+SHA1-Digest: qNNqYuYC4TMPkSrpMEPOOjiV2nI=
+
+Name: org/eclipse/rse/shells/ui/view/CommandEntryContentAssistProcesso
+ r$CompletionResults.class
+SHA1-Digest: tAJp9e7mAARX/vuAW4zK1kpt1ec=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$C
+ ontentAssistAction.class
+SHA1-Digest: 2wXS8Z5PKg+YGkY6WVwUvE+6A7I=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor$TextViewerAct
+ ion.class
+SHA1-Digest: FxeiMWg6lfO3LNzhPCR7v0GrTgw=
+
+Name: org/eclipse/rse/shells/ui/RemoteCommandHelpers.class
+SHA1-Digest: d98yWVoH3k8YEZXy2sCj9B5oENQ=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$U
+ pdateRegistry.class
+SHA1-Digest: DTv18+Gpn7BGoQur+EntJUP3dkU=
+
+Name: icons/full/view16/commands_view.gif
+SHA1-Digest: r8lcZ/9LKNB4ETMuscokfh2NDUQ=
+
+Name: org/eclipse/rse/internal/shells/ui/view/ShellServiceSubSystemCon
+ figurationAdapterFactory.class
+SHA1-Digest: 4iU8SURQkwvVhEvgi37Gu3gUxFA=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandsView$CommandsViewFi
+ lter.class
+SHA1-Digest: dDjZmqdwfIw9prWwLZxELXoNMrI=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewPage$1.class
+SHA1-Digest: eaFZMSzoXTthYdk7Ngf8la7L5wk=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 1.class
+SHA1-Digest: Vf6sUlka4wjfPYr0IdtKtbyk1wA=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemCommandAction$R
+ unShellJob.class
+SHA1-Digest: 79E4f3dhx96NG8V6trWJAOV9ZdI=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$C
+ ommandMenuManager.class
+SHA1-Digest: BUbOcUgW9tnOdRUtnqZ/KnDWxuI=
+
+Name: plugin.xml
+SHA1-Digest: cpFskteL++ZbkI/Li+Z28BUIT6c=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 3.class
+SHA1-Digest: BNIbAaZqRwWy+xpWk8Mdo+JmPe8=
+
+Name: icons/full/elcl16/exportshellhistory.gif
+SHA1-Digest: 9d+jE9g5jhVQqp6p7fm5d0EeWd0=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 5.class
+SHA1-Digest: +zCtbgY1B2tGxZ3x7zVs1SHrNPI=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$C
+ learAction.class
+SHA1-Digest: sj2Y4O222DtLj89X9YKBK2YLQOU=
+
+Name: org/eclipse/rse/internal/shells/ui/SystemRemoteCommandEntryForm$
+ 7.class
+SHA1-Digest: QyIvIdq3HNfbHnnGjycA3fThy4U=
+
+Name: icons/full/obj16/systemenvvarpath.gif
+SHA1-Digest: 5TF7ftfUsp4Z3KdTaSlgyQoFpuk=
+
+Name: org/eclipse/rse/internal/shells/ui/ShellResources.class
+SHA1-Digest: loMMJ6BnzOxU2AP9GubtvDKpuMg=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewPage$SelectA
+ llAction.class
+SHA1-Digest: YcNuuDkkKjvvqr8K0Wo9rFhJqRc=
+
+Name: org/eclipse/rse/shells/ui/view/CommandEntryViewerConfiguration.c
+ lass
+SHA1-Digest: nrnQ6NH4K4hv0GKFXmbzsybmw6U=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/shells/ui/actions/SystemTerminateRemove
+ ShellAction.class
+SHA1-Digest: Xmf02hUl2eiCmt5E7PtLGHmk2e8=
+
+Name: icons/full/elcl16/removeshell.gif
+SHA1-Digest: wjvFuw+Q6G0aWRUlst78HVG75Gw=
+
+Name: org/eclipse/rse/shells/ui/view/SystemCommandEditor.class
+SHA1-Digest: ObvJV4M4JEcGUTDGdOUII/dAf6Y=
+
+Name: org/eclipse/rse/internal/shells/ui/ShellsUIPlugin.class
+SHA1-Digest: C9Fiq6+8ghaTH9yOx8CGVV2QAZI=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$B
+ rowseAction.class
+SHA1-Digest: 0KmY/GVaiVtKP9WkUUOhjkbVVxE=
+
+Name: org/eclipse/rse/internal/shells/ui/view/CommandsViewWorkbook.cla
+ ss
+SHA1-Digest: 5FCKdahLjf5uXDO2YVCwm8P6yWY=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewPart$R
+ estoreStateRunnable.class
+SHA1-Digest: tUbO+uUOF5hVINoQ4EI6nZgn93o=
+
+Name: org/eclipse/rse/internal/shells/ui/propertypages/ShellServicesPr
+ opertyPage.class
+SHA1-Digest: yqztCPzh04vGC1LVR8OpcLVlyb8=
+
+Name: org/eclipse/rse/internal/shells/ui/view/SystemCommandsViewProvid
+ er.class
+SHA1-Digest: nBgUvhiq5baarSzQb/EU/9QIDto=
+

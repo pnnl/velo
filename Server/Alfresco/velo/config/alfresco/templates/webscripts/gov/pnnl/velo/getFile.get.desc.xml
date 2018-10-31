@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get a file.</shortname>
+  <description>Get the contents of a file using the wiki path.</description>
+  <url>/velo/getFile/{wikiPath}?version={version}&amp;contentProperty={contentProperty}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

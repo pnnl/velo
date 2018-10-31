@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ 	
+<beans 
+  xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:amq="http://activemq.org/config/1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://activemq.org/config/1.0 http://activemq.apache.org/snapshot-schema/activemq-core-5.0-SNAPSHOT.xsd">
+  	
+  <!-- pooled connection factory for ActiveMQ -->
+  <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop"> 
+    <property name="connectionFactory">
+      <bean id="jmsFactoryInternal" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL">
+          <value>${notification.jms.url}</value>
+        </property>
+      </bean>
+    </property>
+  </bean> 
+
+  <!-- Spring JMS Template -->
+  <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory">
+      <ref local="jmsFactory"/>
+    </property>
+  </bean>
+	
+	
+	 <!-- generic bean to bind other beans to JMS subscriptions -->
+  <bean id="unmanagedListenerRegistrar" class="gov.pnnl.cat.jms.common.UnmanagedListenerRegistrar">
+  	<property name="connectionFactory">
+  		<ref local="jmsFactory"/>
+  	</property>
+   </bean>
+	
+	
+	  <!-- a simple filter functionality does nothing - passes all events through -->
+  <bean id="simpleUserEventFilterFunctionality" class="gov.pnnl.cat.policy.notifiable.filter.SimpleUserEventFilterFunctionality"/>
+  
+  <!-- secure filter functionality checks each node to see if user has permission to access -->
+  <bean id="secureUserEventFilterFunctionality" scope="prototype" class="gov.pnnl.cat.policy.notifiable.filter.SecureUserEventFilterFunctionality">
+  	<property name="authenticationComponent">
+  		<ref bean="authenticationComponent" />
+  	</property>
+  	<property name="nodeService">
+  		<ref bean="nodeService" />
+  	</property>
+  	<property name="transactionService">
+  		<ref bean="transactionComponent" />
+  	</property>
+  	<property name="permissionService">
+  		<ref bean="permissionService" />
+  	</property>
+  	<property name="generateSpecialParentRefreshEvents">
+  		<value>true</value>
+  	</property>
+  	<property name="namespacePrefixResolver">
+  		<ref bean="namespaceService" />
+  	</property>
+  </bean>
+	
+  
+	
+</beans>

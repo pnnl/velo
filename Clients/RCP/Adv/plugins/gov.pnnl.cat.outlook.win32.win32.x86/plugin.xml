@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.resourceViewerDropListener">
+      <dropListener
+            class="gov.pnnl.cat.outlook.dnd.OutlookMsgDropTargetListener"
+            id="gov.pnnl.cat.outlook.dropListener">
+      </dropListener>
+      <transfer
+            class="gov.pnnl.cat.outlook.dnd.OutlookMsgTransfer"
+            id="gov.pnnl.cat.outlook.transfer">
+      </transfer>
+   </extension>
+
+</plugin>

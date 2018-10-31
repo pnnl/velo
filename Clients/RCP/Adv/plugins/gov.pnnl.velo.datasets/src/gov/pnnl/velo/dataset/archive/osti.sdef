@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition>
+
+	<import>
+		<package>gov.pnnl.velo.sapphire</package>
+		<package>gov.pnnl.velo.sapphire.ui</package>
+		<package>org.eclipse.sapphire.ui.forms.swt</package>
+		<package>gov.pnnl.velo.sapphire.ui</package>
+	</import>
+	<editor-page>
+		<id>OSTIMetadata</id>
+		<page-name>OSTI metadata</page-name>
+		<page-header-text>OSTI metadata editor</page-header-text>
+		<element-type>gov.pnnl.velo.sapphire.osti.OSTIWrapper</element-type>
+		<documentation>
+			<title>OSTI Metadata Editor Help page</title>
+			<content>This would be the help content for the osti metadata editor page.</content>
+		</documentation>
+
+		<root-node>
+			<node>
+				<label>OSTI metadata</label>
+				<property>OSTI</property>
+				<section>
+					<label>OSTI metadata</label>
+					<documentation>
+						<content>This would be the help content for the section.</content>
+						<title>Country documentation</title>
+						<topic>
+							<label>wikipedia integer</label>
+							<href>http://en.wikipedia.org/wiki/Integer</href>
+						</topic>
+					</documentation>
+					<content>
+						<property-editor>
+							<property>Language</property>
+							<hint>
+                                  <name>assist.contributors</name>
+                                  <value>HelpActionContributor</value>
+                            </hint>
+						</property-editor>
+						<property-editor>
+							<property>Country</property>
+							<hint>
+                                <name>assist.contributors</name>
+                                <value>HelpActionContributor</value>
+                            </hint>
+						</property-editor>
+					    <property-editor>
+							<property>DOEContracts</property>
+                             <child-property>
+                                <hint>
+                                    <name>assist.contributors</name>
+                                    <value>HelpActionContributor</value>
+                                </hint>
+                                <property>DOEContract</property>
+                            </child-property>
+                             
+						</property-editor>
+						<property-editor>
+							<property>NonDOEContracts</property>
+							<child-property>
+                                <hint>
+                                    <name>assist.contributors</name>
+                                    <value>HelpActionContributor</value>
+                                </hint>
+                                <property>NonDOEContract</property>
+                            </child-property>
+							
+						</property-editor>
+						<property-editor>
+							<property>ResearchOrganizations</property>
+							<child-property>
+                                <hint>
+                                    <name>assist.contributors</name>
+                                    <value>HelpActionContributor</value>
+                                </hint>
+                                <property>ResearchOrganization</property>
+                            </child-property>
+							 
+						</property-editor>
+						<property-editor>
+							<property>SponsorOrgs</property>
+							 <child-property>
+                                <hint>
+                                    <name>assist.contributors</name>
+                                    <value>HelpActionContributor</value>
+                                </hint>
+                                <property>SponsorOrg</property>
+                            </child-property>
+							 
+						</property-editor> 
+					</content>
+				</section>
+			</node>
+		</root-node>
+	</editor-page>
+
+
+</definition>

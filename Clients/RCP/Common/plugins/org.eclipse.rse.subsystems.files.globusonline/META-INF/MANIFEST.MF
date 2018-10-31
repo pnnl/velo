@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Globus Online Files Subsystem
+Bundle-SymbolicName: org.eclipse.rse.subsystems.files.globusonline;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.rse.internal.subsystems.files.globusonline.Activator
+Bundle-Vendor: PNNL
+Require-Bundle: org.eclipse.rse.globusonline,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.rse.services,
+ org.eclipse.rse.subsystems.files.core,
+ org.eclipse.rse.core,
+ org.eclipse.rse.ui,
+ org.apache.commons.net,
+ org.eclipse.rse.services.files.globusonline
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: org.eclipse.rse.internal.subsystems.files.globusonline,
+ org.eclipse.rse.internal.subsystems.files.globusonline.connectorservice,
+ org.eclipse.rse.internal.subsystems.files.globusonline.model,
+ org.eclipse.rse.internal.subsystems.files.globusonline.parser,
+ org.eclipse.rse.subsystems.files.globusonline
+

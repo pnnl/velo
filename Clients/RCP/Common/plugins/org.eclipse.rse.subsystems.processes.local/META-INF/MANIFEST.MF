@@ -1,0 +1,71 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.processes.local;single
+ ton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.processe
+ s.local";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.processes.local.
+ Activator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.services.lo
+ cal;bundle-version="[2.1.0,3.0.0)",org.eclipse.rse.connectorservice.l
+ ocal;bundle-version="[2.1.0,3.0.0)",org.eclipse.rse.subsystems.proces
+ ses.core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-v
+ ersion="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.
+ 0)"
+Export-Package: org.eclipse.rse.internal.subsystems.processes.local;x-
+ internal:=true,org.eclipse.rse.subsystems.processes.local
+Bundle-Version: 2.1.400.201205062159
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: icons/full/obj16/activeprocess.gif
+SHA1-Digest: E9ZrpY2fvT+GFk9QGNn4R8FrhiI=
+
+Name: org/eclipse/rse/internal/subsystems/processes/local/Activator.cl
+ ass
+SHA1-Digest: LmLr8QZl8f/X6xrvpaC/DLqwPH8=
+
+Name: org/eclipse/rse/subsystems/processes/local/package.html
+SHA1-Digest: 6HbRVpNF3pGohqQKjS11e94PxV8=
+
+Name: icons/full/obj16/processsubsystemlive_obj.gif
+SHA1-Digest: 2GlT3GTlB8NZZxv3gh92kdrbhko=
+
+Name: org/eclipse/rse/internal/subsystems/processes/local/LocalProcess
+ Adapter.class
+SHA1-Digest: MauYbpMT+9i6yVRgbKnHUjWvNLU=
+
+Name: org/eclipse/rse/subsystems/processes/local/LocalProcessSubSystem
+ Configuration.class
+SHA1-Digest: 9CllW5z7YKV6bMAGlpkkNj+cMT8=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.process
+ es.local/pom.properties
+SHA1-Digest: ToQPDvhYFf6T3kFZSMECaxzmwbI=
+
+Name: plugin.xml
+SHA1-Digest: HmDCBOAd44WdLGJstO44gTacCmY=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: icons/full/obj16/processsubsystem_obj.gif
+SHA1-Digest: PMfCqBn7/MDrKANmMuHlg8LhENs=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.process
+ es.local/pom.xml
+SHA1-Digest: 35tNQHEfqJhKZLk4u3rRYYLFGz8=
+
+Name: plugin.properties
+SHA1-Digest: UDg4sxpsiihrtmt15Iihu4vPNgk=
+

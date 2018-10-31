@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete multiple resources</shortname>
+  <description>Delete multiple files</description>
+  <url>/cat/delete</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

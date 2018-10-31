@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+        
+    <!-- link behavior beans (for integrity checking, orphan cleanup, etc.) -->
+    <!--  I took this out because it's too expensive for big data
+    	<bean id="linksCleanupBehavior" class="gov.pnnl.cat.policy.links.LinkCleanupPolicy" parent="basePolicy"/>
+    -->
+    <bean id="linksFolderlinkBehavior" class="gov.pnnl.cat.policy.links.FolderLinkType" parent="basePolicy"/>
+    <bean id="linksFilelinkBehavior" class="gov.pnnl.cat.policy.links.FileLinkType" parent="basePolicy">
+          <property name="policyBehaviourFilter" ref="policyBehaviourFilter" />
+    </bean>
+    
+    <!-- Action to clean up links on deleted files -->
+    <bean id="delete-links" class="gov.pnnl.cat.actions.DeleteLinksAction" parent="action-executer">
+        <property name="publicAction">
+            <value>false</value>
+        </property>
+        <property name="nodeService">
+            <ref bean="nodeService" />
+        </property>
+       <property name="searchService">
+            <ref bean="searchService" />
+       </property>        
+        <property name="applicableTypes">
+        	<list>
+        		<value>{http://www.alfresco.org/model/content/1.0}content</value>
+        	</list>
+        </property>
+    </bean>
+    
+ </beans>

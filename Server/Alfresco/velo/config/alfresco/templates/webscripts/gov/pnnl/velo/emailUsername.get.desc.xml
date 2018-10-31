@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Email Username</shortname>
+  <description>Sends the username to the matching email address</description>
+  <url>/velo/emailUsername?usersEmail={usersEmail}&amp;sitename={sitename}</url>
+  <!--  the user/request can't be authenticated as they don't know their username -->
+  <authentication>none</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

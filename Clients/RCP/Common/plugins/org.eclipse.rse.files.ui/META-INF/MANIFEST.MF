@@ -1,0 +1,918 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.files.ui;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.files.ui";commitId=
+ 58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.files.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.rse.services;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.jface.text,
+ org.eclipse.search,
+ org.eclipse.compare,
+ org.eclipse.rse.subsystems.shells.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.subsystems.files.core;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.rse.ui;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.globusonline;bundle-version="1.0.0"
+Export-Package: org.eclipse.rse.files.ui,org.eclipse.rse.files.ui.acti
+ ons,org.eclipse.rse.files.ui.compare,org.eclipse.rse.files.ui.dialogs
+ ,org.eclipse.rse.files.ui.resources,org.eclipse.rse.files.ui.widgets,
+ org.eclipse.rse.internal.files.ui;x-internal:=true,org.eclipse.rse.in
+ ternal.files.ui.actions;x-internal:=true,org.eclipse.rse.internal.fil
+ es.ui.dialogs;x-internal:=true,org.eclipse.rse.internal.files.ui.prop
+ ertypages;x-internal:=true,org.eclipse.rse.internal.files.ui.resource
+ s;x-internal:=true,org.eclipse.rse.internal.files.ui.search;x-interna
+ l:=true,org.eclipse.rse.internal.files.ui.view;x-internal:=true,org.e
+ clipse.rse.internal.files.ui.widgets;x-internal:=true,org.eclipse.rse
+ .internal.files.ui.wizards;x-internal:=true
+Bundle-Version: 3.2.200.201305031537
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+Import-Package: com.ibm.icu.text,com.ibm.icu.util
+
+Name: org/eclipse/rse/internal/files/ui/resources/DefaultMountPathMapp
+ er.class
+SHA1-Digest: FTwq7BXV6SSJZcmd0Nw3FLLy8bk=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemFileNewConnectio
+ nWizardPage.class
+SHA1-Digest: M+qIIb/+ctIuEG+8Ao6kYaYdLGQ=
+
+Name: org/eclipse/rse/files/ui/widgets/SaveAsForm.class
+SHA1-Digest: eFiNdwoP3cd5vBttIpUS4hYKVjo=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteSearchRes
+ ultAdapter$DelayedGotoSearchResult.class
+SHA1-Digest: tuq32OvZaT26P860Vwt4BpYfFPw=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemRemoteFileSelection
+ InputProvider.class
+SHA1-Digest: SnRMKAJmvC3n8v7bxmKLIa+xPQ8=
+
+Name: org/eclipse/rse/internal/files/ui/FileResources.properties
+SHA1-Digest: LYUIFMLclTKwavrA1dNjSQQhtkM=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteSearchRes
+ ultAdapter$DelayedGotoSearchResultJob.class
+SHA1-Digest: RGM8dk0nktLr250xG+qJOVggV4k=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFileWizard.cl
+ ass
+SHA1-Digest: xN790WDGhfEDfnuJ+d744WAbLXg=
+
+Name: icons/full/obj16/systemfolder.gif
+SHA1-Digest: Kzlm0xk1tG8J2NC4EGwMe4DSx+w=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteResource
+ Info.class
+SHA1-Digest: yLnt97IWHjNgXcAWpX+MbyL88rQ=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFileWizardMai
+ nPage.class
+SHA1-Digest: 2jrtARvvwjq1w19cVsCfM6A9n9Y=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility$
+ RenameStatus.class
+SHA1-Digest: a6RaOvAZ7wwnW+peYh3p99Z3GTo=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$2.clas
+ s
+SHA1-Digest: yPqrcQlzpzPXDZ/9f5Fy3gOEpaE=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarkerTy
+ peDefinitionCache.class
+SHA1-Digest: BOHl+YdzCReunJKUHu8mnC1guIs=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteEditMana
+ ger$DeleteFileRunnable.class
+SHA1-Digest: YlAfoXRdXDJYrXoVLMO6p8+vsw4=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemRemoteFolderCombo$1.class
+SHA1-Digest: U7iUGURzpzreEatZ7kbvPHlWw/0=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/UniversalPrefere
+ ncePage$3.class
+SHA1-Digest: S5vAZJvRRNV6tfcECVHwGTW7LGg=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchRemoteFolde
+ rAction.class
+SHA1-Digest: UMg6G0qbUbJcUhmtFEaLiiwgkLo=
+
+Name: org/eclipse/rse/internal/files/ui/FileResources.class
+SHA1-Digest: sMMxOJop31ekpGmHU3Bc2nSpWdM=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFolderWizard$
+ CreateNewFolderJob.class
+SHA1-Digest: 8PWMX0VY78mF+jxnaj583UiIljI=
+
+Name: icons/full/obj16/systemsearchresult.gif
+SHA1-Digest: BuQUHnctDhGOzrOloPU3Lb8/ZUo=
+
+Name: org/eclipse/rse/files/ui/widgets/ISystemRemoteFolderBrowseComple
+ teListener.class
+SHA1-Digest: Jr4QxxuopazKwanxSHbuVkQPC0Q=
+
+Name: org/eclipse/rse/files/ui/ISystemAddFileListener.class
+SHA1-Digest: 8uY5IC59/bXpyB43SXrbgtniBdE=
+
+Name: org/eclipse/rse/files/ui/resources/SystemUniversalTempFileListen
+ er$2.class
+SHA1-Digest: hb9rCxEETomGMZ3Qr3eatXuG7pw=
+
+Name: icons/full/ovr16/exscript_ovr.gif
+SHA1-Digest: 1r17NtfqkF2VlplBHdGy7PvLbvk=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteFileAdapt
+ er$RenameRunnable.class
+SHA1-Digest: z5mxA35e3kPZxexE8f8d0rhpnKw=
+
+Name: org/eclipse/rse/files/ui/resources/SystemTempFileListener.class
+SHA1-Digest: n5w9SzO32VbT2BnC1oG9IXt0sAo=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$BackgroundUploadJob.class
+SHA1-Digest: dENYiOwGH+WUZKnQoFz47aEvMaU=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.files.ui/pom.prope
+ rties
+SHA1-Digest: IihEUCfIkh5lNZjq9bFnd16KQds=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on.class
+SHA1-Digest: PcYGz5P8NwPb9y8+cHWXVnFi4fQ=
+
+Name: org/eclipse/rse/files/ui/dialogs/SystemRemoteArchiveDialog.class
+SHA1-Digest: NV1pq1ZufybaSjN3MtD82zsr4Us=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemBrowseFileAction
+ .class
+SHA1-Digest: Di2RfpF7ZsI5FPFrF64ROmkQf/Y=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileOpenWi
+ thMenu$3.class
+SHA1-Digest: nt0QqmTmBwSsliMlQjeE33qvqSI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditionAction$1.
+ class
+SHA1-Digest: a5aGuDN0U1YNhmJnRVhTKxMnFD8=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemotePath.class
+SHA1-Digest: D7tcaf8wrASKez/19QjLJ2Z/ufs=
+
+Name: icons/full/elcl16/synced.gif
+SHA1-Digest: Ghj9SQaJ6vJj8hRCpmwiAfHF1uI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$SelectFileJob$1.class
+SHA1-Digest: GSpTnzTRe5ELa7U/d6k8NRQuBxk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SynchronizeCacheAction
+ Delegate$1.class
+SHA1-Digest: bvJbY3meX+XCIAXACPPFWJuUWBQ=
+
+Name: icons/full/ovr16/exec_binary_ovr.gif
+SHA1-Digest: 2tXAb7Pw/3xsMg00E4h6qNR7axQ=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemOpenSearchPageAct
+ ion.class
+SHA1-Digest: sP2hRF6Rfo4vFLNEqpgnKwKi5w4=
+
+Name: org/eclipse/rse/files/ui/resources/SystemTempFileListener$SynchR
+ esourcesJob.class
+SHA1-Digest: 6nU/YDrSsvJBNsvB54CME466DPA=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$UploadConflictDialog.class
+SHA1-Digest: o2d0nVSNqacWcgd37p4j2sKep3g=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/UniversalPrefere
+ ncePage.class
+SHA1-Digest: 3OKsZxARVyWpdV2lumO7/sR+RRE=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFileOrFolderF
+ orm.class
+SHA1-Digest: 9fniRK6BdFWYf/sSITpgI/GTyqo=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFileProper
+ tyPage$2.class
+SHA1-Digest: kS7yWzT/4JY/SMsr6ShrfL6QfGA=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemCachePrefe
+ rencePage.class
+SHA1-Digest: 6c/dPeMvwIH/al5sy0jvaggATA8=
+
+Name: org/eclipse/rse/files/ui/resources/SystemUniversalTempFileListen
+ er.class
+SHA1-Digest: WyihksE+WwIFFQe5PwOgBC5HqBw=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile$2.cl
+ ass
+SHA1-Digest: bQyx5C0uZbyZ5dDxvZDN1AV/OBA=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFilesForm$2.c
+ lass
+SHA1-Digest: vZS+kgft2kNFeu98DKIRHyliPW0=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFileWizardMai
+ nPage$1.class
+SHA1-Digest: GPywBEg81HNdhWNvnpVg4Ym78lE=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchSelectFileT
+ ypesDialog.class
+SHA1-Digest: HyRuNc2DwkijjbzcXzC/0kbvC+A=
+
+Name: org/eclipse/rse/files/ui/dialogs/SystemPromptForHomeFolderDialog
+ .class
+SHA1-Digest: 20XI0qeHv6ZqR92XUlNXfv/cVyM=
+
+Name: icons/full/ovr16/binary_ovr.gif
+SHA1-Digest: q++2leSy6Hd1uqmmIrG2AXhsX3k=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteMarkerSetElement
+ .class
+SHA1-Digest: wiG1PZAY/8youdp7qIk0CMTco0I=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemTextEditor.class
+SHA1-Digest: iYfrSr1rFA5T2PvZG42XKoyIIgU=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditionAction.cl
+ ass
+SHA1-Digest: s8VIWqa2SJhOGe02frVpqFCh9bw=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarkerMa
+ nager.class
+SHA1-Digest: BxSOnZtERpTlmhaQy1y1tTfS8X8=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarker.c
+ lass
+SHA1-Digest: tzuzec8+DsPwSmozYEtLOlrAVb0=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemCachePrefe
+ rencePage$ClearTempFilesRunnable.class
+SHA1-Digest: v2xc/aumjZ2eN3tp4p0RPRyu6BU=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$SelectFileJob.class
+SHA1-Digest: 63b6nFb7GiUaOxglTC6Clg2+7kw=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemFileWidgetHelpers.class
+SHA1-Digest: 0FiJhdjgDiZNRPu6tRxSyHIrbwM=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$LinkFromFolderJob.class
+SHA1-Digest: 5cnTT301GASthhb0oUvchvO74Zg=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility$
+ 2.class
+SHA1-Digest: 5N/MVG4TsIrCmxu1Df/JM+rGcSo=
+
+Name: org/eclipse/rse/internal/files/ui/dialogs/SystemSelectRemoteFile
+ OrFolderDialog.class
+SHA1-Digest: zIdlCy+9MDAB8RiD4S4nrukXNjI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion.class
+SHA1-Digest: USjljlCQWocko4LE36Ao+Y1CazA=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$FileNa
+ meEditor.class
+SHA1-Digest: eIivfZo9OQvZIIngPNInR4uzbl8=
+
+Name: org/eclipse/rse/internal/files/ui/actions/ShowResourceInSystemsV
+ iewDelegate.class
+SHA1-Digest: CFXcaqfmosPH3fKXtL0IcObHYHs=
+
+Name: org/eclipse/rse/internal/files/ui/widgets/SystemFileTreeAndListG
+ roup.class
+SHA1-Digest: AxEnxdUb+pyJQK0RUZ4TA5M61QU=
+
+Name: org/eclipse/rse/files/ui/compare/SystemCompareInput.class
+SHA1-Digest: 97g80ruP7Bca0V7Ht5/6UGqCZmI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemSearchEditFileLi
+ neAction.class
+SHA1-Digest: SNZ2+PIEuqB3jazfO/uYI1AG81c=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemFileActionUtilit
+ y.class
+SHA1-Digest: kVfgs1hPY7xN0Ht8lJ2bM6qUWjU=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$4.clas
+ s
+SHA1-Digest: kjWWI4STTpHs5GBhqWD6wOJS9nk=
+
+Name: org/eclipse/rse/files/ui/compare/SystemCompareInput$1.class
+SHA1-Digest: q1l3UA7VVBJQGPWumy+hp8j7S7U=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteResource
+ Manager.class
+SHA1-Digest: 8RX7FjCzqWcrJiPQb3af1X7v3ao=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCreateEditAction
+ s$1.class
+SHA1-Digest: HuQ6svSPM5e6/M/0/hdiAbHVWpk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$ShowChildrenInTree.class
+SHA1-Digest: 08gwS87rnBeKpDxZLay2DlFvuMI=
+
+Name: org/eclipse/rse/internal/files/ui/view/DownloadAndOpenJob$OpenEd
+ itorRunnable.class
+SHA1-Digest: 4vkbLHn4UI1KZL2ZA+UgberklXA=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteFileAdapt
+ er.class
+SHA1-Digest: grq1TPBpKVK7Nk95nsw2uiCYZ7o=
+
+Name: org/eclipse/rse/internal/files/ui/Activator.class
+SHA1-Digest: JOJkRzIsCInPtuTrwdajaBl3cAo=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$LinkFromFilterJob.class
+SHA1-Digest: NNPPwTJ9Y3p4D+CGUq1Cc43UKdI=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility.
+ class
+SHA1-Digest: 4bIMlgjEu/acr59tZBIfhofKmko=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemQualifiedRemoteFolderComb
+ o.class
+SHA1-Digest: f8vQSfoawOGhybRoyYuXFDpMIJY=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditFilesAction.
+ class
+SHA1-Digest: kQCH+zn6/tV2g2o11DTurN1WiWU=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarkerIn
+ fo.class
+SHA1-Digest: 8+ntD1dGnBqhMmbie++WC7n+AYg=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility$
+ RenameRunnable.class
+SHA1-Digest: EI6nMCHSyfFmuVksQxti8Sc0hm0=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchRemoteObjec
+ tAPIProvider.class
+SHA1-Digest: Tv8yYTNZ1IFJoIYiw6swl18oIVk=
+
+Name: icons/full/ovr16/virtual_tsk.gif
+SHA1-Digest: 8tWXSXMpvoURezd/KL9Kt/Mqebk=
+
+Name: org/eclipse/rse/files/ui/ISystemFileMessages.class
+SHA1-Digest: /UCEK1/n01enk+cVJwPcNfkS3SY=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$ReopenAction.class
+SHA1-Digest: EfPKZRnYOuPJZGmuMB7h7w4ZNTI=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFileWizard$Cr
+ eateNewFileJob.class
+SHA1-Digest: Nl7kLgpnNp10OLaI+UtCtMTt14w=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditFileLineActi
+ on.class
+SHA1-Digest: 4Nz4+JlMgoIIL/MfwHPlHvURkh0=
+
+Name: plugin.properties
+SHA1-Digest: tp3vxab+VwC4RjlPZzOKeMT9v1U=
+
+Name: org/eclipse/rse/files/ui/widgets/SaveAsForm$1.class
+SHA1-Digest: DmzC8tQ9zuVC1+VLdkMWiHKV6PI=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemRemoteFolderCombo.class
+SHA1-Digest: xTM2h7F4U8PNAcXQ9zINk9xF5Qk=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchSelectFileT
+ ypesAction.class
+SHA1-Digest: HJq81IgWFoK5UXN4Cz4pvLJDT1g=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteMarker.class
+SHA1-Digest: 6pTDNN2wRSbvkq1UEz+tD8rPANk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemReplaceWithEditi
+ onAction.class
+SHA1-Digest: zZ1opsFMyoaDASDowzEh8BLUwW4=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$BackgroundDownloadJob$2.class
+SHA1-Digest: UfutNA0u/JAG97fzmDrotkZ4X6s=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$1.clas
+ s
+SHA1-Digest: lh8+qJSosaHXBVyYKvpZPpemSEQ=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFileProper
+ tyPage$4.class
+SHA1-Digest: NjSP1UCExpQcaX9xTYQrlH7/1LA=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.files.ui/pom.xml
+SHA1-Digest: +O3O+hYRCA87tf2BrtjIrORgH+w=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewSearchResultAda
+ pterFactory.class
+SHA1-Digest: sAeeMRDLjC9fwWYm/RFmtjcuQVQ=
+
+Name: plugin.xml
+SHA1-Digest: wujWp6Ofr7lHEgxqmzk3g1aRVC4=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemNewFolderAction.
+ class
+SHA1-Digest: tviJ6cKiujYMh53N6L+DvRuWzRY=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/UniversalPrefere
+ ncePage$2.class
+SHA1-Digest: INLAVgq6VsLI2Podc9+qwH86N1g=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFilesForm$4.c
+ lass
+SHA1-Digest: XCRgRkOnMp30S0y70ngmg+etmbw=
+
+Name: org/eclipse/rse/files/ui/dialogs/ISaveAsDialog.class
+SHA1-Digest: 1GMWDScLZIeeAEZwfLVNt/5Z3R4=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemFileFilterStringEditPane$
+ 2.class
+SHA1-Digest: y42CE53PAFToDO6OJ6IOA9f0G+Y=
+
+Name: org/eclipse/rse/files/ui/resources/SystemUniversalTempFileListen
+ er$1.class
+SHA1-Digest: y8nE9eILUvRCRL5r+BM4aMWncI4=
+
+Name: org/eclipse/rse/internal/files/ui/view/DownloadAndOpenJob.class
+SHA1-Digest: KBYB9OBolufiEC7oa21iSF1pd7c=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteFileAdapt
+ er$MultiFetchPermissionsJob.class
+SHA1-Digest: 2trJ0SxAR6Hp916uFQq75YWUmYM=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemNewFileAction.cl
+ ass
+SHA1-Digest: RVwWYcdlsaGGRRugWVUoq2eD1Es=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteEditResourceMana
+ ger.class
+SHA1-Digest: T6c4gV8OYQyUJqEk8TUkW4pH6FM=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemSelectFileTypesA
+ ction.class
+SHA1-Digest: RjcUZ4v6nwYjpIr+ZYwiBPmGoAA=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchRemoteFolde
+ rForm.class
+SHA1-Digest: BhIT6TOtWmZ0eljI0FvUBBVGTGk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SynchronizeCacheAction
+ Delegate.class
+SHA1-Digest: X0fhVpEEsOrkaWskdaXcitcsWJQ=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileOpenWi
+ thMenu$2.class
+SHA1-Digest: yNbfcws912mxGNRPn04zAXv2RyQ=
+
+Name: org/eclipse/rse/files/ui/resources/SystemTempFileListener$Refres
+ hResourcesJob.class
+SHA1-Digest: Pwk/SVoxvmMHEwhju5Tcwdsr03Q=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarkerTy
+ peDefinition.class
+SHA1-Digest: 7bi+3P8JlnJuW/gWrBu9u3zQu68=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFilePermis
+ sionsPropertyPage$1.class
+SHA1-Digest: fXlbJTzlvzsg0kRSfam25F3stk4=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemQualifiedRemoteFolderComb
+ o$1.class
+SHA1-Digest: vtXUaf6U3wZeZJ0oByBzmzEVeWk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditFileInPlaceA
+ ction.class
+SHA1-Digest: oUhmpyBAcd6kJiCtSSyw7OUAwPY=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemFileNewConnectio
+ nWizardPage$1.class
+SHA1-Digest: LLbbtLHXmmdMnLskwIP1n5cDiPk=
+
+Name: icons/full/ovr16/symblclnk_ovr.gif
+SHA1-Digest: 0UslgE7BpSAQWN/VllCLUNUtY00=
+
+Name: org/eclipse/rse/internal/files/ui/dialogs/SystemSelectRemoteFile
+ OrFolderDialog$1.class
+SHA1-Digest: jFFQKvEuV1AM2YlIvQmchOEnCrU=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$Folder
+ NameEditor$Info.class
+SHA1-Digest: o5aF86azy11SIlR0sSwJptTWnH8=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteEditResource.cla
+ ss
+SHA1-Digest: XlIWa28WyUDv7ohAnaBS1dUwTZI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemDoubleClickEditA
+ ction.class
+SHA1-Digest: 3tcvmlZhmYgDvwh63dIa6oC4ftY=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemSearchBrowseFile
+ LineAction.class
+SHA1-Digest: 6agd61o/92BMCTYaCz2rqV+Sa3s=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFilePermis
+ sionsPropertyPage$1$1.class
+SHA1-Digest: 5I8O5Fm6Gk1ShbTnzgbrHfNMqEw=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFolderWizardM
+ ainPage$1.class
+SHA1-Digest: ud1+gKJntiuOxLzP6BnFnG2R9wI=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFileProper
+ tyPage$1.class
+SHA1-Digest: EKoUTfsTWQBVWWVpRi4Z4rIoBck=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$6.clas
+ s
+SHA1-Digest: qz41H18wbHp4sfIQKasgfKuVVN8=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile$1.cl
+ ass
+SHA1-Digest: lA9ik5fNGH82UUXQffQh7OiOcmI=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFilesForm$1.c
+ lass
+SHA1-Digest: YDYAWPEhdYUl5t8lRAm2tFb36S8=
+
+Name: org/eclipse/rse/files/ui/compare/SystemCompareInput$MyDiffNode.c
+ lass
+SHA1-Digest: 0efZj8phnbDNBrlTau9qUtla0Dc=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteEditMana
+ ger.class
+SHA1-Digest: YXg12T0J+hOM4DCOgPtHaJnuuoA=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemMoveRemoteFileAc
+ tion.class
+SHA1-Digest: SXSqnuiu3vi9Ve5QxqMY16Z8GwY=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileOpenWi
+ thMenu.class
+SHA1-Digest: ScZxESUasiB1JHsEa5T4lN8u7Es=
+
+Name: org/eclipse/rse/files/ui/dialogs/SystemRemoteFileDialog.class
+SHA1-Digest: HZbGIwI+aEdXxsYy1Iho+9H8ow8=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCopyRemoteFileAc
+ tion$RenameRunnable.class
+SHA1-Digest: SkcoNmnYtiDufj2iubc8n3jk8eA=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewSearchResultSet
+ AdapterFactory.class
+SHA1-Digest: 5zrQxO+oliaGhIyhqVCfwgy8Btk=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFolderWizard.
+ class
+SHA1-Digest: WM3pBuEzu/7lhydrVoHak3b0GDo=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileLineOp
+ enWithMenu.class
+SHA1-Digest: e8Bq4NUTk7013uH3E0lbiXmZF0Q=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemMountPathMapper.class
+SHA1-Digest: NAKr69QYcWvrdXPul0lXwqBVcHc=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility$
+ 1.class
+SHA1-Digest: tWQd1R6hx9fw7NT9gsyWsgkT2NQ=
+
+Name: org/eclipse/rse/internal/files/ui/wizards/SystemNewFolderWizardM
+ ainPage.class
+SHA1-Digest: rRc447OrhkCsozvVnWg2F0/sm3M=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemFileNameHelper
+ .class
+SHA1-Digest: QTjcPL3YcqMJRemTiihmk4Dkrds=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemBrowseFileLineAc
+ tion.class
+SHA1-Digest: vI36yKkbwPuu1uBSGeeUAS0Wm/M=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile.clas
+ s
+SHA1-Digest: W6KoKvywwKFQqXRjaZAVNdLAv7I=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteSearchRes
+ ultSetAdapter.class
+SHA1-Digest: HEF6UKzzdrcBCJTxMxZ8s1QqH9U=
+
+Name: org/eclipse/rse/internal/files/ui/view/RemoteFileSubSystemConfig
+ urationAdapter.class
+SHA1-Digest: ryVNSr1mMY6QjXVLBhKvQF8Ir9M=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile$Disp
+ layMessageDialog.class
+SHA1-Digest: CA10sJm10ndV2+cIeTiV8yOMvcI=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$3.clas
+ s
+SHA1-Digest: oO9hmEsk7en0QPKoEkYIuJWz584=
+
+Name: icons/full/ovr16/sharedlib_ovr.gif
+SHA1-Digest: RK3SJ8FcPr7W6tucoB3bIwbil+Y=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$CloseEditorAction.class
+SHA1-Digest: iEPGHZSKWxczIuRxa6TCZ7w6TEM=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemNewFileFilterFro
+ mFolderAction.class
+SHA1-Digest: E8hGT4XV+eB/uYK7pmUk3KiREsE=
+
+Name: icons/full/obj16/systemfile.gif
+SHA1-Digest: rLBaG60DpfnehRTAqLVr+5bKiHc=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteMarkerSe
+ t.class
+SHA1-Digest: WqfiX/vHEFbiqZm/JJhN3H7rC/s=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemCachedRemoteResource.c
+ lass
+SHA1-Digest: hpGtW5eK2cDS2p9ESS0WApUVmwY=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/files/ui/actions/LinkWithSystemViewActi
+ on$ViewLinker.class
+SHA1-Digest: P42WyEL8QFg64ymYJVlyROoaabU=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileSearch
+ OpenWithMenu.class
+SHA1-Digest: waBUp8UTSpKX1FrSaDor4SWp+hI=
+
+Name: org/eclipse/rse/files/ui/dialogs/SystemRemoteFileDialog$1.class
+SHA1-Digest: Bh1L752l6MgLOQSU/Jawd1vndXk=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileOpenWi
+ thMenu$4.class
+SHA1-Digest: +jcOrugA10G/1bFxhte/DsAkf/w=
+
+Name: icons/full/ovr16/exec_ovr.gif
+SHA1-Digest: s5ftUnlwyODYJY9cAjk4qS2ya10=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$BackgroundSaveasJob.class
+SHA1-Digest: SN7Pfizexc1+QBdXwcv2Cmt7xeE=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCompareWithEditi
+ onAction.class
+SHA1-Digest: bO30M4ZtIQt1G1SdWCAfVxlfZhE=
+
+Name: icons/full/obj16/systemfileslive_obj.gif
+SHA1-Digest: Qgbh7OL/jgGD4Im6mzfkX0Gl26I=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemNewFileFilterAct
+ ion.class
+SHA1-Digest: w8RIVsV7jImBdaABkyenp/8dhEA=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SynchronizeCacheAction
+ Delegate$2.class
+SHA1-Digest: 6/bogdRU4SRxgWlrAe/fuaP87LI=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditionAction$Do
+ cumentBufferNode.class
+SHA1-Digest: IybHYL6jtem7etb8pFxVInI4Ps4=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage.class
+SHA1-Digest: iVXLoDXdZdI2OJ3s5eNr4UQz94g=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemDownloadConflict
+ Action.class
+SHA1-Digest: 7NWKmajzA6aEv8Bw0TlqpwCsHh4=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFilesForm.cla
+ ss
+SHA1-Digest: 8g/pci1VcJOhNKNYA4Dij4WbBJI=
+
+Name: icons/full/ovr16/shared_objunix_ovr.gif
+SHA1-Digest: WEZmTS9WBc8A9Apl2cyKGcQsad8=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCreateEditAction
+ s.class
+SHA1-Digest: DPUsoXav9B2DWy/vi3VmHf7mFoo=
+
+Name: org/eclipse/rse/files/ui/resources/SystemSafeFileOutputStream.cl
+ ass
+SHA1-Digest: ewk7OlhU/glSKKZ26w4smaPH3X4=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$BackgroundDownloadJob$1.class
+SHA1-Digest: saDeFEDcGncxLeZEgbCBZh8MvPY=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemFileFilterStringEditPane.
+ class
+SHA1-Digest: aqxaMUPWerlPRiVR0VN8KRtwyM8=
+
+Name: org/eclipse/rse/files/ui/actions/SystemSelectRemoteFolderAction.
+ class
+SHA1-Digest: /L54di+QeBfsXfqj18VyFuoyOJU=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFileProper
+ tyPage$3.class
+SHA1-Digest: ZTBVvTlAG4SNhDZaeKn9I9NUM9Q=
+
+Name: icons/full/obj16/systemfiles_obj.gif
+SHA1-Digest: eFjNSBWHfLZKt3F8HyYvDOeuU/U=
+
+Name: icons/full/ovr16/archive_ovr.gif
+SHA1-Digest: RI1gmZusdsX77qThzS3K8Dp5PfU=
+
+Name: icons/full/obj16/systemrootdriveopen.gif
+SHA1-Digest: 7KTNkdqPnTXfS6wi8l+r49qtvhc=
+
+Name: org/eclipse/rse/files/ui/actions/SystemSelectRemoteFileAction$Re
+ moteFileSelectionValidator.class
+SHA1-Digest: mqrVCsV6q/RSK95rlcnLnaGAUWI=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemotePath.cla
+ ss
+SHA1-Digest: 48R4UoEMWJMye1E2fk9PWIkR7Fo=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$UploadConflictDialog$1.class
+SHA1-Digest: gG2mSKdGXPw+QxMGBh4y4Rj9roA=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/UniversalPrefere
+ ncePage$1.class
+SHA1-Digest: cPA+M9Y4kUOdr3RwnyP0LUrUo5Q=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemSelectRemoteFilesForm$3.c
+ lass
+SHA1-Digest: AzVPYH/E4kCQQ9HJQtbzeffv8lk=
+
+Name: org/eclipse/rse/files/ui/dialogs/SystemRemoteFolderDialog.class
+SHA1-Digest: IcaEikL36JVhoaRKY8sFYSJ7WJc=
+
+Name: org/eclipse/rse/files/ui/widgets/SystemFileFilterStringEditPane$
+ 1.class
+SHA1-Digest: DeFsUdRhd1dGGf1t6cR2/klrsZ0=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCompareFilesActi
+ on.class
+SHA1-Digest: dZQbCdmhglufH1yPXjyuKNyFwaA=
+
+Name: org/eclipse/rse/files/ui/actions/SystemSelectRemoteFileAction.cl
+ ass
+SHA1-Digest: nm8tBCbhBD/0CQg2qYLqKfXizwQ=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemCachePrefe
+ rencePage$1.class
+SHA1-Digest: CEHcy25By7J282EKrH66ajaoauU=
+
+Name: org/eclipse/rse/files/ui/dialogs/FileDialogFactory.class
+SHA1-Digest: WlTGY9odf9fHf63AxpeSL3Gxjkk=
+
+Name: org/eclipse/rse/internal/files/ui/Activator$InitRemoteEditJob.cl
+ ass
+SHA1-Digest: 5AhjDsirhIZMo/+MNaR6ut+nKT0=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemDownloadConflict
+ Action$DownloadConflictDialog.class
+SHA1-Digest: hSD/izOmFUCBMMp5cpe4RDVh51M=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchRemoteFolde
+ rDialog.class
+SHA1-Digest: 3RC2+xjQlzukY5RXA0ZDRcN8cN4=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditFileAction.c
+ lass
+SHA1-Digest: 1ENv4IStW7/OXZi+Zfs3QGGbTSc=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemRemoteFileOpenWi
+ thMenu$1.class
+SHA1-Digest: SXy72TTXInZ41YizpXdFG4sYxbU=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemSearchAction.cla
+ ss
+SHA1-Digest: i/Ts9X0/SCsl/ynSCXW7AMUbfGI=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFilePermis
+ sionsPropertyPage.class
+SHA1-Digest: 3Te+SmiLRXtMmTUBnILHkBj8LE8=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile$Disp
+ layQuestionDialog.class
+SHA1-Digest: ai/LIixsESQvZpdHOF/TbaFi6LI=
+
+Name: org/eclipse/rse/files/ui/resources/UniversalFileTransferUtility$
+ 3.class
+SHA1-Digest: ndxM9AZO2xe0nLxrFe8utLW59nk=
+
+Name: org/eclipse/rse/internal/files/ui/resources/SystemRemoteResource
+ .class
+SHA1-Digest: rMVLsP3DgpTeZCb29ZTDJtMsUx4=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemUploadConflictAc
+ tion$BackgroundDownloadJob.class
+SHA1-Digest: yij0Llb42lZxdzmsye9oVbBhkBs=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemCopyRemoteFileAc
+ tion.class
+SHA1-Digest: IliYG5eM+/nDthKcgkMTgfEpqGU=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteManager.class
+SHA1-Digest: hSR4nFqYLVMovl5C8LgLe5PA69I=
+
+Name: org/eclipse/rse/files/ui/resources/SystemEditableRemoteFile$Inte
+ rnalDownloadFileRunnable.class
+SHA1-Digest: yVAOG/JcvaC53WYvv+huO9Pp6ps=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/SystemFileProper
+ tyPage.class
+SHA1-Digest: zSFkq29vL7NT6nKGkTCi/Nsz8r0=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$Common
+ Editor.class
+SHA1-Digest: sKd8BjZcYISJP+LvyfNaIb0yIyk=
+
+Name: org/eclipse/rse/internal/files/ui/view/RemoteFileSubSystemConfig
+ urationAdapterFactory.class
+SHA1-Digest: eocZNsZX3etMcd2iJ59RMe3ohlg=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemMoveRemoteFileAc
+ tion$MoveRemoteFileJob.class
+SHA1-Digest: jELX0IGi5iTqKj+qF7z+3H9SPnE=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemEditFilePlatform
+ Action.class
+SHA1-Digest: gHC3N2KoMVCoKq3wjyQHg2Jw66c=
+
+Name: org/eclipse/rse/internal/files/ui/actions/SystemFileUpdateFilter
+ Action.class
+SHA1-Digest: YFg+5q2qUo/hgZUpnUYUqhrA9ts=
+
+Name: org/eclipse/rse/files/ui/resources/SystemTempFileListener$TempFi
+ leSaveParticipant.class
+SHA1-Digest: 7vIMwQh4n0lss07B9bFyvgQT3zc=
+
+Name: icons/full/obj16/systemrootdrive.gif
+SHA1-Digest: Z9hpFItfHT6up77WxY7U/+djHPw=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$5.clas
+ s
+SHA1-Digest: BC+E2gO6VqVdS4NLyMEI3pbxCz0=
+
+Name: org/eclipse/rse/files/ui/compare/SystemCompareInput$2.class
+SHA1-Digest: LndMlVvVoGDdliT7SpJFDWTiJSY=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewRemoteSearchRes
+ ultAdapter.class
+SHA1-Digest: qnWoJvd1FCUlrS9jHuvfXitCZ0E=
+
+Name: org/eclipse/rse/files/ui/resources/ISystemRemoteResource.class
+SHA1-Digest: p5BqNvTk91P00DdYifysE9U0nSA=
+
+Name: org/eclipse/rse/files/ui/resources/SystemTempFileListener$Refres
+ hResourcesUIJob.class
+SHA1-Digest: P28n5/Ouz7toDwYx7XiT6o4jn1I=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$Remote
+ SearchData.class
+SHA1-Digest: ncns37+P32T1XeVJjO3Drg8DbRw=
+
+Name: icons/full/obj16/system_search.gif
+SHA1-Digest: pcqhx5aVkEl/cWG+0qMlC5xoCA0=
+
+Name: org/eclipse/rse/internal/files/ui/view/SystemViewFileAdapterFact
+ ory.class
+SHA1-Digest: q+v6MJ8P0+iwwwCeKaIOv71Wk4Q=
+
+Name: org/eclipse/rse/internal/files/ui/ISystemFileConstants.class
+SHA1-Digest: HzfQ1bmMkCEXrrH7mF/uPDWJ6bw=
+
+Name: org/eclipse/rse/internal/files/ui/dialogs/SaveAsDialog.class
+SHA1-Digest: vDrQgL0kKyadtMmXzUfCwVGpbxk=
+
+Name: org/eclipse/rse/internal/files/ui/resources/ISystemRemoteCoreCon
+ stants.class
+SHA1-Digest: zXP/GBkFPAqUn5P4Bz6pS0jS4dc=
+
+Name: org/eclipse/rse/internal/files/ui/search/SystemSearchPage$Folder
+ NameEditor.class
+SHA1-Digest: iMh/bcEb7t/eUwZh6W8m5V+cOjQ=
+
+Name: org/eclipse/rse/internal/files/ui/propertypages/FileServicesProp
+ ertyPage.class
+SHA1-Digest: XcURIyLnPr4p+oukkplZfhmN8kM=
+

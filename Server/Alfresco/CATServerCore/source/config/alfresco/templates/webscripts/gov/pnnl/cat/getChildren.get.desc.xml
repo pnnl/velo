@@ -1,0 +1,12 @@
+<!-- Note, getCollection and getChildren are the exact same impl webscript.
+Defining new URL getChildren as part of a refactor to use better naming. -->
+<webscript>
+  <shortname>Get Children</shortname>
+  <description>Returns a list of all children in the folder with all properties and aspects for each node.  Children
+  are returned in the order they are created.  They are not filtered.</description>
+  <url>/cat/getChildren?path={path}&amp;uuid={?uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

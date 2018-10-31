@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Upload file(s)</shortname>
+  <description>Upload files, replace content if it already exists.</description>
+  <!-- parameters are passed via body in multipart request -->
+  <url>/cat/upload</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

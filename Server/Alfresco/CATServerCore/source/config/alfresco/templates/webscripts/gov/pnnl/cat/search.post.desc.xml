@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Search</shortname>
+  <description>Execute a search against the repository</description>
+  <url>/cat/search</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.e4.ui.css.swt.theme">
+      <theme
+		basestylesheeturi="css/e4_default_win7.css"
+        id="gov.pnnl.ui.theme.default"
+        label="PNNL Theme">
+      </theme>
+   </extension>
+
+</plugin>

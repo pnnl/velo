@@ -1,0 +1,146 @@
+{
+ "DOEContractNumbers": ["12345"],
+ "citationInformation": {
+  "authors": [
+   {
+    "eMail": "carina.lansing@pnnl.gov",
+    "firstName": "Carina",
+    "institution": "PNNL",
+    "lastName": "Lansing",
+    "middleName": "S",
+    "phoneNumber": "5093752482",
+    "primaryAuthor": "true"
+   },
+   {
+    "eMail": "chandrika@pnl.gov",
+    "firstName": "Chandrika",
+    "institution": "PNNL",
+    "lastName": "Sivsomthing"
+   },
+   {
+    "eMail": "ollie@pnnl.gov",
+    "firstName": "Oliver",
+    "institution": "PNNL",
+    "lastName": "Guillen"
+   }
+  ],
+  "description": "The domestic cat[1][2] (Felis catus or Felis silvestris catus)[2][4] is a small, usually
+ furry, domesticated, and carnivorous mammal. They are often called housecats when kept as indoor pets
+ or simply cats when there is no need to distinguish them from other felids and felines.[6] Cats are
+ often valued by humans for companionship and their ability to hunt vermin.\n\nCats are similar in anatomy
+ to the other felids, with strong, flexible bodies, quick reflexes, sharp retractable claws, and teeth
+ adapted to killing small prey. Cat senses fit a crepuscular and predatory ecological niche. Cats can
+ hear sounds too faint or too high in frequency for human ears, such as those made by mice and other
+ small animals. They can see in near darkness. Like most other mammals, cats have poorer color vision
+ and a better sense of smell than humans.\n\nDespite being solitary hunters, cats are a social species
+ and cat communication includes the use of a variety of vocalizations (mewing, purring, trilling, hissing
+, growling, and grunting), as well as cat pheromones and types of cat-specific body language.[7]\n\nCats
+ have a high breeding rate. Under controlled breeding, they can be bred and shown as registered pedigree
+ pets, a hobby known as cat fancy. Failure to control the breeding of pet cats by neutering and the abandonment
+ of former household pets has resulted in large numbers of feral cats worldwide, requiring population
+ control.[8] This has contributed, along with habitat destruction and other factors, to extinction of
+ many bird species. Cats have been known to extirpate a bird species within a specific region and may
+ have contributed to extinction of isolated island populations.[9] Cats are thought to be primarily,
+ though not solely, responsible for the extinction of 33 species of birds, and the presence of feral
+ and free ranging cats makes some locations unsuitable for attempted species reestablishment in otherwise
+ suitable locations.[10]",
+  "publisher": "PNNL",
+  "tags": "cute, cats, furry",
+  "title": "Carina's Cats"
+ },
+ "contacts": [
+  {
+   "authorName": "Carina S Lansing",
+   "contactType": "Author",
+   "primaryContact": "true"
+  },
+  {
+   "contactName": "Zoe Guillen",
+   "contactRole": "Cat Petter",
+   "contactType": "Other",
+   "eMail": "zoe@pnl.gov"
+  },
+  {
+   "contactName": "Phil Gackle",
+   "contactRole": "Server admin",
+   "contactType": "Other",
+   "eMail": "phil@pnl.gov",
+   "institution": "PNNL",
+   "phoneNumber": "123-456-6789"
+  }
+ ],
+ "country": "United States",
+ "dataAccess": {
+  "accessEndDate": "09/29/2016",
+  "accessLevel": "Public",
+  "license": "Academic Free License v1.1",
+  "requiredSoftwares": [{
+   "title": "GIMP",
+   "url": "http://www.gimp.org/"
+  }],
+  "rights": "Contains personally identifiable information."
+ },
+ "dataQuality": {
+  "dataQualityFiles": ["/User Documents/admin/DS1/Data/images/bookmark.png"],
+  "qualitySummary": "It's all good."
+ },
+ "datasetCoverage": {"temporalCoverage": {
+  "coverageEndDate": "09/23/2016",
+  "coverageStartDate": "09/24/2015",
+  "updateFrequency": "As needed"
+ }},
+ "language": "English",
+ "nonDOEContractNumbers": ["12345"],
+ "publications": [
+  {
+   "content": "Padrid, Philip. \"Feline asthma: diagnosis and treatment.\" Veterinary Clinics of North
+ America: Small Animal Practice 30.6 (2000): 1279-1293.",
+   "url": "http://www.sciencedirect.com/science/article/pii/S0195561600060071"
+  },
+  {
+   "content": "this is a second citation, blah, blah, blah",
+   "url": "http://google.com"
+  },
+  {
+   "content": "and another",
+   "url": "http://google.com/a"
+  }
+ ],
+ "relatedWebsites": [{"url": "http://icanhas.cheezburger.com/"}],
+ "researchOrganizations": ["Pacific Northwest National Laboratory (PNNL), Richland, WA (United States
+)"],
+ "sponsorOrganizations": ["USDOE EM Office of Project Management (EM-10)"],
+ "viewers": [
+  {
+   "imageFiles": [
+    {
+     "fileDescription": "test",
+     "filePath": "/User Documents/admin/DS1/Data/images/arrow_left_green.png",
+     "fileTitle": "test"
+    },
+    {
+     "fileDescription": "test4",
+     "filePath": "/User Documents/admin/DS1/Data/images/arrow_right_blue.png",
+     "fileTitle": "test3"
+    }
+   ],
+   "viewerType": "ImageGallery"
+  },
+  {
+   "fileDescription": "mp4",
+   "filePath": "/User Documents/admin/DS1/Data/videos/IN-SPIRE_GettingStarted.mp4",
+   "fileTitle": "mp4",
+   "viewerType": "video"
+  },
+  {
+   "fileDescription": "webm",
+   "filePath": "/User Documents/admin/DS1/Data/videos/IN-SPIRE_GettingStarted.webm",
+   "fileTitle": "webm",
+   "viewerType": "video"
+  }
+ ]
+,
+ "mlaCitationString": "Lansing CS, Sivsomthing C, Guillen O (NA) Carina's Cats. OSTI. doi:abcdefg-123456-hijklmnop-789-qrstuvwxyz"
+,
+ "doi": "abcdefg-123456-hijklmnop-789-qrstuvwxyz",
+ "state": "final"}

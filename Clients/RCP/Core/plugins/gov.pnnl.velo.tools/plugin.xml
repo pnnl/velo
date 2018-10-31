@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="gov.pnnl.velo.tools.menus.ToolCommand"
+            id="gov.pnnl.velo.tools.menus.ToolCommand"
+            name="Tools">
+      </command>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+        <!-- Register dynamic Tools popup menu -->
+	    <menuContribution
+	         locationURI="popup:org.eclipse.ui.popup.any?after=open">
+	        <menu id="tools" label="Tools">            
+	           <dynamic
+	               id="gov.pnnl.velo.tools.menus.ToolMenu"
+	               class="gov.pnnl.velo.tools.menus.ToolMenu">
+	           </dynamic>
+	        </menu>         
+	   </menuContribution>
+	   
+        <!-- Register dynamic Tools menu -->
+	    <menuContribution
+	         locationURI="menu:file?after=open.ext">
+	        <menu id="tools" label="Tools">            
+	           <dynamic
+	               id="gov.pnnl.velo.tools.menus.ToolMenu"
+	               class="gov.pnnl.velo.tools.menus.ToolMenu">
+	           </dynamic>
+	        </menu>         
+	   </menuContribution>
+	  <!-- Why wouldn't my change get into the build :( -->
+      <!-- Register dynamic Tools toolbar menu -->
+      <!-- commenting out the "Tools" menu on the top left of the explorer as we have tool buttons now -->
+      <!-- Menus are still only truly dynamic way to include large number of tools. Though tool buttons
+           are convinent when you have limited set of tools -->
+     <!-- <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+        <toolbar id="gov.pnnl.velo.tools.toolbar">
+           <command commandId="gov.pnnl.velo.tools.menus.ToolCommand" id="gov.pnnl.velo.tools.toolbar" style="pulldown" 
+                    tooltip="Tools">
+           </command>
+        </toolbar>
+
+     </menuContribution> -->
+     <menuContribution locationURI="menu:gov.pnnl.velo.tools.toolbar">
+	        <dynamic
+	            id="gov.pnnl.velo.tools.toolbar.dynamic"
+	            class="gov.pnnl.velo.tools.menus.ToolMenu">
+	        </dynamic>
+     </menuContribution>
+   </extension>
+   
+   <extension
+         point="gov.pnnl.cat.ui.rcp.customCompareBehavior">
+      <CustomCompareBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomCompareBehavior">
+      </CustomCompareBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.customDeleteBehavior">
+      <CustomDeleteBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomDeleteBehavior">
+      </CustomDeleteBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.customDoubleClickBehavior">
+      <CustomDoubleClickBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomDoubleClickBehavior">
+      </CustomDoubleClickBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.customPasteBehavior">
+      <CustomPasteBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomPasteBehavior">
+      </CustomPasteBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.velo.customExportBehavior">
+      <CustomExportBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomExportBehavior">
+      </CustomExportBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.rcp.customSaveAsBehavior">
+      <CustomSaveAsBehavior
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrCustomSaveAsBehavior">
+      </CustomSaveAsBehavior>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.ui.resourceImage">
+      <resourceImageFactory
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrResourceImageFactory">
+      </resourceImageFactory>
+   </extension>
+   <extension
+         point="gov.pnnl.velo.summaryViewSectionFactory">
+      <SummaryViewSectionFactory
+            class="gov.pnnl.velo.tools.behavior.mgr.ToolMgrSummaryViewSectionProvider">
+      </SummaryViewSectionFactory>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.springBeanProvider">
+      <springBeanProvider configLocation="config/tif-services.xml"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="gov.pnnl.velo.tools.ui.preferences.RegistryConfigPreferencePage"
+            id="gov.pnnl.velo.tools.ui.preferences.RegistryConfigPreferencePage"
+            name="Job Configuration Files"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+         <scope name="Job Configuration Files" class="gov.pnnl.velo.tools.ui.preferences.RegistryConfigPreferencePage"/>
+      <initializer
+            class="gov.pnnl.velo.tools.ui.preferences.RegistryConfigPreferenceIntializer">
+      </initializer>
+  </extension>
+</plugin>

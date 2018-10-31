@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- You must extend common-placeholder-configurer or properties won't get loaded correctly -->
+    <bean id="velo-properties" parent="common-placeholder-configurer">
+        <property name="locations">
+            <list>
+                <!-- notification related properties -->
+                <value>classpath:alfresco/module/velo/properties/velo.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+  <!-- import tool integration framework context file(s)-->
+  <import resource="classpath:alfresco/module/velo/tif/*-context.xml"/>
+
+
+  <!-- Define custom VELO content model -->
+  <bean id="veloModule_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="cat.dictionaryBootstrap">
+     <property name="models">
+        <list>
+            <value>alfresco/module/velo/models/veloModel.xml</value>
+        </list>
+     </property>
+  </bean>
+
+  <!-- Define dataset content model -->
+  <bean id="veloModuleDataset_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+     <property name="models">
+        <list>
+            <value>alfresco/module/velo/models/datasetModel.xml</value>
+        </list>
+     </property>
+  </bean>
+  
+  <!-- Define custom provenance content model -->
+  <!-- TODO: remove this - relationships should be stored in graph database, not alfresco -->
+  <bean id="veloModuleProvenance_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+     <property name="models">
+        <list>
+            <value>alfresco/module/velo/models/provenanceModel.xml</value>
+        </list>
+     </property>
+  </bean>
+  
+   <!-- Add our webscript service beans -->
+   <!-- base web script bean -->
+    <bean id="velowebscript" abstract="true" parent="webscript">
+      <property name="namespaceService" ref="NamespaceService" />
+      <property name="nodeService" ref="NodeService" />
+      <property name="contentService" ref="ContentService" />
+      <property name="searchService" ref="SearchService" />
+      <property name="transactionService" ref="transactionService" />
+      <property name="mimetypeService" ref="mimetypeService" />
+      <property name="copyService" ref="copyService"/>
+      <property name="authorityService" ref="authorityService" />
+      <property name="permissionService" ref="permissionService" />
+      <property name="ownableService" ref="ownableService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />      
+      <property name="nodeUtils" ref="nodeUtils" />      
+      <property name="dictionaryService" ref="dictionaryService" />      
+      <property name="fileFolderService" ref="FileFolderService" />      
+      <property name="versionService" ref="versionService" />
+    </bean>
+   
+   <!--  CAT web scripts -->
+   <bean id="webscript.gov.pnnl.landingPage.getDatasetMetadata.get" 
+      class="gov.pnnl.velo.webscripts.GetDatasetMetadata" parent="catwebscript" />
+   
+   <!--  Velo web scripts - note these were written for wiki; paths may not match -->
+   <!-- Note that the ID for a webscript must be EXACT.  It must start with webscript, 
+    followed by the path where the webscript desc file is stored on the server, followed by 
+    the webscript name, followed by the http method by which to invoke this web script -->
+    <!-- Add Folder -->
+    <bean id="webscript.gov.pnnl.velo.createFolder.post"
+      class="gov.pnnl.velo.webscripts.CreateFolder" parent="velowebscript" />
+    
+    <bean id="webscript.gov.pnnl.velo.registry.contenturls.get"
+    class="gov.pnnl.velo.webscripts.GetContentUrls" parent="velowebscript" />
+
+    <bean id="webscript.gov.pnnl.velo.registry.imagesaspdf.get" 
+    class="gov.pnnl.velo.webscripts.GetImagesAsPdf" parent="velowebscript" />
+    
+    <!-- Delete Resource -->
+    <bean id="webscript.gov.pnnl.velo.delete.post"
+      class="gov.pnnl.velo.webscripts.Delete" parent="velowebscript" />
+
+    <!-- Advanced Delete Resources -->
+    <bean id="webscript.gov.pnnl.velo.advDelete.post"
+      class="gov.pnnl.velo.webscripts.AdvancedDelete" parent="velowebscript" />
+      
+    <!-- Rename Resource -->
+    <bean id="webscript.gov.pnnl.velo.rename.post"
+      class="gov.pnnl.velo.webscripts.Rename" parent="velowebscript" />
+      
+    <!-- Move Resource -->
+    <bean id="webscript.gov.pnnl.velo.move.post"
+      class="gov.pnnl.velo.webscripts.Move" parent="velowebscript" />
+
+    <!-- Get File -->
+    <bean id="webscript.gov.pnnl.velo.getFile.get"
+      class="gov.pnnl.velo.webscripts.GetFile" parent="velowebscript" />
+
+    <!-- Get Files -->
+    <!--  we have to execute as a post method in order to send the list of files we want to download -->
+    <!--  we can't send files to a get request -->
+    <bean id="webscript.gov.pnnl.velo.getFiles.post"
+      class="gov.pnnl.velo.webscripts.GetFiles" parent="velowebscript">
+      <property name="exporterService" ref="ExporterService" /><!-- note, alfresco doesn't define the lowercase exporterService bean -->
+    </bean>
+      
+    <!-- Create User -->
+    <bean id="webscript.gov.pnnl.velo.createUser.post"
+      class="gov.pnnl.velo.webscripts.CreateUser" parent="velowebscript">
+         <property name="personService" ref="PersonService" />  
+         <property name="mutableAuthenticationService" ref="AuthenticationService" />
+    </bean>
+    
+    <!-- Add Users to group -->
+    <bean id="webscript.gov.pnnl.velo.addUsersToGroup.post"
+ 	      class="gov.pnnl.velo.webscripts.AddUsersToGroup" parent="velowebscript">
+    </bean> 
+    
+    <!-- Set Password -->
+    <bean id="webscript.gov.pnnl.velo.setPassword.post"
+      class="gov.pnnl.velo.webscripts.SetPassword" parent="velowebscript">
+         <property name="personService" ref="PersonService" />  
+         <property name="mutableAuthenticationService" ref="AuthenticationService" />
+    </bean>
+    
+    <!-- Upload File(s) -->
+    <bean id="webscript.gov.pnnl.velo.upload.post"
+      class="gov.pnnl.velo.webscripts.Upload" parent="velowebscript" depends-on="wikiUtils">
+         <property name="autoUnzip"><value>${upload.autoUnzip}</value></property>   
+         <property name="fileNamePolicy" ref="veloFileNamePolicy" />
+    </bean>   
+    
+    <!-- copyFiles -->
+    <bean id="webscript.gov.pnnl.velo.copyFiles.post"
+      class="gov.pnnl.velo.webscripts.CopyFiles" parent="velowebscript" />
+    
+    <!-- createVirtualCollection -->
+    <bean id="webscript.gov.pnnl.velo.createVirtualCollection.post"
+      class="gov.pnnl.velo.webscripts.CreateVirtualCollection" parent="velowebscript" />
+
+    <!-- createLink -->
+    <bean id="webscript.gov.pnnl.velo.createLink.post"
+      class="gov.pnnl.velo.webscripts.CreateLink" parent="velowebscript" />
+
+    <!-- createRemoteLink -->
+    <bean id="webscript.gov.pnnl.velo.createRemoteLink.post"
+      class="gov.pnnl.velo.webscripts.CreateRemoteLink" parent="velowebscript" />
+
+    <!-- advCreateRemoteLink -->
+    <bean id="webscript.gov.pnnl.velo.advCreateRemoteLink.post"
+      class="gov.pnnl.velo.webscripts.AdvancedCreateRemoteLink" parent="velowebscript" />
+
+    <!-- createRelationships -->
+    <bean id="webscript.gov.pnnl.velo.createRelationships.post"
+      class="gov.pnnl.velo.webscripts.CreateRelationships" parent="velowebscript" />
+
+    <!-- deleteRelationships -->
+    <bean id="webscript.gov.pnnl.velo.deleteRelationships.post"
+      class="gov.pnnl.velo.webscripts.DeleteRelationships" parent="velowebscript" />
+
+    <!-- updateRelationships -->
+    <bean id="webscript.gov.pnnl.velo.updateRelationships.post"
+      class="gov.pnnl.velo.webscripts.UpdateRelationships" parent="velowebscript" />
+
+    <!-- getRelationships -->
+    <bean id="webscript.gov.pnnl.velo.getRelationships.get"
+      class="gov.pnnl.velo.webscripts.GetRelationships" parent="velowebscript" />
+
+    <!-- exists -->
+    <bean id="webscript.gov.pnnl.velo.exists.get"
+      class="gov.pnnl.velo.webscripts.Exists" parent="velowebscript" />
+
+    <!-- getCollection -->
+    <bean id="webscript.gov.pnnl.velo.getCollection.get"
+      class="gov.pnnl.velo.webscripts.GetCollection" parent="velowebscript" />
+
+    <!-- isCollection -->
+    <bean id="webscript.gov.pnnl.velo.isCollection.get"
+      class="gov.pnnl.velo.webscripts.IsCollection" parent="velowebscript" />
+ 
+    <!-- isIdentical -->
+    <bean id="webscript.gov.pnnl.velo.isIdentical.get"
+      class="gov.pnnl.velo.webscripts.IsIdentical" parent="velowebscript" />
+
+    <!-- setMimetype -->
+    <bean id="webscript.gov.pnnl.velo.setMimetype.post"
+      class="gov.pnnl.velo.webscripts.SetMimetype" parent="velowebscript" />
+
+    <!-- setProperties -->
+    <bean id="webscript.gov.pnnl.velo.setProperties.post"
+      class="gov.pnnl.velo.webscripts.SetProperties" parent="velowebscript" />
+
+    <!-- getProperties -->
+    <bean id="webscript.gov.pnnl.velo.getProperties.get"
+      class="gov.pnnl.velo.webscripts.GetProperties" parent="velowebscript" />
+
+    <!-- getVersions -->
+    <bean id="webscript.gov.pnnl.velo.getVersions.get"
+      class="gov.pnnl.velo.webscripts.GetVersions" parent="velowebscript" />
+      
+
+    <!-- wikiEnabled -->
+    <bean id="webscript.gov.pnnl.velo.wikiEnabled.get"
+      class="gov.pnnl.velo.webscripts.WikiEnabled" parent="velowebscript" depends-on="wikiUtils"/>
+
+    <!-- export -->
+    <bean id="webscript.gov.pnnl.velo.export.post" class="gov.pnnl.velo.webscripts.ExportToLocalFileSystem" parent="velowebscript">
+      <property name="exporterService" ref="ExporterService" /><!-- note, alfresco doesn't define the lowercase exporterService bean -->
+    </bean>
+
+    <!-- emailUsername -->
+    <bean id="webscript.gov.pnnl.velo.emailUsername.get" class="gov.pnnl.velo.webscripts.EmailUsername" parent="velowebscript">
+      <property name="personService" ref="personService" />
+      <property name="sendMailWebscript" ref="webscript.gov.pnnl.cat.sendMail.post"/>
+      <property name="fromEmailAddress">
+         <value>${email.fromAddress}</value>
+      </property>
+      <property name="subjectLine">
+         <value>${email.subjectLine}</value>
+      </property>
+      <property name="signature">
+         <value>${email.signature}</value>
+      </property>
+    </bean>
+    
+    <bean id="webscript.gov.pnnl.velo.resetPassword.get" class="gov.pnnl.velo.webscripts.ResetPassword" parent="velowebscript">
+      <property name="personService" ref="personService" />
+      <property name="authenticationService" ref="authenticationService" />
+      <property name="sendMailWebscript" ref="webscript.gov.pnnl.cat.sendMail.post"/>
+      <property name="fromEmailAddress">
+         <value>${email.fromAddress}</value>
+      </property>
+      <property name="subjectLine">
+         <value>${email.subjectLine}</value>
+      </property>
+      <property name="signature">
+         <value>${email.signature}</value>
+      </property>
+    </bean>
+    
+    <!-- webscript that returns facet UI items -->
+    <bean id="webscript.gov.pnnl.velo.facetItemsSearch.post" class="gov.pnnl.velo.webscripts.FacetItemsSearch" parent="velowebscript">
+    </bean>
+    
+    
+    <!-- VELO Policy beans -->
+   
+   <!-- Links nodes in Alfresco with wiki pages -->
+   <bean id="veloWikiPolicy" class="gov.pnnl.velo.policy.WikiPolicy" parent="basePolicy" depends-on="wikiUtils">
+    <property name="wikiContentExtractorRegistry" ref="wikiContentExtractorRegistry" />
+    <property name="wikiPhase2Processor" ref="wikiPhase2Processor" />    
+   </bean>
+
+   <!-- Changes file names to ones appropriate for MediaWiki -->
+   <bean id="veloFileNamePolicy" class="gov.pnnl.velo.policy.FileNamePolicy" parent="basePolicy" depends-on="wikiUtils"/>
+
+   <!-- Make sure home folders have a mimetype for wiki -->
+   <bean id="veloUserHomeFolderPolicy" class="gov.pnnl.velo.policy.UserHomeFolderPolicy" parent="basePolicy" depends-on="wikiUtils"/>
+      
+   <!--  Post-tx file processors --> 
+   <!--  IMPORTANT: amp beans get loaded FIRST, so they DO NOT override CAT beans -->
+   <!--  TODO: we can fix this if we put CAT beans in a module! -->   
+   <bean id="wikiPhase2Processor" class="gov.pnnl.velo.pipeline.WikiPhase2Processor"
+         parent="abstractFileProcessor" depends-on="wikiUtils">
+      <property name="priority"><value>4</value></property>
+      <property name="mandatory"><value>true</value></property>
+      <property name="policyBehaviourFilter" ref="policyBehaviourFilter" />
+      <property name="registry" ref="wikiContentExtractorRegistry" />
+      <property name="dirRoot">
+           <value>${dir.root}</value>
+      </property>
+   </bean>
+    
+    <bean id="wikiUtils" class="gov.pnnl.velo.util.WikiUtils" init-method="init">
+      <property name="contentService" ref="contentService" />
+      <property name="contentStorePath">
+         <value>${dir.contentstore}</value>
+      </property>
+      <property name="wikiMountPoint">
+      <value>${wiki.mount.point}</value>
+      	</property>
+      <property name="wikiHome">
+         <value>${wiki.home}</value>
+      </property>
+      <property name="wikiExtensions">
+         <value>${wiki.extensions}</value>
+      </property>
+      <property name="wikiAutoSync">
+         <value>${wiki.auto.sync}</value>
+      </property>
+      <property name="mimetypeService" ref="mimetypeService" />      
+    </bean>
+    
+    <!--  Wiki Page Extraction -->
+    <bean id="wikiContentExtractorRegistry" class="gov.pnnl.velo.wiki.content.impl.WikiContentExtractorRegistryImpl" />
+    
+    <!-- convenience abstract bean for injecting common policy dependencies -->
+    <bean id="abstractWikiContentExtractor" abstract="true" parent="basePolicy" depends-on="wikiUtils">
+      <property name="registry" ref="wikiContentExtractorRegistry" />
+    </bean>
+    
+    <bean id="stompWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.StompWikiContentExtractor"
+         parent="abstractWikiContentExtractor"/>
+
+   <bean id="lasWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.JythonScriptContentExtractor"
+         parent="abstractWikiContentExtractor">
+      <property name="mimetypes">
+         <list>
+            <value>application/x-las</value>
+         </list>
+      </property>
+      <property name="extractor">
+         <value>execLAS.py</value>
+      </property>
+   </bean>
+         
+    <bean id="pdfWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.PdfContentExtractor"
+         parent="abstractWikiContentExtractor"/>
+   
+   <!-- Chandrika - SEGY python script is broken so commenting the below extractor  -->   
+   <!--   
+    <bean id="segyWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.SEGYWikiContentExtractor"
+         parent="abstractWikiContentExtractor">
+         <property name="mimetypeService" ref="mimetypeService" />
+    </bean> -->
+         
+   <bean id="jyguiWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.JythonScriptContentExtractor"
+         parent="abstractWikiContentExtractor">
+      <property name="mimetypes">
+         <list>
+            <value>application/x-jygui-xml</value>
+         </list>
+      </property>
+      <property name="extractor">
+         <value>JyGUIExtractor.py</value>
+      </property>
+   </bean>
+
+    <bean id="collectionWikiContentExtractor" class="gov.pnnl.velo.wiki.content.impl.CollectionContentExtractor"
+         parent="abstractWikiContentExtractor"/>
+         
+    <bean id="patch.DataMigrationToVeloPatch" class="gov.pnnl.velo.patch.DataMigrationToVeloPatch" parent="basePatch" depends-on="wikiUtils">
+       <property name="id"><value>patch.DataMigrationToVeloPatch</value></property>
+       <property name="description"><value>Crawl the tree that is to be syncd with velo to set mimetype properties and create wiki pages for each</value></property>
+       <property name="fixesFromSchema"><value>0</value></property>
+       <property name="fixesToSchema"><value>${version.schema}</value></property>
+       <property name="targetSchema"><value>10000</value></property>
+        <property name="nodeUtils">
+            <ref bean="nodeUtils"/>
+        </property>
+        <property name="actionService">
+         <ref bean="actionService"/>
+        </property>
+        <property name="authenticationComponent">
+                        <ref bean="authenticationComponent" />
+                </property>
+                <property name="contentService">
+                 <ref bean="contentService" />
+         </property>
+         <property name="wikiPhase2Processor" ref="wikiPhase2Processor" />  
+   </bean> 
+    
+  <!-- Override Alfresco's mimetype config so we can add additional mimetypes -->
+    <bean id="mimetypeConfigService" class="org.springframework.extensions.config.xml.XMLConfigService" init-method="init">
+        <constructor-arg>
+            <bean class="org.springframework.extensions.config.source.UrlConfigSource">
+                <constructor-arg>
+                    <list>
+                        <value>classpath:alfresco/module/velo/mimetype-map-custom.xml</value>
+                        <value>classpath:alfresco/mimetype/mimetype-map-openoffice.xml</value>
+                    </list>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>	
+  
+  <!-- Override Alfresco's mimetype service so we can add velo mimetypes from mime.types file -->     
+  <bean id="mimetypeService" class="gov.pnnl.velo.service.VeloMimetypeMap" init-method="init" depends-on="wikiUtils">
+      <property name="configService">
+         <ref bean="mimetypeConfigService" />
+      </property>
+      <property name="contentCharsetFinder">
+         <ref bean="charset.finder"/>
+      </property>        
+   </bean> 
+   
+  <bean id="veloBootstrap" class="gov.pnnl.velo.bootstrap.VeloBootstrap"
+      depends-on="veloModule_dictionaryBootstrap">
+    <property name="nodeUtils" ref="nodeUtils" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="permissionService" ref="permissionService" />
+    <property name="transactionService" ref="transactionService" />
+     <property name="userManualResourcesDir" value="WEB-INF/classes/alfresco/module/velo/bootstrap/usermanual_resources"/>
+     <property name="contentService" ref="ContentService" />
+     <property name="mimetypeService" ref="mimetypeService" />
+  </bean>  
+
+  <bean id="disconnectedJobsChecker" class="gov.pnnl.velo.bootstrap.DisconnectedJobsChecker">
+    <property name="nodeService" ref="nodeService" />
+    <property name="searchService" ref="searchService" />
+    <property name="transactionService" ref="transactionService" />
+  </bean>   
+  
+  <bean id="veloReindexer" class="gov.pnnl.velo.bootstrap.VeloReindexer">
+    <property name="nodeUtils" ref="nodeUtils" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="nodeIndexer" ref="nodeIndexer" />
+    <property name="searchService" ref="searchService" />
+    <property name="transactionService" ref="transactionService" />
+    <property name="actionService" ref="actionService" />
+  </bean>  
+  
+  <!--  visitor to enable versioning -->
+  <bean id="versioningNodeVisitor"
+      class="gov.pnnl.velo.actions.VersioningNodeVisitor"
+      parent="abstractNodeVisitor">
+      <property name="nodeService">
+          <ref bean="nodeService"></ref>
+      </property>
+      <property name="versionService">
+          <ref bean="versionService"></ref>
+      </property>
+  </bean>
+  
+  <bean id="previewPaneImage" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="thumbnailRegistry" />
+        <property name="targetMethod" value="addThumbnailDefinition" />
+        <property name="arguments">
+            <list>
+                 <!-- Asset Preview - thumbnail options -->
+                 <bean class="org.alfresco.repo.thumbnail.ThumbnailDefinition">
+                    <property name="name" value="previewPaneImage" />
+                    <property name="mimetype" value="image/png"/>
+                    <property name="transformationOptions">
+                       <bean class="org.alfresco.repo.content.transform.magick.ImageTransformationOptions">
+                          <property name="resizeOptions">
+                             <bean class="org.alfresco.repo.content.transform.magick.ImageResizeOptions">
+                                <property name="width" value="500"/>
+                                <property name="height" value="500"/>
+                                <property name="maintainAspectRatio" value="true"/>
+                                <property name="resizeToThumbnail" value="true" />
+                                <property name="allowEnlargement" value="false" />
+                             </bean>
+                          </property>
+                          <property name="commandOptions" value="-normalize" />
+                       </bean>
+                    </property>
+                    <property name="placeHolderResourcePath" value="alfresco/thumbnail/thumbnail_placeholder_imgpreview.png" />
+                    <property name="runAs" value="System"/>
+                    <property name="failureHandlingOptions" ref="standardFailureOptions"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+       
+</beans>

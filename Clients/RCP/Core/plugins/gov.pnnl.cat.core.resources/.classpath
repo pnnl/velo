@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="config" sourcepath="config"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.1.1.jar" sourcepath="lib/jackson-databind-2.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/lucene-core-2.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jmsjars/velo-notifications.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swingx-all-1.6.4.jar" sourcepath="lib/swingx-all-1.6.4-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jmsjars/activeio-core-3.1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jmsjars/activemq-all-5.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jmsjars/activemq-jms-pool-5.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jmsjars/activemq-pool-5.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/velo-tif.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cat-web-service-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alfresco-web-service-client-4.2.c.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/axis-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxrpc.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

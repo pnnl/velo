@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Is Collection</shortname>
+  <description>Returns true if the resource at the given path is a collection.</description>
+  <url>/velo/isCollection?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

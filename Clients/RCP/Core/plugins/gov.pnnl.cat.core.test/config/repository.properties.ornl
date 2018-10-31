@@ -1,0 +1,24 @@
+# Server properties
+#
+hostname=esgtest.ornl.gov
+http.port=80
+notification.server.id=alfresco
+
+#
+# Generated properties
+#
+http.url=http://${hostname}:${http.port}
+http.url.alfresco = ${http.url}/alfresco
+jms.url=http://${hostname}/activemq
+
+# Required by AlfrescoWebserviceFactory
+webservice.location=${http.url.alfresco}/api
+
+wiki.url=https://akuna.labworks.org/akuna-dev/wiki/index.php
+
+# Absolute path to the VisIt installation directory if specified
+visit.path=C:\Users\zoe\AppData\Local\Temp\7zSCF1D.tmp
+
+# Memory reserved for Akuna application chosen at install
+jvm.xmx=-Xmx1024m
+logfile.name=akunaDev.log

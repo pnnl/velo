@@ -1,0 +1,70 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.files.ssh; singleton:=
+ true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.files.ss
+ h";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.files.ssh.Activa
+ tor
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.connectorse
+ rvice.ssh;bundle-version="[2.1.0,3.0.0)",org.eclipse.rse.services.ssh
+ ;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.subsystems.files.core
+ ;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-version="
+ [3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.subsystems.files.ssh;x-intern
+ al:=true,org.eclipse.rse.subsystems.files.ssh
+Bundle-Version: 2.1.300.201205062159
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/subsystems/files/ssh/SftpRemoteFile.cla
+ ss
+SHA1-Digest: XfFSTHhLY9dOC+SCjdVTm+l1ikI=
+
+Name: icons/full/obj16/systemfileslive_obj.gif
+SHA1-Digest: cKRwmFBEFySIfogidg1+TpT4PjA=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.s
+ sh/pom.properties
+SHA1-Digest: vkirEIX8z9954Y+N8NR5/1cN5TM=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.s
+ sh/pom.xml
+SHA1-Digest: pjfX9+w2nUSd4H88Gon3X5pRNPA=
+
+Name: icons/full/obj16/systemfiles_obj.gif
+SHA1-Digest: YeYluB8JKZUr6pbWXiWFUMxhLas=
+
+Name: org/eclipse/rse/internal/subsystems/files/ssh/SftpFileAdapter.cl
+ ass
+SHA1-Digest: XgiDN7OvDJjXxgcF0k/A6VDwp24=
+
+Name: org/eclipse/rse/subsystems/files/ssh/SftpFileSubSystemConfigurat
+ ion.class
+SHA1-Digest: xqKVuedOOJljMK3V6o+sCz6uv4g=
+
+Name: org/eclipse/rse/internal/subsystems/files/ssh/Activator.class
+SHA1-Digest: kt26JgDlVc4xwyhmo+HRxLGMV8M=
+
+Name: plugin.xml
+SHA1-Digest: MNohCJ44B9K6KpTCnUubfoVIZYo=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: plugin.properties
+SHA1-Digest: nr5PTF83z0EQRYNvz7QCWqHxkPk=
+
+Name: org/eclipse/rse/subsystems/files/ssh/package.html
+SHA1-Digest: wadwzSNPat/4r1z7pkO2/u5xmRI=
+

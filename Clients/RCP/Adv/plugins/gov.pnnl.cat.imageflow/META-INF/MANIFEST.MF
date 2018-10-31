@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Imageflow
+Bundle-SymbolicName: gov.pnnl.cat.imageflow; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.imageflow.ImageFlowPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources;bundle-version="1.1.0",
+ gov.pnnl.cat.ui.rcp;bundle-version="1.0.0",
+ gov.pnnl.cat.logging;bundle-version="1.0.0",
+ org.apache.log4j,
+ org.apache.commons;bundle-version="1.0.0",
+ org.jdom;bundle-version="1.0.0",
+ gov.pnnl.cat.core.util;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: gov.pnnl.cat.imageflow.model
+Bundle-Vendor: Pacific Northwest National Laboratory
+Bundle-ClassPath: .,
+ lib/jsr311-api-1.1.1.jar,
+ lib/wink-1.1.2-incubating.jar

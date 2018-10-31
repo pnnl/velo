@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>get job</shortname>
+  <description>get job by jobID</description>
+  <url>/velo/joblaunching/jobs/{jobID}?filterBy={filterBy}&amp;filterValue={filterValue}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

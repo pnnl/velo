@@ -1,0 +1,77 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.efs;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.efs";commitId=58100
+ b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.efs.Activator
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.filesystem,o
+ rg.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.su
+ bsystems.files.core;bundle-version="[3.0.1,4.0.0)",org.eclipse.rse.se
+ rvices;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-versi
+ on="[3.0.0,4.0.0)",org.eclipse.core.resources;bundle-version="3.4.0",
+ org.eclipse.ui;bundle-version="3.4.0",org.eclipse.ui.ide;bundle-versi
+ on="3.4.0",org.eclipse.ui.editors;bundle-version="3.4.0"
+Export-Package: org.eclipse.rse.internal.efs;x-friends:="org.eclipse.r
+ se.efs.ui"
+Bundle-Version: 2.1.401.201301141950
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/efs/RemoteEditorManager$1.class
+SHA1-Digest: bXEnyFiSRGpRe2jAzWuuewUHMRo=
+
+Name: org/eclipse/rse/internal/efs/RemoteEditorManager$2.class
+SHA1-Digest: mJu6mEPChcE4WTgROna0slT9JqE=
+
+Name: org/eclipse/rse/internal/efs/messages.properties
+SHA1-Digest: nUY9dsqPBrdOl+32CMpOzNe05cc=
+
+Name: org/eclipse/rse/internal/efs/Messages.class
+SHA1-Digest: 9G2S0HXxwzV+t2aw84C3ozul1Rk=
+
+Name: org/eclipse/rse/internal/efs/RSEFileSystem.class
+SHA1-Digest: 23lFbYsKLud5Q320kyg6HOaTV4s=
+
+Name: org/eclipse/rse/internal/efs/RemoteEditorManager$IEditorCallback
+ .class
+SHA1-Digest: 9xZo06GYaDO2nbHgmO6YUqKs5jg=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/efs/Activator.class
+SHA1-Digest: g/kagg+/niCDsuSlL4gpQu8G3Qk=
+
+Name: plugin.properties
+SHA1-Digest: abwOymCHVAQy7JVdVkkvU6iIcf8=
+
+Name: org/eclipse/rse/internal/efs/RemoteEditorManager.class
+SHA1-Digest: dccHV3YtQZOnwoHe1RImrLv85vY=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.efs/pom.xml
+SHA1-Digest: oPnZXUp6DtgaLVTCqZHErvKaTs4=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.efs/pom.properties
+SHA1-Digest: fOjq087OZX50SNMh2OCk5YgrT+E=
+
+Name: org/eclipse/rse/internal/efs/Activator$1.class
+SHA1-Digest: RJGtw7gIcf8RE6+gmWLXtJfLLVA=
+
+Name: plugin.xml
+SHA1-Digest: 3GS2VxVe5XCSYSJHDuaG1opxt2w=
+
+Name: org/eclipse/rse/internal/efs/RSEFileStoreImpl.class
+SHA1-Digest: 5IRd+nruxFq0gAB9Es9hUTq6Ass=
+
+Name: org/eclipse/rse/internal/efs/RSEFileStore.class
+SHA1-Digest: sTzLYR1Me4t28rpJBvBa00Ck1OI=
+

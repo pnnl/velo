@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Users</shortname>
+  <description>Create Users</description>
+  <url>/cat/createUsers</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

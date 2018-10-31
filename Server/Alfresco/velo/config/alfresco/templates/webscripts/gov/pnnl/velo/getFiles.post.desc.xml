@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get multiple files</shortname>
+  <description>Get the contents of multiple files in a continuous stream.</description>
+  <url>/velo/getFiles?format={?format}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

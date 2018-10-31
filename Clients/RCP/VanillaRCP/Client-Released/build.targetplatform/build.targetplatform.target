@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="platform" sequenceNumber="15">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.e4.rcp.feature.group" version="1.4.0.v20150603-0857"/>
+<unit id="org.eclipse.rcp.feature.group" version="4.5.0.v20150603-2331"/>
+<unit id="org.eclipse.pde.source.feature.group" version="3.11.0.v20150603-2000"/>
+<unit id="org.eclipse.equinox.core.sdk.feature.group" version="3.11.0.v20150529-1857"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.11.0.v20150603-2000"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.200.v20150602-1417"/>
+<unit id="org.eclipse.platform.feature.group" version="4.5.0.v20150603-2358"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="gov.pnnl.common.feature.feature.group" version="0.0.0"/>
+<unit id="gov.pnnl.cat.adv.feature.feature.group" version="0.0.0"/>
+<unit id="gov.pnnl.cat.core.feature.feature.group" version="0.0.0"/>
+<repository location="https://p02.velo.pnnl.gov/updates/cat"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.7.0.v201505261810"/>
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.7.0.v201505141512"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.sapphire.samples.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.ui.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.ui.swt.xml.editor.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.sdk.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.source.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.modeling.xml.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.java.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.java.jdt.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.ui.swt.gef.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.osgi.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.platform.feature.group" version="9.0.3.201510232101"/>
+<unit id="org.eclipse.sapphire.tests.feature.group" version="9.0.3.201510232101"/>
+<repository location="http://download.eclipse.org/sapphire/9.0.3/repository"/>
+</location>
+</locations>
+</target>

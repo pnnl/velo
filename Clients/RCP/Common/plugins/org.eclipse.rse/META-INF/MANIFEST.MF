@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.rse
+Bundle-Version: 3.5.0.201305201712
+Bundle-ClassPath: org.eclipse.rse_3.5.0.201305201712.jar
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org.eclipse.tm.git;path="rse/plugins/org.eclipse.rse";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Built-By: hudsonbuild
+Build-Jdk: 1.6.0
+Bundle-RequiredExecutionEnvironment: J2SE-1.4

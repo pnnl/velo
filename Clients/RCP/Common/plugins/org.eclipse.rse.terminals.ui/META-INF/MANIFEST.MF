@@ -1,0 +1,184 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.terminals.ui;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.terminals.ui";commi
+ tId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.terminals.ui.Activator
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.expressions,
+ org.eclipse.ui,org.eclipse.ui.views,org.eclipse.rse.services;bundle-v
+ ersion="[3.1.0,4.0.0)",org.eclipse.rse.core;bundle-version="[3.0.0,4.
+ 0.0)",org.eclipse.rse.ui;bundle-version="[3.1.0,4.0.0)",org.eclipse.r
+ se.subsystems.terminals.core;bundle-version="[1.0.0,2.0.0)",org.eclip
+ se.tm.terminal;bundle-version="[3.2.0,3.3.0)"
+Export-Package: org.eclipse.rse.internal.terminals.ui;x-internal:=true
+ ,org.eclipse.rse.internal.terminals.ui.actions;x-internal:=true,org.e
+ clipse.rse.internal.terminals.ui.configuration.adapter;x-internal:=tr
+ ue,org.eclipse.rse.internal.terminals.ui.handlers;x-internal:=true,or
+ g.eclipse.rse.internal.terminals.ui.propertypages;x-internal:=true,or
+ g.eclipse.rse.internal.terminals.ui.views;x-internal:=true
+Bundle-Version: 1.2.100.201305201712
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/terminals/ui/TerminalServiceHelper.clas
+ s
+SHA1-Digest: ziIcaslj9D0haA19c6ZSQdei9XU=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/RSETerminalConnectio
+ nThread.class
+SHA1-Digest: EOzkApBCmVnNbcIFVwTS31E6lV4=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalsUI.class
+SHA1-Digest: J3YZZGylLNzOgjf2iwYRB6y/doA=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewer.class
+SHA1-Digest: eipAIxz3tpACSjcpYjnt/beeraY=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewElements
+ AdapterFactory.class
+SHA1-Digest: NqOf92nGw+j/e29QVrY4uorK/50=
+
+Name: plugin.properties
+SHA1-Digest: RlcL0aA8uWMFuif39pk0kLv8zH8=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab.clas
+ s
+SHA1-Digest: /4NLyp0jLPHxpKy1csMUKaJmP8c=
+
+Name: org/eclipse/rse/internal/terminals/ui/TerminalUIResources.class
+SHA1-Digest: 1rXquZ7TVbAPcjtuKB1u6E4IPAg=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: icons/terminalcommandslive_obj.gif
+SHA1-Digest: 15yH/Wn6KZ1iaE4HVOUiGdKEW/A=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.terminals.ui/pom.x
+ ml
+SHA1-Digest: lr3UUsTyIDrOPM2uznpW4ZFkaOo=
+
+Name: org/eclipse/rse/internal/terminals/ui/TerminalUIResources.proper
+ ties
+SHA1-Digest: Ox1Ezf/Ufh8xa/Zpw8bcog5/0xw=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$1.cl
+ ass
+SHA1-Digest: 8Zu5A7+KaZ9OhOhCYKpUjhpy6NI=
+
+Name: plugin.xml
+SHA1-Digest: 96wHTwzJCXj35wuxqi8xKTF9iSw=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$2.cl
+ ass
+SHA1-Digest: ctZmMEFUVrl1mvT8mX8FXXa62Ws=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$3.cl
+ ass
+SHA1-Digest: CNhv3QiQQLhGbN3t47c3vxueCIQ=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$4.cl
+ ass
+SHA1-Digest: mbLN8+UFSpLao+sWE1QClXrJIWk=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$5.cl
+ ass
+SHA1-Digest: 6UgcckO0qDbmWDkSXDh+Wc3tmZ4=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$6.cl
+ ass
+SHA1-Digest: KbA8Om87/X13gwK3cSdng0LuIhM=
+
+Name: org/eclipse/rse/internal/terminals/ui/configuration/adapter/Term
+ inalServiceSubSystemConfigurationAdapter.class
+SHA1-Digest: PPradyXHpmMigwFMosIWtCMvRjo=
+
+Name: org/eclipse/rse/internal/terminals/ui/actions/RemoveTerminalActi
+ on.class
+SHA1-Digest: VWGjp6DuSM3/Rm7QLxaa20zf5Y4=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$7.cl
+ ass
+SHA1-Digest: IAevyJADKwh9csas4ACltpuE64o=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$Term
+ inalContextMenuHandler.class
+SHA1-Digest: JPqUb5jIX2RHQTRU7GLbBZId5zk=
+
+Name: org/eclipse/rse/internal/terminals/ui/actions/ShowInTerminalView
+ Action.class
+SHA1-Digest: cGPtkpZJuRxH3n3xvY+pb4Z0qhQ=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$Term
+ inalTraverseHandler.class
+SHA1-Digest: BV/EJH5+eEgVh7vNlTyFlYR2ZGc=
+
+Name: icons/terminalcommands_obj.gif
+SHA1-Digest: uh8YD+cwryng0agXkGO5WWDYhSs=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/RSETerminalConnector
+ .class
+SHA1-Digest: IMTYxR5qHxEdBzzs0Pc6LFTp3og=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/RSETerminalConnector
+ Impl.class
+SHA1-Digest: EGauPr2sWvOZzrZL0/TJD9Zy6B8=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewTab$1$1.
+ class
+SHA1-Digest: 3svZPtJwEscNLofbYScNS+8Yw08=
+
+Name: icons/terminal_view.gif
+SHA1-Digest: uh8YD+cwryng0agXkGO5WWDYhSs=
+
+Name: icons/removeterminal.gif
+SHA1-Digest: wjvFuw+Q6G0aWRUlst78HVG75Gw=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/terminals/ui/views/TerminalViewElementA
+ dapter.class
+SHA1-Digest: LbyssPLYXYNQgQPyj32Bq1rSKu8=
+
+Name: org/eclipse/rse/internal/terminals/ui/handlers/LaunchTerminalCom
+ mandHandler.class
+SHA1-Digest: FHIP107BJ6NkCQFzUQtCGU54TEU=
+
+Name: org/eclipse/rse/internal/terminals/ui/actions/TerminalElementBas
+ eAction.class
+SHA1-Digest: vSyP1D2jXQRvL6kNRJIV3tY0LsA=
+
+Name: org/eclipse/rse/internal/terminals/ui/Activator.class
+SHA1-Digest: YV0Y3uByLGZtETvwuYGZlO5Rc5o=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.terminals.ui/pom.p
+ roperties
+SHA1-Digest: nmFTxHQ1i/EIEL3A7GTAtiYZaiE=
+
+Name: about.properties
+SHA1-Digest: r4MgSLp6mxhZtF5Hpa9o4OrLPYo=
+
+Name: org/eclipse/rse/internal/terminals/ui/propertypages/TerminalServ
+ icesPropertyPage.class
+SHA1-Digest: JKZDQO3vJz2ODm/ONvsKoGyhsMo=
+
+Name: org/eclipse/rse/internal/terminals/ui/configuration/adapter/Term
+ inalServiceSubSystemConfigurationAdapterFactory.class
+SHA1-Digest: dXD2Y3WDg572V51DwslMMVNSR4Y=
+

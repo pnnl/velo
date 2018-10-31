@@ -1,0 +1,12 @@
+<!-- This web script is meant to feed the left size of a scalable file browser.  Since
+typically you want to see all subfolders, but you want to be able to page file contents if the folders are large.
+Hopefully there won't be too many subfolders. -->
+<webscript>
+  <shortname>Get Folder Children</shortname>
+  <description>Returns a list of child folders (subfolders) with all properties and aspects for each node.</description>
+  <url>/landingPage/getFolderChildren?path={path}&amp;uuid={?uuid}</url>
+  <authentication>guest</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

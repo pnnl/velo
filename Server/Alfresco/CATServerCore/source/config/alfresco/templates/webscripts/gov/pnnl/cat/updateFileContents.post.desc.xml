@@ -1,0 +1,10 @@
+<webscript>
+
+  <shortname>Update File Contents</shortname>
+  <description>Update the file using a path or uuid and a content property</description>
+  <url>/cat/updateFileContents?path={?path}&amp;uuid={?uuid}&amp;property={?property}&amp;mimetype={?mimetype}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

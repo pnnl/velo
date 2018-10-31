@@ -1,0 +1,202 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.shells.core
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.shells.c
+ ore";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.shells.core.Acti
+ vator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rs
+ e.services;bundle-version="[3.0.0,4.0.0)",org.eclipse.core.resources,
+ org.eclipse.rse.subsystems.files.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.cor
+ e;bundle-version="[3.0.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.subsystems.shells.core;x-inte
+ rnal:=true,org.eclipse.rse.internal.subsystems.shells.servicesubsyste
+ m;x-internal:=true,org.eclipse.rse.internal.subsystems.shells.subsyst
+ ems;x-internal:=true,org.eclipse.rse.subsystems.shells.core.model,org
+ .eclipse.rse.subsystems.shells.core.subsystems,org.eclipse.rse.subsys
+ tems.shells.core.subsystems.servicesubsystem
+Bundle-Version: 3.1.300.201205141739
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$CancelShellJob.class
+SHA1-Digest: ycfcFBrGDPZz0wEby/fJeXTnRmQ=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/ICandidateComm
+ and.class
+SHA1-Digest: IOL7PkM2jJrc9vdiNIv6+hnSckI=
+
+Name: org/eclipse/rse/internal/subsystems/shells/core/Activator.class
+SHA1-Digest: jHcJrrG8N46360fcQuSmFoi9Stc=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/IRemoteCommand
+ Shell.class
+SHA1-Digest: Xfho13QezPC5+r3z+7A5e1XBU/s=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/IShellServiceSubSystem.class
+SHA1-Digest: TO3t3kXdHVdmGpHlpddoBPXTbu4=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$SendCommandToShellJob.class
+SHA1-Digest: bQXj5pXAFTd8TvxSMOl13ciGmv0=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$RemoveShellJob.class
+SHA1-Digest: xINhrue5KxLg+4xReo/U/CewvHI=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stemConfiguration.class
+SHA1-Digest: lUylwI9tdG2xKDwVFnl4h6uBJ2I=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteCommandShell.
+ class
+SHA1-Digest: R3FnEFj9YyZrOYSe8ZzlrEbXK34=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.shells.
+ core/pom.xml
+SHA1-Digest: douNILZX0saZj9GCsdWwZTtwals=
+
+Name: plugin.properties
+SHA1-Digest: a3AkOILa2b4VlGs9V99c+2OWjaU=
+
+Name: org/eclipse/rse/internal/subsystems/shells/subsystems/RemoteSyst
+ emEnvVar.class
+SHA1-Digest: mJLV+Oqvl9mHlI6ofTmzB61Rut4=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteCommandShellO
+ peration.class
+SHA1-Digest: 4ffTao3onG+naZI49uNaQASgc68=
+
+Name: org/eclipse/rse/internal/subsystems/shells/subsystems/SystemRemo
+ teCommandMessage.class
+SHA1-Digest: IZ/Bjp+g58/oeF7cfWhfNWM66vE=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$RunShellJob.class
+SHA1-Digest: 28aijDwJel0rW8sBOSY1R2VzcEY=
+
+Name: org/eclipse/rse/internal/subsystems/shells/core/ShellStrings.pro
+ perties
+SHA1-Digest: I3q3Pokw8jpptyqQTwSQq38Cxzc=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/IRemoteCmdSubS
+ ystem.class
+SHA1-Digest: M7o8BfPSHPm5/M7BSTSJW2xZ1sE=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteError.class
+SHA1-Digest: U6OgFt1dSGuN/+XoBKha5rFutrE=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$Refresh.class
+SHA1-Digest: w6OQ7vgK7JEo/66z4sZZb7JjDdQ=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/IRemoteCmdSubS
+ ystemConfiguration.class
+SHA1-Digest: csv+sKWFYqTz+EqT50nokQbG+C8=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/IServiceCommandShell.class
+SHA1-Digest: JJOmb05zP5QJfQKrCXOwXQZI3z8=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$RunCommandJob.class
+SHA1-Digest: csPtKHUe0hVXfSsOhFZht/6TzVM=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/ShellServiceSubSystem.class
+SHA1-Digest: kocq7ncgpdNeYR4sD7is8H4KXJs=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.shells.
+ core/pom.properties
+SHA1-Digest: ijpGCI+SZmNb1CsJ2wsqqnBPY18=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/IRemoteError.c
+ lass
+SHA1-Digest: EFeR4rOGTmQVHe3a3m5acHcNQ8s=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/IRemoteOutput.
+ class
+SHA1-Digest: iE9DdipihkMVyFdbms6HxcwqeUM=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteCommandFilter
+ String.class
+SHA1-Digest: gimhVuCWKHe151ZMsHnm5kPA428=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/IShellServiceSubSystemConfiguration.class
+SHA1-Digest: BE/gY8nVVGOvd2N5FfhQW4vhblo=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$CancelAllShells.class
+SHA1-Digest: JRPLFnH2c71dmOpB+O8W/g8CH+g=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$RefreshRemovedShell.class
+SHA1-Digest: bBZBTVmrfj4H8yfy4gvoRTATrfc=
+
+Name: org/eclipse/rse/internal/subsystems/shells/subsystems/CandidateC
+ ommand.class
+SHA1-Digest: uDeTSqZE47rjpPr6M3hAMuvV2N4=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteOutput.class
+SHA1-Digest: 3010gatf3n/+zHYv+JpfgvbAI7I=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/ServiceCommandShell.class
+SHA1-Digest: E04+nwzRAqvGRrExH9fjzZ+lQyc=
+
+Name: org/eclipse/rse/internal/subsystems/shells/subsystems/SystemRemo
+ teCommand.class
+SHA1-Digest: VammC2e9F1ZXoJ3Iq0BFaBVbUIs=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/subsystems/shells/servicesubsystem/Outp
+ utRefreshJob.class
+SHA1-Digest: VrAgDlVHgIrduXyLSYw6n9ZPyFU=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem$RefreshSubSystem.class
+SHA1-Digest: /sUxTzsU/a9/3eTloCBFT9170BI=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteCommandShellO
+ peration$CommandAlias.class
+SHA1-Digest: 4ZRwrxgWQkXs4jpE+C6jbW7HN5A=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/SimpleCommandOperat
+ ion.class
+SHA1-Digest: K/zkfl7qBsi1lxZfoF4KYObab60=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/servicesubsyst
+ em/ShellServiceSubSystemConfiguration.class
+SHA1-Digest: 86uPpDpRpjIVAJWJqscKH5eRqqQ=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/RemoteCommandShellO
+ perationManager.class
+SHA1-Digest: ZlfXr4/vHazGSx8y176eMUJgazU=
+
+Name: org/eclipse/rse/internal/subsystems/shells/core/ShellStrings.cla
+ ss
+SHA1-Digest: fh+bv1SEWDq0uxxd2pFntFz6di4=
+
+Name: org/eclipse/rse/subsystems/shells/core/model/ISystemOutputRemote
+ Types.class
+SHA1-Digest: zVsmhwEmazy1KbP9jGt9KPfdeJI=
+
+Name: org/eclipse/rse/subsystems/shells/core/subsystems/RemoteCmdSubSy
+ stem.class
+SHA1-Digest: Emi+Zn/oZ1cvH6cfXKCKSwdOpXo=
+

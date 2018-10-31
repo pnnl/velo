@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Update Groups</shortname>
+  <description>Update Groups</description>
+  <url>/cat/updateGroups</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

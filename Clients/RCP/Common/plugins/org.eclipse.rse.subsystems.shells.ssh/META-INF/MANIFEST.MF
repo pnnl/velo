@@ -1,0 +1,70 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.shells.ssh; singleton:
+ =true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.shells.s
+ sh";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.subsystems.shells.ssh.Activ
+ ator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.rse.services;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.rse.connectorservice.ssh;bundle-version="[2.1.0,3.0.0)",
+ org.eclipse.rse.services.ssh;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.subsystems.shells.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.subsystems.files.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.core.resources;bundle-version="3.7.101"
+Export-Package: org.eclipse.rse.internal.subsystems.shells.ssh;x-inter
+ nal:=true,org.eclipse.rse.subsystems.shells.ssh
+Bundle-Version: 2.1.400.201205062159
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.shells.
+ ssh/pom.properties
+SHA1-Digest: lx1+PpQgyr9tmD0k+YZkSBK/saY=
+
+Name: icons/full/obj16/systemcommands_obj.gif
+SHA1-Digest: pRQl9W/TXtPvQTgJovHBA4qYDGk=
+
+Name: org/eclipse/rse/internal/subsystems/shells/ssh/Activator.class
+SHA1-Digest: h2tEyvCW3gDwRMmaoD6DvmaI8Js=
+
+Name: org/eclipse/rse/internal/subsystems/shells/ssh/SshServiceCommand
+ Shell.class
+SHA1-Digest: A2C91vjkp5u1j0eiAiFlbj/MSz4=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.shells.
+ ssh/pom.xml
+SHA1-Digest: S+8j+gGNmpZaqL+9NEejKjpGh5c=
+
+Name: org/eclipse/rse/subsystems/shells/ssh/package.html
+SHA1-Digest: oTGZeBnUNpxq+2lid/dSQFtadL0=
+
+Name: plugin.xml
+SHA1-Digest: ujn+N+M631M9R8B6diXx9zBbAN8=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: plugin.properties
+SHA1-Digest: 8DelOOijsa+8rwpQYtSfI0YQW5k=
+
+Name: icons/full/obj16/systemcommandslive_obj.gif
+SHA1-Digest: BkgbadVkpNlspnr/U9OG+Bx9abE=
+
+Name: org/eclipse/rse/subsystems/shells/ssh/SshShellSubSystemConfigura
+ tion.class
+SHA1-Digest: jZCIzQvTboItxMKSfCDmrZujHSA=
+

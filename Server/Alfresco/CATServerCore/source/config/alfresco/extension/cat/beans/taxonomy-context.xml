@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+	
+    <!-- DMI Taxonomy Behavior Beans -->
+    <bean id="taxContentBehavior" class="gov.pnnl.cat.policy.taxonomy.ContentType" parent="basePolicy"/>     
+    <bean id="taxFolderBehavior" class="gov.pnnl.cat.policy.taxonomy.FolderType" parent="basePolicy"/>	 
+    <bean id="taxFilelinkBehavior" class="gov.pnnl.cat.policy.taxonomy.FilelinkType" parent="basePolicy"/>
+    <bean id="taxonomyRootAspect" class="gov.pnnl.cat.policy.taxonomy.TaxonomyRootAspect" parent="basePolicy"/>
+    <bean id="taxonomyLinkAspect" class="gov.pnnl.cat.policy.taxonomy.TaxonomyLinkAspect" parent="basePolicy"/>
+    <bean id="taxonomyFolderAspect" class="gov.pnnl.cat.policy.taxonomy.TaxonomyFolderAspect" parent="basePolicy"/> 
+
+    <!--  bean id="taxClassifiableBehavior"
+    	class="gov.pnnl.cat.policy.taxonomy.TaxonomyClassifiableAspect"
+    	init-method="init">
+    	<property name="policyComponent">
+    		<ref bean="policyComponent" />
+    	</property>
+    	<property name="nodeService">
+    		<ref bean="nodeService" />
+    	</property>
+    </bean -->
+
+    <bean id="import-category" class="gov.pnnl.cat.actions.ImportCategoryTreeAction" parent="action-executer">
+        <property name="categoryService">
+            <ref bean="categoryService" />
+        </property>
+	    <property name="contentService">
+			<ref bean="contentService"/>
+		</property>
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+    </bean>
+
+</beans>

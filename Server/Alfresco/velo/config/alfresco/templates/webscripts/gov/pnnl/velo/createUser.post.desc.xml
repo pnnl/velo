@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create User</shortname>
+  <description>Create a new user</description>
+  <url>/velo/createUser?userName={userName}&amp;password={password}&amp;email={?email}&amp;displayName={?displayName}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

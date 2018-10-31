@@ -1,0 +1,66 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.files.scp;singleton:=t
+ rue
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.files.sc
+ p";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Require-Bundle: org.eclipse.rse.subsystems.files.core;bundle-version="
+ [3.0.0,4.0.0)",org.eclipse.rse.services.ssh;bundle-version="[3.2.0,4.
+ 0.0)",org.eclipse.rse.connectorservice.ssh;bundle-version="[2.0.0,2.2
+ .0)",org.eclipse.rse.services;bundle-version="[3.0.0,4.0.0)",org.ecli
+ pse.rse.core;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle
+ -version="[3.0.0,4.0.0)",com.jcraft.jsch;bundle-version="[0.1.31,1.0.
+ 0)",org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)"
+Bundle-Activator: org.eclipse.rse.internal.subsystems.files.scp.Activa
+ tor
+Export-Package: org.eclipse.rse.internal.subsystems.files.scp;x-intern
+ al:=true,org.eclipse.rse.subsystems.files.scp
+Bundle-Version: 0.2.0.201205241511
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/subsystems/files/scp/Activator.class
+SHA1-Digest: 0m+IJCdS8aFXQkbsQP2147SRtzA=
+
+Name: icons/full/obj16/systemfileslive_obj.gif
+SHA1-Digest: cKRwmFBEFySIfogidg1+TpT4PjA=
+
+Name: icons/full/obj16/systemfiles_obj.gif
+SHA1-Digest: YeYluB8JKZUr6pbWXiWFUMxhLas=
+
+Name: org/eclipse/rse/subsystems/files/scp/ScpFileSubSystemConfigurati
+ on.class
+SHA1-Digest: Dpz/gbslcnVF/VrMC0bFFIj7Teo=
+
+Name: org/eclipse/rse/internal/subsystems/files/scp/ScpFileAdapter.cla
+ ss
+SHA1-Digest: bdzUID2vw1WBDefoKdgzGYpSa4g=
+
+Name: plugin.xml
+SHA1-Digest: 8WqCnrJYZl5WGmp8ATQicPutmyU=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.s
+ cp/pom.properties
+SHA1-Digest: I5oqph1iKZC0dmRFipO+42A2aRY=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.files.s
+ cp/pom.xml
+SHA1-Digest: vQmIdUKJaHG6x4dKbWBFqOK5uZ8=
+
+Name: plugin.properties
+SHA1-Digest: /0b/tW7dw4XrrzzEXSNh45VVrIk=
+
+Name: org/eclipse/rse/internal/subsystems/files/scp/ScpRemoteFile.clas
+ s
+SHA1-Digest: e0idr39rAoR14VD/mqcYendF3sQ=
+

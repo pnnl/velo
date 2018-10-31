@@ -1,0 +1,665 @@
+/*******************************************************************************
+ * .
+ *                           Velo 1.0
+ *  ----------------------------------------------------------
+ * 
+ *            Pacific Northwest National Laboratory
+ *                      Richland, WA 99352
+ * 
+ *                      Copyright (c) 2013
+ *            Pacific Northwest National Laboratory
+ *                 Battelle Memorial Institute
+ * 
+ *   Velo is an open-source collaborative content management
+ *                and job execution environment
+ *              distributed under the terms of the
+ *           Educational Community License (ECL) 2.0
+ *   A copy of the license is included with this distribution
+ *                   in the LICENSE.TXT file
+ * 
+ *                        ACKNOWLEDGMENT
+ *                        --------------
+ * 
+ * This software and its documentation were developed at Pacific 
+ * Northwest National Laboratory, a multiprogram national
+ * laboratory, operated for the U.S. Department of Energy by 
+ * Battelle under Contract Number DE-AC05-76RL01830.
+ ******************************************************************************/
+package gov.pnnl.velo.tif.jobhandlers;
+
+import gov.pnnl.velo.tif.model.JobConfig;
+import gov.pnnl.velo.tif.model.JobHandler;
+import gov.pnnl.velo.tif.service.CmsService;
+import gov.pnnl.velo.tif.service.TifServiceLocator;
+import gov.pnnl.velo.util.VeloConstants;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.log4j.Logger;
+import org.kepler.job.JobStatusInfo;
+import org.kepler.ssh.ExecException;
+import org.kepler.ssh.ExecInterface;
+
+import com.google.gdata.model.Path;
+
+/**
+ * Base class AbstractJobHandler just provides utility functions
+ * it's up to child classes to implement the job stage methods using the 
+ * utility methods to help.
+ * @version $Revision: 1.0 $
+ */
+
+ 
+ public abstract class AbstractJobHandler implements JobHandler {
+  protected Logger logger;
+  protected ExecInterface execInterface;
+  protected JobConfig launchConfig;
+  protected CmsService cmsService;
+  protected SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+
+  /**
+  
+   * @return the execInterface * @see gov.pnnl.velo.core.jobs.JobHandler#getExecInterface()
+   */
+  @Override
+  public ExecInterface getExecInterface() {
+    return execInterface;
+  }
+
+  /**
+   * @param execInterface the execInterface to set
+   * @see gov.pnnl.velo.jobs.handlers.JobHandler#setExecInterface(ExecInterface)
+   */
+  @Override
+  public void setExecInterface(ExecInterface execInterface) {
+    this.execInterface = execInterface;
+  }
+  
+  /**
+  
+   * @return the _exec */
+  public synchronized ExecInterface get_exec() {
+    return execInterface;
+  }
+  
+  /**
+  
+   * @return the launchConfiguration * @see gov.pnnl.velo.core.jobs.JobHandler#getLaunchConfiguration()
+   */
+  @Override
+  public LaunchConfiguration getLaunchConfiguration() {
+    return launchConfig;
+  }
+
+  /**
+   * @param launchConfiguration the launchConfiguration to set
+   * @see gov.pnnl.velo.jobs.handlers.JobHandler#setLaunchConfiguration(LaunchConfiguration)
+   */
+  @Override
+  public void setLaunchConfiguration(LaunchConfiguration launchConfiguration) {
+    this.launchConfig = launchConfiguration;
+    logger = Logger.getLogger(launchConfig.getTool().getCodeID());
+  }
+
+  /**
+   * Method updateStatusOnServer.
+   * @param jobstatus String
+   * @param statusmsg String
+   * @see gov.pnnl.velo.jobs.handlers.JobHandler#updateStatusOnServer(String, String)
+   */
+  @Override
+  public void updateStatusOnServer(String jobstatus, String statusmsg) {
+    try {
+      if (jobstatus != null) {
+        cmsService.setProperty(launchConfig.getCmsContextPath().toString(), VeloConstants.JOB_STATUS,
+            jobstatus);
+      }
+      if(statusmsg != null) {
+        statusmsg = statusmsg.replaceAll("[\n\r\t]", " ");
+        cmsService.setProperty(launchConfig.getCmsContextPath().toString(), VeloConstants.JOB_STATUS_MESSAGE, statusmsg);
+      }
+    } catch (Throwable e) {
+      e.printStackTrace();
+      // do not puke job monitoring if we can't write a property
+    }
+
+  }
+  
+  /**
+   * Method reportComponentStart.
+   * @param componentCmsDir Path
+   * @param time long
+   */
+  protected void reportComponentStart(Path componentCmsDir, long time) {
+
+    if(!cmsService.exists(componentCmsDir.toString())) {
+      //if an exception is thrown, it means the collection doesn't exist so create it here
+      logger.debug("creating status dir in alfresco: " + componentCmsDir);
+      String folderName = componentCmsDir.getFileName();
+      String parentContext = componentCmsDir.getParent().toString();
+      cmsService.createCollection(parentContext, folderName);
+    }
+
+    Date date = new Date(time);
+    String timestamp = dateFormat.format(date);
+    cmsService.setProperty(componentCmsDir.toString(), VeloConstants.JOB_START_TIME,timestamp);
+    logger.debug("setting job state Running on component " + componentCmsDir);
+    cmsService.setProperty(componentCmsDir.toString(), VeloConstants.JOB_STATUS,VeloConstants.STATUS_START);
+
+  }
+  
+  /**
+   * Method reportComponentEnd.
+   * @param cmsComponentDir String
+   * @param name String
+   * @param state String
+   * @param time long
+   * @param description String
+   * @param subTasksCompleted Integer
+   * @param subTasksFailed Integer
+   */
+  protected void reportComponentEnd(String cmsComponentDir, String name, String state, long time, String description,
+      Integer subTasksCompleted, Integer subTasksFailed) {
+    try {
+      Date date = new Date(time);
+      String timestamp = dateFormat.format(date);
+
+      System.out.println("Component " + name + " stopped at " + timestamp + "with exit status" + state);
+      boolean success = false;
+      if (state.equals(VeloConstants.STATUS_SUCCESS)) {
+        success = true;
+      }
+
+      // update status based on exit code
+      cmsService.setProperty(cmsComponentDir, VeloConstants.JOB_STATUS, state);
+
+      // record stop time
+      cmsService.setProperty(cmsComponentDir, VeloConstants.JOB_STOP_TIME, timestamp);
+
+
+      // record component summary on parent node
+      if (subTasksCompleted != null) {
+        cmsService.setProperty(cmsComponentDir, VeloConstants.JOB_RUNS_COMPLETED, subTasksCompleted);
+
+      } 
+      if(subTasksFailed != null) {
+        cmsService.setProperty(cmsComponentDir,VeloConstants.JOB_RUNS_FAILED, subTasksFailed);
+      }
+
+      if(!success) {
+        // print the description as the error message
+        reportStatusMessage(cmsComponentDir, description);
+      }
+
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  
+  /**
+   * Method reportStatusMessage.
+   * @param cmsContextPath String
+   * @param errmsg String
+   */
+  protected void reportStatusMessage(String cmsContextPath, String errmsg) {
+    errmsg = errmsg.replaceAll("[\n\r]", " ");
+    System.err.println(errmsg);
+    cmsService.setProperty(cmsContextPath, VeloConstants.JOB_STATUS_MESSAGE, errmsg);
+  }
+
+  /**
+   * Removes all the job metadata from a node
+   */
+  protected void clearJobProperties() {
+
+      String cmsContextPath = launchConfig.getCmsContextPath().toString();
+      String currentStatus = (String)cmsService.getProperty(cmsContextPath, VeloConstants.JOB_STATUS);
+      logger.debug("Current job status is " + currentStatus);
+      if(currentStatus!=null && !currentStatus.isEmpty()){
+        //First clear all old properties.
+        //TODO: is there a better way to do this?
+        List<String> properties = Arrays.asList(
+            VeloConstants.JOB_SUBMIT_TIME, 
+            VeloConstants.JOB_START_TIME, 
+            VeloConstants.JOB_STOP_TIME, 
+            VeloConstants.JOB_CODEID, 
+            VeloConstants.JOB_USER, 
+            VeloConstants.JOB_ACCOUNT, 
+            VeloConstants.JOB_MACHINE, 
+            VeloConstants.JOB_NODE_COUNT, 
+            VeloConstants.JOB_PROC_COUNT, 
+            VeloConstants.JOB_TIME_LIMIT, 
+            VeloConstants.JOB_RUNDIR,
+            VeloConstants.JOB_STATUS,
+            VeloConstants.JOB_STATUS_MESSAGE, 
+            VeloConstants.JOB_RUNS_COMPLETED, 
+            VeloConstants.JOB_RUNS_FAILED,
+            VeloConstants.JOB_RUNS_PROGRESS, 
+            VeloConstants.JOB_JOBID);
+        logger.debug("Before clearing job properties");
+        cmsService.removeProperties(cmsContextPath, properties);
+        logger.debug("After clearing job properties");
+      }
+  }
+
+  /**
+   * initializes all the job properties
+   * @param status JobStatusInfo
+   */
+  protected void setJobSubmitProperties(JobStatusInfo status) {
+    Map<String, Object> properties = new HashMap<String, Object>();
+    properties.put(VeloConstants.JOB_STATUS, VeloConstants.STATUS_WAIT);
+    properties.put(VeloConstants.JOB_SUBMIT_TIME,status.submissionTime);
+    properties.put(VeloConstants.JOB_CODEID, launchConfig.getTool().getCodeID());
+    properties.put(VeloConstants.JOB_JOBID, status.jobID);
+    properties.put(VeloConstants.JOB_USER, launchConfig.getRemoteUsername());
+    if(launchConfig.getAllocationAccount() != null) {
+      properties.put(VeloConstants.JOB_ACCOUNT, launchConfig.getAllocationAccount());
+    }
+    properties.put(VeloConstants.JOB_MACHINE, launchConfig.getMachine().getName());
+    properties.put(VeloConstants.JOB_PROC_COUNT, launchConfig.getNprocs());
+    properties.put(VeloConstants.JOB_NODE_COUNT, launchConfig.getNnodes());
+    if(launchConfig.getTimelimit() != null) {
+      properties.put(VeloConstants.JOB_TIME_LIMIT, launchConfig.getTimelimit());
+    }
+    properties.put(VeloConstants.JOB_RUNDIR, launchConfig.getJobDirectory());
+    cmsService.setProperties(launchConfig.getCmsContextPath().toString(), properties);
+  }
+  
+  /**
+   * Method setJobStartProperties.
+   * @param status JobStatusInfo
+   */
+  protected void setJobStartProperties(JobStatusInfo status) {
+    Map<String, Object> properties = new HashMap<String, Object>();
+    properties.put(VeloConstants.JOB_START_TIME, new Date().toString());
+    properties.put(VeloConstants.JOB_STATUS,VeloConstants.STATUS_START);
+    cmsService.setProperties(launchConfig.getCmsContextPath().toString(), properties);    
+  }
+  
+  protected void setJobCompleteProperties() {
+    Map<String, Object> properties = new HashMap<String, Object>();
+    properties.put(VeloConstants.JOB_STOP_TIME, new Date().toString());
+    properties.put(VeloConstants.JOB_STATUS, readJobStatus());
+    cmsService.setProperties(launchConfig.getCmsContextPath().toString(), properties);   
+  }
+  
+
+
+  
+  /**
+   * From the Tool object, convert the list of output reg exes into a list
+   * of remote paths.
+   * @param jobsuccess boolean
+   * @return List<Path>
+   */
+  protected List<Path> getRemotePathsToLink(boolean jobsuccess) {
+
+    List<String>fileRegExes = new ArrayList<String>();
+    
+    for(OutputFile outputFile : launchConfig.getTool().getOutputs()) {
+      if(outputFile.getCopyOrLink().equals(OutputFile.LINK)) {
+        if(jobsuccess || !outputFile.isIgnoreOnError()) {
+        fileRegExes.add(outputFile.getFileNameRegEx());
+        }
+      }
+    }
+    return getRemotePaths(fileRegExes);
+  }
+
+  /**
+   * Method getRemotePaths.
+   * @param fileRegExes List<String>
+   * @return List<Path>
+   */
+  protected List<Path> getRemotePaths(List<String> fileRegExes) {
+
+    List<Path> remotePaths = new ArrayList<Path>();
+    String remoteDir = launchConfig.getJobOutputDirectory();
+    
+    if (!remoteDir.endsWith("/")) {
+      remoteDir = remoteDir + "/";
+    }
+    
+    String[] remotefiles = parseRemoteFileRegex(fileRegExes, remoteDir);
+    
+    if (remotefiles != null) {
+      for (String file : remotefiles) {
+        if(!file.isEmpty()) {
+          String path = remoteDir  + file;
+          remotePaths.add(new Path(path));
+        }
+      }
+    }
+    return remotePaths;
+  }
+  
+  /**
+   * Method getLocalOutputFiles. Use when outputs are available on the same server where alfresco is running.
+   * @param fileRegExes List<String>
+   * @return List<Path>
+   */
+  protected List<File> getLocalOutputFiles(boolean jobsuccess) {
+
+    
+    List<File> outputFiles = new ArrayList<File>();
+    File localOutputDir = new File(launchConfig.getJobOutputDirectory());
+
+    for(OutputFile outputFile : launchConfig.getTool().getOutputs()) {
+      if(outputFile.getCopyOrLink().equals(OutputFile.COPY)) {
+        if(jobsuccess || !outputFile.isIgnoreOnError()) {
+          File file = new File(localOutputDir, outputFile.getFileNameRegEx());
+          if (file.exists()){
+            outputFiles.add(file);
+          }else{
+            FileFilter fileFilter = new WildcardFileFilter(outputFile.getFileNameRegEx());
+            File[] files = localOutputDir.listFiles(fileFilter);
+            outputFiles.addAll(Arrays.asList(files));
+          }
+        }
+      }
+    }   
+    return outputFiles;
+  }  
+
+  private String[] parseRemoteFileRegex(List<String> fileRegExes,
+      String remoteDir) {
+    String[] remotefiles = null;
+    ByteArrayOutputStream streamOut;
+    ByteArrayOutputStream streamErr;
+    
+    // Search for files under the given remote dir
+    logger.debug("Looking for files: " + fileRegExes.toString());
+    if (fileRegExes != null && fileRegExes.size() > 0) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("cd " + remoteDir);
+      sb.append("; ls -1 ");
+      int count = 0;
+      for (String link : fileRegExes) {
+        if(count > 0) {
+          sb.append(" ");
+        }
+        sb.append(link);
+        count++;
+      }
+      streamOut = new ByteArrayOutputStream();
+      streamErr = new ByteArrayOutputStream();
+      int exitcode = -1;
+
+      logger.debug("Executing remote command : " + sb.toString());
+      exitcode = execInterface.executeCmd(sb.toString(), streamOut,
+          streamErr);
+      // ls returned valid list instead of error.
+      logger.debug("exit code = " + exitcode);
+      if (exitcode == 0) {
+        remotefiles = streamOut.toString().split("[\n\r]");
+        logger.debug("parsed link files list: "
+            + Arrays.toString(remotefiles));
+      }
+    }
+    return remotefiles;
+  }
+
+  /**
+   * Create remote links in CMS to large files so they don't have to
+   * be streamed back to CMS.
+   *
+  
+  
+   * @param cmsContextBasePath Path
+   * @param serverBasePath String
+   * @param linkPaths List<Path>
+   * @throws ExecException */
+
+  protected void createRemoteLinks(Path cmsContextBasePath, String serverBasePath, List<Path> linkPaths) throws ExecException {
+    List<RemoteLink> remoteLinks = new ArrayList<RemoteLink>();
+    String linkUrlPrefix = "ssh://" + launchConfig.getRemoteUsername() + "@"
+        + launchConfig.getMachine().getFullDomainName() + ":";
+
+    for(Path linkPath : linkPaths) {
+      // parse off the archive base path
+      String relativePath = linkPath.toString().substring(serverBasePath.length());
+     
+      String linkName = linkPath.getFileName();
+      String linkUrl = linkUrlPrefix + linkPath;
+      
+      String linkType = "file";
+      if(isDirectory(linkPath.toString())){
+        linkType = "folder";
+      }
+      Path linkContextPath = new Path(cmsContextBasePath.toString() + relativePath);
+      String parentContextPath = linkContextPath.getParent().toString();
+      RemoteLink remoteLink = new RemoteLink(parentContextPath, linkName, linkUrl, linkType, "Automated reference saved by velo job launching infrastructure",
+          linkName, true);
+      remoteLinks.add(remoteLink);
+    }
+    
+    if(remoteLinks.size() > 0) {
+      logger.debug("Creating " + remoteLinks.size() + " remote links in one batch");
+      cmsService.createRemoteLinks(remoteLinks);
+    }      
+
+  }
+  
+  /**
+   * Method isDirectory.
+   * @param publisherLink String
+   * @return boolean
+   */
+  protected boolean isDirectory(String publisherLink) {
+    boolean isDir = true;//default to true - in case of error its better to create a folder in alfresco instead of file
+    ByteArrayOutputStream streamOut = new ByteArrayOutputStream();
+    ByteArrayOutputStream streamErr = new ByteArrayOutputStream();
+    int exitcode = -1;
+    String fileCmdOutput = null;
+
+    try {
+      //have to wrap path in quotes or special characters like ( will cause an error exit code
+      exitcode = execInterface.executeCmd("file \"" + publisherLink+"\"", streamOut, streamErr);
+      if (exitcode == 0) {
+        fileCmdOutput = streamOut.toString().trim();
+        if(!fileCmdOutput.endsWith(": directory")){
+          isDir = false;
+        }
+      }
+    } catch (Exception e) {//don't care, we'll just make it a folder
+    }
+    return isDir;
+  }
+
+
+  /**
+   * From the Tool object, convert the list of output reg exes into a list
+   * of remote paths.
+   * @param jobsuccess boolean
+   * @return List<Path>
+   */
+  protected List<Path> getRemotePathsToUpload(boolean jobsuccess) {
+
+    List<String>fileRegExes = new ArrayList<String>();
+
+    for(OutputFile outputFile : launchConfig.getTool().getOutputs()) {
+      if(outputFile.getCopyOrLink().equals(OutputFile.COPY)) {
+        if(jobsuccess || !outputFile.isIgnoreOnError()) {
+          fileRegExes.add(outputFile.getFileNameRegEx());
+        }
+      }
+    }
+    
+    return getRemotePaths(fileRegExes);
+  }
+  
+  /**
+   * Method uploadOutputsToCms.
+   * @param remotePathsToUpload List<Path>
+   * @throws Exception
+   */
+  protected void uploadOutputsToCms(List<Path> remotePathsToUpload) throws Exception {
+    List<String>paths = new ArrayList<String>();
+    for(Path path : remotePathsToUpload) {
+      paths.add(path.toString());
+    }
+    
+    // create a temp folder under the local working dir to hold the uploaded files
+    File serverLocalWorkingDir = new File(launchConfig.getLocalStagingDirectory());
+    File tempDir = createTempFolder(serverLocalWorkingDir, "Outputs_");
+
+    // then scp the files from the compute server to the client temp dir
+    int count = execInterface.copyFrom(null, paths, tempDir, true);
+    
+    if (count > 0) {
+      // then bulk upload the files from temp dir to CMS
+      logger.debug("Copied job output files to local working dir");
+      uploadDirToCms(tempDir, new Path(launchConfig.getOutputFolderContextPath()));
+      logger.debug("Uploaded job out files to alfresco");
+
+    } else {
+      logger.debug("No job output files found on remote server.");
+    }
+
+  }
+
+  
+  /**
+   * Method uploadFilesToCms.
+   * @param localFilesToUpload List<File>
+   * @param cmsDir Path
+   */
+  protected void uploadFilesToCms(List<File> localFilesToUpload, Path cmsDir) {
+    Map<File, String> filesToDestWikiPath = new HashMap<File, String>();
+    for(File file : localFilesToUpload) {
+      filesToDestWikiPath.put(file, cmsDir.toString());
+    }
+    cmsService.bulkUpload(filesToDestWikiPath);
+  }
+  
+  /**
+   * Method uploadDirToCms.
+   * @param localDir File
+   * @param cmsDir Path
+   */
+  protected void uploadDirToCms(File localDir, Path cmsDir) {
+    // Now upload these files into cms
+    logger.debug("Uploading files from " + localDir.getAbsolutePath() + " to " + cmsDir);
+    String[] localFiles = localDir.list();
+    ArrayList<File> subDirectories = new ArrayList<File>();
+    Map<File, String> filesToDestWikiPath = new HashMap<File, String>();
+    for (String filename : localFiles) {
+      File file = new File(localDir, filename);
+      if (file.isDirectory()) {
+        subDirectories.add(file);
+        
+      } else {
+        // don't copy job handler output by default
+        filesToDestWikiPath.put(file, cmsDir.toString());
+      }
+    }
+    
+    //Upload all files in the dir
+    cmsService.bulkUpload(filesToDestWikiPath);
+    //Done with files in the directory. Now call this method for sub dirs
+    for(File dir:subDirectories){
+      cmsService.createCollection(cmsDir.toString(), dir.getName());
+      uploadDirToCms(dir, cmsDir.append(dir.getName()));
+    }
+  }
+
+  /**
+   * Assumes all jobs will use the same script template and redirect 
+   * exit status to .status file.
+  
+  
+   * @return String
+   */
+  protected String readJobStatus() {
+    logger.debug("Querying .status file");
+    ByteArrayOutputStream streamOut = new ByteArrayOutputStream();
+    ByteArrayOutputStream streamErr = new ByteArrayOutputStream();
+    int exitcode = -1;
+    String jobstatus = VeloConstants.STATUS_COMPLETE;
+
+    try {
+      exitcode = execInterface.executeCmd("cat " + launchConfig.getJobDirectory()
+          + "/.status", streamOut, streamErr);
+      if (exitcode == 0) {
+        logger.debug("Got status file");
+        if (Integer.parseInt(streamOut.toString().trim()) == 0) {
+          jobstatus = VeloConstants.STATUS_SUCCESS;
+
+        } else {
+          jobstatus = VeloConstants.STATUS_ERROR;
+        }
+        logger.debug("Status is " + jobstatus);
+      }else{
+  	    //if there is no status file - job must have got terminated
+  	    //we assume that all job script have the last line as "echo $? >.status"
+  	    //Velo job templates do
+  	    System.out.println("Unable to read .status file. exit code is non zero." +
+  	                    "Job is not in queue, so assume job status as terminated");
+  	    jobstatus = VeloConstants.STATUS_KILLED;
+  	  }
+    } catch (Exception e) {
+      // Unable to read .status. Use default ambiguous VALUE_COMPLETE
+      logger.error("Unable to read .status file. Job is not in queue, "
+          + "but unable to determine if it completed with success or error");
+       System.out.println("Unable to read .status file. Job is not in queue, "
+    	      + "so assume job status as terminated");
+       jobstatus = VeloConstants.STATUS_KILLED;
+    }
+    
+	return jobstatus;
+  }
+
+  /**
+   * Method deleteRemoteDir.
+   * @param remotedir String
+   * @throws ExecException
+   */
+  protected void deleteRemoteDir(String remotedir) throws ExecException {
+    logger.debug("about to delete "+remotedir);
+    boolean exitcode = execInterface.deleteFile(remotedir, true, false);
+    
+    // ls returned valid list instead of error.
+    logger.debug("exit code = " + exitcode);
+    if (exitcode) {
+      logger.debug("deleted: " +remotedir);
+    }else{
+      logger.warn("failed to delete: " +remotedir);
+    }
+  }
+  
+  /**
+   * Method createTempFolder.
+   * @param parentFolder File
+   * @param prefix String
+   * @return File
+   * @throws IOException
+   */
+  public static File createTempFolder(File parentFolder, String prefix) throws IOException {
+
+    File tempDir = new File(parentFolder, prefix + UUID.randomUUID());
+    boolean mkdirSuccess = tempDir.mkdir();
+    // Had issues here with mkdir not creating the temp directory for a simulation run
+    // Use while loop to force creation of directory
+    if (!mkdirSuccess) {
+      while (!mkdirSuccess) {
+        mkdirSuccess = tempDir.mkdir();
+      }
+    }
+    return tempDir;
+  }
+
+}

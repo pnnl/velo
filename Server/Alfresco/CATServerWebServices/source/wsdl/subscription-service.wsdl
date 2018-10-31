@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="subscription-service"
+   targetNamespace="http://www.pnl.gov/cat/ws/service/subscription/1.0"
+   xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+   xmlns:sub="http://www.pnl.gov/cat/ws/service/subscription/1.0"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:cms="http://www.alfresco.org/ws/model/content/1.0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   
+   <!-- ************************************** -->
+   <!-- Copyright Alfresco Software, Inc. 2005 -->
+   <!-- ************************************** -->
+   <wsdl:import namespace="http://www.alfresco.org/ws/model/content/1.0" location="../wsdl/types.xsd"/>
+   <wsdl:types>
+      <schema elementFormDefault="qualified" targetNamespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+         <!-- Type Definitions -->  
+         <complexType name="Subscription">
+         	<sequence>
+         		<element name="node" type="cms:Reference" minOccurs="0" maxOccurs="1"/>
+         		<element name="owner" type="sub:SubscriptionOwner" />
+         		<element name="title" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="name" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="type" type="xsd:string" />
+         		<element name="properties" type="cms:NamedValue" minOccurs="0" maxOccurs="unbounded" />
+         		<element name="deliveryChannel" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+         		<element name="frequency" type="xsd:string" />
+         		<element name="lastAlertSent" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+         		<element name="created" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+         	</sequence>
+         </complexType>
+         
+         <complexType name="SubscriptionOwner">
+         	<sequence>
+         		<element name="id" type="xsd:string" />
+         		<element name="type" type="xsd:string" />
+         	</sequence>
+         </complexType>
+         <element name="SubscriptionOwner" type="sub:SubscriptionOwner" />
+ 
+          <complexType name="SubscriptionType">
+         	<sequence>
+         		<element name="name" type="xsd:string" />
+         		<element name="parameters" type="cms:PropertyDefinition" minOccurs="0" maxOccurs="unbounded" />
+         		<element name="allowedFrequencies" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+         	</sequence>
+         </complexType>
+         <element name="SubscriptionType" type="sub:SubscriptionType" />                      
+     
+          <complexType name="DeliveryChannel">
+         	<sequence>
+         		<element name="name" type="xsd:string" />
+         		<element name="title" type="xsd:string" />
+         	</sequence>
+         </complexType>
+         <element name="DeliveryChannel" type="sub:DeliveryChannel" />    
+         
+         <complexType name="SubscriptionFault">
+            <sequence>
+               <element name="errorCode" type="xsd:int"/>
+               <element name="message" type="xsd:string"/>
+            </sequence>
+         </complexType>
+         <element name="SubscriptionFault" type="sub:SubscriptionFault"/>
+         
+         <!-- Method Definitions -->         
+         <element name="createSubscription">
+            <complexType>
+               <sequence>
+                  <element name="subscription" type="sub:Subscription"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="createSubscriptionResponse">
+            <complexType />
+         </element>
+           
+         <element name="getSubscriptions">
+            <complexType />
+         </element>
+         
+         <element name="getSubscriptionsResponse">
+            <complexType>
+               <sequence>
+                  <element name="subscription" type="sub:Subscription" minOccurs="0" maxOccurs="unbounded" />
+               </sequence>
+            </complexType>
+         </element>
+
+         <element name="updateSubscription">
+            <complexType>
+               <sequence>
+                  <element name="subscription" type="sub:Subscription"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="updateSubscriptionResponse">
+            <complexType />
+         </element>
+         <element name="deleteSubscriptions">
+            <complexType>
+               <sequence>
+                  <element name="subscriptions" type="sub:Subscription" minOccurs="0" maxOccurs="unbounded"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="deleteSubscriptionsResponse">
+            <complexType />
+         </element>
+         
+         <element name="getSubscriptionTypes">
+            <complexType />
+         </element>
+         
+         <element name="getSubscriptionTypesResponse">
+            <complexType>
+               <sequence>
+                  <element name="subscriptionTypes" type="sub:SubscriptionType" minOccurs="0" maxOccurs="unbounded" />
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="getDeliveryChannels">
+            <complexType />
+         </element>
+         
+         <element name="getDeliveryChannelsResponse">
+            <complexType>
+               <sequence>
+                  <element name="deliveryChannels" type="sub:DeliveryChannel" minOccurs="0" maxOccurs="unbounded" />
+               </sequence>
+            </complexType>
+         </element>
+      </schema>
+   </wsdl:types>
+   
+   <!-- Message definitions -->
+   
+   <wsdl:message name="createSubscriptionRequest">
+      <wsdl:part element="sub:createSubscription" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="createSubscriptionResponse">
+      <wsdl:part element="sub:createSubscriptionResponse" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getSubscriptionsRequest">
+      <wsdl:part element="sub:getSubscriptions" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getSubscriptionsResponse">
+      <wsdl:part element="sub:getSubscriptionsResponse" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="updateSubscriptionRequest">
+      <wsdl:part element="sub:updateSubscription" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="updateSubscriptionResponse">
+      <wsdl:part element="sub:updateSubscriptionResponse" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="deleteSubscriptionsRequest">
+      <wsdl:part element="sub:deleteSubscriptions" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="deleteSubscriptionsResponse">
+      <wsdl:part element="sub:deleteSubscriptionsResponse" name="parameters"/>
+   </wsdl:message>   
+
+   <wsdl:message name="getSubscriptionTypesRequest">
+      <wsdl:part element="sub:getSubscriptionTypes" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getSubscriptionTypesResponse">
+      <wsdl:part element="sub:getSubscriptionTypesResponse" name="parameters"/>
+   </wsdl:message>   
+   
+   <wsdl:message name="getDeliveryChannelsRequest">
+      <wsdl:part element="sub:getDeliveryChannels" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveryChannelsResponse">
+      <wsdl:part element="sub:getDeliveryChannelsResponse" name="parameters"/>
+   </wsdl:message>  
+   
+   <wsdl:message name="SubscriptionFault">
+      <wsdl:part element="sub:SubscriptionFault" name="fault"/>
+   </wsdl:message>
+   
+   <!-- Port and binding definitions -->
+   
+   <wsdl:portType name="SubscriptionServiceSoapPort">
+      <wsdl:operation name="createSubscription">
+         <wsdl:documentation>Adds a new subscription.</wsdl:documentation>
+         <wsdl:input message="sub:createSubscriptionRequest" name="createSubscriptionRequest"/>
+         <wsdl:output message="sub:createSubscriptionResponse" name="createSubscriptionResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>     
+
+      <wsdl:operation name="getSubscriptions">
+         <wsdl:documentation>Gets all subscriptions the current user has access to.</wsdl:documentation>
+         <wsdl:input message="sub:getSubscriptionsRequest" name="getSubscriptionsRequest"/>
+         <wsdl:output message="sub:getSubscriptionsResponse" name="getSubscriptionsResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>  
+
+       <wsdl:operation name="updateSubscription">
+         <wsdl:documentation>Update a subscription.</wsdl:documentation>
+         <wsdl:input message="sub:updateSubscriptionRequest" name="updateSubscriptionRequest"/>
+         <wsdl:output message="sub:updateSubscriptionResponse" name="updateSubscriptionResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>     
+
+       <wsdl:operation name="deleteSubscriptions">
+         <wsdl:documentation>Delete a subscription.</wsdl:documentation>
+         <wsdl:input message="sub:deleteSubscriptionsRequest" name="deleteSubscriptionsRequest"/>
+         <wsdl:output message="sub:deleteSubscriptionsResponse" name="deleteSubscriptionsResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>   
+
+      <wsdl:operation name="getSubscriptionTypes">
+         <wsdl:documentation>Gets all subscription types</wsdl:documentation>
+         <wsdl:input message="sub:getSubscriptionTypesRequest" name="getSubscriptionTypesRequest"/>
+         <wsdl:output message="sub:getSubscriptionTypesResponse" name="getSubscriptionTypesResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>   
+
+      <wsdl:operation name="getDeliveryChannels">
+         <wsdl:documentation>Gets all subscription types</wsdl:documentation>
+         <wsdl:input message="sub:getDeliveryChannelsRequest" name="getDeliveryChannelsRequest"/>
+         <wsdl:output message="sub:getDeliveryChannelsResponse" name="getDeliveryChannelsResponse"/>
+         <wsdl:fault message="sub:SubscriptionFault" name="SubscriptionFault"/>
+      </wsdl:operation>   
+  </wsdl:portType>
+   
+   <wsdl:binding name="SubscriptionServiceSoapBinding" type="sub:SubscriptionServiceSoapPort">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="createSubscription">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/createSubscription"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+      <wsdl:operation name="getSubscriptions">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/getSubscriptions"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+      <wsdl:operation name="updateSubscription">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/updateSubscription"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+      <wsdl:operation name="deleteSubscriptions">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/deleteSubscriptions"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+      <wsdl:operation name="getSubscriptionTypes">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/getSubscriptionTypes"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      
+      <wsdl:operation name="getDeliveryChannels">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/subscription/1.0/getDeliveryChannels"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="SubscriptionFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" use="literal" name="SubscriptionFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+    </wsdl:binding>
+
+	<!-- Service definition -->
+	
+    <wsdl:service name="SubscriptionService">
+       <wsdl:documentation>Subscription service for managing alert subscriptions.</wsdl:documentation>
+       <wsdl:port binding="sub:SubscriptionServiceSoapBinding" name="SubscriptionService">
+          <wsdlsoap:address location="http://localhost:8080/alfresco/api/SubscriptionService"/>
+       </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: gov.pnnl.cat.net.win32
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: gov.pnnl.cat.net;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-ClassPath: lib/eldos.cbfs.jar,
+ .
+Require-Bundle: gov.pnnl.cat.core.resources,
+ org.apache.commons,
+ org.springframework

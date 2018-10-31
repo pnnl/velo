@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.rse.doc.isv;singleton:=true
+Bundle-Version: 3.4.0.201205301204
+Bundle-ClassPath: org.eclipse.rse.doc.isv_3.4.0.201205301204.jar
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Eclipse-LazyStart: false
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org.eclipse.tm.git;path="rse/doc/org.eclipse.rse.doc.isv";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Built-By: hudsonbuild
+Build-Jdk: 1.6.0

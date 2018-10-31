@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="gov.pnnl.cat.core.feature"
+      label="Velo Core Feature"
+      version="1.0.0.qualifier"
+      provider-name="Pacific Northwest National Laboratory"
+      plugin="gov.pnnl.cat.ui.rcp">
+
+   <description>
+      Contains core CAT plugins
+   </description>
+
+   <license url="">
+      You are about to access a U.S. Government computer system. Access to this system is restricted to authorized users only. Specific terms of use are as follows: 
+
+1.Verify that the information and data being shared will not compromise PNNL or PNNL&apos;s customers. 
+
+2.Consider information&apos;s sensitivity before placing it on this system. The security plan for the system does not allow for the storage of sensitive data. Therefore, do not store data that could be deemed: 
+-Business Sensitive or Proprietary 
+-Intellectual Property 
+-Included in a Patent submission 
+-Strictly Private Information (protected under the Privacy Act) 
+-Official Use Only 
+-Contractually Mandated Sensitive Data 
+-Personally Identifiable Information 
+-Unclassified Controlled Nuclear Information 
+-Naval Nuclear Propulsion Information 
+-Foreign Government Information 
+
+3.This system is designed to allow researchers to collaborate easily; researchers will be responsible for storing information and data with the intent to share with other registered users. 
+
+4.Do not use this system for the proliferation of pornographic material, hacker tools, copyrighted material, or any activity that degrades the image of PNNL or violates trust with our external collaborators. 
+
+5.Take care with what you write -- written records can be legally binding and written material that damages the image of PNNL will be removed. 
+
+Unauthorized attempts to defeat or circumvent security features, to use the system for other than intended purposes, to deny service to authorized users, to access, obtain, alter, damage, or destroy information, or otherwise to interfere with the system or its operation are prohibited. This system is subject to monitoring; if monitoring reveals possible misconduct, violation of these terms of use, or criminal activity, the user account will be disabled and supervisory personnel notified. Evidence of such acts may be disclosed to law enforcement authorities and result in criminal prosecution under the Computer Fraud and Abuse Act of 1986 (Pub. L. 99-474) and the National Information Infrastructure Protection Act of 1996 (Pub. L. 104-294), (18 U.S.C. 1030), or other applicable criminal laws.
+   </license>
+
+   <requires>
+      <import feature="gov.pnnl.common.feature"/>
+   </requires>
+
+   <plugin
+         id="gov.pnnl.cat.core.resources"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.core.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.ui.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.javawiki.calendar"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.net"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.net.macosx"
+         os="macosx"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.net.win32"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.btr.proxyvole"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.velo"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.velo.abc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.velo.tools"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.core.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.help.user"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.velo.tools.ui.abc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

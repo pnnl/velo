@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Velo" uid="gov.pnnl.velo.ui.rcp.product" id="gov.pnnl.velo.ui.rcp.product" application="gov.pnnl.velo.ui.rcp.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-name Velo
+-eclipse.keyring .velo/eclipse_secure_storage
+      </programArgs>
+      <programArgsLin>-data .velo
+      </programArgsLin>
+      <programArgsMac>-data ../../../.velo
+      </programArgsMac>
+      <programArgsWin>-data .velo
+      </programArgsWin>
+      <vmArgs>-Xms256m
+-Xmx1200m
+-XX:MaxPermSize=128m
+-Dsun.java2d.nodraw=true
+-Dsun.java2d.ddoffscreen=false
+-Djsse.enableSNIExtension=false
+      </vmArgs>
+      <vmArgsLin>-Drepository.properties.path=repository.properties
+      </vmArgsLin>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+-Drepository.properties.path=../../../repository.properties
+      </vmArgsMac>
+      <vmArgsWin>-Drepository.properties.path=repository.properties
+      </vmArgsWin>
+   </launcherArgs>
+
+   <windowImages i16="/gov.pnnl.velo.ui.rcp/icons/velo-16x16.png" i32="/gov.pnnl.velo.ui.rcp/icons/velo-32x32.png" i48="/gov.pnnl.velo.ui.rcp/icons/velo-48x48.png"/>
+
+   <splash
+      location="gov.pnnl.velo.ui.rcp" />
+   <launcher name="Velo">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="gov.pnnl.velo.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="gov.pnnl.velo.ui.rcp" autoStart="false" startLevel="5" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+</product>

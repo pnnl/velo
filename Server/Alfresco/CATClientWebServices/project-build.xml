@@ -1,0 +1,199 @@
+<project name="cat-web-service-client" default="deploy">
+
+	<!-- init target -->
+	<target name="init">
+		<echo level="info">basedir = ${basedir}</echo>
+		
+		<property file="${basedir}/myconfig/local-build.properties"/>
+		<property file="${basedir}/Shared/build/properties/common.properties"/>
+
+		<property name="local.dir.server.type" value="C:/eclipse/workspaces/CAT Server"/>
+		<!-- common build properties -->
+		<property name="dir.src" value="${basedir}/source" />
+		<property name="dir.src.java" value="${dir.src}/java" />
+		<property name="dir.src.java.generated" value="${dir.src}/generated" />
+		<property name="dir.build" value="${basedir}/build" />
+		<property name="dir.classes" value="${dir.build}/classes" />
+		<property name="dir.wsdl" value="${basedir}/../CATServerWebServices/source/wsdl" />
+		<property name="dir.dist" value="${dir.build}/dist" />
+		<property name="file.name.jar" value="${ant.project.name}.jar" />
+		<property name="dir.sdk.embedded" value="${basedir}/../SDKAlfrescoEmbedded"/>
+		<property name="dir.sdk.remote" value="${basedir}/../SDKAlfrescoRemote"/>
+		<property name="dir.cat.build" value="${basedir}/../VeloBuild"/>		
+		<property name="dir.cat.core" value="${basedir}/../CATServerCore"/>		
+
+		
+		<property name="package.dir" value="/gov/pnnl/cat/webservice" />
+
+		<echo level="info">dir.src = ${dir.src}</echo>
+		<echo level="info">dir.dist = ${dir.dist}</echo>
+		
+
+		<!-- files that will be deleted from the auto wsdl2java code gen -->
+		<property name="files.delete.include" value="*Service.java,*Locator.java,*Binding*.java,unsetupDistribution.wsdd" />
+
+		<!-- set the classpath to load all the jars from SDK Alfresco Embedded and SDK Alfresco Remote -->
+		<path id="classpath">
+			<fileset dir="${dir.sdk.embedded}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${dir.sdk.remote}">
+				<include name="**/*.jar" />
+			</fileset>
+		    <fileset dir="${dir.cat.build}">
+					<include name="**/*.jar" />
+		    </fileset>
+			<pathelement location="${dir.cat.core}/build/classes" />
+			<pathelement location="${dir.classes}" />
+		</path>
+
+		<!-- define the task for converting wsdl to java -->
+		<taskdef name="wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask">
+			<classpath refid="classpath" />
+		</taskdef>
+	</target>
+
+	<target name="clean" depends="init" description="clean the compiled classes and libraries">
+		<delete dir="${dir.classes}" />
+		<delete dir="${dir.dist}" />
+	</target>
+
+	<!-- we need to override the compile-java target so that we can include the generated source -->
+	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		<mkdir dir="${dir.classes}" />
+		<javac destdir="${dir.classes}" deprecation="off" debug="on" target="1.6" source="1.6">
+			<src path="${dir.src.java}" />
+			<src path="${dir.src.java.generated}" />
+			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:-path"/>
+		</javac>
+
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src.java}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="package-jar" depends="compile-java" description="Packages the JAR file">
+		<mkdir dir="${dir.dist}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}">
+			<fileset dir="${dir.classes}">
+				<exclude name="**/alfresco/*.properties" />
+			</fileset>
+		</jar>
+	</target>
+
+	<!-- Deploy a complete, clean build to CAT -->
+	<target name="deploy" depends="clean,gen-all-service-clients,deploy-incremental" />
+
+	<!-- Deploy an incremental build to tomcat -->
+	<target name="deploy-incremental" depends="package-jar">
+	</target>
+
+	<target name="clean-all-services" depends="init">
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}" />
+		</delete>
+	</target>
+
+	<target name="gen-all-service-clients" depends="gen-user-service-client,gen-group-service-client,gen-subscription-service-client,gen-import-service-client,gen-alert-service-client,gen-harvest-service-client" />
+	<target name="gen-user-service-client" depends="init">
+		<mkdir dir="${dir.src.java.generated}${package.dir}/user" />
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}/user" />
+		</delete>
+		<wsdl2java url="file:///${dir.wsdl}/user-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+			<mapping namespace="http://www.pnl.gov/cat/ws/service/user/1.0" package="gov.pnnl.cat.webservice.user" />
+			<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+		</wsdl2java>
+
+		<!-- delete the alfresco types, as they are already in the alf jar files -->
+		<delete dir="${dir.src.java.generated}/org" />
+
+	</target>
+	
+
+	
+
+	<target name="gen-group-service-client" depends="init">
+		<mkdir dir="${dir.src.java.generated}${package.dir}/group" />
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}/group" />
+		</delete>
+		<wsdl2java url="file:///${dir.wsdl}/group-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+			<mapping namespace="http://www.pnl.gov/cat/ws/service/group/1.0" package="gov.pnnl.cat.webservice.group" />
+			<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+		</wsdl2java>
+
+		<!-- delete the alfresco types, as they are already in the alf jar files -->
+		<delete dir="${dir.src.java.generated}/org" />
+
+	</target>
+	
+		
+		<target name="gen-subscription-service-client" depends="init">
+			<mkdir dir="${dir.src.java.generated}${package.dir}/subscription" />
+			<delete>
+				<fileset dir="${dir.src.java.generated}${package.dir}/subscription" />
+			</delete>
+			<wsdl2java url="file:///${dir.wsdl}/subscription-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+				<mapping namespace="http://www.pnl.gov/cat/ws/service/subscription/1.0" package="gov.pnnl.cat.webservice.subscription" />
+				<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+			</wsdl2java>
+
+			<!-- delete the alfresco types, as they are already in the alf jar files -->
+			<delete dir="${dir.src.java.generated}/org" />
+
+		</target>	
+	
+	<target name="gen-alert-service-client" depends="init">
+		<mkdir dir="${dir.src.java.generated}${package.dir}/alert" />
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}/alert" />
+		</delete>
+		<wsdl2java url="file:///${dir.wsdl}/alert-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+			<mapping namespace="http://www.pnl.gov/cat/ws/service/alert/1.0" package="gov.pnnl.cat.webservice.alert" />
+			<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+		</wsdl2java>
+
+		<!-- delete the alfresco types, as they are already in the alf jar files -->
+		<delete dir="${dir.src.java.generated}/org" />
+
+	</target>	
+
+	
+	
+	<target name="gen-import-service-client" depends="init">
+		<mkdir dir="${dir.src.java.generated}${package.dir}/imprt" />
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}/imprt" />
+		</delete>
+		<wsdl2java url="file:///${dir.wsdl}/import-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+			<mapping namespace="http://www.pnl.gov/cat/ws/service/imprt/1.0" package="gov.pnnl.cat.webservice.imprt" />
+			<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+		</wsdl2java>
+
+		<!-- delete the alfresco types, as they are already in the alf jar files -->
+		<delete dir="${dir.src.java.generated}/org" />
+
+	</target>
+	
+	<target name="gen-harvest-service-client" depends="init">
+		<mkdir dir="${dir.src.java.generated}${package.dir}/harvest" />
+		<delete>
+			<fileset dir="${dir.src.java.generated}${package.dir}/harvest" />
+		</delete>
+		<wsdl2java url="file:///${dir.wsdl}/harvest-service.wsdl" output="${dir.src.java.generated}" testcase="no" all="true">
+			<mapping namespace="http://www.pnl.gov/cat/ws/service/harvest/1.0" package="gov.pnnl.cat.webservice.harvest" />
+			<mapping namespace="http://www.alfresco.org/ws/model/content/1.0" package="org.alfresco.webservice.types" />
+		</wsdl2java>
+
+		<!-- delete the alfresco types, as they are already in the alf jar files -->
+		<delete dir="${dir.src.java.generated}/org" />
+
+	</target>
+
+</project>

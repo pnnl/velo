@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="gov.pnnl.cat.adv.feature.site"
+      label="Advanced Feature Site"
+      version="1.0.0.qualifier"
+      provider-name="Pacific Northwest National Laboratory">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="gov.pnnl.cat.adv.feature"
+         version="0.0.0"/>
+
+</feature>

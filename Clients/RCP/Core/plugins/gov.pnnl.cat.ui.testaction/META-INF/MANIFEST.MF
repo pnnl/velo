@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.util,
+ gov.pnnl.cat.core.resources,
+ gov.pnnl.cat.logging,
+ gov.pnnl.cat.ui.rcp;bundle-version="1.0.0",
+ com.thoughtworks.xstream,
+ org.apache.log4j,
+ org.apache.commons;bundle-version="1.0.0",
+ org.apache.commons.httpclient;bundle-version="3.1.0"
+Eclipse-AutoStart: true
+Bundle-ClassPath: .
+Bundle-Version: 1.0.0.qualifier
+Bundle-Localization: plugin
+Bundle-Name: Test Action Plug-in
+Bundle-Activator: gov.pnnl.cat.testaction.TestActionPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: gov.pnnl.cat.testaction; singleton:=true
+Eclipse-RegisterBuddy: com.thoughtworks.xstream

@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- destinations for sending messages to -->
+	<bean id="testAsyncDestination"
+		class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic"
+		autowire="constructor" abstract="false" singleton="true"
+		lazy-init="default" dependency-check="default">
+		<constructor-arg value="cat.async.test" />
+      <constructor-arg value="${notification.server.id}" />
+	</bean>
+
+	<bean id="testSyncDestination"
+		class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic"
+		autowire="constructor" abstract="false" singleton="true"
+		lazy-init="default" dependency-check="default">
+		<constructor-arg value="cat.sync.test" />
+      <constructor-arg value="${notification.server.id}" />
+	</bean>
+
+	<bean id="echoSyncDestination"
+		class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic"
+		autowire="constructor" abstract="false" singleton="true"
+		lazy-init="default" dependency-check="default">
+		<constructor-arg value="cat.sync.echo" />
+      <constructor-arg value="${notification.server.id}" />
+	</bean>
+
+
+
+	<!-- pooled connection factory for ActiveMQ -->
+	<bean id="jmsFactory"
+		class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="connectionFactory">
+			<bean
+				class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL">
+					<value>http://localhost:61616</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+
+	<!-- Spring JMS Template -->
+	<bean id="jmsTemplate"
+		class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+	</bean>
+
+
+	<!-- bean that does the async message sending for this test -->
+	<bean id="testAsyncMessageSender"
+		class="gov.pnnl.cat.jms.common.JMSMessageSender">
+		<property name="destination">
+			<ref local="testAsyncDestination" />
+		</property>
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+		<property name="template">
+			<ref local="jmsTemplate" />
+		</property>
+	</bean>
+
+	<!-- bean that does the sync message sending for this test -->
+	<bean id="testSyncMessageSender"
+		class="gov.pnnl.cat.jms.common.JMSMessageSender">
+		<property name="destination">
+			<ref local="testSyncDestination" />
+		</property>
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+		<property name="template">
+			<ref local="jmsTemplate" />
+		</property>
+	</bean>
+
+	<bean id="echoSyncMessageSender"
+		class="gov.pnnl.cat.jms.common.JMSMessageSender">
+		<property name="destination">
+			<ref local="echoSyncDestination" />
+		</property>
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+		<property name="template">
+			<ref local="jmsTemplate" />
+		</property>
+	</bean>
+
+
+	<!-- activemq resource adapter, needed for jencks -->
+	<bean id="activeMQResourceAdapter"
+		class="org.apache.activemq.ra.ActiveMQResourceAdapter"
+		singleton="true">
+		<property name="serverUrl" value="http://localhost:61616" />
+	</bean>
+
+	<!-- bootstrap needed for jencks -->
+	<bean id="bootstrapContext"
+		class="org.jencks.factory.BootstrapContextFactoryBean"
+		singleton="true">
+		<property name="threadPoolSize" value="25" />
+	</bean>
+
+	<!-- jencks bean -->
+	<bean id="jencks" class="org.jencks.JCAContainer" singleton="true"
+		depends-on="activeMQResourceAdapter,bootstrapContext">
+		<property name="bootstrapContext">
+			<ref bean="bootstrapContext" />
+		</property>
+		<property name="resourceAdapter">
+			<ref bean="activeMQResourceAdapter" />
+		</property>
+	</bean>
+
+
+
+
+	<!-- binds our listener to the destination of choice -->
+	<bean id="testListenerConsumer" factory-method="addConnector"
+		factory-bean="jencks" depends-on="jencks">
+		<property name="jcaContainer" ref="jencks" />
+
+		<property name="activationSpec">
+			<bean class="org.apache.activemq.ra.ActiveMQActivationSpec"
+				abstract="false" singleton="true" lazy-init="default"
+				autowire="default" dependency-check="default">
+				<property name="destination" value="cat.sync.test" />
+				<property name="destinationType"
+					value="javax.jms.Topic" />
+			</bean>
+		</property>
+		<property name="ref" value="testListener" />
+	</bean>
+
+	<bean id="echoListenerConsumer" factory-method="addConnector"
+		factory-bean="jencks" depends-on="jencks">
+		<property name="jcaContainer" ref="jencks" />
+
+		<property name="activationSpec">
+			<bean class="org.apache.activemq.ra.ActiveMQActivationSpec"
+				abstract="false" singleton="true" lazy-init="default"
+				autowire="default" dependency-check="default">
+				<property name="destination" value="cat.sync.echo" />
+				<property name="destinationType"
+					value="javax.jms.Topic" />
+			</bean>
+		</property>
+		<property name="ref" value="echoListener" />
+	</bean>
+
+	<!-- our echo listener -->
+	<bean id="echoListener"
+		class="gov.pnnl.cat.events.tests.EchoMessageListener" singleton="true"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="echoSender">
+			<ref bean="echoResponseSender" />
+		</property>
+	</bean>
+
+	<bean id="testListener"
+		class="gov.pnnl.cat.events.tests.TestRequestResponseListener"
+		singleton="true" abstract="false" lazy-init="default"
+		autowire="default" dependency-check="default">
+		<property name="testSender">
+			<ref bean="testResponseSender" />
+		</property>
+	</bean>
+
+
+	<!-- bean that does the message echo sending for this test -->
+	<bean id="echoResponseSender"
+		class="gov.pnnl.cat.jms.common.JMSMessageSender">
+		<!-- destination determined at runtime, so don't include here -->
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+		<property name="template">
+			<ref local="jmsTemplate" />
+		</property>
+	</bean>
+
+	<!-- bean that does the message echo sending for this test -->
+	<bean id="testResponseSender"
+		class="gov.pnnl.cat.jms.common.JMSMessageSender">
+		<!-- destination determined at runtime, so don't include here -->
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+		<property name="template">
+			<ref local="jmsTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="broker" class="org.apache.activemq.xbean.BrokerFactoryBean">
+	    <property name="config" value="classpath:gov/pnl/dmi/config/activemq.xml" />
+	    <property name="start" value="true" />
+	</bean>
+
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Reference" link_to="toc.xml#reference"> 
+	<topic label="Main Topic"  href="html/reference/maintopic.html"> 
+		<topic label="Sub Topic" href="html/reference/subtopic.html" /> 
+	</topic>
+	<topic label="James' Powerpoint Presentations" >
+		<topic label="James' Powerpoint Presentation on the Help System" href="html/reference/Eclipse's%20Help%20System/Eclipse's%20Help%20System.htm" />
+		<topic label="James' Powerpoint Presentation on the Welcome Page" href="html/reference/Eclipse%20Welcome%20Page/Eclipse%20Welcome%20Page.htm" /> 
+		<topic label="James' Powerpoint Presentation on the Splash Screen and the Login Dialog Box" href="html/reference/Splash%20and%20Login%20Systems/Eclipse%20Splash%20Screen.htm" /> 
+	</topic>
+</toc>

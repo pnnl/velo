@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="gov.pnnl.velo.feature"
+      label="Velo Feature"
+      version="1.0.0.qualifier"
+      plugin="gov.pnnl.velo.ui.rcp">
+
+   <description url="https://velo-website.pnnl.gov">
+      Contains Velo plugins
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="https://velo-website.pnnl.gov">
+      This material was prepared as an account of work sponsored by an agency of
+the United States Government. Neither the United States Government nor the
+United States Department of Energy, nor the Contractor, nor any or their
+employees, nor any jurisdiction or organization that has cooperated in the
+development of these materials, MAKES ANY WARRANTY, EXPRESS OR IMPLIED, OR
+ASSUMES ANY LEGAL LIABILITY OR RESPONSIBILITY FOR THE ACCURACY,
+COMPLETENESS, OR USEFULNESS OR ANY INFORMATION, APPARATUS, PRODUCT,
+SOFTWARE, OR PROCESS DISCLOSED, OR REPRESENTS THAT ITS USE WOULD NOT
+INFRINGE PRIVATELY OWNED RIGHTS.
+Reference herein to any specific commercial product, process, or service by
+trade name, trademark, manufacturer, or otherwise does not necessarily
+constitute or imply its endorsement, recommendation, or favoring by the
+United States Government or any agency thereof, or Battelle Memorial
+Institute. The views and opinions of authors expressed herein do not
+necessarily state or reflect those of the United States Government or any
+agency thereof.
+ 
+PACIFIC NORTHWEST NATIONAL LABORATORY operated by BATTELLE for the UNITED
+STATES DEPARTMENT OF ENERGY under Contract DE-AC05-76RL01830
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="gov.pnnl.cat.ui.rcp"/>
+      <import plugin="gov.pnnl.cat.core.resources"/>
+      <import plugin="gov.pnnl.cat.core.util"/>
+      <import plugin="gov.pnnl.cat.logging"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="gov.pnl.ui.utils"/>
+      <import plugin="com.thoughtworks.xstream"/>
+      <import plugin="org.apache.commons"/>
+      <import plugin="org.eclipse.albireo.core"/>
+      <import plugin="gov.pnnl.cat.ui"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.compare.core"/>
+      <import plugin="org.springframework"/>
+      <import plugin="gov.pnnl.velo"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.rse"/>
+      <import plugin="org.eclipse.rse.connectorservice.local"/>
+      <import plugin="org.eclipse.rse.connectorservice.ssh"/>
+      <import plugin="org.eclipse.rse.connectorservice.sshglobus"/>
+      <import plugin="org.eclipse.rse.core"/>
+      <import plugin="org.eclipse.rse.doc.user"/>
+      <import plugin="org.eclipse.rse.efs"/>
+      <import plugin="org.eclipse.rse.efs.ui"/>
+      <import plugin="org.eclipse.rse.files.ui"/>
+      <import plugin="org.eclipse.rse.importexport"/>
+      <import plugin="org.eclipse.rse.processes.ui"/>
+      <import plugin="org.eclipse.rse.sdk"/>
+      <import plugin="org.eclipse.rse.services"/>
+      <import plugin="org.eclipse.rse.services.files.globusonline"/>
+      <import plugin="org.eclipse.rse.services.local"/>
+      <import plugin="org.eclipse.rse.services.ssh"/>
+      <import plugin="org.eclipse.rse.services.sshglobus"/>
+      <import plugin="org.eclipse.rse.globusonline"/>
+      <import plugin="org.eclipse.rse.shells.ui"/>
+      <import plugin="org.eclipse.rse.subsystems.files.core"/>
+      <import plugin="org.eclipse.rse.subsystems.files.globusonline"/>
+      <import plugin="org.eclipse.rse.subsystems.files.local"/>
+      <import plugin="org.eclipse.rse.subsystems.files.scp"/>
+      <import plugin="org.eclipse.rse.subsystems.files.ssh"/>
+      <import plugin="org.eclipse.rse.subsystems.files.sshglobus"/>
+      <import plugin="org.eclipse.rse.subsystems.processes.core"/>
+      <import plugin="org.eclipse.rse.subsystems.processes.local"/>
+      <import plugin="org.eclipse.rse.subsystems.shells.core"/>
+      <import plugin="org.eclipse.rse.subsystems.shells.local"/>
+      <import plugin="org.eclipse.rse.subsystems.shells.ssh"/>
+      <import plugin="org.eclipse.rse.subsystems.terminals.core"/>
+      <import plugin="org.eclipse.rse.subsystems.terminals.ssh"/>
+      <import plugin="org.eclipse.rse.subsystems.terminals.sshglobus"/>
+      <import plugin="org.eclipse.rse.terminals.ui"/>
+      <import plugin="org.eclipse.rse.ui"/>
+      <import plugin="org.eclipse.rse.useractions"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.browser"/>
+      <import plugin="gov.pnnl.cat.discussion"/>
+      <import plugin="gov.pnnl.cat.alerts"/>
+      <import plugin="org.eclipse.equinox.p2.ui"/>
+      <import plugin="org.eclipse.equinox.p2.ui.sdk"/>
+      <import plugin="org.eclipse.equinox.p2.ui.sdk.scheduler"/>
+      <import plugin="org.eclipse.equinox.p2.updatechecker"/>
+      <import plugin="org.eclipse.core.net"/>
+      <import plugin="org.eclipse.ui.net"/>
+      <import plugin="org.eclipse.equinox.security.ui"/>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="org.eclipse.equinox.p2.operations"/>
+      <import plugin="org.eclipse.equinox.p2.core"/>
+      <import plugin="org.eclipse.equinox.p2.artifact.repository"/>
+      <import plugin="org.eclipse.equinox.p2.repository"/>
+      <import plugin="org.eclipse.equinox.p2.metadata"/>
+      <import plugin="org.eclipse.equinox.p2.engine"/>
+      <import plugin="org.eclipse.equinox.p2.metadata.repository"/>
+      <import plugin="org.eclipse.equinox.event" version="1.3.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.ds" version="1.4.300" match="greaterOrEqual"/>      
+      <import plugin="org.eclipse.equinox.util" version="1.0.500" match="greaterOrEqual"/>
+      <import plugin="org.apache.xerces2"/>
+      <import plugin="org.eclipse.ui.themes" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="com.jcraft.jsch" version="0.1.51" match="greaterOrEqual"/>
+      <import plugin="gov.pnnl.cat.help.user" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="gov.pnnl.cat.net"/>
+      <import plugin="gov.pnnl.velo.datasets"/>
+      <import plugin="gov.pnnl.velo.datasets.help"/>
+      <import plugin="gov.pnnl.velo.sapphire.editor"/>
+      <import plugin="gov.pnnl.velo.tools"/>
+      <import plugin="org.eclipse.e4.ui.css.swt.theme"/>
+      <import plugin="org.eclipse.sapphire.osgi"/>
+      <import plugin="org.eclipse.sapphire.osgi.fragment"/>      
+      <import plugin="org.eclipse.jetty.continuation" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.http" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.io" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.security" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.server" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.servlet" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jetty.util" version="9.2.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.http.jetty" version="3.1.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.equinox.executable" version="3.5.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.rcp" version="4.5.0.v20150603-2331"/>
+      <import feature="org.eclipse.e4.rcp" version="1.4.0.v20150603-0857"/>
+      <import feature="org.eclipse.equinox.p2.core.feature" version="1.3.100.v20150527-1706"/>
+      <import feature="org.eclipse.equinox.p2.user.ui" version="2.2.100.v20150601-1708"/>
+      <import feature="gov.pnnl.cat.core.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="gov.pnnl.common.feature" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="gov.pnnl.velo.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.velo.ui.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.ui.themes"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

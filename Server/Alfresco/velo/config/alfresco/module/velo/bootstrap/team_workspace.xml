@@ -1,0 +1,22 @@
+<view:view xmlns:view="http://www.alfresco.org/view/repository/1.0" 
+           xmlns:cm="http://www.alfresco.org/model/content/1.0"
+           xmlns:app="http://www.alfresco.org/model/application/1.0"
+           xmlns:cat="http://www.pnl.gov/cat/model/content/1.0"
+           xmlns:tax="http://www.pnl.gov/dmi/model/taxonomy/1.0">
+
+   <cm:folder>
+      <app:uifacets/>
+      <cat:teamHomeFolder/>
+      <cm:name>Team Home Folder</cm:name>
+      <app:icon>space-icon-default</app:icon>
+		<view:acl view:inherit="false">
+			<view:ace view:access="ALLOWED">
+				<view:authority>ROLE_OWNER</view:authority>
+				<view:permission>All</view:permission>
+			</view:ace>
+		</view:acl>      
+	  <cm:contains>
+
+      </cm:contains>
+   </cm:folder>
+</view:view>

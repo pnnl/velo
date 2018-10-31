@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cspecExtension xmlns:com="http://www.eclipse.org/buckminster/Common-1.0"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns="http://www.eclipse.org/buckminster/CSpec-1.0">
+	<dependencies>
+		<!-- Required for Build - Dependency listed in feature's feature.xml under dependencies tab -->
+		<dependency name="org.eclipse.rcp" componentType="eclipse.feature" />
+		<dependency name="org.eclipse.e4.rcp" componentType="eclipse.feature" />
+		<dependency name="org.eclipse.equinox.executable" componentType="eclipse.feature" />
+		<dependency name="gov.pnnl.common.feature" componentType="eclipse.feature"/>
+				
+		<!-- Used for getting source files for development -->
+		<dependency name="org.eclipse.rcp.source" componentType="eclipse.feature" />
+		<dependency name="org.eclipse.e4.rcp.source" componentType="eclipse.feature" />
+	</dependencies>
+	
+    <actions>
+        <public name="create.cat.local.product" actor="ant">
+            <actorProperties>
+                <property key="buildFile" value="scripts/product.ant" />
+                <property key="targets" value="create.product" />
+            </actorProperties>
+            <properties>
+                <property key="profile" value="CATCoreProfile" />
+                <property key="iu" value="gov.pnnl.cat.ui.rcp.CAT" />
+                <property key="repository" value="file:////${buckminster.output}/site.p2,${source.sites},http://download.eclipse.org/eclipse/updates/3.7/" />
+            </properties>
+            <products alias="destination" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+        </public>
+		<public name="test.product" actor="ant">
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant"/>
+				<property key="targets" value="test.product"/>
+			</actorProperties>
+			<properties>
+            </properties>
+            <products alias="eclipse.test.dir" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+		</public>
+		<public name="calc.test.coverage" actor="ant">
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant"/>
+				<property key="targets" value="calc.test.coverage"/>
+			</actorProperties>
+			<properties>
+            </properties>
+            <products alias="eclipse.test.dir" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+		</public>		
+		<public name="create.javadoc" actor="ant">  
+			<actorProperties>      
+				<property key="buildFile" value="scripts/product.ant" />      
+				<property key="targets" value="create.javadoc" />  
+			</actorProperties>  
+			<properties>      
+				<property key="source" value="${workspace.root}/bld/rcp" />      
+				<property key="javadoc.output" value="${workspace.root}/javadoc" />
+				<property key="target.platform" value="${workspace.root}/.buckminster/tp" />
+			</properties>
+            <products alias="eclipse.test.dir" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+		</public>   
+		<public name="run.emma" actor="ant">
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant"/>
+				<property key="targets" value="emma"/>
+			</actorProperties>
+			<properties>
+				<property key="source" value="${workspace.root}/bld/rcp" />
+            </properties>
+            <products alias="eclipse.test.dir" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+		</public>			
+		<public name="run.findbugs" actor="ant">  
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant" />      
+				<property key="targets" value="findbugs" />  
+			</actorProperties>  
+			<properties>      
+				<property key="source" value="${workspace.root}/bld/rcp" />
+				<property key="exclude.folder" value="${workspace.root}/bld/rcp/features/gov.pnnl.cat.core.feature.site/properties" />            
+			</properties>
+			<products alias="eclipse.test.dir" base="${buckminster.output}">
+                <path path="cat.core.${target.ws}.${target.os}.${target.arch}/" />
+            </products>
+		</public>		
+		<public name="publish.product" actor="ant">
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant"/>
+				<property key="targets" value="update.p2"/>
+			</actorProperties>
+			<properties>
+				<property key="script.folder" value="scripts"/>
+                <property key="composite.repository" value="${p2.output.site}"/>
+                <property key="comp.repository.name" value="Velo Repository"/>
+                <property key="app.repository" value="${p2.output.site}/core"/>
+				<property key="app.remote.repository" value="${p2.remote.site}/core"/>
+                <property key="app.repository.name" value="Velo Core Repository"/>
+                <property key="build.version" value="${p2.build.version}"/>
+            
+            </properties>
+			<prerequisites alias="action.requirements">
+				<attribute name="site.p2"/>
+			</prerequisites>
+		</public>	
+		<public name="mirror.target" actor="ant">
+			<actorProperties>
+				<property key="buildFile" value="scripts/product.ant" />
+				<property key="targets" value="mirror.p2"/>
+			</actorProperties>
+			<properties>
+				<property key="app.repository.name" value="Indigo Update Repository"/>
+                <property key="app.repository" value="http://download.eclipse.org/eclipse/updates/3.7/"/>
+				<property key="source.repository" value="http://download.eclipse.org/eclipse/updates/3.7/"/>
+                <property key="composite.repository" value="http://download.eclipse.org/eclipse/updates/3.7/"/>
+            </properties>
+		</public>	
+    </actions>
+</cspecExtension>

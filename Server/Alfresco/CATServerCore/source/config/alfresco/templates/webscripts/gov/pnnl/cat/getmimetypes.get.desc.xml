@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Get Mimetypes</shortname>
+  <description>Get all the mimetypes and their mappings to display names and file extensions</description>
+  <url>/cat/mimetypes/{mapType}</url>  
+  <authentication>none</authentication>
+  <transaction>none</transaction>
+</webscript>

@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-SymbolicName: org.eclipse.rse.services.sshglobus
+Bundle-Activator: org.eclipse.rse.internal.services.sshglobus.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rse.services;bundle-version="[3.1.0,4.0.0)",
+ com.jcraft.jsch;bundle-version="[0.1.31,1.0.0)",
+ org.apache.commons,
+ org.eclipse.rse.subsystems.files.core;bundle-version="3.3.1",
+ org.eclipse.rse.core;bundle-version="3.3.100",
+ org.apache.commons.net;bundle-version="3.2.0",
+ org.eclipse.rse.ui;bundle-version="3.3.100",
+ org.eclipse.equinox.security,
+ org.eclipse.ui;bundle-version="3.7.0",
+ org.eclipse.rse.globusonline;bundle-version="1.0.0"
+Bundle-Version: 3.2.100.201305201712
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Bundle-ClassPath: .
+Provide-Package: org.eclipse.rse.internal.services.sshglobus,
+ org.eclipse.rse.internal.services.sshglobus.files,
+ org.eclipse.rse.internal.services.sshglobus.files.scp,
+ org.eclipse.rse.internal.services.sshglobus.terminal
+
+

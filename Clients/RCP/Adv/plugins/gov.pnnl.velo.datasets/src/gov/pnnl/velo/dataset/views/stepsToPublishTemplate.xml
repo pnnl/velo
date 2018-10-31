@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+
+<br/><br/><br/><br/>
+<li style="image" value="checkStatusForPrepare"><b>1. Prepare</b><a href="help_publishingFirstStepGatheringInfo"><img href="help"/></a></li>
+<li bindent="10" style="text" value="">Gather your data and information.</li>
+<br/><br/>
+
+
+
+<li style="image" value="checkStatusDescribeData"><b>2. Describe Data</b><a href="help_publishingSecondStepEnteringMetadata"><img href="help"/></a></li>
+<li bindent="10" style="text" value="">describeDataStatus</li>
+<li bindent="10" style="text" value="">Fill out relevant metadata.</li>
+<li bindent="30" style="text" value="a."><a href="datasetMetadata">Dataset Metadata</a></li>
+<li bindent="30" style="text" value="b."><a href="landingPage">Landing Page configuration</a></li>
+<li bindent="30" style="text" value="c."><a href="ostiInfo">OSTI required information</a></li>
+<br/><br/>
+
+
+
+<li style="image" value="checkStatusForUploadData"><b>3. Upload Data</b><a href="help_publishingThirdStepUploadYourData"><img href="help"/></a></li>
+<li bindent="10" style="text" value="">uploadDataStatus</li>
+<li bindent="10" style="text" value="">Add your files to your <a href="dataFolder">dataset's Data folder</a></li>
+<br/><br/>
+
+
+<li style="image" value="checkStatusForDraftDOI"><b>4. Get a Draft DOI</b> (optional)<a href="help_publishingFourthStepGettingDraftDoi"><img href="help"/></a></li>
+<li bindent="10" style="text" value="">draftDOIStatus</li>
+<li bindent="10" style="text" value=""><a href="draftDOI">Get a draft DOI</a> from OSTI that you can cite before your data is published</li>
+<br/><br/>
+
+
+<li style="image" value="checkStatusForReview"><b>5. Review Your Data</b><a href="help_publishingFifthStepDatasetReview"><img href="help"/></a></li>
+<li bindent="10" style="text" value="">Consult <a href="reviewDC">DC</a> review and <a href="reviewIP">IP</a> to ensure data is compliant with relevant legislature and protected</li>
+<br/><br/>
+
+
+<li style="image" value="checkStatusForPublish"><b>6. Publish</b><a href="help_publishingSixthStepPublishYourData"><img href="help"/></a></li>
+<li bindent="10" style="text" value=""><a href="publish">Publish</a> final version of dataset to OSTI</li>
+<br/><br/>
+
+
+</form>

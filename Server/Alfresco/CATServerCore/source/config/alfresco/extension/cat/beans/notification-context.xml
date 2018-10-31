@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+	<!-- Notification gets its own pool, since there are so many threads -->
+	<bean id="notificationThreadPool" class="gov.pnnl.cat.util.PrioritizedThreadPoolExecutor" >
+	   <constructor-arg>
+	      <bean class="gov.pnnl.cat.util.PrioritizedThreadFactory">
+   	         <property name="priority">
+   	            <value>high</value>
+             </property>
+             <property name="label">
+                <value>Notification Thread Pool</value>
+             </property>
+          </bean>
+	   </constructor-arg>	
+	   <constructor-arg>
+	      <value>${notification.thread.pool.size}</value>
+	   </constructor-arg>
+	</bean>
+
+
+    <!--  Event Notification aspect -->
+    <bean id="notifiableAspectBehavior" class="gov.pnnl.cat.policy.notifiable.NotifiableAspectBehavior" parent="basePolicy">
+    	<property name="propertySkipList">
+    		<list>
+    			<value>{http://www.alfresco.org/model/application/1.0}editInline</value>
+    			<value>{http://www.alfresco.org/model/system/1.0}node-dbid</value>
+    			<value>{http://www.alfresco.org/model/system/1.0}store-protocol</value>
+    			<value>{http://www.alfresco.org/model/system/1.0}store-identifier</value>
+    		</list>
+    	</property>
+    	<property name="notificationUtils">
+    		<ref bean="notificationUtils" />
+    	</property>
+        <property name="enabled" value="${notification.enabled}"/>
+    </bean> 
+    
+     <bean id="raw-allevents-destination" class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic" autowire="constructor" abstract="false" singleton="true" lazy-init="default" dependency-check="default">
+ 		 <constructor-arg value="dmi.publish.allevents" /> 
+       <constructor-arg value="${notification.server.id}" />
+ 	 </bean>    
+    
+    <bean id="notificationUtils" class="gov.pnnl.cat.util.NotificationUtils">
+        <property name="searchService">
+            <ref bean="searchService"/>
+        </property>    
+    	<property name="nodeService">
+    		<ref bean="nodeService"/>
+    	</property>
+        <property name="authenticationComponent">
+            <ref bean="authenticationComponent" />
+        </property> 	         
+        <property name="namespacePrefixResolver">
+            <ref bean="namespaceService" />
+        </property>
+	    <property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+    	<property name="template">
+    		<ref bean="jmsTemplate" />
+    	</property>
+    	<property name="destination">
+    		<ref bean="raw-allevents-destination" />
+    	</property>
+    	<property name="notificationThreadPool">
+    		<ref bean="notificationThreadPool"/>
+    	</property>
+        <property name="notificationEnabled" value="${notification.enabled}"/>    	
+    </bean>
+
+</beans>

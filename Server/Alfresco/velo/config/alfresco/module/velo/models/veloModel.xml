@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Definition of new Model -->
+<model name="velo:model" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>ASCEM Model</description>
+	<version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.pnl.gov/cat/model/content/1.0" prefix="cat" />
+	</imports>
+
+	<!-- Introduction of new namespaces defined by this model -->
+	<namespaces>
+		<!-- Deprecated -->
+		<!-- namespace uri="http://www.pnl.gov/ascem/model/content/1.0" prefix="ascem" 
+			/ -->
+		<namespace uri="http://www.pnl.gov/velo/model/content/1.0"
+			prefix="velo" />
+		<namespace uri="http://www.pnl.gov/velo/model/content/adhoc/1.0"
+			prefix="adhoc" />
+	</namespaces>
+
+	<types>
+
+	</types>
+
+	<aspects>
+
+		<aspect name="velo:webView">
+			<title>Associate a web view with a resource</title>
+			<properties>
+				<property name="velo:url">
+					<title>URL</title>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+		
+		<aspect name="velo:jobProps">
+			<title>Job Properties</title>
+			<properties>
+				<property name="velo:status">
+					<title>Status</title>
+					<type>d:text</type>
+				</property>
+				<property name="velo:cmsuser">
+					<title>Status</title>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- DEPRECATED - DO NOT USE (later we will run a patch to remove) -->
+		<aspect name="velo:typedCollection">
+			<title>Typed Collection</title>
+			<properties>
+			</properties>
+		</aspect>
+
+		<aspect name="velo:typedResource">
+			<title>Typed Resource</title>
+			<properties>
+				<property name="velo:mimetype">
+					<title>Mimetype</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- resources with this aspect will not get synced with the wiki, even 
+			if WIKI_AUTO_SYNC is true -->
+		<aspect name="velo:wikiIgnore">
+			<title>Wiki Ignore</title>
+			<properties>
+				<property name="velo:wikiIgnore">
+					<title>wiki ignore</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- resources with this aspect will always get synced with the wiki, even 
+			if WIKI_AUTO_SYNC is false -->
+		<aspect name="velo:wikiSync">
+			<title>Wiki Sync</title>
+			<properties>
+			</properties>
+		</aspect>
+
+		<!-- Copyrighted files need to get rid of content after their initial import -->
+		<aspect name="velo:copyrighted">
+			<title>Copyrighted</title>
+			<properties>
+				<property name="velo:hasCopyright">
+					<title>Has Copyright</title>
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="velo:adhocMetadata">
+			<properties>
+				<property name="velo:creator">
+					<title>Creator</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="velo:created">
+					<title>Date Created</title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="velo:modifier">
+					<title>Last Modifier</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="velo:modified">
+					<title>Date Modified</title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+		</aspect>
+		
+		 <aspect name="adhoc:swpAdhocProperties">
+                 <title>SWPAdHocProperties</title>
+                 <properties>
+                   <property name="adhoc:DataSource">
+                   <title>Original Data Source</title>
+                   <type>d:text</type>
+                   <default></default>
+                   <constraints>
+                       <constraint type="LIST">
+                           <parameter name="allowedValues">
+                               <list>
+                               	<value></value>
+                                   <value>NMT</value>
+                                   <value>Univ of Utah</value>
+                                   <value>Chaparral</value>
+                                   <value>AIST</value>
+                                   <value>Schlumberger</value>
+                                   <value>Univ of Missouri</value>
+                                   <value>LANL</value>
+                                   <value>Sandia National Lab</value>
+                                   <value>PNNL</value>
+                                   <value>NETL/DOE</value>
+                                   <value>Univ of Oklahoma</value>
+                               </list>
+                           </parameter>
+                       </constraint>
+                   </constraints>
+              </property>
+              
+               <property name="adhoc:DataType">
+                   <title>Data Type</title>
+                   <type>d:text</type>
+                   <default></default>
+                   <constraints>
+                       <constraint type="LIST">
+                           <parameter name="allowedValues">
+                               <list>
+                               	<value></value>
+                                   <value>Raw Data</value>
+                                   <value>Processed Data</value>
+                                   <value>Report</value>
+                                   <value>Model</value>
+                                   <value>Simulation Result</value>
+                                   <value>Publication</value>
+                                   <value>Presentation</value>
+                                   <value>Abstract</value>
+                               </list>
+                           </parameter>
+                       </constraint>
+                   </constraints>
+                       </property>
+                       <property name="adhoc:Location">
+                              <title>Location</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:SiteName">
+                              <title>Site Name</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:SampleID">
+                              <title>Sample ID</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:WellNumber">
+                              <title>Well Number</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:ProcessingDate">
+                              <title>Processing Date</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:Description">
+                              <title>Description</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:GeographicInformation">
+                              <title>Geographic Information</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:Keyword">
+                              <title>Keyword</title>
+                              <type>d:text</type>
+                       </property>
+                 </properties>
+      </aspect>
+		<!-- SumitPurohit: 2/23/17 New aspect specific to SACCS-Velo. Ideally this and adhoc:swpAdhocProperties above should be 
+		in separate model file but because there are not many such customization, it is kept here -->
+	  <aspect name="adhoc:saccsAdhocProperties">
+                 <title>SACCSAdHocProperties</title>
+                 <properties>
+                   <property name="adhoc:SACCSDataSource">
+                   <title>Original Data Source</title>
+                   <type>d:text</type>
+                   <default></default>
+                   <constraints>
+                       <constraint type="LIST">
+                           <parameter name="allowedValues">
+                               <list>
+                               	<value></value>
+                                   <value>CGS</value>
+                                   <value>PASA</value>
+                                   <value>PetroSA</value>
+                                   <value>Battelle</value>
+                                   <value>Other</value>
+                               </list>
+                           </parameter>
+                       </constraint>
+                   </constraints>
+              </property>
+              
+              <property name="adhoc:SACCSOtherDataSource">
+                   <title>Other Data Source</title>
+                   <type>d:text</type>
+                   <default></default>
+              </property>
+              
+               <property name="adhoc:SACCSDataType">
+                   <title>Data Type</title>
+                   <type>d:text</type>
+                   <default></default>
+                   <constraints>
+                       <constraint type="LIST">
+                           <parameter name="allowedValues">
+                               <list>
+                               	<value></value>
+                               	   <value>Well Data</value>
+                               	   <value>Well Log</value>
+                                   <value>Core Data</value>
+                                   <value>Seismic Interpretation</value>
+                                   <value>Model</value>
+                                   <value>Simulation Result</value>
+                                   <value>Presentations</value>
+                                   <value>Publication</value>
+                                   <value>Other</value>
+                               </list>
+                           </parameter>
+                       </constraint>
+                   </constraints>
+                 </property>
+                       
+                 <property name="adhoc:SACCSOtherDataType">
+                              <title>Other Data Type</title>
+                              <type>d:text</type>
+                 </property>
+                 
+                 
+                       <property name="adhoc:SACCSWellName">
+                              <title>Well Name</title>
+                              <type>d:text</type>
+                              <default></default>
+		                       <constraints>
+		                       <constraint type="LIST">
+		                           <parameter name="allowedValues">
+		                               <list>
+		                               	<value></value>
+		                               	   <value>ZA</value>
+		                               	   <value>ZB</value>
+		                                   <value>ZC</value>
+		                                   <value>ZD</value>
+		                                   <value>ZE</value>
+		                               	   <value>ZE 1/71</value>
+		                               	   <value>ZF</value>
+		                                   <value>ZF 1/71</value>
+		                                   <value>ZF 1/72</value>
+		                                   <value>ZG</value>
+		                                   <value>ZH</value>
+		                                   <value>ZU</value>
+		                               </list>
+		                           </parameter>
+		                       </constraint>
+		                   </constraints>
+                       </property>
+                       
+                       <property name="adhoc:SACCSProcessingDate">
+                              <title>Processing Date</title>
+                              <type>d:text</type>
+                       </property>
+                       
+                       <property name="adhoc:SACCSConfidentialInfo">
+                              <title>Confidential Information</title>
+                              <type>d:text</type>
+                               <default></default>
+                   <constraints>
+                       <constraint type="LIST">
+                           <parameter name="allowedValues">
+                               <list>
+                               	<value></value>
+                                   <value>TRUE</value>
+                                   <value>FALSE</value>
+                               </list>
+                           </parameter>
+                       </constraint>
+                       </constraints>
+                       </property>
+
+                       <property name="adhoc:SACCSDescription">
+                              <title>File Description</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:SACCSGeographicInformation">
+                              <title>Geographic Information</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:SACCSKeyword">
+                              <title>Keyword</title>
+                              <type>d:text</type>
+                       </property>
+                       <property name="adhoc:SACCSLeadAuthor">
+                              <title>Lead Author</title>
+                              <type>d:text</type>
+                       </property>
+                 </properties>
+      </aspect>
+		
+	</aspects>
+</model>

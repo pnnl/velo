@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition>
+
+	<import>
+		<package>gov.pnnl.velo.sapphire</package>
+		<package>gov.pnnl.velo.sapphire.ui</package>
+		<package>gov.pnnl.velo.sapphire.editor</package>
+		<package>org.eclipse.sapphire.ui.forms.swt</package>
+		<package>gov.pnnl.velo.sapphire.support</package>
+	</import>
+
+	<editor-page>
+		<id>supportingDocs</id>
+		<page-name>Supporting Documentation</page-name>
+		<page-header-text>Dataset supporting documentation details</page-header-text>
+		<element-type>gov.pnnl.velo.sapphire.support.SupportingDocsWrapper</element-type>
+		<root-node>
+			<node>
+				<label>Dataset Supporting Documentation</label>
+				<property>SupportingDocs</property>
+				<section>
+					<label>Documents describing methodologies</label>
+					<content>
+						<property-editor>
+							<property>Methods</property>
+							<hint>
+								<name>factory</name>
+								<value>CompactListPropertyEditorPresentation$Factory</value>
+							</hint>
+							<child-property>
+								<property>Path</property>
+								<action-handler>
+									<action>Sapphire.Browse</action>
+									<impl>gov.pnnl.velo.sapphire.DatasetFilePathBrowseActionHandler</impl>
+                                    <param>
+                                    <name>fileDialogTitle</name>
+                                    <value>Select Methods File</value>
+                                    </param>
+                                    <param>
+                                    <name>fileDialogMessage</name>
+                                    <value>Select a file that describes the methods used in creating this dataset.</value>
+                                    </param>
+								</action-handler>
+								<hint>
+									<name>assist.contributors</name>
+									<value>HelpActionContributor</value>
+								</hint>
+							</child-property>
+						</property-editor>
+					</content>
+				</section>
+				<section>
+					<label>Data quality details</label>
+					<content>
+						<property-editor>
+							<property>QualitySummary</property>
+							<documentation>
+								<content>
+									Data quality summary. Information about the fidelity of relationships, data quality and accuracy tests,
+									omissions, selection criteria, generalization, and definitions used to derive the data.
+									Level of data processing
+									done(example: raw data, data converted to a different format etc. )
+								</content>
+							</documentation>
+							<hint>
+								<name>assist.contributors</name>
+								<value>HelpActionContributor</value>
+							</hint>
+						</property-editor>
+						
+						<property-editor>
+							<property>DataQuality</property>
+							<hint>
+								<name>factory</name>
+								<value>CompactListPropertyEditorPresentation$Factory</value>
+							</hint>
+							<child-property>
+								<property>Path</property>
+								<action-handler>
+									<action>Sapphire.Browse</action>
+									<impl>gov.pnnl.velo.sapphire.DatasetFilePathBrowseActionHandler</impl>
+                                    <param>
+                                    <name>fileDialogTitle</name>
+                                    <value>Select Data Quality File</value>
+                                    </param>
+                                    <param>
+                                    <name>fileDialogMessage</name>
+                                    <value>Select a file that describes the quality of this dataset's data.</value>
+                                    </param>
+								</action-handler>
+								<hint>
+									<name>assist.contributors</name>
+									<value>HelpActionContributor</value>
+								</hint>
+							</child-property>
+						</property-editor>
+					</content>
+				</section>
+			</node>
+		</root-node>
+	</editor-page>
+
+</definition>
+						

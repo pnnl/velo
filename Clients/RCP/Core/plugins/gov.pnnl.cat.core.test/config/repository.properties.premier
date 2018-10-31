@@ -1,0 +1,24 @@
+# Server properties
+#
+hostname=premiernetwork.velo.pnnl.gov
+#hostname=172.26.64.248
+http.port=443
+#http.port=80
+notification.server.id=alfresco
+
+#
+# Generated properties
+#
+http.url=https://${hostname}:${http.port}
+http.url.alfresco = ${http.url}/alfresco
+jms.url=http://${hostname}/activemq
+
+# Required by AlfrescoWebserviceFactory
+webservice.location=${http.url.alfresco}/api
+
+#EUS properties
+#eus.url=https://eus.emsl.pnl.gov
+eus.url=https://d-eus.emsl.pnl.gov
+eus.home=${eus.url}/Portal/?catUser=true
+eus.forgot.password=${eus.url}/Portal/portal/premier_portal_forgot_password.jsp
+eus.change.password=${eus.url}/Portal/portal/premier_portal_forgot_password.jsp

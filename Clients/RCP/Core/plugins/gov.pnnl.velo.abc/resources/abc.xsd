@@ -1,0 +1,396 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- The root element -->
+	<xs:element name="abc" type="typedef_abc" />
+
+	<xs:annotation>
+		<xs:documentation>
+			The ABC schema consists of: components, rules, and styles (to be developed yet).
+			A single components
+			contains all the containers and fields that will populate a window or (tab).
+
+			Rules have the scope over the entire document so that rules can be enforced across multiple components so
+			long as all the
+			components have been instantiated.
+
+			Keys are used to access the data model and to build rules. They must be unique.
+		</xs:documentation>
+
+	</xs:annotation>
+	<xs:complexType name="typedef_abc">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<!-- alternative names: ui, window, screen, panel. -->
+			<xs:element name="component" type="typedef_component" minOccurs="1" />
+			<xs:element name="ruleset" type="typedef_ruleset" minOccurs="0" maxOccurs="1" />
+			<xs:element name="styles" type="typedef_styles" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="version" type="typedef_version" />
+	</xs:complexType>
+
+
+	<!-- A component is a user interface definition that has a set of containers -->
+	<xs:complexType name="typedef_component">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="containergroup" />
+		</xs:sequence>
+		<xs:attribute name="user_object" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="hierarchy_name" type="xs:string" />
+	</xs:complexType>
+
+
+	<!-- Containers define the layout of fields or complex groups of fields and other containers -->
+	<xs:group name="containergroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="section" type="typedef_section" />
+				<xs:element name="set" type="typedef_set" />
+				<xs:element name="expanded_list" type="typedef_expanded_list" />
+				<xs:element name="tabs" type="typedef_tabs" />
+
+				<xs:element name="table" type="typedef_table" />
+				<xs:element name="row" type="typedef_row" />
+
+				<xs:element name="custom_table" type="typedef_custom_table" />
+				<xs:element name="columns" type="typedef_columns" />
+				<xs:element name="comment" type="xs:string" minOccurs="0" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+
+	<!-- Fields are the user input constructs -->
+	<xs:group name="fieldgroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="list" type="typedef_list_items" />
+				<xs:element name="choice" type="typedef_choices" />
+				<xs:element name="menu" type="typedef_menu_items" />
+				<xs:element name="check_box" type="typedef_globalattributes" />
+				<xs:element name="double" type="typedef_or_file" />
+				<xs:element name="integer" type="typedef_or_file" />
+				<xs:element name="string" type="typedef_stringattributes" />
+				<xs:element name="textarea" type="typedef_textarea" />
+				<xs:element name="file" type="typedef_stringattributes" />
+
+				<!-- Legacy remove when conversion to vabc is complete -->
+				<xs:element name="object" type="typedef_object" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	<!-- #################################### Containers #################################### -->
+
+	<!-- sections can contain both containers and fields. -->
+	<xs:complexType name="typedef_section">
+		<xs:complexContent>
+			<xs:extension base="typedef_globalattributes">
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:choice>
+						<xs:group ref="containergroup" minOccurs="0" maxOccurs="unbounded" />
+						<xs:group ref="fieldgroup" minOccurs="0" maxOccurs="unbounded" />
+					</xs:choice>
+				</xs:sequence>
+				<xs:attribute name="collapsible" type="xs:boolean" default="false" />
+				<xs:attribute name="collapse" type="xs:boolean" default="false" />
+				<xs:attribute name="user_object" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+      <!-- A set defines a repeating group of fields, one per the specified type. The type values are specified by the application 
+		(DataProvider.getObjects) For example, if your application defines a type named regions, the fields within the set are repeated 
+		once per region via getObjects. -->
+	<xs:complexType name="typedef_set">
+		<xs:sequence>
+			<xs:group ref="fieldgroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="link" type="xs:string" />
+		<xs:attribute name="collapsible" type="xs:boolean" default="false" />
+		<xs:attribute name="collapse" type="xs:boolean" default="false" />
+		<xs:attribute name="hideifempty" type="xs:boolean" default="false" />
+		<xs:attribute name="alignment" type="xs:string" default="vertical" />
+		<xs:attribute name="user_object" type="xs:string" />
+		<!-- Legacy -->
+		<xs:attribute name="labeled" type="xs:boolean" default="false" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_expanded_list">
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="key" type="typedef_expandedlist_keys" />
+			<xs:element name="section" type="typedef_section" />
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="user_object" type="xs:string" />
+		<xs:attribute name="auto_sort" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_custom_table">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="column" type="typedef_column" />
+		</xs:sequence>
+		<xs:attribute name="user_object" type="xs:string" />
+		<xs:attribute name="visible_rows" type="xs:integer" />
+		<xs:attribute name="fixed" type="xs:boolean" default="false"/>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_column">
+		<xs:sequence>
+			<xs:group ref="fieldgroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="required" type="xs:boolean" default="false" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_expandedlist_keys">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="double" type="typedef_or_file" />
+			<xs:element name="string" type="typedef_stringattributes" />
+		</xs:choice>
+		<xs:attribute name="key" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_table">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="double" type="typedef_or_file" />
+				<xs:element name="integer" type="typedef_or_file" />
+				<xs:element name="string" type="typedef_stringattributes" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_tabs">
+		<xs:sequence>
+			<xs:group ref="containergroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="key" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_row">
+		<xs:sequence>
+			<xs:group ref="containergroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="key" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_columns">
+		<xs:sequence>
+			<xs:group ref="containergroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="hideifempty" type="xs:boolean" default="false" />
+		<xs:attribute name="user_object" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_group">
+		<xs:sequence>
+			<xs:group ref="fieldgroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="enabled" type="xs:boolean" default="true" />
+		<xs:attribute name="hideifempty" type="xs:boolean" default="false" />
+
+		<!-- Legacy attribute remove when using new ABC -->
+		<xs:attribute name="simulator_key" type="xs:string" />
+	</xs:complexType>
+
+	<!-- Legacy attribute remove when using new ABC -->
+	<xs:complexType name="typedef_object">
+		<xs:complexContent>
+			<xs:extension base="typedef_globalattributes">
+				<xs:attribute name="type" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- #################################### Fields #################################### -->
+
+    <!-- A numeric input or a file entry with file browse button -->
+	<xs:complexType name="typedef_or_file">
+		<xs:complexContent>
+			<xs:extension base="typedef_numericattributes">
+				<xs:attribute name="could_be_file" type="xs:boolean" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="typedef_menu_items">
+		<xs:complexContent>
+			<xs:extension base="typedef_globalattributes">
+				<xs:sequence minOccurs="1" maxOccurs="unbounded">
+					<xs:element name="item" type="typedef_globalattributes" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_textarea">
+		<xs:complexContent>
+			<xs:extension base="typedef_inputattributes">
+				<xs:attribute name="visible_rows" type="xs:integer" />
+				<xs:attribute name="has_action" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_list_items">
+		<xs:complexContent>
+			<xs:extension base="typedef_inputattributes">
+				<xs:attribute name="selection">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="single" />
+							<xs:enumeration value="multiple" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="absolute_min" type="xs:double" />  <!--  should be integer?  Change name? -->
+				<xs:attribute name="visible_rows" type="xs:integer" />
+				<xs:attribute name="type" type="xs:string" />
+				<xs:attribute name="hideifempty" type="xs:boolean" default="false" />
+				<xs:attribute name="link" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_choices">
+		<xs:complexContent>
+			<xs:extension base="typedef_globalattributes">
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="group" type="typedef_group" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+				<xs:attribute name="type" type="xs:string" />
+				<xs:attribute name="link" type="xs:string" />
+				<xs:attribute name="help" type="xs:string" />
+				<xs:attribute name="hideifempty" type="xs:boolean" default="false" />
+				<xs:attribute name="internal_default" type="xs:string" />
+				<xs:attribute name="disabled" type="xs:boolean" />
+				<xs:attribute name="disabled_items" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+
+	<!-- #################################### Rules #################################### -->
+
+	<xs:complexType name="typedef_ruleset">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="calculation" type="typedef_calculation" minOccurs="0" />
+				<xs:element name="contextrule" type="typedef_contextrule" minOccurs="0" />
+				<xs:element name="comment" type="xs:string" minOccurs="0" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_contextrule">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+			<xs:element name="expression" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="comment" type="xs:string" minOccurs="0" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="trigger" type="xs:string" />
+		<xs:attribute name="action">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="enable" />
+					<xs:enumeration value="disable" />
+					<xs:enumeration value="show" />
+					<xs:enumeration value="hide" />
+					<xs:enumeration value="warn" />
+					<xs:enumeration value="set" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" type="xs:string" /> <!-- for set action only -->
+	</xs:complexType>
+
+	<xs:complexType name="typedef_calculation">
+		<xs:sequence minOccurs="0" maxOccurs="1">
+			<xs:element name="comment" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="trigger" type="xs:string" />
+		<xs:attribute name="expression" type="xs:string" />
+	</xs:complexType>
+
+	<!-- #################################### Styles #################################### -->
+
+	<xs:complexType name="typedef_styles">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<!-- TODO this is a placeholder -->
+			<xs:element name="calculation" type="typedef_calculation" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- #################################### Simple Types #################################### -->
+
+	<xs:simpleType name="typedef_version">
+		<xs:restriction base="xs:token">
+			<!-- 2.0.0 -->
+			<xs:pattern value="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="typedef_globalattributes">
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="label" type="xs:string" />
+		<xs:attribute name="required" type="xs:boolean" />
+		<xs:attribute name="default" type="xs:string" />
+		<xs:attribute name="enabled" type="xs:boolean" default="true" />   <!-- To put in options that will be implemented to show future direction -->
+		<!-- Legacy attribute below - remove when using new ABC -->
+		<xs:attribute name="simulator_key" type="xs:string" />
+		<xs:attribute name="labeled" type="xs:boolean" default="false" />
+	</xs:complexType>
+
+	<xs:complexType name="typedef_inputattributes">
+		<xs:complexContent>
+			<xs:extension base="typedef_globalattributes">
+				<xs:attribute name="help" type="xs:string" />
+				<xs:attribute name="readonly" type="xs:boolean" default="false" /> <!-- A read only field - not an unimplemented feature -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_numericattributes">
+		<xs:complexContent>
+			<xs:extension base="typedef_inputattributes">
+				<xs:attribute name="units" type="xs:string" />
+				<xs:attribute name="default_unit" type="xs:string" />
+
+				<!-- Validation -->
+				<xs:attribute name="absolute_min" type="xs:double" />
+				<xs:attribute name="absolute_max" type="xs:double" />
+				<xs:attribute name="suggested_min" type="xs:double" />
+				<xs:attribute name="suggested_max" type="xs:double" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_stringattributes">
+		<xs:complexContent>
+			<xs:extension base="typedef_inputattributes">
+				<!-- Validation -->
+				<xs:attribute name="regex" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

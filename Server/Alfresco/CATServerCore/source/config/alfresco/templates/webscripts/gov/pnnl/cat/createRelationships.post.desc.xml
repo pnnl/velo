@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Relationships</shortname>
+  <description>Create one or more provenance relationships connecting two nodes</description>
+  <url>/cat/createRelationships</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

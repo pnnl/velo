@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Copy Files</shortname>
+  <description>Copy a set of files into some other folder</description>
+  <url>/velo/copyFiles?overwrite={overwrite}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

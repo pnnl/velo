@@ -1,0 +1,254 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Pacific Northwest National Laboratory
+ *
+ * Contributors:
+ *     andrew.piatt@pnnl.gov (September 2015)
+ * 
+ *******************************************************************************/
+
+.MTrimmedWindow.topLevel {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	margin-right: 20px;
+}
+
+.MPartStack {
+	font-size: 10;
+	font-family: 'Segoe UI';
+	swt-simple: true;
+	swt-tab-renderer:
+		url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+
+	padding: 1px 6px 8px 6px; /* top left bottom right */
+	swt-tab-outline: #282828;
+	swt-outer-keyline-color: #282828;
+	swt-unselected-tabs-color: #656565 #6D6D6D #656565 99% 100%;
+	swt-shadow-visible: false;
+	
+	swt-selected-tab-fill: #878789; /* main non-active part tab and wrapper background color */
+	chrome-selected-tab-fill-highlight: #d0d0d0;
+	
+	chrome-selected-tab-color: #B35E0B;
+	chrome-unselected-tab-color: #d0d0d0;
+	color: #FFFFFF;
+	
+	swt-shadow-color: #282828;
+	
+	chrome-shiney-shadow: false;
+	swt-mru-visible: true;
+	
+	swt-corner-radius: 6px;
+}
+
+.MPartStack.active {
+	swt-inner-keyline-color: #FFFFFF;
+	swt-tab-outline: #282828;
+	swt-outer-keyline-color: #282828;
+	swt-unselected-tabs-color: #656565 #6D6D6D #656565 99% 100%; /* part header and background colors */
+	
+	swt-selected-tab-fill: #B35E0B; /* active part tab and wrapper background color */
+	chrome-selected-tab-fill-highlight: #d0d0d0;
+	
+	chrome-selected-tab-color: #B35E0B;
+	chrome-unselected-tab-color: #d0d0d0;
+	chrome-shiney-shadow: false;
+}
+
+.MPartStack.active.noFocus {
+	swt-selected-tab-fill: #989898 #9D9D9D #989898 99% 100%;
+	swt-unselected-tabs-color: #656565 #6D6D6D #656565 99% 100%;
+}
+
+.MPartStack.empty {
+	swt-unselected-tabs-color: #282828 #282828 #282828 99% 100%;
+	swt-tab-outline: #282828;
+	swt-outer-keyline-color: #282828;
+}
+
+.MPartStack > CTabItem {
+	color: #C8C8C9;
+}
+
+.MPartStack > CTabItem:selected {
+	color: #E8E8E9;
+}
+
+.MTrimmedWindow {
+  	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background-color: #656565; /* Primary background */
+}
+
+.MTrimBar {
+	background-color: #B35E0B #C06B17 #B35E0B 45% 100%; /* footer bar */
+}
+
+.MTrimBar#org-eclipse-ui-main-toolbar {
+	background-color: #B35E0B #C06B17 #B35E0B 45% 100%; /* header bar */
+}
+
+CTabFolder Composite Label {
+	color: #282828;
+}
+
+CTabFolder Composite #gov-pnnl-cat-ui-rcp-views-TableExplorerView Label {
+	color: #E8E8E9;
+}
+
+ToolBar,
+ToolBar ToolItem,
+Composite.MToolControl Toolbar,
+Composite.MToolControl Toolbar ToolItem {
+	color: #E8E8E9 !important;
+}
+
+Hyperlink {
+	background-color: inherit;
+	color: #0077A4;
+}
+
+Button {
+	background-color: #e8e8e9;
+	color: #282828;
+}
+
+Composite {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+#org-eclipse-ui-ProgressBar Composite,
+#org-eclipse-ui-StatusLine Composite {
+	background-color: #B35E0B #C06B17 #B35E0B 45% 100%;
+	color: #000000;
+}
+
+#gov-pnnl-cat-ui-rcp-perspectives-DataBrowser Composite,
+#gov-pnnl-cat-ui-rcp-views-databrowser-ActionsView Composite,
+#gov-pnnl-cat-ui-rcp-views-databrowser-NavigationView Composite {
+	background-color: #656565;
+	color: #E8E8E9;
+}
+
+Composite Section {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+UserFilteredTree Composite Text {
+	color: #989898;
+}
+
+CatStyledText {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+BrowserViewer {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+Combo,
+SimpleSearchComposite {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+ScrolledComposite {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+LayoutComposite, Browser {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+LayoutComposite Section LayoutComposite Label,
+LayoutComposite Section LayoutComposite Text {
+	background-color: inherit;
+	color: #282828;
+}
+
+ScrolledForm {
+  background-color: inherit;
+  color: #282828;
+}
+
+Combo {
+	background-color: #E8E8E9;
+	color: #282828;
+}
+
+.MToolControl.TrimStack {
+	frame-image:  url(./win7TSFrame.png);
+	handle-image:  url(./win7Handle.png);
+}
+
+CTabFolder.MArea .MPartStack,CTabFolder.MArea .MPartStack.active {
+	swt-shadow-visible: false;
+}
+
+CTabFolder Canvas {
+	background-color: #282828;
+}
+
+#org-eclipse-ui-editorss {
+	swt-tab-renderer:
+		url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+	swt-unselected-tabs-color: #F0F0F0 #F0F0F0 #F0F0F0 100% 100%;
+	swt-outer-keyline-color: #B4B4B4;
+	swt-inner-keyline-color: #F0F0F0;
+	swt-tab-outline: #F0F0F0;
+	color: #F0F0F0;
+	swt-tab-height: 8px;
+	padding: 0px 5px 7px;
+}
+
+#org-eclipse-ui-trim-status{
+	chrome-border-top-visible: true;
+	chrome-border-top-color: #282828;
+	chrome-padding-top: 1;
+}
+
+.MToolControl.TrimStack {
+	handle-image: url(chrome://drag-handle?height=22&background-color=#595959&embossed=false);
+}
+
+.MTrimBar .Draggable {
+	handle-image: url(chrome://drag-handle?height=22&background-color=#595959&embossed=false);
+}
+
+.MTrimBar#org-eclipse-ui-main-toolbar .Draggable {
+	handle-image: url(chrome://drag-handle?height=22&background-color=#474747&embossed=false);
+}
+
+.MTrimBar#org-eclipse-ui-main-toolbar .TrimStack {
+	handle-image: url(chrome://drag-handle?height=22&background-color=#474747&embossed=false);
+}
+
+#org-eclipse-ui-main-toolbar #PerspectiveSwitcher {
+	eclipse-perspective-keyline-color: #282828;
+	background-color: #656565 #656565 100%;
+	handle-image: none;
+	chrome-show-perspective-name: false;
+	color: #E8E8E9;
+}
+
+#PerspectiveSpacer{
+	chrome-border-bottom-color: #282828;
+	chrome-border-bottom-visible: true;
+}
+
+#SearchField {
+     visibility: hidden;
+}
+
+Tree {
+	background-color: #E8E8E9;
+	color: #282828;
+}

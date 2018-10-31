@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Create a PDF of images</shortname>
+  <description>Create a PDF of images and their description</description>
+  <url>/velo/registry/imagesaspdf?destinationUuid={destinationUuid}&amp;pdfFileName={pdfFileName}&amp;snapshotUuids={snapshotUuids}</url>
+  <authentication>user</authentication>
+  <transaction>none</transaction>
+</webscript>

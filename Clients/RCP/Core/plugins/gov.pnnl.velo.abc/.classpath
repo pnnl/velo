@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/docking-frames-common.jar" sourcepath="lib/df_1.1.2p14b-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/docking-frames-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jsr-275.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wst.xml.xpath2.processor_1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javaluator-3.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources" sourcepath="resources"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

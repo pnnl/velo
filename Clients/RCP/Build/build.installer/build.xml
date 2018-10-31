@@ -1,0 +1,137 @@
+<project name="installer_builds">
+	
+	<!-- provide the property definitions via file - can be overriden by environment parameters in Jenkins -->
+	<!-- to use the property file, the property.file environment variable must be set -->
+	<echo>trying to load properties file: ${property.file} </echo>
+	<property file="${property.file}" />
+
+	<target name="set.mac.properties">
+		<property name="target.os" value="macosx"/>
+		<property name="target.ws" value="cocoa"/>
+		<property name="isMac" value="true"/>
+	</target>
+	<target name="set.win.properties">
+		<property name="target.os" value="win32"/>
+		<property name="target.ws" value="win32"/>
+	</target>
+	<target name="set.linux.properties">
+		<property name="target.os" value="linux"/>
+		<property name="target.ws" value="gtk"/>
+	</target>
+		
+	<target name="set.derived.properties">
+		<!-- derived properties -->
+		<property name="product.dir" value="${workspace.dir}/build.product/target/products/${product.id}/${target.os}/${target.ws}/${target.arch}" />
+		<property name="installers.dir" value="${workspace.dir}/installers"/>
+		<property name="installer.name" value="${product.name}.${target.os}.${target.arch}-installer" />
+		<property name="installer.jar" value="${installers.dir}/${installer.name}.jar" />
+	</target>
+
+	<!-- ======================================================================================================== -->
+	
+	<!-- These targets need to run AFTER Tycho PDE build.  -->	
+	
+	<!-- Build the installer for Linux -->
+	<target name="create.installer.launcher.unix" depends="set.linux.properties, create.installer">
+	<!-- TODO: this doesn't work so we are just providing as a jar
+		<concat binary="true" destfile="${installers.dir}}/${installer.name}.sh">
+			<filelist dir="${basedir}/scripts/installer" files="install.sh.in" />
+			 <fileset file="${installer.jar}" />
+		</concat>
+	-->
+	</target>
+	
+	<!-- Build all the installers -->
+	<target name="create.installer.launchers">
+		<antcall target="create.installer.launcher.windows"/>
+		<antcall target="create.installer.launcher.unix" />
+		<antcall target="create.installer.mac" /> <!-- mac launcher has to be made on a mac node -->
+	</target>
+	
+	<!-- Build the installer for Windows -->
+	<target name="create.installer.launcher.windows" depends="set.win.properties, create.installer">
+		<condition property="runtimeBits" value="64" else="32">
+			   <matches pattern="x86_64" string="${target.arch}" />
+		</condition>
+		
+		<taskdef name="launch4j"
+			classpath="${basedir}/scripts/launch4j/launch4j.jar :${basedir}/scripts/launch4j/lib/xstream.jar"
+			classname="net.sf.launch4j.ant.Launch4jTask" />
+
+		<launch4j>
+			<config icon="${basedir}/scripts/installer/favicon-16x16.ico" chdir="." errTitle="${product.display.name}"
+				outfile="${installers.dir}/${product.name}.${target.os}.${target.arch}-installer.exe" jar="${installer.jar}" headerType="gui"
+				downloadUrl="http://www.java.com/en/download/manual.jsp">
+				<messages jreVersionErr="This application requires Java 1.7 (${runtimeBits}-bit) or higher.  You need to download it from the following web page." />
+				<singleInstance mutexName="${product.name}" />
+				<jre minVersion="1.7.0" runtimeBits="${runtimeBits}"/>
+			</config>
+		</launch4j>
+	</target>
+	
+	<!-- Build the installer jar for Mac - the launcher zip needs to run as a separate target on a mac node or the zip will be corrupt! -->
+	<target name="create.installer.mac" depends="set.mac.properties, create.installer" />
+
+	<!-- Build the installer app bundle for Mac - this needs to run on a mac node or the zip will be corrupt! -->
+    <target name="create.installer.launcher.mac" depends="set.mac.properties, set.derived.properties">
+
+		<taskdef name="bundleapp"
+	             classname="com.oracle.appbundler.AppBundlerTask"   
+	             classpath="${basedir}/scripts/lib/appbundler-1.0.jar" >
+		</taskdef>
+    	
+		<mkdir dir="${installers.dir}"></mkdir>
+        <bundleapp outputdirectory="${installers.dir}"
+            name="${installer.name}"
+            displayname="${product.display.name}"
+            identifier="${installer.name}"
+            mainclassname="com.izforge.izpack.installer.Installer">
+        	<!-- <runtime dir="${jdkhome}"/> -->
+        	<classpath file="${installer.jar}" />
+     	</bundleapp> 
+	</target>
+	
+	<!-- This is the base installer build target that will take the Eclipse RCP product folder and bundle it into a platform
+	agnostic izpack jar file.  The executable installers/zip files for each given platform are created via the corresponding
+	create.installer.launcher.* targets which wrap this target. -->
+	<target name="create.installer" description="Create an installer using IzPack" depends="set.derived.properties, configure.rcp.app.mac">
+		
+		<!-- Define IzPack ant task -->
+		<taskdef name="IzPack"
+			classpath="scripts/lib/standalone-compiler.jar"
+			classname="com.izforge.izpack.ant.IzPackTask"/>
+		
+		<!-- make sure output directory is created for installers -->
+		<mkdir dir="${installers.dir}" />
+		
+		<!-- Memory is only configurable for 64-bit applications.  32-bit must use 1GB of memory for JVM-->
+		<condition property="memory.configurable" value="true" else="false">
+			<and>
+			   <matches pattern="x86_64" string="${target.arch}" />
+			   <matches pattern="true" string="${allow.configurable.memory}" />
+		    </and>
+		</condition>
+		
+		<condition property="memory.max" value="${product.max.memory}" else="-Xmx1024m">
+			   <matches pattern="x86_64" string="${target.arch}" />
+		</condition>
+
+		<IzPack basedir="${basedir}" input="${basedir}/scripts/installer/installer.xml"
+			output="${installer.jar}" installertype="standard" inheritAll="true"/>
+	</target>
+	
+	<!-- On Mac, we have to change the location of the ini file, since it is not where Eclipse is expecting it to be
+	(since Mars update) -->
+	<target name="configure.rcp.app.mac" if="isMac">
+		<echo>Product Name = ${product.name}</echo>
+		<mkdir dir="${product.dir}/${product.name}.app/Contents/Eclipse"/>
+		<move file="${product.dir}/${product.name}.app/Contents/MacOS/${product.name}.ini" todir="${product.dir}/${product.name}.app/Contents/Eclipse" failonerror="false"/>
+	</target>
+	
+	<!-- if the p2 site is parameterized in the p2.inf file, we need to make the substitution BEFORE you run the Tycho product build -->
+	<target name="update.p2.parameter">
+		<property name="p2.inf.file" value="${workspace.dir}/build.product/${product.name}.p2.inf" />
+		<replace file="${p2.inf.file}" token="P2_UPDATE_SITE" value="${p2.update.site.folder.name}"/>
+	</target>
+
+</project>

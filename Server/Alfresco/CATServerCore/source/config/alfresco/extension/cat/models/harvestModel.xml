@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="harvest:harvestmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<!-- Optional meta-data about the model -->
+	<description>CAT Harvest Model</description>
+	<version>1.0</version>
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import prefix="d" uri="http://www.alfresco.org/model/dictionary/1.0"/>
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import prefix="cm" uri="http://www.alfresco.org/model/content/1.0"/>
+	</imports>
+	<!-- Namespaces defined by this model -->
+	<namespaces>
+		<namespace prefix="harvest" uri="http://www.pnl.gov/cat/model/harvest/1.0"/>
+		<namespace prefix="harvest_google" uri="http://www.pnl.gov/cat/model/harvest/google/1.0" />
+		<namespace prefix="harvest_web" uri="http://www.pnl.gov/cat/model/harvest/web/1.0" />
+	</namespaces>
+	<!-- Constraints on parameter values -->
+	<constraints/>
+	<!-- New node types -->
+	<types />
+   <aspects>   
+  	  <aspect name="harvest:harvestRequest">
+  	  	<title>Harvest</title>
+  	  	<properties>
+  	  		<!-- maximum number of documents to harvest -->
+  	  		<property name="harvest:maxDocuments">
+  	  			<type>d:int</type>
+  	  			<mandatory>false</mandatory>
+  	  			<multiple>false</multiple>
+  	  		</property>
+  	  		<!-- number of concurrent harvest threads to invoke -->
+  	  		<property name="harvest:concurrentConnections">
+  	  			<type>d:int</type>
+  	  			<mandatory>false</mandatory>
+  	  			<multiple>false</multiple>
+  	  		</property>
+  	  		<!-- how deep into a web site should we crawl -->
+    	  	<property name="harvest:harvestDepth">
+  	  			<type>d:int</type>
+  	  			<mandatory>false</mandatory>
+  	  			<multiple>false</multiple>
+  	  		</property> 
+  	  		<!-- specific hosts to exclude.  hosts on this list are excluded -->
+     	  	<property name="harvest:filterUrlHosts">
+  	  			<type>d:text</type>
+  	  			<mandatory>false</mandatory>
+  	  			<multiple>true</multiple>
+  	  		</property> 	 
+  	  		<!-- specific words to exclude.  urls that contain these words are excluded --> 	
+     	  	<property name="harvest:filterUrlWords">
+  	  			<type>d:text</type>
+  	  			<mandatory>false</mandatory>
+  	  			<multiple>true</multiple>
+  	  		</property> 
+  	  		<!-- the id of the template used to create this harvest -->
+      	  	<property name="harvest:harvestTemplateId">
+  	  			<type>d:qname</type>
+  	  			<mandatory>true</mandatory>
+  	  			<multiple>false</multiple>
+  	  		</property> 
+  	  		<!-- abbreviated prefix repository path to where the results are stored.  like /app:companty_home/cm:UserDocuments -->
+  	  		<property name="harvest:targetRepositoryPath">
+  	  			<type>d:text</type>
+  	  			<mandatory>true</mandatory>
+  	  			<multiple>false</multiple>
+   	  		</property>
+   	  		<!-- uuid to where the results are stored -->
+  	  		<property name="harvest:harvestTitle">
+  	  			<type>d:text</type>
+  	  			<mandatory>true</mandatory>
+  	  			<multiple>false</multiple>
+   	  		</property>
+   	  	</properties>
+  	  </aspect>
+      <aspect name="harvest_google:harvestRequest_google">
+         <title>Google Harvest</title>
+         <properties>
+			<property name="harvest_google:exactPhrase">
+				<type>d:text</type>
+				<mandatory>false</mandatory>
+				<multiple>false</multiple>
+			</property>
+			<property name="harvest_google:atLeastOneWord">
+				<type>d:text</type>
+				<mandatory>false</mandatory>
+				<multiple>true</multiple>
+			</property>
+			<property name="harvest_google:withoutWords">
+				<type>d:text</type>
+				<mandatory>false</mandatory>
+				<multiple>false</multiple>
+			</property>
+			<property name="harvest_google:allWords">
+				<type>d:text</type>
+				<mandatory>false</mandatory>
+				<multiple>false</multiple>
+			</property>
+        </properties>
+      </aspect>
+      <aspect name="harvest_web:harvestRequest_web">
+      	<title>Web Harvest</title>
+      	<properties>
+      		<property name="harvest_web:urlList">
+      			<type>d:text</type>
+      			<mandatory>true</mandatory>
+      			<multiple>true</multiple>
+      		</property>
+      		<property name="harvest_web:localOnly">
+      			<type>d:boolean</type>
+      			<mandatory>false</mandatory>
+      			<multiple>false</multiple>
+      		</property>  
+      		<property name="harvest_web:promptForCredentials">
+      			<type>d:boolean</type>
+      			<mandatory>false</mandatory>
+      			<multiple>false</multiple>
+      		</property>    		
+      	</properties>
+      </aspect>
+   </aspects>
+</model>

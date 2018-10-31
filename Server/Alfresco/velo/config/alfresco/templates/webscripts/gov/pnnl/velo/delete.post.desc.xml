@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Resource</shortname>
+  <description>Delete given resource based on wiki path to resource</description>
+  <url>/velo/delete?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Relationships</shortname>
+  <description>get all relationships (source and target) for a resource by path.</description>
+  <url>/cat/getRelationships?path={?path}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

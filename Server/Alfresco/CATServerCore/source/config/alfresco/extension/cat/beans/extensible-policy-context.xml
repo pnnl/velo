@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+    <!-- Abstract bean used to create an extensible policy implementation -->
+    <!-- i.e., if you use this bean, you bind multiple policy implementations to the same type -->
+	<bean id="extensiblePolicy" abstract="true" class="gov.pnnl.cat.policy.ExtensiblePolicy" init-method="init">
+      <property name="policyComponent">
+    		<ref bean="policyComponent"/>
+      </property>
+    </bean>
+ 
+ 	<!-- Extensible Content Behavior -->
+ 	<bean id="extensibleContentPolicy" parent="extensiblePolicy" depends-on="taxContentBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}content</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="taxContentBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+                <!-- ref bean="taxClassifiableBehavior" / -->
+            </list>
+        </property>       
+    </bean>
+ 
+    <!-- Extensible AuthorityContainer Behavior -->
+ 	<bean id="extensibleAuthorityContainerPolicy" parent="extensiblePolicy" depends-on="teamsAuthorityContainerBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}authorityContainer</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="teamsAuthorityContainerBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>       
+    </bean>
+    
+    <!-- Extensible Folder behavior -->
+ 	<bean id="extensibleFolderPolicy" parent="extensiblePolicy" depends-on="taxFolderBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}folder</value>
+ 	    </property>
+        <property name="extensiblePolicies">
+            <list>
+            	
+                <ref bean="taxFolderBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->        
+            </list>
+        </property>              
+    </bean>    
+ 
+    <!-- Extensible link behavior -->
+ 	<bean id="extensibleFilelinkPolicy" parent="extensiblePolicy" depends-on="taxFilelinkBehavior,linksFilelinkBehavior,notifiableAspectBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}link</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="linksFilelinkBehavior"/>
+                <ref bean="taxFilelinkBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>            
+    </bean>  
+    
+    <!-- Extensible Folderlink behavior -->
+ 	<bean id="extensibleFolderlinkPolicy" parent="extensiblePolicy" depends-on="linksFolderlinkBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/application/1.0}folderlink</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="linksFolderlinkBehavior"/>
+            </list>
+        </property>            
+    </bean>         
+    
+    <!-- Extensible TaxonomyRoot Aspect behavior -->
+ 	<bean id="extensibleTaxonomyRootPolicy" parent="extensiblePolicy" depends-on="taxonomyRootAspect">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/dmi/model/taxonomy/1.0}taxonomyRoot</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="taxonomyRootAspect"/>
+            </list>
+        </property>                        
+    </bean>       
+    
+  <!-- Extensible TagTimer Aspect behavior -->
+  <bean id="extensibleusPersonsDataPolicy" parent="extensiblePolicy">
+      <property name="typeQName">
+          <value>{http://www.pnl.gov/cat/model/tagtimer/1.0}usPersonsData</value>
+      </property>   
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="tagTimerContentBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+    
+    <bean id="extensibleUsPersonsDataRemovedPolicy" parent="extensiblePolicy">
+      <property name="typeQName">
+          <value>{http://www.pnl.gov/cat/model/tagtimer/1.0}usPersonsDataRemoved</value>
+      </property>   
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="tagTimerContentBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+        
+    <bean id="extensibleUsPersonsDataMetadataKeyword" parent="extensiblePolicy">
+      <property name="typeQName">
+          <value>{http://www.pnl.gov/cat/model/content/1.0}needsFullTextIndexed</value>
+      </property>   
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="tagTimerContentBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+        
+<!-- Extensible CriminalIntel Aspect behavior -->
+  <bean id="extensibleCriminalIntelDataPolicy" parent="extensiblePolicy">
+      <property name="typeQName">
+          <value>{http://www.pnl.gov/cat/model/criminal/1.0}criminalIntelData</value>
+      </property>   
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="criminalIntelContentBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+    
+    <bean id="extensibleCriminalIntelDataRemovedPolicy" parent="extensiblePolicy">
+      <property name="typeQName">
+          <value>{http://www.pnl.gov/cat/model/criminal/1.0}criminalIntelDataRemoved</value>
+      </property>   
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="criminalIntelContentBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+
+
+    <!-- Extensible TaxonomyFolder Aspect behavior -->
+ 	<bean id="extensibleTaxonomyFolderPolicy" parent="extensiblePolicy" depends-on="taxonomyFolderAspect">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/dmi/model/taxonomy/1.0}taxonomyFolder</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="taxonomyFolderAspect"/>
+            </list>
+        </property>                        
+    </bean>       
+
+    <!-- Extensible TaxonomyLink Aspect behavior -->
+ 	<bean id="extensibleTaxonomyLinkPolicy" parent="extensiblePolicy" depends-on="taxonomyLinkAspect">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/dmi/model/taxonomy/1.0}taxonomyLink</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="taxonomyLinkAspect"/>
+            </list>
+        </property>                        
+    </bean> 
+	
+    <!-- Extensible cm:cmobject behavior -->
+    <!-- Can't bind to parent class because child bindings override it
+ 	<bean id="extensibleCmobjectPolicy" parent="extensiblePolicy">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}cmobject</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="notifiableAspectBehavior"/>
+            </list>
+        </property>                        
+    </bean>       
+    -->
+    
+    <!-- Extensible Homefolder behavior -->
+    <!-- Take this out because it is annoying
+ 	<bean id="extensibleHomeFolderPolicy" parent="extensiblePolicy" depends-on="homeFolderAspectBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/cat/model/content/1.0}homeFolder</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="homeFolderAspectBehavior"/>
+            </list>
+        </property>                        
+    </bean> 
+    -->
+    <!-- Extensible favorites behavior -->
+<!-- 
+ 	<bean id="extensibleFavoritesPolicy" parent="extensiblePolicy" depends-on="favoritesAspectBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/cat/model/content/1.0}favoritesRoot</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="favoritesAspectBehavior"/>
+            </list>
+        </property>                        
+    </bean> 
+ -->
+    
+    <!-- Extensible personal library behavior -->
+<!--     
+ 	<bean id="extensiblePersonalLibraryPolicy" parent="extensiblePolicy" depends-on="personalLibraryAspectBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/cat/model/content/1.0}personalLibraryRoot</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="personalLibraryAspectBehavior"/>
+            </list>
+        </property>                        
+    </bean>           
+-->
+    <!-- Extensible Project behavior -->
+ 	<bean id="extensibleProjectPolicy" parent="extensiblePolicy" depends-on="projectAspectBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/cat/model/content/1.0}project</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="projectAspectBehavior"/>
+            </list>
+        </property>                        
+    </bean>     
+
+	<!-- Extensible Person behavior -->
+ 	<bean id="extensiblePersonPolicy" parent="extensiblePolicy" depends-on="personBehavior, profileImageBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.alfresco.org/model/content/1.0}person</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="personService"/>
+                <ref bean="personBehavior"/>
+                <ref bean="profileImageBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>                        
+    </bean> 	
+   
+    <!-- Extensible Team behavior -->
+    <bean id="extensibleTeamPolicy" parent="extensiblePolicy" depends-on="profileImageBehavior">
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/cat/model/content/1.0}team</value>
+ 	    </property>  	
+        <property name="extensiblePolicies">
+            <list>
+                <ref bean="profileImageBehavior"/>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>       
+	</bean>
+
+    
+	
+	<!--  Extensible Alert Behavior -->
+ 	<bean id="extensibleAlertPolicy" parent="extensiblePolicy" >
+ 	    <property name="typeQName">
+ 	        <value>{http://www.pnl.gov/dmi/model/alert/1.0}alert</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>       
+    </bean>
+
+	<!--  Extensible Subscription Behavior -->
+	<!-- NOTE that you have to create a new policy binding for every subscription type -->
+	<!-- I am only doing search subscriptions for now, since that's all we're currently supporting -->
+ 	<bean id="extensibleSearchSubscriptionPolicy" parent="extensiblePolicy" >
+ 	    <property name="typeQName">
+   	     	<value>{http://www.pnl.gov/dmi/model/subscription/repository/search/1.0}subscription</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>       
+    </bean>
+
+	<!--  Extensible Subscription Behavior -->
+	<!-- NOTE that you have to create a new policy binding for every subscription type -->
+	<!-- I am only doing search subscriptions for now, since that's all we're currently supporting -->
+ 	<bean id="extensibleRepositorySubscriptionPolicy" parent="extensiblePolicy">
+ 	    <property name="typeQName">
+   	     	<value>{http://www.pnl.gov/dmi/model/subscription/repository/1.0}subscription</value>
+ 	    </property> 	
+        <property name="extensiblePolicies">
+            <list>
+                <!-- <ref bean="notifiableAspectBehavior"/> -->
+            </list>
+        </property>       
+    </bean>
+    
+</beans>

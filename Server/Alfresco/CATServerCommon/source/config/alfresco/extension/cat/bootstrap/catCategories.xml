@@ -1,0 +1,45 @@
+<view:view xmlns:view="http://www.alfresco.org/view/repository/1.0"
+   xmlns:cm="http://www.alfresco.org/model/content/1.0" xmlns:tax="http://www.pnl.gov/dmi/model/taxonomy/1.0">
+
+   <cm:category_root view:childName="cm:categoryRoot">
+      <view:acl>
+         <view:ace view:access="ALLOWED">
+            <view:authority>GROUP_EVERYONE</view:authority>
+            <view:permission>Read</view:permission>
+         </view:ace>
+      </view:acl>
+      <cm:name>categories</cm:name>
+      <cm:categories>
+
+         <!-- General, public Classification -->
+		<cm:category view:childName="cm:generalclassifiable">
+			<cm:name>General</cm:name>
+			<cm:subcategories>
+	
+				<!-- Tags -->
+				<cm:category>
+					<view:acl>
+						<view:ace view:access="ALLOWED">
+							<view:authority>GROUP_EVERYONE</view:authority>
+							<view:permission>Contributor</view:permission>
+						</view:ace>
+					</view:acl>
+					<cm:name>Tags</cm:name>
+				</cm:category>
+	
+			</cm:subcategories>
+		</cm:category>
+
+         <!-- Taxonomy Classification -->
+         <cm:category view:childName="tax:classification">
+            <cm:name>classification</cm:name>
+            <cm:subcategories>
+            </cm:subcategories>
+         </cm:category>
+         
+         
+
+      </cm:categories>
+   </cm:category_root>
+
+</view:view>

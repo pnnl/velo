@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Is Identical</shortname>
+  <description>Returns true if the hash matches the file on the server.</description>
+  <url>/cat/isIdentical?path={?path}&amp;uuid={?uuid}&amp;hash={hash}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,186 @@
+<project>
+	<buckminster.valuepath id="source.repository.path" value="${fs:action.requirements}" />
+	<pathconvert property="source.repository" setonempty="false" pathsep=" ">
+		<path refid="source.repository.path" />
+	</pathconvert>
+
+	<!--property name="eclipse.rcp.home" value="C:/Eclipse/eclipse-rcp-helios-win32-x86_64" /-->
+	<condition property="eclipse.launcher.dir" value="${eclipse.rcp.home}">
+		<isset property="eclipse.rcp.home" />
+	</condition>
+	<property name="eclipse.launcher.dir" value="${eclipse.home}"/>
+	<pathconvert property="equinox.launcher.jar">
+		<first count="1">
+			<sort>
+				<fileset dir="${eclipse.launcher.dir}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar"/>
+				<reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
+					<date/>
+				</reverse>
+			</sort>
+		</first>
+	</pathconvert>
+
+	<target name="create.javadoc" description="Generate the JavaDoc for the sources">
+		<echo message="javadoc source ${source}">
+		</echo>
+		<echo message="javadoc destination ${javadoc.output}">
+		</echo>
+		<echo message="target platform ${target.platform}">
+		</echo>
+		<!-- set target platform as classpath -->
+		<path id="files-classpath">
+			<fileset dir="${target.platform}">
+				<include name="**/*.jar" />
+				<include name="**/*.zip" />
+			</fileset>
+			<fileset dir="${source}">
+				<include name="**/*.jar" />
+				<include name="**/*.zip" />
+			</fileset>
+		</path>
+
+		<!-- clean and create output location -->
+		<delete dir="${javadoc.output}" />
+		<mkdir dir="${javadoc.output}" />
+		<!-- generate the javadoc -->
+		<javadoc destdir="${javadoc.output}" packagenames="gov.pnnl.*"  classpathref="files-classpath" maxmemory="1024m" source="1.6" useexternalfile="true" author="true" version="true" use="true" windowtitle="Source Documentation">
+			<!-- link external APIs -->
+			<!--link offline="false" href="http://java.sun.com/javase/6/docs/api/" />
+			<link offline="false" href="http://www.osgi.org/javadoc/r4v42/" />
+			<link offline="false" href="http://help.eclipse.org/galileo/topic/org.eclipse.platform.doc.isv/reference/api/" /-->
+
+			<fileset dir="${source}/plugins" defaultexcludes="true">
+				<include name="**/src/**/*.java" />
+				<exclude name="**/gov.pnnl.*.test/**/*.java" />
+				<exclude name="**/org.eclipse.ui.workbench/**/*.java" />
+			</fileset>
+		</javadoc>
+	</target>
+
+	<target name="findbugs" description="Runs FindBugs">
+		<path id="lib.classpath">
+			<fileset dir="${basedir}/scripts/lib">
+				<include name="**/findbugs*.jar" />
+			</fileset>
+		</path>
+
+		<path id="files-classpath">
+			<fileset dir="${target.platform}">
+				<include name="**/gov.pnnl*/*.jar" />
+				<include name="**/gov.pnnl.*.jar" />
+				<include name="**/org.hibernate*/*.jar" />
+				<include name="**/org.jboss*/hibernate*.jar" />
+				<include name="**/org.jboss*/ejb*.jar" />
+				<include name="**/org.jboss*/slf4j*.jar" />
+				<include name="**/org.jboss*/jboss-javaee.jar" />
+				<include name="**/org.hibernate.*.jar" />
+				<include name="**/com.nuclexframework.*.jar" />
+				<include name="**/org.apache*/*.jar" />
+				<include name="**/org.apache.*.jar" />
+				<include name="**/org.slf4j.*.jar" />
+				<include name="**/com.jogamp*/*.jar" />
+				<include name="**/com.google*/*.jar" />
+				<include name="**/org.eclipse.ui*.jar" />
+				<include name="**/org.eclipse.jface*.jar" />
+				<include name="**/org.eclipse.swt.win32*.jar" />
+				<include name="**/org.w3c.tidy*.jar" />
+				<include name="**/org.dom4j*.jar" />
+				<include name="**/org.eclipse.text*.jar" />
+				<include name="**/org.eclipse.commands*.jar" />
+				<include name="**/org.eclipse.osgi*.jar" />
+				<include name="**/org.eclipse.draw2d*.jar" />
+				<include name="**/org.eclipse.core.runtime*.jar" />
+				<include name="**/org.eclipse.core.jobs*.jar" />
+				<include name="**/org.eclipse.core.expressions*.jar" />
+			</fileset>
+		</path>
+
+		<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpathref="lib.classpath"/>
+		<property name="findbugs.install.home" value="C:\Java\FindBugs\findbugs-1.3.9" />
+		<echo>Path = ${findbugs.install.home}</echo>
+		<echo>Source = ${source}</echo>
+		<echo>Exclude = ${exclude.folder}</echo>
+		<findbugs home="${findbugs.install.home}" output="xml" outputFile="findbugs.xml" excludeFilter="${exclude.folder}/exclude.xml" jvmargs="-Xmx768m">
+			<auxClasspath>
+				<path refid="files-classpath" />
+			</auxClasspath>
+
+			<sourcePath>
+				<dirset dir="${source}/plugins/">
+					<include name="**/src"/>
+				</dirset>
+			</sourcePath>
+			<class location="${source}/plugins" />
+		</findbugs>
+
+	</target>
+
+	<target name="create.product">
+		<property name="destination" location="${sp:destination}" />
+		<delete dir="${destination}">
+		</delete>
+		<property name="repository" location="${sp:repository}" />
+		<!--makeurl property="repository" file="${sp:repository}" /-->
+		<mkdir dir="${destination}" />
+		<echoproperties>
+		</echoproperties>
+		<echo message="Launcher: ${equinox.launcher.jar}" />
+		<echo message="Repo: ${repository}" />
+		<echo message="Dest: ${destination}" />
+		<java jar="${equinox.launcher.jar}" fork="true" failonerror="true"
+			output="${workspace.root}/java.out" error="${workspace.root}/java.err">
+			<arg value="-application" />
+			<arg value="org.eclipse.equinox.p2.director" />
+			<arg value="-repository" />
+			<arg value="${repository}" />
+			<arg value="-installIU" />
+			<arg value="${iu}" />
+			<arg value="-destination" />
+			<arg value="${destination}" />
+			<arg value="-profile" />
+			<arg value="${profile}" />
+			<arg value="-profileProperties" />
+			<arg value="org.eclipse.update.install.features=true" />
+			<arg value="-p2.os" />
+			<arg value="${target.os}" />
+			<arg value="-p2.ws" />
+			<arg value="${target.ws}" />
+			<arg value="-p2.arch" />
+			<arg value="${target.arch}" />
+			<arg value="-roaming" />
+			<jvmarg value="-Xmx512m" />
+		</java>
+	</target>
+
+	<target name="update.p2" >
+		<echo message="Build Version: ${build.version}" />
+		<echo message="${equinox.launcher.jar}"/>
+		<echo message="Source Repo: ${source.repository}"/>
+		<java jar="${equinox.launcher.jar}" fork="true" failonerror="true" maxmemory="512m"
+			output="${workspace.root}/java.out" error="${workspace.root}/java.err">
+			<arg value="-application"/>
+			<arg value="org.eclipse.ant.core.antRunner"/>
+			<arg line="-f" />
+			<arg line="${script.folder}/publish.ant" />
+			<jvmarg value="-Dsource.repository=${source.repository}"/>
+			<jvmarg value="-Dcomposite.repository=${composite.repository}"/>
+			<jvmarg value="-Dcomp.repository.name=${comp.repository.name}"/>
+			<jvmarg value="-Dapp.repository=${app.repository}"/>
+			<jvmarg value="-Dapp.remote.repository=${app.remote.repository}"/>
+			<jvmarg value="-Dapp.repository.name=${app.repository.name}"/>
+			<jvmarg value="-Dbuild.version=${build.version}"/>
+		</java>
+	</target>
+
+	<target name="mirror.p2">
+		<echo>Source: ${source.repository}</echo>
+
+		<p2.mirror>
+			<slicingOptions followStrict="true" />
+			<repository location="${app.repository}" name="${app.repository.name}" />
+			<source>
+				<repository location="${source.repository}" />
+			</source>
+		</p2.mirror>
+	</target>
+</project>

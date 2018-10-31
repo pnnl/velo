@@ -1,0 +1,29 @@
+#!/bin/sh
+#echo "program is $0"
+
+## resolve links - $0 may be a link to application
+COMMAND="$0"
+
+# need this for relative symlinks
+while [ -h "$COMMAND" ] ; do
+  ls=`ls -ld "$COMMAND"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    COMMAND="$link"
+  else
+    COMMAND="`dirname "$COMMAND"`/$link"
+  fi
+done
+
+# Now we know the full path of this scripts
+# velo command home directory is one level above
+VELOCMD_HOME=`dirname "$COMMAND"`/..
+echo "VELOCMD_HOME IS $VELOCMD_HOME"
+
+MAINCLASS=gov.pnnl.velo.core.cmdline.OASCISCommand
+
+#TODO: Replace with dynamic list of jars in VELOCMD_HOME/lib
+EXEC="java -cp $VELOCMD_HOME/lib/VeloJavaClient.jar:$VELOCMD_HOME/lib/commons-codec-1.3.jar:$VELOCMD_HOME/lib/commons-httpclient-3.1.jar:$VELOCMD_HOME/lib/commons-logging-1.1.jar  $MAINCLASS $@"
+
+#echo $EXEC
+exec $EXEC

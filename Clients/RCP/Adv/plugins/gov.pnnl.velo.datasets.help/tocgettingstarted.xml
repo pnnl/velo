@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Getting Started" link_to="toc.xml#gettingstarted"> 
+		<topic href="html/gettingstarted/first_step_gathering_info.html" label="First Step: Gathering Information">
+  </topic> 
+		<topic href="html/gettingstarted/second_step_entering_metadata.html" label="Second Step: Entering Metadata">
+  </topic>
+		<topic label="Third Step: Uploading Your Dataset" href="" />
+		<topic label="Fourth Step: Having Your Data Reviewed" href="" />
+		<topic label="Fifth Step: Ready to Publish!" href="" />
+	<topic label="FAQ" href="html/gettingstarted/faq.html">
+		<topic label="What is meant by 'data that validates results'?" href="html/gettingstarted/what_is_meant_by_data_that_validates_results.html" />
+		<topic label="What is a 'download URL'?" href="html/gettingstarted/what_is_a_download_URL.html" />
+		<topic label="What is a metadata schema?" href="html/gettingstarted/what_is_a_metadata_schema.html" />
+		<topic label="Do I need to consult an Associated Derivative Classifier (ADC)?" href="html/gettingstarted/do_I_need_to_consult_an_ADC.html" />
+		<topic label="Do I need to consult Information Release?" href="html/gettingstarted/do_I_need_to_consult_IR.html" />
+		<topic label="Do I need to consult Intellectual Property/Tech Commercialization?" href="html/gettingstarted/do_I_need_to_consult_IP.html" />
+		<topic label="What is Personally Identifiable Information?" href="" />
+		<topic label="Do I need to license my dataset?" href="" />
+		<topic label="What is 'PNNL style'?" href="html/gettingstarted/what_is_PNNL_style.html" />
+		<topic label="What content should be in the description?" href="html/gettingstarted/what_content_should_be_in_the_description.html" />
+		<topic label="What is an embargo period?" href="html/gettingstarted/what_is_an_embargo_period.html" />
+		<topic label="Are there embargo periods already defined in DOE funding agency requirements?" href="html/gettingstarted/are_there_embargo_periods_defined_in_DOE.html" />
+	</topic> 
+	<topic label="Index" href="html/gettingstarted/index/index.html">
+		<topic label="OSTI metadata fields">
+			<topic label="Contact Email" href="" />
+			<topic label="Contact Name and Position" href="" />
+			<topic label="Contact Organization" href="" />
+			<topic label="Contact Phone" href="" />
+			<topic label="Country of Origin/Publication" href="" />
+			<topic label="Creator/Principal Investigator/Author" href="" />
+			<topic label="Dataset Product Number" href="" />
+			<topic label="Dataset Title" href="" />
+			<topic label="Dataset Type" href="html/gettingstarted/index/osti_metadata/osti_dataset_type.html" />
+			<topic label="DOE Contract Number" href="" />
+			<topic label="Language" href="" />
+			<topic label="Originating Research Organization" href="" />
+			<topic label="Publication Date" href="" />
+			<topic label="Site URL" href="" />
+			<topic label="Sponsoring Organization(s)" href="" />
+		</topic>
+		<topic label="Project Open Data metadata fields" href="">
+			<topic label="Access Level" href="" />
+			<topic label="Authors" href="" />
+			<topic label="Categories" href="" />
+			<topic label="Contact Name and Email" href="" />
+			<topic label="Data Quality Summary" href="" />
+			<topic label="Dataset Type" href="" />	
+			<topic label="Description" href="" />
+			<topic label="DOI (Digitial Object Identifier)" href="" />
+			<topic label="Keywords (same as Tags)" href="" />
+			<topic label="Last Updated" href="" />
+			<topic label="License" href="" />
+			<topic label="Listing Date" href="" />
+			<topic label="Metadata Standards" href="" />
+			<topic label="Publications" href="" />
+			<topic label="Publisher" href="" />
+			<topic label="Related Websites" href="" />
+			<topic label="Spatial/Geographical Coverage of Dataset" href="" />
+			<topic label="Tags (same as Keywords)" href="" />
+			<topic label="Temporal Coverage of Dataset" href="" />
+			<topic label="Title" href="" />
+			<topic label="Unique Identifier" href="" />
+			<topic label="Update Frequency" href="" />
+		</topic>	
+	</topic>
+</toc>

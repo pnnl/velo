@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Query Users</shortname>
+  <description>Query Users</description>
+  <url>/cat/queryUsers</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

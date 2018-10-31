@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Relationships</shortname>
+  <description>Returns a list of all nodes connected to the given node via any relationship except "contains".  (Or should we include contains?)</description>
+  <url>/velo/getRelationships?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

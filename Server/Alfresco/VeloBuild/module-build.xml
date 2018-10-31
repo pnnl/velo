@@ -1,0 +1,170 @@
+<project name="module-build" default="deploy">
+
+	<target name="init">
+		<echo level="info">basedir = ${basedir}</echo>
+		<echo level="info">${dir.webapps.alfresco}</echo>
+		
+		<property name="dir.alfresco.module" value="${dir.webapps.alfresco}/WEB-INF/classes/alfresco/module" />
+		<property name="dir.alfresco.classes" value="${dir.webapps.alfresco}/WEB-INF/classes" />
+		<property name="dir.alfresco.webscripts" value="${dir.webapps.alfresco}/WEB-INF/classes/alfresco/templates/webscripts" />
+		<property name="dir.alfresco.subsystems.authentication" value="${dir.webapps.alfresco}/WEB-INF/classes/alfresco/subsystems/Authentication/alfrescoNtlm" />
+		<property name="dir.module" value="${dir.alfresco.module}/${module.name}" />
+
+		<!-- common build properties -->
+		<property name="dir.src" value="${basedir}/source" />
+		<property name="dir.src.java" value="${dir.src}/java" />
+		<property name="dir.src.tests" value="${dir.src}/tests" />
+		<property name="dir.src.metainf" value="${dir.src}/meta-inf" />
+		<property name="dir.config" value="${basedir}/config" />
+		<property name="dir.build" value="${basedir}/build" />
+		<property name="dir.classes" value="${dir.build}/classes" />
+		<property name="dir.dist" value="${dir.build}/dist" />
+		<property name="file.name.jar" value="${module.name}.jar" />
+		<property name="amp.file" value="${dir.dist}/${module.name}.amp" />
+		<property name="dir.lib" value="${basedir}/lib" />
+		<property name="dir.velo.build.lib" value="${basedir}/../VeloBuild/lib"/>
+
+		<echo level="info">dir.src = ${dir.src}</echo>
+		<echo>jar file name = ${file.name.jar}</echo>
+		<echo>velo build lib dir = ${dir.velo.build.lib}</echo>
+	
+		<path id="classpath">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			
+			<pathelement location="${dir.classes}" />
+			
+			<pathelement location="${dir.webapps.alfresco}/WEB-INF/classes"/>
+			
+			<fileset dir="${dir.webapps.alfresco}/WEB-INF/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			
+			<fileset dir="${dir.velo.build.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<!--
+			<fileset dir="${basedir}/../gov.pnnl.velo.commons/build/dist">
+				<include name="**/*.jar" />
+			</fileset>	
+			-->		
+		</path>
+
+	</target>
+
+	<target name="clean" depends="init" description="clean the compiled classes and libraries">
+		<delete dir="${dir.classes}"/>
+		<delete dir="${dir.dist}"/>
+		<delete dir="${dir.build}/lib"/>
+	</target>
+
+	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		
+		<mkdir dir="${dir.classes}" />
+		<javac destdir="${dir.classes}" deprecation="off" debug="on" target="1.7" source="1.7">
+			<src path="${dir.src.java}" />
+			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:-path"/>
+		</javac>
+
+		<!-- copy any properties files too -->
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src.java}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+		</copy>
+	</target>
+
+	<!--- Create the jar file for the server -->
+	<target name="package-jar" depends="compile-java" description="Packages the JAR file">
+		<mkdir dir="${dir.dist}" />
+
+		<jar destfile="${dir.dist}/${file.name.jar}" >
+			<!-- exclude core alfresco classes, as they need to deploy directly to WEB-INF/classes -->
+			<fileset dir="${dir.classes}">
+				<exclude name="/org/alfresco/**/*" />
+				<include name="**/*" />
+			</fileset>
+		</jar>
+
+		<!--  Commenting this out because our modules don't have a meta-inf folder
+		<jar jarfile="${dir.dist}/${file.name.jar}" update="true">
+			<metainf dir="${dir.src.metainf}" />
+		</jar>
+        -->
+ 	</target>
+
+	<!-- Deploy a complete, clean build to tomcat -->
+	<target name="deploy" depends="clean, deploy-incremental" />
+
+	<!-- Deploy an incremental build to tomcat -->
+	<target name="deploy-incremental" depends="package-jar">
+		<echo message="Using Java version ${ant.java.version}."/>
+		<!-- deploy the module jar file, cleaning up old versions -->
+		<delete failonerror="no">
+			<fileset dir="${dir.webapps.alfresco}/WEB-INF/lib" includes="**/${file.name.jar}"/>
+		</delete>
+		<copy file="${dir.dist}/${file.name.jar}" todir="${dir.webapps.alfresco}/WEB-INF/lib"/>
+
+		<!-- deploy the 3rd party libraries -->
+		<copy todir="${dir.webapps.alfresco}/WEB-INF/lib" overwrite="true" flatten="true">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+
+		<!-- deploy the config files -->
+		<delete dir="${dir.module}"/>
+		<mkdir dir="${dir.module}" />
+		<copy todir="${dir.module}" overwrite="true">
+			<fileset dir="${dir.config}/alfresco/module/${module.name}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- deploy web scripts -->
+		<delete dir="${dir.alfresco.webscripts}/org/${module.name}"/>
+		<delete dir="${dir.alfresco.webscripts}/gov/pnnl/${module.name}"/>
+		<copy todir="${dir.alfresco.webscripts}" overwrite="true">
+			<fileset dir="${dir.config}/alfresco/templates/webscripts">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- Delete the excluded classes just to make sure. It might be lying around in old environments-->
+		<delete includeemptydirs="true" verbose="true">
+			<fileset dir="${dir.alfresco.classes}" defaultexcludes="false">
+				<include name="gov/pnnl/${module.name}/**" />
+				<include name="org/${module.name}/**"  />
+			</fileset>
+		</delete>
+		
+		<!-- Deploy code to WEB-INF/classes to override core Alfresco classes -->
+		<copy  verbose="false" todir="${dir.alfresco.classes}" overwrite="true">
+			<fileset dir="${dir.classes}">
+				<include name="org/alfresco/**/*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="package-and-dist" depends="package-amp">
+		<copy todir="${dir.build.amps.optional.dir}">
+			<fileset dir="${dir.dist}">
+				<include name="*.amp"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="package-amp" depends="clean, package-jar" description="Package the Module" >
+		<zip destfile="${amp.file}" >
+			<fileset dir="${basedir}/build" includes="lib/*.jar" />
+			<fileset dir="${basedir}" includes="config/**/*.*" excludes="**/module.properties" />
+			<fileset dir="${basedir}/config/alfresco/module/${module.name}" includes="module.properties" />
+		</zip>
+	</target>
+
+
+</project>

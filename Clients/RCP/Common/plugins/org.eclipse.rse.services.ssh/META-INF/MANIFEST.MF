@@ -1,0 +1,121 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.services.ssh;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.services.ssh";commi
+ tId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.services.ssh.Activator
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.rse.services;bund
+ le-version="[3.1.0,4.0.0)",com.jcraft.jsch;bundle-version="[0.1.31,1.
+ 0.0)"
+Export-Package: org.eclipse.rse.internal.services.ssh;x-friends:="org.
+ eclipse.rse.connectorservice.ssh,org.eclipse.rse.subsystems.files.ssh
+ ,org.eclipse.rse.subsystems.shells.ssh",org.eclipse.rse.internal.serv
+ ices.ssh.files;x-friends:="org.eclipse.rse.connectorservice.ssh,org.e
+ clipse.rse.subsystems.files.ssh,org.eclipse.rse.subsystems.shells.ssh
+ ",org.eclipse.rse.internal.services.ssh.terminal;x-friends:="org.ecli
+ pse.rse.subsystems.shells.ssh",org.eclipse.rse.internal.services.ssh.
+ files.scp;x-friends:="org.eclipse.rse.subsystems.files.scp"
+Bundle-Version: 3.2.100.201305201712
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services.ssh/pom.p
+ roperties
+SHA1-Digest: VKeJ+x7rER6uyK6v8aaX95VicmY=
+
+Name: org/eclipse/rse/internal/services/ssh/files/scp/ScpFileAttr.clas
+ s
+SHA1-Digest: y6eaSCSqyniwdlQmqnfZj3l82tk=
+
+Name: org/eclipse/rse/internal/services/ssh/SshServiceResources.proper
+ ties
+SHA1-Digest: /D8GTHAmIgNYXaz5s85IrfdBkwE=
+
+Name: org/eclipse/rse/internal/services/ssh/files/scp/ScpFileService.c
+ lass
+SHA1-Digest: +Phm9ge16qefsc4hp1RqZXatCJM=
+
+Name: org/eclipse/rse/internal/services/ssh/ISshSessionProvider.class
+SHA1-Digest: 8+Ti6YhOppD/E5yNOuTenCaW6Po=
+
+Name: plugin.properties
+SHA1-Digest: RmvAKWn96yYYG56jn2NIBRfl/nk=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SshFileUtils.class
+SHA1-Digest: BBygmTaxtZ35b4HQUup0kQxs4QA=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService$MyPr
+ ogressMonitor.class
+SHA1-Digest: uCTSkMFl7w2lEOivgeIF+Xhuh48=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpHostFile.class
+SHA1-Digest: xgS86bx8XckBHgKTkYeLqpJ2NV8=
+
+Name: org/eclipse/rse/internal/services/ssh/Activator.class
+SHA1-Digest: QlQFZPZGzfjMboTss6DwIPFQ6x8=
+
+Name: org/eclipse/rse/internal/services/ssh/ISshService.class
+SHA1-Digest: ZMdsEOKEi284PrQDHaMJDJidOV4=
+
+Name: org/eclipse/rse/internal/services/ssh/SshServiceResources.class
+SHA1-Digest: yPZMpV+T0J5swyB+0QpJWYTPlMo=
+
+Name: org/eclipse/rse/internal/services/ssh/terminal/SshTerminalShell.
+ class
+SHA1-Digest: 17YBIzYRGwHGpk78x/pxJ1g9bPg=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services.ssh/pom.x
+ ml
+SHA1-Digest: bTLsKf3lmNciuS7sE8lBk9oCRNE=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/rse/internal/services/ssh/terminal/SshTerminalServic
+ e.class
+SHA1-Digest: 8xvMf2ddh6t1hYpYoNjHLOqTXxA=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService$Sftp
+ BufferedOutputStream.class
+SHA1-Digest: pzC9wMlJAtFa3Gn9fdyZJPueBUk=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService$Sftp
+ BufferedInputStream.class
+SHA1-Digest: YkQFZH1+8zRkeIRV2f3pjpquqRw=
+
+Name: readme.txt
+SHA1-Digest: EKvtCeQBv7Lg6VulAh9VlcqZK+U=
+
+Name: about.properties
+SHA1-Digest: /fuQ6980vg/cFckzh734RxLrFY8=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService$SSHC
+ hannelPool.class
+SHA1-Digest: S5dq+M49RqUKUdHU6m5wu7AN7+8=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService.clas
+ s
+SHA1-Digest: Z4MmFK/ieFvRXcdecNzOo9wMqH4=
+
+Name: org/eclipse/rse/internal/services/ssh/files/SftpFileService$SSHC
+ hannel.class
+SHA1-Digest: J+sigGE3bWeQy4tidQTqcDoQwyA=
+

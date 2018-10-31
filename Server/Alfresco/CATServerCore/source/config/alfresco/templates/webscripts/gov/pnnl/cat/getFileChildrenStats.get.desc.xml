@@ -1,0 +1,11 @@
+<!-- This web script is meant to feed the right size of a scalable file browser, where the right side shows only
+file contents (no folder) but the files are pageable since the list could be very large. -->
+<webscript>
+  <shortname>Get File Children Stats</shortname>
+  <description>Get the number of file children and total size</description>
+  <url>/cat/getFileChildrenStats?uuid={uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

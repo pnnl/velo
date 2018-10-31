@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+   <!-- Overload Alfresco's bean so we can improve performance by removing wrapping tx -->
+   <bean id="actionWebService" class="gov.pnnl.cat.server.webservice.action.ActionWebService">
+      <property name="nodeService">
+         <ref bean="NodeService"/>
+      </property>
+      <property name="contentService">
+         <ref bean="ContentService"/>
+      </property>
+      <property name="searchService">
+         <ref bean="SearchService"/>
+      </property>
+      <property name="namespaceService">
+         <ref bean="NamespaceService"/>
+      </property>
+      <!--  Make sure to use the private version of this service so no transactions are wrapped,
+        since nested transactions mess up search -->
+      <property name="actionService">
+      	<ref bean="actionService"/>
+      </property>
+      <property name="ruleService">
+      	<ref bean="RuleService"/>
+      </property>
+      <property name="dictionaryService">
+      	<ref bean="DictionaryService"/>
+      </property>
+      <property name="transactionService">
+         <ref bean="transactionService"/>
+      </property>
+   </bean>	
+   
+  
+   
+   <!-- CAT Change -->
+   <!-- Unfiltered Service Registry -->
+   <bean id="unfilteredServiceRegistry" class="org.alfresco.repo.webservice.repository.UnfilteredServiceDescriptorRegistry" />
+	
+	<!--  CAT Change -->
+	<!--  Add unfiltered service registry so we can search faster -->
+	<bean id="repositoryWebService" class="org.alfresco.repo.webservice.repository.RepositoryWebService">
+	  <property name="unfilteredServiceRegistry">
+         <ref bean="unfilteredServiceRegistry"/>
+      </property>
+      <property name="serviceRegistry">
+         <ref bean="ServiceRegistry"/>
+      </property>
+      <property name="nodeService">
+         <ref bean="NodeService"/>
+      </property>
+      <property name="contentService">
+         <ref bean="ContentService"/>
+      </property>
+      <property name="searchService">
+         <ref bean="SearchService"/>
+      </property>
+      <property name="namespaceService">
+         <ref bean="NamespaceService"/>
+      </property>
+      <property name="dictionaryService">
+         <ref bean="DictionaryService"/>
+      </property>
+      <property name="querySessionCache">
+         <ref bean="webServicesQuerySessionCache"/>
+      </property>
+      <property name="cmlUtil">
+         <ref bean="CMLUtil"/>
+      </property>
+   </bean>
+	
+	<!-- Implementations of each exposed CAT web service -->
+	<bean class="gov.pnnl.cat.server.webservice.user.UserWebService" id="userWebService">
+		<property name="nodeService">
+			<ref bean="NodeService"/>
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService"/>
+		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService"/>
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+		<property name="authenticationService">
+			<ref bean="AuthenticationService"/>
+		</property>
+		<property name="personService">
+			<ref bean="PersonService"/>
+		</property>
+		<property name="querySessionCache">
+			<ref bean="webServicesQuerySessionCache"/>
+		</property>
+		<property name="authorityService">
+			<ref bean="AuthorityService"/>
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="authenticationComponent"/>
+		</property>
+	    <property name="dictionaryService">
+			<ref bean="dictionaryService"/>
+		</property>
+		<property name="serviceRegistry">
+            <ref bean="ServiceRegistry"/>
+        </property>
+	</bean>
+	
+	<bean class="gov.pnnl.cat.server.webservice.group.GroupWebService" id="groupWebService">
+		<property name="nodeService">
+			<ref bean="NodeService"/>
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService"/>
+		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService"/>
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent"/>
+		</property>
+		<property name="authenticationService">
+			<ref bean="AuthenticationService"/>
+		</property>
+		<property name="personService">
+			<ref bean="PersonService"/>
+		</property>
+		<property name="querySessionCache">
+			<ref bean="webServicesQuerySessionCache"/>
+		</property>
+		<property name="authorityService">
+			<ref bean="AuthorityService"/>
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="AuthenticationComponent"/>
+		</property>
+		<property name="nodeUtils">
+			<ref bean="nodeUtils"/>
+		</property>
+		<property name="copyService">
+			<ref bean="CopyService"/>
+		</property>
+	    <property name="permissionService">
+            <ref bean="PermissionService" />
+        </property>
+        <property name="ownableService">
+            <ref bean="OwnableService"></ref>
+        </property>
+		<property name="serviceRegistry">
+            <ref bean="ServiceRegistry"/>
+        </property>
+	</bean>
+
+	<bean class="gov.pnnl.cat.server.webservice.subscription.SubscriptionWebService" id="subscriptionWebService">
+		<property name="subscriptionService">
+			<ref bean="CatSubscriptionService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService"/>
+		</property>
+        <property name="dictionaryService">
+      	   <ref bean="DictionaryService"/>
+        </property>
+        <property name="transactionService">
+           <ref bean="transactionComponent"/>
+        </property>
+	</bean>
+	
+	<bean class="gov.pnnl.cat.server.webservice.alert.AlertWebService" id="alertWebService">
+		<property name="alertService">
+			<ref bean="AlertService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService"/>
+		</property>
+		<property name="transactionService">
+           <ref bean="transactionComponent"/>
+        </property>
+        <property name="permissionService">
+           <ref bean="permissionService"/>
+      	</property>
+	</bean>	
+	
+	<bean class="gov.pnnl.cat.server.webservice.harvest.HarvestWebService" id="harvestWebService">
+		<property name="harvestService">
+			<ref bean="HarvestService" />
+		</property>
+		<property name="dictionaryService">
+      	   <ref bean="DictionaryService"/>
+        </property>
+	</bean>
+	
+	<bean class="gov.pnnl.cat.server.webservice.imprt.ImportWebService" id="importWebService">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>	
+		<property name="namespaceService">
+			<ref bean="NamespaceService"/>
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="importService">
+			<ref bean="importService" />
+		</property>
+	</bean> 
+</beans>

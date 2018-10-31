@@ -1,0 +1,53 @@
+<userInput>
+<!--
+	<panel order="0">
+      	<field type="staticText" align="left" 
+			id="installConfig.note.1" txt="VisIt must be installed if you want to take advantage of 3D visualization of model outputs.
+			If you do not have VisIt installed, please download the appriopriate version from http://vis.lbl.gov/ASCEM/"/>
+		<field type="staticText" align="left"
+			id="installConfig.note.2" txt="If you are planning to use an existing installation of VisIt, please make sure 
+that the version matches the one on the parallel machine and that at least the following reader plug-ins and 
+modules are installed and available: boxlib, exodus, h5part, hdf5, netcdf, silo, xdmf, java and python-module."/>
+		<field type="divider" align="center"/>
+      	<field type="staticText" align="left" 
+			id="installConfig.text" txt="Select the directory containing the VisIt executable:"/>
+		<field type="dir" align="left" variable="VISIT_HOME">
+			<spec size="25" mustExist="true" checkfilename="${VISIT_HOME}"/>
+		</field>
+    </panel>
+  -->    
+    <!-- Memory configuration panel -->
+    <panel order="0">
+       <field type="radio" variable="MAX_MEMORY">
+          <description align="left" txt="Maximum memory allowed for ${PRODUCT_DISPLAY_NAME}"
+             id="description.memory"/>
+          <spec>
+            <choice txt="1GB" revalidate="yes"  id="memoryConfig.memory.1" value="-Xmx1024m"/>
+            <choice txt="2GB" revalidate="yes"  id="memoryConfig.memory.2" value="-Xmx2048m" set="true"/>
+            <choice txt="4GB" revalidate="yes"  id="memoryConfig.memory.4" value="-Xmx4096m" />
+            <choice txt="6GB" revalidate="yes"  id="memoryConfig.memory.4" value="-Xmx6144m" />
+            <choice txt="8GB" revalidate="yes"  id="memoryConfig.memory.4" value="-Xmx8192m" />
+          </spec>
+       </field>
+    </panel>
+    
+    <!-- JRE configuration panel -->
+    <panel order="1">
+       <field type="staticText" align="left" 
+			id="installConfig.note.3" txt="${PRODUCT_DISPLAY_NAME} requires Java 7 in order to run.  A compatible version is provided for convenience."/>
+       <field type="radio" variable="installConfig">
+          <description align="left" txt="Would you like to use the included verison of Java?"
+             id="installConfig.text"/>
+          <spec>
+            <choice txt="Yes" revalidate="yes"  id="installConfig.radio.yes" value="noproxy"  set="true"/>
+            <choice txt="No" revalidate="yes"  id="installConfig.radio.no" value="proxy" />
+          </spec>
+       </field>
+       <!-- <field type="divider" align="center" conditionid="proxy"/>
+       <field type="staticText" align="left" conditionid="proxy"
+			id="installConfig.note.4" txt="Java executable to use: (i.e. C:\Program Files\java\bin\javaw.exe)"/>
+       <field type="file" variable="custom_java_path" conditionid="proxy" align="left">
+           <spec txt=""	revalidate="yes" set="${SYSTEM_java_home}" size="15" mustExist="true" />
+       </field> -->
+    </panel>
+</userInput>

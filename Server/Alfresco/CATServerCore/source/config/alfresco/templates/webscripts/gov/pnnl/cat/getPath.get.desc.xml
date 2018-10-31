@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Path</shortname>
+  <description>Gets the path for a node, given the uuid.</description>
+  <url>/cat/getPath?uuid={uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

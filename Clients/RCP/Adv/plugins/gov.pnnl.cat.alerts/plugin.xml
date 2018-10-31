@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="gov.pnnl.cat.alerts.perspective.AlertsPerspectiveFactory"
+            icon="icons/mailbox_full.png"
+            id="gov.pnnl.cat.alerts.perspective"
+            name="Alerts and Subscriptions">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="gov.pnnl.cat.alerts.category"
+            name="Alerts and Subscriptions">
+      </category>
+      <view
+            category="gov.pnnl.cat.alerts.category"
+            class="gov.pnnl.cat.alerts.views.AlertsView"
+            icon="icons/16x16/bell.png"
+            id="gov.pnnl.cat.alerts.views.AlertsView"
+            name="Alerts Summary">
+      </view>
+      <view
+            category="gov.pnnl.cat.alerts.category"
+            class="gov.pnnl.cat.alerts.views.AlertsPreviewPage"
+            icon="icons/16x16/table_view.png"
+            id="gov.pnnl.cat.alerts.views.AlertsPreviewPage"
+            name="Alerts Preview">
+      </view>      
+      <view
+            category="gov.pnnl.cat.alerts.category"
+            class="gov.pnnl.cat.alerts.views.SubscriptionsView"
+            icon="icons/mailbox_full.png"
+            id="gov.pnnl.cat.alerts.views.SubscriptionManagement"
+            name="Subscription Management">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:gov.pnnl.cat.search.ui.SearchResultsView">
+         <command
+               commandId="gov.pnnl.cat.alerts.addSearchSubscription"
+               icon="icons/mailbox_full.png"
+               label="Subscribe"
+               style="push"
+               tooltip="Subscribe to Search Results">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:gov.pnnl.cat.alerts.views.SubscriptionManagement?after=newSubscriptions">
+         <command
+               commandId="gov.pnnl.cat.alerts.addSearchSubscription"
+               icon="icons/mailbox_full.png"
+               label="New Search Subscription"
+               mnemonic="S"
+               style="push"
+               tooltip="Create a New Search Subscription">
+         </command>
+      </menuContribution>
+       <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=openIn">
+      <command
+           commandId="gov.pnnl.cat.alerts.addSubscriptionToResourceCommand"
+           label="Add Subscription to Resource..."
+           style="push">
+      </command>
+   </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="gov.pnnl.cat.alerts.commands.AddSearchSubscriptionHandler"
+            id="gov.pnnl.cat.alerts.addSearchSubscription"
+            name="Subscribe to Search Results">
+      </command>
+      <command
+            id="gov.pnnl.cat.alerts.addSubscriptionToResourceCommand"
+            name="addSubscriptionToResourceCommand">
+      </command>
+   </extension>
+   <extension
+      point="org.eclipse.ui.handlers">
+       <handler
+	         class="gov.pnnl.cat.alerts.handlers.AddSubscriptionToResourceHandler"
+	         commandId="gov.pnnl.cat.alerts.addSubscriptionToResourceCommand">
+	      <enabledWhen>
+	     	 <with
+	               variable="selection">
+	            <count
+	                  value="1">
+	            </count>
+	         </with>
+	      </enabledWhen>
+	      <activeWhen>
+	         <and>
+	            <with
+	                  variable="selection">
+	               <iterate
+	                     operator="and">
+	                  <adapt
+	                        type="gov.pnnl.cat.core.resources.IResource">
+	                  </adapt>
+	               </iterate>
+	            </with>
+	         </and>
+	      </activeWhen>
+	   </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="gov.pnnl.cat.ui.rcp.catwizardscategory"
+            class="gov.pnnl.cat.alerts.wizards.NewSearchSubscriptionWizard"
+            icon="icons/mailbox_full.png"
+            id="gov.pnnl.cat.alerts.newSearchSubscriptionWizard"
+            name="Search Subscription">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="gov.pnnl.cat.ui.rcp.perspectives.AdminDataBrowser">
+         <perspectiveShortcut
+               id="gov.pnnl.cat.alerts.perspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="gov.pnnl.cat.ui.rcp.perspectives.userperspective">
+         <perspectiveShortcut
+               id="gov.pnnl.cat.alerts.perspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="gov.pnnl.cat.ui.rcp.perspectives.teamsperspective">
+         <perspectiveShortcut
+               id="gov.pnnl.cat.alerts.perspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+         <factory
+            adaptableType="gov.pnnl.cat.alerts.model.IEvent"
+            class="gov.pnnl.cat.alerts.adapters.ResourceAdapterFactory">
+         <adapter type="gov.pnnl.cat.core.resources.IResource"/>
+      </factory>
+   </extension>
+	<extension
+      point="org.eclipse.ui.commandImages">
+      <!--  Omics images shouldn't be registered here
+	   <image
+	         commandId="gov.pnnl.cat.omics.saveAsCommand"
+	         icon="icons/16x16/document_out.png">
+	   </image>
+	  -->
+	    <image
+	         commandId="gov.pnnl.cat.alerts.addSubscriptionToResourceCommand"
+	         icon="icons/16x16/bell.png">
+	    </image>
+	</extension>
+</plugin>

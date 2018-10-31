@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Dataset Management and Publishing">
+   <topic href="html/dataset_management.html" label="Dataset Management">
+      <anchor id="DatasetManagement"/>
+      <topic href="html/WhyDoWeCare.html" label="Why do we care about dataset management?">
+      </topic>
+      <topic href="html/Dataset_definition.html" label="What is a Dataset?">
+      </topic>
+      <topic href="html/WhichData.html" label="Which data should I shared and preserved?">
+      </topic>
+      <topic label="How can Velo help me to share my data?">
+      </topic>
+   </topic>
+   <topic href="html/publishing_a_dataset.html" label="Publishing a Dataset">
+      <anchor id="PublishingDataset"/>
+   	<topic href="html/first_step_gathering_info.html" label="Step 1: Prepare"></topic>
+   	<topic href="html/second_step_entering_metadata.html" label="Step 2: Describe Data">
+       <topic href="html/info_about_your_dataset.html" label="Information About Your Dataset">
+       </topic>
+       <topic href="html/qualitySummary.html" label="Data Quality">
+       </topic>
+       <topic href="html/methods.html" label="Methods">
+       </topic>
+       <topic href="html/landing_page_customization.html" label="Add Images, Video, and URLs">
+       </topic>
+       <topic href="html/information_for_osti.html" label="Information for OSTI">
+       </topic></topic>
+   	<topic href="html/third_step_upload_your_data.html" label="Step 3: Upload Data"></topic>
+    <topic href="html/fourth_step_getting_a_draft_doi.html" label="Step 4: Get a Draft DOI">
+    </topic>
+    <topic href="html/fifth_step_dataset_review.html" label="Step 5: Review Your Data">
+    </topic>
+    <topic href="html/sixth_step_publish_your_data.html" label="Step 6: Publish">
+    </topic>
+   </topic>
+</toc>

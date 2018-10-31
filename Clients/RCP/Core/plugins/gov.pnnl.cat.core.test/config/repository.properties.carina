@@ -1,0 +1,48 @@
+#
+# Server properties
+#
+#hostname=protoapps.pnl.gov
+#http.port=8080
+#hostname=grove-5
+#hostname=roadrunnerold
+#hostname=peaks1
+#http.port=8083
+#hostname=munky
+hostname=we22294
+http.port=8082
+#hostname=microbes.pnl.gov
+#http.port=80
+#hostname=ascem.pnl.gov
+#http.port 443
+
+# If you have a proxy server, you have to set these props:
+#http.proxyHost=proxyout.lanl.gov
+#http.proxyPort=8080
+
+jms.port=61616
+
+#
+# Generated properties
+#
+http.url=http://${hostname}:${http.port}
+http.url.alfresco = ${http.url}/alfresco
+jms.url=http://${hostname}:${jms.port}
+
+# How to set JMS URL to go through proxy server
+#jms.url=http://${hostname}:${jms.port}?proxyHost=proxyout.lanl.gov&proxyPort=8080
+
+# Required by AlfrescoWebserviceFactory
+webservice.location=${http.url.alfresco}/api
+
+# Required to distinguish servers if you have multiple
+# alfrescos running on the same machine
+notification.server.id=alfresco
+
+cifs.path=${http.url.alfresco}/webdav
+
+#EUS properties
+#eus.url=https://eus.emsl.pnl.gov
+eus.url=https://d-eus.emsl.pnl.gov
+eus.home=${eus.url}/Portal/?catUser=true
+eus.forgot.password=${eus.url}/Portal/portal/portal_forgot_password.jsp
+eus.change.password=${eus.url}/Portal/portal/premier_portal_change_password.jsp

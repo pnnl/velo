@@ -1,0 +1,77 @@
+<project name="Velo Commons" default="build-jar">
+
+	<target name="init">
+		<echo level="info">basedir = ${basedir}</echo>
+				
+		<!-- common build properties -->
+		<property name="dir.src" value="${basedir}/src" />
+		<property name="dir.src.jzlib" value="${basedir}/src-jzlib-1.1.3" />
+		<property name="dir.src.jsch" value="${basedir}/src-jsch-0.1.51" />
+		<property name="dir.build" value="${basedir}/build" />
+		<property name="dir.classes" value="${dir.build}/classes" />
+		<property name="dir.dist" value="${dir.build}/dist" />
+		<property name="dir.lib" value="${basedir}/lib" />
+		<property name="file.name.jar" value="velo-tif.jar" />
+
+		<property name="file.name.jar" value="${ant.project.name}-${cat.version}.jar" />
+
+		<echo level="info">dir.src = ${dir.src}</echo>
+
+		<path id="classpath">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${dir.classes}"/>
+		</path>
+
+	</target>
+
+	<target name="clean" depends="init" description="clean the compiled classes and libraries">
+		<delete dir="${dir.classes}"/>
+	</target>
+
+	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		<mkdir dir="${dir.build}" />
+		<mkdir dir="${dir.classes}" />
+		<javac destdir="${dir.classes}" deprecation="off" debug="on" target="1.7" source="1.7">
+			<src path="${dir.src}" />
+			<src path="${dir.src.jzlib}" />
+		    <src path="${dir.src.jsch}" />
+			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:-path"/>
+		</javac>
+
+		<!-- copy any non-java files -->
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+			<fileset dir="${dir.src.jzlib}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>
+			<fileset dir="${dir.src.jsch}">
+				<patternset>
+					<exclude name="**/*.java" />
+				</patternset>
+			</fileset>			
+		</copy>
+	</target>
+
+	<target name="build-jar" depends="clean, build-jar-incremental" description="Packages the JAR file from clean build">
+	</target>
+
+	<!--- Create the jar file for the server -->
+	<target name="build-jar-incremental" depends="compile-java" description="Packages the JAR file">
+		<delete dir="${dir.dist}"/>
+		<mkdir dir="${dir.dist}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" basedir="${dir.classes}" />
+		<jar jarfile="${dir.dist}/${file.name.jar}" update="true">
+			<!--<metainf dir="${dir.src.metainf}" />-->
+		</jar>
+	</target>
+	
+</project>

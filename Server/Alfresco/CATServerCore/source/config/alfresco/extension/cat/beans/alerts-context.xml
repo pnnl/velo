@@ -1,0 +1,456 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+	
+    <!-- DMI Alerts Behavior Beans -->
+    <!-- AlertService wraps all of the alertService methods in a transaction -->
+    <bean id="AlertService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>gov.pnnl.cat.alerting.alerts.AlertManagementService</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="alertService"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="AlertService_transaction"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="AlertService_transaction" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">${server.transaction.mode.default}</prop>
+            </props>
+        </property>
+    </bean>
+    
+    
+    <bean id="alertService" class="gov.pnnl.cat.alerting.alerts.internal.AlertManagementServiceImpl" parent="basePolicy">
+    	<property name="publicContentService">
+    		<ref bean="ContentService" />
+    	</property>
+    	<property name="maxAlerts">
+    		<value>100</value>
+    	</property>
+    	<property name="searchService">
+    		<ref bean="SearchService" />
+    	</property>
+    </bean>
+    
+    <!-- SubscriptionService wraps all of the subscriptionService methods in a transaction -->
+    <bean id="CatSubscriptionService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>gov.pnnl.cat.alerting.subscriptions.SubscriptionService</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="catSubscriptionService"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="SubscriptionService_transaction"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="SubscriptionService_transaction" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">${server.transaction.mode.default}</prop>
+            </props>
+        </property>
+    </bean>
+    
+    
+    
+    <bean id="catSubscriptionService" class="gov.pnnl.cat.alerting.subscriptions.internal.SubscriptionServiceImpl" parent="basePolicy" depends-on="cat.dictionaryBootstrap,schemaBootstrap">
+    	<property name="deliveryChannels">
+    		<list>
+    			<ref bean="emailDeliveryChannel" />
+    			<ref bean="repositoryDeliveryChannel" />
+    		</list>
+    	</property>
+    	<property name="maxSubscriptions">
+    		<value>10</value>
+    	</property>
+    	<property name="subscriptionTypeMimeTypeMap">
+    		<map>
+    			<entry key="sub.rep:subscription"><value>subscription/repository</value></entry>
+    			<entry key="sub.rep.fact:subscription"><value>subscription/repository-fact-sheet</value></entry>
+    			<entry key="sub.srch:subscription"><value>subscription/search</value></entry>
+    			<entry key="sub.rss:subscription"><value>subscription/rss</value></entry>
+    		</map>
+    	</property>
+    	<!-- <property name="subscriptionTypes" /> -->
+     	<property name="searchService">
+    		<ref bean="SearchService" />
+    	</property>
+    	<property name="nodeService">
+    	    <ref bean="nodeService" />
+    	</property>
+    </bean>
+    
+    <bean id="emailutils" class="gov.pnnl.cat.alerting.delivery.internal.EmailUtils">
+		<property name="fromAddress">
+            <value>${mail.from.default}</value>
+        </property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="personService">
+			<ref bean="personService" />
+		</property>
+		<property name="javaMailSender">
+			<ref bean="mailService" />
+		</property>
+    </bean>
+    
+    <bean id="abstractDeliveryChannel" abstract="true" class="gov.pnnl.cat.alerting.delivery.internal.AbstractDeliveryChannel">
+		<property name="emailUtils">
+			<ref bean="emailutils" />
+		</property>
+		<property name="contentTransformerRegistry">
+			<ref bean="contentTransformerRegistry" />
+		</property>
+		<property name="subscriptionService">
+			<ref bean="catSubscriptionService" />
+		</property>
+	</bean>    
+	
+    <bean id="emailDeliveryChannel" parent="abstractDeliveryChannel"
+      class="gov.pnnl.cat.alerting.delivery.internal.EmailDeliveryChannel">
+    </bean>
+    
+   	<bean id="repositoryDeliveryChannel" parent="abstractDeliveryChannel"
+   	class="gov.pnnl.cat.alerting.delivery.internal.RepositoryDeliveryChannel">
+   		<property name="alertService">
+   			<ref bean="alertService" />
+   		</property>
+   		<property name="contentService">
+   			<ref bean="contentService" />
+   		</property>
+   	</bean>
+
+<!--
+    <bean id="RepositoryEventSplitter" class="gov.pnnl.cat.alerting.detection.internal.repository.RepositoryEventSplitter">
+    	<property name="messageSender">
+    		<ref local="splitEventsMessageSender" />
+    	</property>
+    	<property name="nodeService">
+    		<ref bean="nodeService" />
+    	</property>
+    	<property name="namespacePrefixResolver">
+    		<ref bean="namespaceService" />
+    	</property>
+    	<property name="transactionService">
+    		<ref bean="transactionComponent" />
+    	</property>
+    </bean>
+    
+    <bean id="splitEventsMessageSender" class="gov.pnnl.cat.jms.common.RepositoryEventMessageSender">
+    
+    </bean> 
+-->   
+   <bean id="alfrescoSplitEventTopic" class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic" autowire="constructor" abstract="false" singleton="true" lazy-init="default" dependency-check="default">
+ 		 <constructor-arg value="dmi.publish.events.split" /> 
+       <constructor-arg value="${notification.server.id}" />
+   </bean> 
+   
+ 	<bean id="AbstractEventProcessor" class="gov.pnnl.cat.alerting.detection.internal.AbstractEventProcessor" abstract="true">
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="subscriptionService">
+			<ref bean="catSubscriptionService" />
+		</property>	
+		<property name="transactionService">
+			<ref bean="transactionComponent" />
+		</property>
+		<property name="alertManagementService">
+			<ref bean="alertService" />
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="authenticationComponent" />
+		</property>
+	</bean>
+		
+	<bean id="RepositoryEventProcessor" parent="AbstractEventProcessor" class="gov.pnnl.cat.alerting.detection.internal.repository.RepositoryEventProcessor">
+		<property name="subscriptionTypes">
+			<list>
+				<value>{http://www.pnl.gov/dmi/model/subscription/repository/1.0}subscription</value>
+				<value>{http://www.pnl.gov/dmi/model/subscription/repository/factsheet/1.0}subscription</value>
+			</list>
+		</property>
+		<property name="securityFilterTopicSubscriberBeanName">
+			<value>SecurityFilterTopicSubscriber</value>
+		</property>
+		<property name="namespacePrefixResolver">
+			<ref bean="namespaceService" />
+		</property>
+		<property name="sender">
+			<bean class="gov.pnnl.cat.alerting.alerts.internal.ActorImpl" factory-method="getSystemActor" />
+		</property>
+	</bean>
+	
+	<bean id="SearchEventProcessor" parent="AbstractEventProcessor" class="gov.pnnl.cat.alerting.detection.internal.search.SearchEventProcessor">
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="subscriptionTypes">
+			<list>
+				<value>{http://www.pnl.gov/dmi/model/subscription/repository/search/1.0}subscription</value>
+			</list>
+		</property>
+    	<property name="nodeUtils">
+    		<ref bean="nodeUtils" />
+    	</property>
+    	<property name="sender">
+			<bean class="gov.pnnl.cat.alerting.alerts.internal.ActorImpl" factory-method="getSystemActor" />
+		</property>
+	</bean>
+	 
+	<bean id="RSSEventProcessor" parent="AbstractEventProcessor" class="gov.pnnl.cat.alerting.detection.internal.rss.RSSEventProcessor">
+		<property name="subscriptionTypes">
+			<list>
+				<value>{http://www.pnl.gov/dmi/model/subscription/rss/1.0}subscription</value>
+			</list>
+		</property>
+    	<property name="nodeUtils">
+    		<ref bean="nodeUtils" />
+    	</property>
+    	<property name="sender">
+			<bean class="gov.pnnl.cat.alerting.alerts.internal.ActorImpl" factory-method="getSystemActor" />
+		</property>
+	</bean>
+	
+	<bean id="SecurityFilterTopicSubscriber" singleton="false"  class="gov.pnnl.cat.alerting.detection.internal.repository.SecurityFilteredTopicSubscriber">
+		<property name="destination">
+			<ref bean="alfrescoSplitEventTopic" />
+		</property>
+		<property name="filterFunctionality">
+			<ref bean="secureUserEventFilterFunctionality" />
+		</property>
+		<property name="unmanagedListenerRegistrar">
+			<ref bean="unmanagedListenerRegistrar" />
+		</property>
+		<property name="subscriptionService">
+			<ref bean="catSubscriptionService" />
+		</property>
+		<property name="alertManagementService">
+			<ref bean="alertService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+    	<property name="transactionService">
+    		<ref bean="transactionComponent" />
+    	</property>
+    	<property name="nodeUtils">
+    		<ref bean="nodeUtils" />
+    	</property>
+    	<!-- putting the goat content property type here as it won't hurt any other deployments, need to pull out into a property though -->
+    	<property name="applicableContentProperties">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.pnl.gov/goat/model/content/1.0}content</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="AlertDigester" class="gov.pnnl.cat.alerting.subscriptions.internal.AlertDigesterImpl">
+		<property name="alertManagementService">
+			<ref bean="alertService" />
+		</property>
+		<property name="subscriptionService">
+			<ref bean="catSubscriptionService" />
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionComponent" />
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="authenticationComponent" />
+		</property>
+		<property name="repositoryEventProcessor">
+			<ref bean="RepositoryEventProcessor" />
+		</property>
+	</bean>
+	
+	<!-- a bean used to invoke a particular method in a particular class by Quartz -->
+	<bean id="hourlyAlertDigester" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="AlertDigester"/>
+		<property name="targetMethod" value="digestHourlyAlerts" />
+	    <property name="name">
+			<value>Hourly Alert Digester Cron Job</value>
+		</property>
+	</bean>
+
+	<bean id="dailyAlertDigester" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="AlertDigester"/>
+		<property name="targetMethod" value="digestDailyAlerts" />
+		<property name="name">
+			<value>Daily Alert Digester Cron Job</value>
+		</property>
+	</bean>
+	
+	<bean id="weeklyAlertDigester" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="AlertDigester"/>
+		<property name="targetMethod" value="digestWeeklyAlerts" />
+	    <property name="name">
+			<value>Weekly Alert Digester Cron Job</value>
+		</property>
+	</bean>
+	
+	<bean id="hourlyRSSProcessor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="RSSEventProcessor"/>
+		<property name="targetMethod" value="performHourlyRSS" />
+	    <property name="name">
+			<value>Hourly RSS Process Cron Job</value>
+		</property>
+	</bean>
+
+	<bean id="dailyRSSProcessor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="RSSEventProcessor"/>
+		<property name="targetMethod" value="performDailyRSS" />
+		<property name="name">
+			<value>Daily RSS Process Cron Job</value>
+		</property>
+	</bean>
+	
+	<bean id="weeklyRSSProcessor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="RSSEventProcessor"/>
+		<property name="targetMethod" value="performWeeklyRSS" />
+	    <property name="name">
+			<value>Weekly RSS Process Cron Job</value>
+		</property>
+	</bean>
+	
+	<bean id="dailySearchExecutor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="SearchEventProcessor"/>
+		<property name="targetMethod" value="performDailySearches" />
+		<property name="name">
+			<value>Daily Search Alert Performer Cron Job</value>
+		</property>
+	</bean>
+	
+	<bean id="weeklySearchExecutor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="SearchEventProcessor"/>
+		<property name="targetMethod" value="performWeeklySearches" />
+	    <property name="name">
+			<value>Weekly Search Alert Performer Cron Job</value>
+		</property>
+	</bean>
+	
+    <!-- Use Alfresco's scheduler bean, and inject our triggers into it -->
+	<!-- a bean to express when Quartz should run the method defined above -->
+	<!-- see http://quartz.sourceforge.net/javadoc/org/quartz/CronTrigger.html for cron syntax -->
+	<bean id="hourlyDigesterCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="hourlyAlertDigester"/>
+		<!-- run every hour on the hour -->
+		<property name="cronExpression" value="0 0 * * * ?"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>
+
+	<bean id="dailyDigesterCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="dailyAlertDigester"/>
+		<!-- run every day at the specified hour on the hour (default: 3am) -->
+		<property name="cronExpression" value="0 0 3 * * ?"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>
+	
+	<bean id="weeklyDigesterCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="weeklyAlertDigester"/>
+		<!-- run once a week on the specified day (1-7: SUN-SAT.  default: 2am Monday morning) -->
+		<property name="cronExpression" value="0 0 2 ? * 2"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>	
+
+	<bean id="hourlyRSSCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="hourlyRSSProcessor"/>
+		<!-- run every hour on the hour -->
+		<property name="cronExpression" value="0 0 * * * ?"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>
+
+	<bean id="dailyRSSCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="dailyRSSProcessor"/>
+		<!-- run every day at the specified hour on the hour (default: 3am) -->
+		<property name="cronExpression" value="0 0 3 * * ?"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>
+	
+	<bean id="weeklyRSSCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="weeklyRSSProcessor"/>
+		<!-- run once a week on the specified day (1-7: SUN-SAT.  default: 2am Monday morning) -->
+		<property name="cronExpression" value="0 0 2 ? * 2"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>	
+	
+	<bean id="dailySearchCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="dailySearchExecutor"/>
+		<!-- run every day at the specified hour on the hour (default: 3am) -->
+		<property name="cronExpression" value="0 0 3 * * ?"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>		
+	</bean>	
+	
+ 	<bean id="weeklySearchCronTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail" ref="weeklySearchExecutor"/>			
+		<!-- run once a week on the specified day (1-7: SUN-SAT.  default: 2am Monday morning) -->
+		<property name="cronExpression" value="0 0 2 ? * 2"/>
+		<property name="scheduler"><ref bean="schedulerFactory" /></property>
+	</bean>	
+
+	<bean id="transformer.EmailDelivery"
+         class="gov.pnnl.cat.alerting.transform.EmailDeliveryContentTransformer"
+         parent="baseContentTransformer" >
+    </bean>
+    
+    <bean id="transformer.RepositoryDelivery"
+         class="gov.pnnl.cat.alerting.transform.RepositoryDeliveryContentTransformer"
+         parent="baseContentTransformer" >
+    </bean>
+    
+    <!-- A bean for testing the subscription service -->
+    <bean id="subscription-action"
+		class="gov.pnnl.cat.actions.SubscriptionServiceTestAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="subscriptionService">
+			<ref bean="CatSubscriptionService" />
+		</property>
+		<property name="rssEventProcessor">
+			<ref bean="RSSEventProcessor" />
+		</property>
+		<property name="alertDigester">
+			<ref bean="AlertDigester" />
+		</property>
+		<property name="searchEventProcessor">
+			<ref bean="SearchEventProcessor" />
+		</property>
+		<property name="authenticationComponent">
+			<ref bean="authenticationComponent" />
+		</property>
+		<property name="alertService">
+			<ref bean="AlertService" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.alfresco.org/model/content/1.0}folder</value>
+			</list>
+		</property>
+	</bean>
+</beans>

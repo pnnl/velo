@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Launch a remote job</shortname>
+  <description>Launch a remote job</description>
+    <!-- Parameters passed via json -->
+  <url>/velo/joblaunching/launch</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

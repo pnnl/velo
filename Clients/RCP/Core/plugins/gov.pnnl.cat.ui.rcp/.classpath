@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="lib/ooxml-schemas-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-ooxml-3.9-beta1-20121109.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-3.9-beta1-20121109-patched.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="icons"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

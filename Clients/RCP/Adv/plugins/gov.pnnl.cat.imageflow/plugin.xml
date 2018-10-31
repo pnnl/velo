@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+
+      <view
+            name="Image Gallery"
+            icon="icons/sample.gif"
+            category="gov.pnnl.cat.ui.rcp.datamanagementcategory"
+            class="gov.pnnl.cat.imageflow.views.ImageFlowView"
+            id="gov.pnnl.cat.imageflow.views.ImageFlowView">
+      </view>
+   </extension>
+
+</plugin>

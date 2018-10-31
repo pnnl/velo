@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Advanced Delete Resources</shortname>
+  <description>Recursively delete a set of resources provided in a file, based on the specified association options</description>
+  <url>/velo/advDelete?option={option}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

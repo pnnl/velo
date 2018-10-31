@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Thumbnail</shortname>
+  <description>Get the thumbnail image for a single resource, if it exists.</description>
+  <url>/cat/getThumbnail?path={path}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

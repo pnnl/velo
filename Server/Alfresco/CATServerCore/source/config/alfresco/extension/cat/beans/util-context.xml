@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+    
+	<!-- Common thread pools that can be shared by all policy beans -->
+	<bean id="lowPriorityThreadPool" class="gov.pnnl.cat.util.PrioritizedThreadPoolExecutor" >
+	   <constructor-arg>
+	      <bean class="gov.pnnl.cat.util.PrioritizedThreadFactory">
+   	         <property name="priority">
+   	            <value>low</value>
+             </property>
+             <property name="label">
+                <value>CAT Low Priority Thread Pool</value>
+             </property>
+          </bean>
+	   </constructor-arg>	
+	   <constructor-arg>
+	      <value>${low.priority.thread.pool.size}</value>
+	   </constructor-arg>
+	</bean>
+	
+	<bean id="bigFileThreadPool" class="gov.pnnl.cat.util.PrioritizedThreadPoolExecutor" >
+	   <constructor-arg>
+	      <bean class="gov.pnnl.cat.util.PrioritizedThreadFactory">
+   	         <property name="priority">
+   	            <value>medium</value>
+             </property>
+             <property name="label">
+                <value>CAT Big File Thread Pool</value>
+             </property>
+          </bean>
+	   </constructor-arg>	
+	   <constructor-arg>
+	      <value>${big.file.thread.pool.size}</value>
+	   </constructor-arg>
+	</bean>
+	
+    <bean id="mediumPriorityThreadPool" class="gov.pnnl.cat.util.PrioritizedThreadPoolExecutor" >
+	   <constructor-arg>
+	      <bean class="gov.pnnl.cat.util.PrioritizedThreadFactory">
+   	         <property name="priority">
+   	            <value>medium</value>
+             </property>
+             <property name="label">
+                <value>CAT Medium Priority Thread Pool</value>
+             </property>
+          </bean>	     
+	   </constructor-arg>
+	   <constructor-arg>
+	      <value>${medium.priority.thread.pool.size}</value>
+	   </constructor-arg>
+	</bean>
+	
+    <bean id="highPriorityThreadPool" class="gov.pnnl.cat.util.PrioritizedThreadPoolExecutor" >
+	   <constructor-arg>
+	      <bean class="gov.pnnl.cat.util.PrioritizedThreadFactory">
+   	         <property name="priority">
+   	            <value>high</value>
+             </property>
+             <property name="label">
+                <value>CAT High Priority Thread Pool</value>
+             </property>
+          </bean>	     
+	   </constructor-arg>
+	   <constructor-arg>
+	      <value>${high.priority.thread.pool.size}</value>
+	   </constructor-arg>	
+	</bean>
+
+   <!-- utility bean for helping with common node operations -->
+   <bean id="webscriptUtils" class="gov.pnnl.cat.web.scripts.WebScriptUtils">
+	   <property name="thumbnailService" ref="ThumbnailService"/>
+   </bean>
+	
+	<!-- utility bean for helping with common node operations -->
+   <bean id="nodeUtils" class="gov.pnnl.cat.util.NodeUtils"
+      init-method="init">
+      <property name="searchService" ref="searchService" />
+      <property name="nodeService" ref="nodeService" />
+      <property name="contentService" ref="contentService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />
+      <property name="authorityService" ref="authorityService" />
+      <property name="fileFolderService" ref="fileFolderService" />
+      <property name="namespaceService" ref="namespaceService" />
+      <property name="personService" ref="personService" />
+      <property name="permissionService" ref="permissionService" />
+      <property name="typeMap">
+         <map>
+            <entry key="cm:content">
+               <value>${local.url.prefix}/download/attach/workspace/SpacesStore/NODEID/NAME</value>
+            </entry>
+         </map>
+      </property>
+   </bean>      
+    
+   <!--  utility bean for helping with Comments -->
+   <bean id="commentUtils" class="gov.pnnl.cat.util.CommentUtils">
+      <property name="nodeService" ref="NodeService" />
+      <property name="contentService" ref="ContentService" />
+      <property name="personService" ref="personService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />
+   </bean>    	
+
+   <!-- convenience abstract bean for injecting common policy dependencies -->
+   <bean id="basePolicy" abstract="true" init-method="init"
+      depends-on="nodeUtils">
+      <property name="searchService" ref="searchService" />
+      
+      <!--  For all our policy beans, we only want the node service bean that has a tx interceptor - we don't care about all other interceptors -->
+      <!-- db node service bringing back mltext for string props instead of string -->
+      <property name="nodeService" ref="dbNodeService" />
+      <property name="copyService" ref="copyService" />
+      <property name="policyComponent" ref="policyComponent" />
+      <property name="categoryService" ref="categoryService" />
+      <property name="personService" ref="personService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />
+      <property name="permissionService" ref="permissionService" />
+      <property name="ownableService" ref="ownableService" />
+      <property name="nodeUtils" ref="nodeUtils" />
+      <property name="authorityService" ref="authorityService" />
+      <property name="namespacePrefixResolver" ref="namespaceService" />
+      <property name="namespaceService" ref="NamespaceService" />
+      <property name="ruleService" ref="ruleService" />
+      <property name="contentService" ref="contentService" />
+      <property name="actionService" ref="actionService" />
+      <property name="transactionService" ref="transactionComponent" />
+      <property name="lowPriorityThreadPool" ref="lowPriorityThreadPool" />
+      <property name="mediumPriorityThreadPool" ref="mediumPriorityThreadPool" />
+      <property name="highPriorityThreadPool" ref="highPriorityThreadPool" />
+      <property name="dictionaryService" ref="dictionaryService" />
+      <property name="versionService" ref="versionService" />
+   </bean>
+   
+      
+   <!-- sniffs mimetype if needed -->
+   <bean id="mimetypeProcessor" class="gov.pnnl.cat.util.DataSniffer" init-method="init">
+      <property name="mimetypeService" ref="mimetypeService" />
+      <property name="mimetypeFile">
+         <value>classpath:alfresco/extension/cat/properties/mimeDetermination.properties</value>
+      </property> 
+    </bean>
+</beans>

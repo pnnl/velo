@@ -1,0 +1,20 @@
+#!/bin/sh
+# This is a default wrapper script template for launching a remote job
+
+# Run dos2unix on all text files
+#for f in *
+#do
+#  if [ `file $f |grep -c text` != "0" ]; then
+#     dos2unix $f 2> /dev/null
+#  fi
+#done
+
+
+rm .status
+# In the simple case, the program simply runs with well known input
+# and output file names
+# The status must be written to a file named status
+echo Starting `date`
+##code## 1> job.out  2> job.err
+echo $? > .status
+echo Ending `date`

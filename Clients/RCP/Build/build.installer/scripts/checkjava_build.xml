@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project org.akuna.feature.site">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="${basedir}/installer/CheckJava.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="gov.pnnl.velo.installer.CheckJava"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${basedir}/bin"/>
+        </jar>
+    </target>
+	
+	<target name="create_panel_jar">
+        <jar destfile="${basedir}/installer/CheckJavaPanel.jar" filesetmanifest="mergewithoutmain">
+            <fileset dir="${basedir}/../bin"/>
+        </jar>
+    </target>
+</project>

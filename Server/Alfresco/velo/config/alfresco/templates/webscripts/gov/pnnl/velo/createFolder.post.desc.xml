@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Folder</shortname>
+  <description>Create new folder in spaces store</description>
+  <url>/velo/createFolder?parentPath={parentPath}&amp;name={name}&amp;mimetype={mimetype}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

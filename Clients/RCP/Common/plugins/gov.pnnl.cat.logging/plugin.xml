@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="gov.pnnl.cat.logging.commands.ToggleLogging"
+            defaultHandler="gov.pnnl.cat.logging.commands.ToggleLogging"
+            name="ToggleLogging">
+      </command>
+   </extension>
+</plugin>

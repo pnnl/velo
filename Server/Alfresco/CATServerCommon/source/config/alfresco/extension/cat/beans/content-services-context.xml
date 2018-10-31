@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>       
+     
+  <bean id="execTransform"
+  	class="gov.pnnl.cat.transformers.ExecTransform">
+  	<property name="libFolder">
+  		<value>${exec.jre.lib.folder}</value>
+  	</property>
+  </bean>
+ 
+  <bean id="badCharacterRemover" class="gov.pnnl.cat.intercept.extracter.BadCharacterRemover">
+  	<property name="propertyNames">
+  		<list>
+  			<value>{http://www.alfresco.org/model/content/1.0}name</value>
+  			<value>{http://www.alfresco.org/model/content/1.0}description</value>
+  			<value>{http://www.alfresco.org/model/content/1.0}title</value>
+  			<value>{http://www.alfresco.org/model/content/1.0}author</value>			
+  		</list>
+  	</property>
+  </bean>
+  
+  <!-- overwrite alfresco's bean so that we can store usages and quotas on a folder not a person -->
+  <bean id="contentUsageImpl" class="org.alfresco.repo.usage.ContentUsageImpl" init-method="init">
+      <property name="personService" ref="personService"/>
+      <property name="nodeService" ref="nodeService"/>
+      <property name="policyComponent" ref="policyComponent"/>
+      <property name="usageService" ref="usageService"/>
+      <property name="authenticationContext" ref="authenticationContext"/>
+      <property name="tenantService" ref="tenantService"/>
+      <property name="enabled">
+         <value>${system.usages.enabled}</value>
+      </property>
+      <property name="enabledForSpaces">
+         <value>${system.spaces.usages.enabled}</value>
+      </property>
+      <property name="stores">
+         <list>
+            <value>workspace://SpacesStore</value>
+         </list>
+      </property>
+   </bean>
+     
+</beans>

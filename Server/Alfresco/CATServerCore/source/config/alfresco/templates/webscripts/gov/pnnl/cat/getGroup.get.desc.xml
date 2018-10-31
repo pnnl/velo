@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Group</shortname>
+  <description>Get Group</description>
+  <url>/cat/getGroup?groupname={groupname}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

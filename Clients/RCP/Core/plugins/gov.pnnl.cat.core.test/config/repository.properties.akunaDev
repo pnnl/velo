@@ -1,0 +1,17 @@
+# Server properties
+#
+hostname=akuna.labworks.org
+http.port=443
+notification.server.id=akunaDevAlfresco
+
+#
+# Generated properties
+#
+http.url=https://${hostname}:${http.port}
+http.url.alfresco = ${http.url}/akunaDevAlfresco
+jms.url=http://${hostname}/activemq2
+
+# Required by AlfrescoWebserviceFactory
+webservice.location=${http.url.alfresco}/api
+
+wiki.url=https://akuna.labworks.org/akuna-dev/wiki/index.php

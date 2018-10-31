@@ -1,0 +1,13 @@
+<webscript>
+  <shortname>Upload a single file as a String</shortname>
+  <description>Upload a single file as a String</description>
+  <!-- 
+  <url>/cat/uploadFileAsString?destPath={destPath}&amp;fileName={fileName}&amp;content={?content}</url>
+  -->
+  <!--  mimetype param is optional -->
+  <url>/cat/uploadFileAsString?destPath={destPath}&amp;fileName={fileName}&amp;content={?content}&amp;mimetype={mime}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

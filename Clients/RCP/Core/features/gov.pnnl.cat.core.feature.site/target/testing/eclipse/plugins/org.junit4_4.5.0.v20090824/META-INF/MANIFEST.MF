@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Require-Bundle: org.hamcrest.core;bundle-version="1.1.0";visibility:=r
+ eexport
+Export-Package: junit.extensions;version="4.5.0",junit.framework;versi
+ on="4.5.0",junit.runner;version="4.5.0",junit.textui;version="4.5.0",
+ org.junit;version="4.5.0",org.junit.experimental.results;version="4.5
+ .0",org.junit.experimental.runners;version="4.5.0",org.junit.experime
+ ntal.theories;version="4.5.0",org.junit.experimental.theories.interna
+ l;version="4.5.0";x-internal:=true,org.junit.experimental.theories.su
+ ppliers;version="4.5.0",org.junit.internal;version="4.5.0";x-internal
+ :=true,org.junit.internal.builders;version="4.5.0";x-internal:=true,o
+ rg.junit.internal.matchers;version="4.5.0";x-internal:=true,org.junit
+ .internal.requests;version="4.5.0";x-internal:=true,org.junit.interna
+ l.runners;version="4.5.0";x-internal:=true,org.junit.internal.runners
+ .model;version="4.5.0";x-internal:=true,org.junit.internal.runners.st
+ atements;version="4.5.0";x-internal:=true,org.junit.matchers;version=
+ "4.5.0",org.junit.runner;version="4.5.0",org.junit.runner.manipulatio
+ n;version="4.5.0",org.junit.runner.notification;version="4.5.0",org.j
+ unit.runners;version="4.5.0",org.junit.runners.model;version="4.5.0"
+Bundle-Vendor: %providerName
+Bundle-ClassPath: junit.jar
+Bundle-Version: 4.5.0.v20090824
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.junit4
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+
+

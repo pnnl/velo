@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+    <bean id="justificationFileCreator" class="gov.pnnl.cat.tagtimer.JustificationFileCreator" >
+    	 <property name="dictionaryService">
+    	 	<ref bean="dictionaryService"/>
+    	 </property>
+    	 <property name="nodeService">
+    	 	<ref bean="nodeService"/>
+    	 </property>
+    	 <property name="contentService">
+    	 	<ref bean="contentService"/>
+    	 </property>
+    	 <property name="transactionService">
+    	 	<ref bean="transactionComponent"/>
+    	 </property>
+    </bean>
+    
+    <bean id="tagTimerContentBehavior" class="gov.pnnl.cat.policy.tagtimer.TagTimerBehavior" parent="basePolicy">
+      <property name="intelReview">
+        <value>${intel.review}</value>
+      </property>
+      <property name="referenceReview">
+        <value>${reference.review}</value>
+      </property>
+    </bean> 
+         
+    <bean id="fakealert-action"
+		class="gov.pnnl.cat.actions.FakeAlertAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="subscriptionService">
+			<ref bean="CatSubscriptionService" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="namespaceService">
+			<ref bean="namespaceService" />
+		</property>
+		<property name="transactionService">
+    	 	<ref bean="transactionComponent"/>
+    	 </property>
+		<property name="alertService">
+			<ref bean="AlertService" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.alfresco.org/model/content/1.0}folder</value>
+			</list>
+		</property>
+        <property name="authorityService">
+            <ref bean="authorityService"></ref>
+        </property>
+	</bean>
+    
+     <!-- A bean for testing the subscription service -->
+    <bean id="forceTagTimerAlerts-action"
+		class="gov.pnnl.cat.actions.tagtimer.ForceTagTimerAlertsAction"
+		parent="action-executer">
+		<property name="publicAction">
+			<value>true</value>
+		</property>
+		<property name="tagTimerAlertWork">
+        	<ref bean="tagTimerAlertWork" />
+		</property>
+		<property name="applicableTypes">
+			<list>
+				<value>{http://www.alfresco.org/model/content/1.0}content</value>
+				<value>{http://www.alfresco.org/model/content/1.0}folder</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

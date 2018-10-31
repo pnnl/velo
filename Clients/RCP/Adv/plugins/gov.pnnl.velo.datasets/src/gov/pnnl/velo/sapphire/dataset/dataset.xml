@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasetMetadata>
+    <relatedWebsites>
+        <website>
+            <url>http://www.google.com</url>
+        </website>
+        <website>
+            <url>http://www.pnnl.gov</url>
+        </website>
+    </relatedWebsites>
+    <country>United States</country>
+    <language>English</language>
+    <citationInformation>
+        <title>Test dataset title</title>
+        <description>Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description.
+            Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description. Test dataset description.</description>
+        <publisher>IEEE</publisher>
+        <tags>tag1, keyword1, tag2, keyword3</tags>
+        <authors>
+            <author>
+                <name>
+                    <first>Zoe</first>
+                    <last>Guillen</last>
+                </name>
+                <eMail>zoe@pnnl.gov</eMail>
+                <phoneNumber>5091231234</phoneNumber>
+                <institution>PNNL</institution>
+                <primaryAuthor>true</primaryAuthor>
+            </author>
+            <author>
+                <name>
+                    <first>Carina</first>
+                    <last>Lansing</last>
+                </name>
+                <eMail>carina@pnnl.gov</eMail>
+                <phoneNumber>5093453456</phoneNumber>
+                <institution>PNNL</institution>
+            </author>
+        </authors>
+    </citationInformation>
+    <dataAccess>
+        <accessLevel>PUBLIC</accessLevel>
+        <accessEndDate>09/29/2016</accessEndDate>
+        <rights>going to change to a Use Constraints object with 1. type (Copyright,license,etc.), 2.label (ie., Creative Commons), and 3. an optional URL or file that contains the documentation/notice for that constraint?
+            Will remove license field at that point</rights>
+        <license>Apache License 2.0</license>
+        <requiredSoftwares>
+            <requiredSoftware>
+                <title>R</title>
+                <url>https://www.r-project.org/</url>
+            </requiredSoftware>
+            <requiredSoftware>
+                <title>Java</title>
+                <url>http://www.oracle.com/technetwork/java/index.html</url>
+            </requiredSoftware>
+        </requiredSoftwares>
+    </dataAccess>
+    <datasetCoverage>
+        <spatialCoverage>
+            <DCMIBox>westlimit=-119.400445; southlimit=46.198408; eastlimit=-119.211582; northlimit=46.370576</DCMIBox>
+        </spatialCoverage>
+        <temporalCoverage>
+            <startDate>09/24/2015</startDate>
+            <endDate>09/24/2019</endDate>
+            <updateFrequency>UNKNOWN</updateFrequency>
+        </temporalCoverage>
+    </datasetCoverage>
+    <publications>
+        <publication>Liming Zhu , Len Bass , Xiwei Xu, Data management requirements for a knowledge discovery platform, Proceedings of the WICSA/ECSA 2012 Companion Volume, August 20-24, 2012, Helsinki, Finland</publication>
+    </publications>
+    <contacts>
+        <contact>
+            <type>Author</type>
+            <authorName>Carina Lansing</authorName>
+            <primaryContact>true</primaryContact>
+        </contact>
+    </contacts>
+    <methods>
+        <path>/User Documents/admin/zoetest/DOE Data Requirements.docx</path>
+    </methods>
+    <dataQuality>
+        <qualitySummary>Not processed or tested. Provided as is</qualitySummary>
+        <dataQualityFiles>
+            <path>/User Documents/admin/zoetest/DataSetMetadata.xml</path>
+        </dataQualityFiles>
+    </dataQuality>
+    <DOEContractNumbers>
+        <DOEContractNumber>PNNL_ABC_1234</DOEContractNumber>
+        <DOEContractNumber>ORNL_ABC_3456</DOEContractNumber>
+    </DOEContractNumbers>
+    <nonDOEContractNumbers>
+        <nonDOEContractNumber>NON_DOE_NO_2345</nonDOEContractNumber>
+    </nonDOEContractNumbers>
+    <researchOrganizations>
+        <researchOrganization>Pacific Northwest National Laboratory (PNNL), Richland, WA (United States)</researchOrganization>
+        <researchOrganization>National Renewable Energy Laboratory (NREL), Golden, CO (United States)</researchOrganization>
+    </researchOrganizations>
+    <sponsorOrganizations>
+        <sponsorOrganitzation>USDOE Economic Regulatory Administration (RG)</sponsorOrganitzation>
+    </sponsorOrganizations>
+    <viewers>
+        <imageGalleryViewer>
+            <type>ImageGallery</type>
+            <imageFiles>
+                <fileInfo>
+                    <filePath>/User Documents/admin/CarinaTest/DSC_0063.JPG</filePath>
+                    <fileTitle>some title</fileTitle>
+                    <fileDescription>description</fileDescription>
+                </fileInfo>
+                <fileInfo>
+                    <filePath>/User Documents/admin/CarinaTest/DSC_0416.JPG</filePath>
+                    <fileTitle>Another title</fileTitle>
+                    <fileDescription>some description</fileDescription>
+                </fileInfo>
+            </imageFiles>
+        </imageGalleryViewer>
+        <videoViewer>
+            <type>video</type>
+            <filePath>/User Documents/admin/videos/c_gap160.wmv</filePath>
+            <fileTitle>Some wmv file</fileTitle>
+            <fileDescription>Some description for the wmc file</fileDescription>
+        </videoViewer>
+        <videoViewer>
+            <type>video</type>
+            <filePath>/User Documents/admin/videos/ja5b00817_si_002.avi</filePath>
+            <fileTitle>Some AVI</fileTitle>
+            <fileDescription>Some description for avi file</fileDescription>
+        </videoViewer>
+    </viewers>
+</datasetMetadata>

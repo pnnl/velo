@@ -1,0 +1,54 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.subsystems.terminals.sshglobus;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.subsystems.terminal
+ s.ssh";commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rse.services;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.rse.subsystems.terminals.core;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.rse.core;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.rse.connectorservice.sshglobus,
+ org.eclipse.rse.services.sshglobus,
+ org.eclipse.rse.globusonline;bundle-version="1.0.0"
+Bundle-Version: 1.0.200.201205062159
+Export-Package: org.eclipse.rse.subsystems.terminals.sshglobus
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: icons/full/obj16/terminalcommands_obj.gif
+SHA1-Digest: uh8YD+cwryng0agXkGO5WWDYhSs=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.termina
+ ls.ssh/pom.properties
+SHA1-Digest: NIxkLvSLYMbihTFpWcr3CWYyGHI=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.subsystems.termina
+ ls.ssh/pom.xml
+SHA1-Digest: uDsmIkqnNPx0aF531Gwz2r/XbTQ=
+
+Name: org/eclipse/rse/subsystems/terminals/ssh/SshTerminalSubSystemCon
+ figuration.class
+SHA1-Digest: kxZ4xpyIyYTcvLclqooItRI3Ofk=
+
+Name: plugin.xml
+SHA1-Digest: f/D9YCQ9OLRFTQOJJklZ+SB/Vfc=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: icons/full/obj16/terminalcommandslive_obj.gif
+SHA1-Digest: B/em/skAFyou6wiD5wAvXYqKeVk=
+
+Name: plugin.properties
+SHA1-Digest: Pa/UhNUXAmKgHuTRGm06NG2XSPE=
+

@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Add Comment</shortname>
+  <description>Add a comment to a node</description>
+  <!-- Comment text is in the request body -->
+  <url>/cat/addComment?uuid={uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

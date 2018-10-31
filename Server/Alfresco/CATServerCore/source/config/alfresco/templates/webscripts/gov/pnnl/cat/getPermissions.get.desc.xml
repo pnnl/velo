@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get Permissions</shortname>
+  <description>Get permissions for the given node</description>
+  <url>/cat/getPermissions?path={path}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

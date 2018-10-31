@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Get Comments</shortname>
+  <description>Get comments for the given node.</description>
+  <!-- Returns array of comments in json format -->
+  <url>/cat/getComments?uuid={uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

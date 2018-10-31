@@ -1,0 +1,506 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.importexport; singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.importexport";commi
+ tId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.importexport.RemoteImportEx
+ portPlugin
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
+ g.eclipse.ui,org.eclipse.ui.ide,org.eclipse.ui.views,org.eclipse.rse.
+ services;bundle-version="[3.0.0,4.0.0)",org.eclipse.rse.core;bundle-v
+ ersion="[3.0.0,4.0.0)",org.eclipse.rse.ui;bundle-version="[3.0.0,4.0.
+ 0)",org.eclipse.rse.subsystems.files.core;bundle-version="[3.0.0,4.0.
+ 0)",org.eclipse.rse.files.ui;bundle-version="[3.0.0,4.0.0)",org.eclip
+ se.compare,org.eclipse.team.core,org.eclipse.team.ui
+Export-Package: org.eclipse.rse.internal.importexport,
+ org.eclipse.rse.internal.importexport.files,
+ org.eclipse.rse.internal.synchronize,
+ org.eclipse.rse.internal.synchronize.filesystem,
+ org.eclipse.rse.internal.synchronize.filesystem.subscriber,
+ org.eclipse.rse.internal.synchronize.filesystem.ui,
+ org.eclipse.rse.internal.synchronize.provisional
+Bundle-Version: 1.2.300.201205241511
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/internal/importexport/files/IRemoteFileExportDes
+ criptionReader.class
+SHA1-Digest: Gmp2HQ9WxcVbb+Tik9TZoJH40Fs=
+
+Name: org/eclipse/rse/internal/importexport/SystemImportExportResource
+ s.class
+SHA1-Digest: hOgHKdcjuFtHdVSqLKEoiEGPIco=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.importexport/pom.x
+ ml
+SHA1-Digest: y9H4AaOfBTQsiz3021TS8YZ6lVI=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteExportWizard.c
+ lass
+SHA1-Digest: E6L1l7eSGE799/WXlEzitgZk+MI=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$2.class
+SHA1-Digest: D5yoaTTktM2mPHKAkqprsl4lEZI=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/SynchronizeConn
+ ectionManager.class
+SHA1-Digest: BIxziXF898Qm+mgKIVHcr9TcvuM=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportUtil.cla
+ ss
+SHA1-Digest: D8FV8TiFlPrDrGOzc8JM+3XQZ9o=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$6.class
+SHA1-Digest: qkI/n8nAEBO83u8Qc8PfHyzeqJs=
+
+Name: org/eclipse/rse/internal/synchronize/RSESyncUtils.class
+SHA1-Digest: H/D379DU4vVsKT/ZdFXQrYxCHzM=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizeCon
+ nectionManager.class
+SHA1-Digest: CqqhVkx9o5L7UU0itFDhJDJt6qM=
+
+Name: org/eclipse/rse/internal/importexport/files/TreeScrollDropListen
+ er.class
+SHA1-Digest: q7IYr53OT258leb+L4ZrGhxjpsg=
+
+Name: org/eclipse/rse/internal/importexport/IRemoteImportExportConstan
+ ts.class
+SHA1-Digest: +/4UprlC4TBNGviW5jQiNrPJlg4=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportActi
+ onDelegate.class
+SHA1-Digest: IerpZ2S9YUc0ToAcHW/I8Mvi3ok=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$13.class
+SHA1-Digest: la44t8dqY/rhRPHsh9Weu1kCKr4=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/subscriber/FileS
+ ystemResourceVariant.class
+SHA1-Digest: KIYXD7ToQ2jeDfp7DIyeP36eZLM=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportToPr
+ ojectActionDelegate.class
+SHA1-Digest: VMsOa0XT+YeUZAsXtXf++xGvRfc=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/CompoundResou
+ rceTraversal.class
+SHA1-Digest: plDP3+lMr9dPPphuYFBnHwrnO/k=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportDesc
+ riptionReader.class
+SHA1-Digest: mY0VkaQYRaH6Jzfet/nmQ69Lq60=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/Policy.class
+SHA1-Digest: FLX+xinjPIcS0pJSmLoX0hFN2lo=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportProblemD
+ ialog.class
+SHA1-Digest: bUBqT5UERbouLiO5x5bz0oKd6bU=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/MergeOperatio
+ n$1.class
+SHA1-Digest: f9NWTRGPkoId4TScK/kJPNyI4z8=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemProvid
+ erType.class
+SHA1-Digest: Kx5uFSeiB/fEtdyn4mdxuewXl50=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$DummyProvider.class
+SHA1-Digest: Wg1w0+9dn89tgyS/AVU6ZvkI+4g=
+
+Name: org/eclipse/rse/internal/synchronize/SynchronizeData.class
+SHA1-Digest: 8Kr0iM7afuIU/1oEyK4YWGyRvek=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportDesc
+ riptionReader.class
+SHA1-Digest: 3o9pKrS/AO+DZYGzxdGvge3heac=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/ModelMergeAct
+ ion.class
+SHA1-Digest: +Di+I1kSqFyCux1wWHZurXbrYtU=
+
+Name: org/eclipse/rse/internal/importexport/files/Utilities.class
+SHA1-Digest: c/G6YMx3a/prFrxKPFWlAdoj+cY=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileOpenImport
+ WizardActionDelegate.class
+SHA1-Digest: 5AqCERHfOMmD2fhDN+C9+AF5YTM=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemProvid
+ erType$1.class
+SHA1-Digest: 7S2LR5QNv0ygx5XEzEJRru+jMes=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportPlugin.c
+ lass
+SHA1-Digest: Yd6RezSxybqcBUe9qzcmV1Ne2kc=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/FileSystemSyn
+ chronizeParticipant.class
+SHA1-Digest: aT9r5X0huE/KBQ7ACivJly0wyWo=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.importexport/pom.p
+ roperties
+SHA1-Digest: 2J2d7XTkzpz8Bwjw1vPFWs1aZoY=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/GetOperation.
+ class
+SHA1-Digest: RWkaCjWkmMdt2DLmRqsEIF9Oc/Q=
+
+Name: icons/full/etool16/file_import.gif
+SHA1-Digest: 6sDINtEu0gTTNU6tRqXOItTSAMs=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportUtil$Dum
+ myAction.class
+SHA1-Digest: CNkSHH1rSOzxY1Rb0hcJI4sEIvg=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$QueryAllJob$1.class
+SHA1-Digest: faDrjzOmkZEpSKJ+f7/kkDUUSr8=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$3.class
+SHA1-Digest: lvhdYaYCKkafyAbYCgiE69NPYGo=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteExportWizardPa
+ ge1.class
+SHA1-Digest: MS3LTUrUg3FW30KJY7SjBl/75wM=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$7.class
+SHA1-Digest: iv7hvqKKgfTOX33FRG6sRxPtQW8=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileOverwriteQ
+ uery$RemoteFileOverwriteQueryRunnable.class
+SHA1-Digest: 01+7epzVlnrPweABYgmXc+LI4+E=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/GetOperation$
+ 1.class
+SHA1-Digest: qaSaFqq6c2NeujFS1Vjs2DVUATc=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/subscriber/FileS
+ ystemSubscriber.class
+SHA1-Digest: wxLXXYhIQA4oO3/0yDpPLXYQqCI=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/subscriber/FileS
+ ystemSyncInfo.class
+SHA1-Digest: CICdY95iZpGSkb0N/VNDp3zadXo=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportData
+ .class
+SHA1-Digest: 70ve1NjG1qvwg5D741Q1OWRq5NY=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$10.class
+SHA1-Digest: yUX7G5B/+Yis7SI2xS3g5WFQu1U=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/FileSystemOpe
+ ration.class
+SHA1-Digest: KEUJpkom8dDBAAP1hC1GWRz2OT8=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemOperat
+ ions$1.class
+SHA1-Digest: ayRYzFSzGTX7sPlWCYhaMG+5g4o=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemProvid
+ er$1.class
+SHA1-Digest: UXjYKImgNn//BKdzS4W0tFEkZ1Y=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportRunnable
+ .class
+SHA1-Digest: QWrIznm9y2FaUxm8iDeVT63W5ag=
+
+Name: org/eclipse/rse/internal/importexport/files/FileSystemStructureP
+ rovider.class
+SHA1-Digest: rt3JZyME1nvmu90w2czmA2ACB5E=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/PutOperation.
+ class
+SHA1-Digest: A/2JYFO01aLkH3YQFGJq1ot9WUY=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/FileSystemSyn
+ chronizeParticipant$FileSystemParticipantLabelDecorator.class
+SHA1-Digest: 29LydfBKT6AkL8U91yyyJBG/Ff4=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/Synchronizer.cl
+ ass
+SHA1-Digest: eIIHzPJFpFHS703jdpLS4ETQBgE=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportDescript
+ ionFilesViewerFilter.class
+SHA1-Digest: E2ZvExyCPxxo0AhXYRAzNIbYHAU=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/SynchronizeFilt
+ er.class
+SHA1-Digest: tiBSQ7iUFwTJbaJYfIRkxzg3pQU=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizer.c
+ lass
+SHA1-Digest: cVTV6lFYORV9oUww5LmEEQZgSac=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileModification
+ Validator.class
+SHA1-Digest: Jt3OAvlOf2IGw8mfWfbqCznorSo=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizard.c
+ lass
+SHA1-Digest: l+JrkwIL4AQfrACou+K5ptC3KjA=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1.class
+SHA1-Digest: YNS8yB8nd5tjAJlEQ5+JSIX/dJ4=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/MergeOperatio
+ n$1$1.class
+SHA1-Digest: A4Tnl4RaeSsjm/i1pUVjuXDwsaQ=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/SynchronizeOper
+ ation.class
+SHA1-Digest: X57wlKBxZ5tj89flGnjLYDv0gDk=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportActi
+ onDelegate.class
+SHA1-Digest: bw7f5lNfjcavEvSHC8n9LwNBUjQ=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizeOpe
+ ration.class
+SHA1-Digest: l++LcJMayH9PIpnBAdZG/4oTD24=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/MergeOperatio
+ n$1$1$1.class
+SHA1-Digest: XrbXtcu3WZdmR7ABjHD9/4hlHS4=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$QueryAllJob$2.class
+SHA1-Digest: 6AK+nYcOonLWharTsAAryr/EYCU=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileOpenExport
+ WizardActionDelegate.class
+SHA1-Digest: eMzknZS948s02GTGDpxD5dopWxk=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizeFil
+ ter.class
+SHA1-Digest: FfXnB+Y6gxCyDaZlrsgxTMlRGbY=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$4.class
+SHA1-Digest: OfCzgz+rJqh3GH82xp9FfdmPMJ4=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportResource
+ s.class
+SHA1-Digest: QzhaJTZweGXB3cHXpPro2orGt5g=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$8.class
+SHA1-Digest: Jdym0Dhd9HU2NmBMk/8Et0ll70Q=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemOperat
+ ions.class
+SHA1-Digest: ZTL1UoRs3mVMT5i8fyFgq5OpnWQ=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/ModelGetActio
+ n.class
+SHA1-Digest: kemQ5V3KR9CcM7wJZzZfWP8bNSg=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemPlugin
+ .class
+SHA1-Digest: hDV+coY3xxdvovbNMmLBx+9SIS4=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportExpo
+ rtActionDelegate.class
+SHA1-Digest: zuFB7YotkMMz2Z6WXg1BfsWSsjU=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$11.class
+SHA1-Digest: kOcUobx3IMsOxwGbV/q9aajJXpM=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizePer
+ spectiveSelector.class
+SHA1-Digest: NNsZgckdMT6zXtxsfktufdujO0Q=
+
+Name: org/eclipse/rse/internal/importexport/files/TreeExpandDropListen
+ er.class
+SHA1-Digest: wqKSII0wnZF7HcikLdbFS13ZcKU=
+
+Name: icons/full/wizban/import_wiz.gif
+SHA1-Digest: C4kQN+do1rzKEMzHin3fYfBqjqc=
+
+Name: org/eclipse/rse/internal/importexport/files/FileSystemElement.cl
+ ass
+SHA1-Digest: sjzfBrnxXOiqoMshNVt9WoAUVFo=
+
+Name: org/eclipse/rse/internal/importexport/files/IRemoteFileImportDes
+ criptionWriter.class
+SHA1-Digest: 9uEnSulAV6LiwvMOK6HqUt1auTs=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/MergeOperatio
+ n.class
+SHA1-Digest: rC5mPZ6KUgH1/yV5FEdnJ0CeGeo=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportData
+ .class
+SHA1-Digest: +Jst+zgM8/XdxAIbEi/gntatyME=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/messages.propert
+ ies
+SHA1-Digest: VutBw9jcXUbuIfIhm/tvG+sPTO4=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteExporter.class
+SHA1-Digest: IurTUob4PN8geD+HgjvK4gvqEyA=
+
+Name: org/eclipse/rse/internal/importexport/files/FileSystemElement$1.
+ class
+SHA1-Digest: 5ZtW36EZ2P3qO8eXIPp/ddWvknU=
+
+Name: org/eclipse/rse/internal/importexport/files/MinimizedFileSystemE
+ lement.class
+SHA1-Digest: xOAwH5/nwRHPhyF0tJkX+eOa9NQ=
+
+Name: icons/full/wizban/export_wiz.gif
+SHA1-Digest: cg+TVCKXXXEE+a5v/QaI71T91+Y=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportOper
+ ation.class
+SHA1-Digest: r4wx048ie2Se1lB0jrUqQInvSFE=
+
+Name: org/eclipse/rse/internal/importexport/files/IRemoteFileExportDes
+ criptionWriter.class
+SHA1-Digest: +dweRfxg+oNN8zttD7zqZLbis/E=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/FileSystemSyn
+ chronizeParticipant$FileSystemParticipantActionGroup.class
+SHA1-Digest: tE9rDYRuSDUtBWC2ylP0PUYAxEc=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/PutOperation$
+ 1.class
+SHA1-Digest: b1BkzZbkDazRW4YzAvjse/56Y5Q=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/ISynchronizeByt
+ eCalculator.class
+SHA1-Digest: 9mL2lln+2IUO5YblNGCrBWyTlLE=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportOper
+ ation.class
+SHA1-Digest: 2Sbi6tyHk6ZhLAQFEYCCTWFfaoQ=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/subscriber/FileS
+ ystemMergeContext.class
+SHA1-Digest: 35ym0RjEuPReIDwOQKDC3TJ/rT0=
+
+Name: org/eclipse/rse/internal/importexport/files/Debug.class
+SHA1-Digest: S7P7hiLOLPKoVOPOM+84MZ+UL8A=
+
+Name: org/eclipse/rse/internal/importexport/SystemImportExportResource
+ s.properties
+SHA1-Digest: teD2ixGJg5XqFb5j9DtU5NuCYOM=
+
+Name: org/eclipse/rse/internal/synchronize/RSEResourceVariantComparato
+ r.class
+SHA1-Digest: mMetsI2M4gspcB/s4KQPkPDZd2U=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$1.class
+SHA1-Digest: APEvnrp+gUzzq+yA3qeQZoRpAxc=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$5.class
+SHA1-Digest: v0bBaFSxGUjTqjaLe93F/XudPM4=
+
+Name: plugin.properties
+SHA1-Digest: HD4uNHe5aNbFIN/xJUwdgFc+hrM=
+
+Name: org/eclipse/rse/internal/synchronize/ISynchronizeData.class
+SHA1-Digest: sgW6UKMLeSyTawfwHS53xXJ+WHw=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/ui/ModelPutActio
+ n.class
+SHA1-Digest: ZVW5MAh5aav2BoxL0GtwwGA1I18=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$9.class
+SHA1-Digest: AH8wA4QS7F7u3Kz6blLBWw7AnCM=
+
+Name: icons/full/etool16/file_export.gif
+SHA1-Digest: MwwYx+Y03NK4qq046+jIxS1pIR0=
+
+Name: icons/full/wizards/fsicon_wiz.gif
+SHA1-Digest: Q97wuDKt2xjLcaL4nAo9u3C4T28=
+
+Name: org/eclipse/rse/internal/synchronize/provisional/SynchronizePers
+ pectiveSelector.class
+SHA1-Digest: XxjuSU5IttfkfSFnUiFescnUKvY=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/FileSystemProvid
+ er.class
+SHA1-Digest: rfTMGP6yNturp4jtGIY5FM+vVbM=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileImportDesc
+ riptionWriter.class
+SHA1-Digest: N95vLBSnfplN19ndQ15aV9Z1q8U=
+
+Name: org/eclipse/rse/internal/importexport/files/IImportStructureProv
+ ider.class
+SHA1-Digest: s3tn3ZYUeV9KCwWPcHTEcfZbCEY=
+
+Name: plugin.xml
+SHA1-Digest: yQW7gs0bXVbW4V3Wmet63etJiq4=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$7$1.class
+SHA1-Digest: Ie6kjKJIdC5k89F9TffNeD2XFUs=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$8$1.class
+SHA1-Digest: 5TIDwqEgv2aVg1DnDpgb5UnF4/E=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$12.class
+SHA1-Digest: dt3KKdQ4gY0BO5bEqF19bwIBxpo=
+
+Name: org/eclipse/rse/internal/importexport/RemoteImportExportResource
+ s.properties
+SHA1-Digest: IqOahrkwmJvSX+mRFeQapgc7fbw=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileOverwriteQ
+ uery.class
+SHA1-Digest: VXfdgWkC0YXAP7MVDRWL+xvBJfc=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportFrom
+ ProjectActionDelegate.class
+SHA1-Digest: rq2ZtHwrfcfCbUzUQRUmpo+G/aA=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteFileExportDesc
+ riptionWriter.class
+SHA1-Digest: xbUAJBD9V7r+KwujYn+r2h2Dvdc=
+
+Name: org/eclipse/rse/internal/synchronize/filesystem/subscriber/FileS
+ ystemRemoteTree.class
+SHA1-Digest: gPkk+dlhTvALuExlzK4J0UT0+uk=
+
+Name: org/eclipse/rse/internal/importexport/files/IRemoteFileImportDes
+ criptionReader.class
+SHA1-Digest: n+AGRP8kojP+YjJE9entCYWqf9o=
+
+Name: org/eclipse/rse/internal/importexport/files/UniFilePlus.class
+SHA1-Digest: kENgq/OuGIUeK/17uwrn4W4z5FQ=
+
+Name: org/eclipse/rse/internal/importexport/files/RemoteImportWizardPa
+ ge1$QueryAllJob.class
+SHA1-Digest: rmYmemEE4bVaPU37ne+OJ3xx8vQ=
+

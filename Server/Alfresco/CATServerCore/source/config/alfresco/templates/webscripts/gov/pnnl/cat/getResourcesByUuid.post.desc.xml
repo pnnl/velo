@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Get multiple resources</shortname>
+  <description>Look up multiple resources based on their path.</description>
+  <url>/cat/getResourcesByUuid</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

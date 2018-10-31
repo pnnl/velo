@@ -1,0 +1,141 @@
+body,html {
+	margin: 0;
+	padding: 0;
+	font-size: 11pt;
+	font-family: Calibri, Verdana, Arial, Helv, Helvetica, sans-serif;
+	background: none repeat scroll 0 0 #1c6ca0;
+}
+
+h1 {
+    color: #fff;
+    font-family: Segoe UI,Verdana,Arial,Helv,Helvetica,sans-serif;
+    font-size: 19pt;
+    margin: 0;
+    padding: 95px 0 0;
+    text-align: left;
+    text-shadow: 2px 2px 2px rgba(12, 53, 80, 0.5);
+}
+
+h2 {
+	font-size: 11.5pt;
+	font-family: Segoe UI, Verdana, Arial, Helv, Helvetica, sans-serif;
+	padding: 0 5px 5px 0;
+	color: #000000;
+}
+
+h3 {
+	font-size: 11pt;
+	font-family: Segoe UI, Verdana, Arial, Helv, Helvetica, sans-serif;
+}
+
+ul {
+	list-style: none;
+	padding-left: 20px;
+	margin: 0px 0px 0px 0px;
+}
+
+li {
+	background-image: url("./globe16.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding: 3px 0 3px 20px;
+	margin: .4em 0;
+}
+
+ul ul li {
+  background-image: none;
+  list-style: initial;
+  margin: 0.4em 0 0 1em;
+  padding: 0;
+}
+
+p {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+#header {
+    background: url("./blue-banner-fade.png") no-repeat scroll 0 0 #1c6ca0;
+    clear: both;
+    height: 127px;
+    padding: 5px 10px;
+}
+
+div#left {
+    background: url("./left-bg.png") no-repeat scroll left bottom #15ae64;
+    float: left;
+    margin: 0;
+    min-height: 420px;
+    padding: 10px;
+    width: 310px;
+}
+
+div#left h2 {
+  color: #fff;
+}
+
+div#left p {
+  color: #fff;
+}
+
+div#right {
+	margin: 0px 0px 0px 310px;
+	padding: 10px 10px 10px 15px;
+	background: #86bcdf;
+	min-height: 420px;
+}
+
+#footer {
+	clear: both;
+	padding: 5px 10px;
+	height: 20px;
+	background: #1c6ca0;
+}
+
+a:link {
+	color: #00508c;
+	text-decoration:none;
+} /* unvisited link */
+
+a:visited {
+	color: #1c6ca0;
+	text-decoration:none;
+} /* visited link */
+
+a:hover {
+	color: #1c6ca0;
+	text-decoration:none;
+} /* mouse over link */
+
+a:active {
+	color: #000;
+	text-decoration:none;
+} /* selected link */
+
+a#inst:link {
+	color: #fff;
+	background: #000;
+	text-decoration:none;
+	padding: 15px 40px 15px 40px;
+} /* unvisited link */
+
+a#inst:visited {
+	color: #fff;
+	background: #000;
+	text-decoration:none;
+	padding: 15px 40px 15px 40px;
+} /* visited link */
+
+a#inst:hover {
+	color: #e3a069;
+	background: #000;
+	text-decoration:none;
+	padding: 15px 40px 15px 40px;
+} /* mouse over link */
+
+a#inst:active {
+	color: #fff;
+	background: #000;
+	text-decoration:none;
+	padding: 15px 40px 15px 40px;
+} /* selected link */

@@ -1,0 +1,296 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.tm.terminal.view;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="terminal/plugins/org.eclipse.tm.terminal.view";
+ commitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.tm.internal.terminal.view.TerminalViewPl
+ ugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.tm.terminal;bundle-version="[3.2.0,3.3.0)",
+ org.eclipse.equinox.common;bundle-version="3.6.0"
+Export-Package: org.eclipse.tm.internal.terminal.actions;x-internal:=t
+ rue,org.eclipse.tm.internal.terminal.view;x-internal:=true
+Bundle-Version: 2.4.100.201305201712
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: icons/elcl16/disconnect_co.gif
+SHA1-Digest: fvCVnDnz+2bHAwUlYiV6rLZlyLk=
+
+Name: org/eclipse/tm/internal/terminal/view/SettingsStore.class
+SHA1-Digest: oT/DBhHXxyq23o7UvgeP1chxrH4=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: icons/dlcl16/command_input_field.gif
+SHA1-Digest: Tfjmsff3h1tRZGIPbnMVi7MTaZk=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$TerminalListe
+ ner$2.class
+SHA1-Digest: jhQxCqHLzNOBzfuOZwXxgAxstdY=
+
+Name: TerminalContexts.xml
+SHA1-Digest: 16D8N06O1rieKl9K6M3bjlsuk1w=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionScrollLoc
+ k.class
+SHA1-Digest: X2pVZ3DyQIry2Am44vAN7qLYFlY=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionConnect.c
+ lass
+SHA1-Digest: VtHg42Lls/XLGLDA6jNQtzK6Ic8=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionDisconnec
+ t.class
+SHA1-Digest: AcF+PinmD1rnXF2Nd1QgBZC3+V8=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalViewConnection.cla
+ ss
+SHA1-Digest: fOq+Z2gQYnXGZduwP7jY5Zn/JVc=
+
+Name: icons/clcl16/lock_co.gif
+SHA1-Digest: +/bEu81XF635b9u2CD63ALJEtK0=
+
+Name: doc/html/notice.html
+SHA1-Digest: MLO6GdScAHOnKYbKZlCMBL/yfk0=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$TerminalPrope
+ rtyChangeHandler.class
+SHA1-Digest: VtWsmPRkrgL82s/cn/vyJ931DUs=
+
+Name: org/eclipse/tm/internal/terminal/view/SettingStorePrefixDecorato
+ r.class
+SHA1-Digest: rwiOFWYFWmzU+/4atqm0Wuo+MDE=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalViewConnection$1.c
+ lass
+SHA1-Digest: uYohFn7oU7phzs8vQlgFE3yoeDU=
+
+Name: org/eclipse/tm/internal/terminal/view/ViewMessages.class
+SHA1-Digest: gGVXwwB0fbZuYhdNL4B7bmthkD4=
+
+Name: icons/dlcl16/disconnect_co.gif
+SHA1-Digest: IRUVDFzemAW2KF1SJxxSypLeics=
+
+Name: doc/html/03_terminal_settings.html
+SHA1-Digest: 8aCbCBvt9AATZhaMfT3bGGnp/z0=
+
+Name: icons/elcl16/command_input_field.gif
+SHA1-Digest: Tfjmsff3h1tRZGIPbnMVi7MTaZk=
+
+Name: org/eclipse/tm/internal/terminal/actions/ActionMessages.class
+SHA1-Digest: TfbYVdTN82a0V6I5QiJyt844/B0=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalViewPlugin.class
+SHA1-Digest: YbYxnmrMBSwxcHNSC1tLLm8FIrU=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalSettingsDlg.class
+SHA1-Digest: rvfStg1oBlQxnKMb+KXW5jKku3w=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal.view/pom.x
+ ml
+SHA1-Digest: 2zvnUR0TzmNdNXUO+sBtJ7Av2PU=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/tm/internal/terminal/view/ViewMessages.properties
+SHA1-Digest: 8qLvJT1iCFmH2rLcmhkGpYHF398=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionNewTermin
+ al$1.class
+SHA1-Digest: 8BRRa3Qt8zJ+iHSocRI9oku2Hgc=
+
+Name: icons/dlcl16/rem_co.gif
+SHA1-Digest: 0Ti38UGxkUjNe5BpxPG2DqSeFiA=
+
+Name: icons/elcl16/rem_co.gif
+SHA1-Digest: h0kZkzhUBBwSKCLEH4ItnWNDcLk=
+
+Name: org/eclipse/tm/internal/terminal/actions/ShowTerminalConnectionA
+ ction.class
+SHA1-Digest: R72jfbzzWmIBOU2CykGSBG0Sgf4=
+
+Name: org/eclipse/tm/internal/terminal/view/ITerminalViewConnectionMan
+ ager$ITerminalViewConnectionListener.class
+SHA1-Digest: +YjJjF+wLz5H9LWYnBff86u68Us=
+
+Name: icons/clcl16/newterminal.gif
+SHA1-Digest: wrw+VbQzwQ6be1t5LLv7LrK2AIY=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalViewConnectionMana
+ ger.class
+SHA1-Digest: cAWj11wbZHMnCUI41k/heZuFr50=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalSettingsDlg$2.clas
+ s
+SHA1-Digest: lDg1feZ6gMMsbI+lNqKduuNVm0A=
+
+Name: icons/dlcl16/lock_co.gif
+SHA1-Digest: O4momrUoy8YDmmKMWZk7i6sItgQ=
+
+Name: about.properties
+SHA1-Digest: lX+r5Q3MtMGdvQ5zvlDaytX7aOI=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$TerminalListe
+ ner.class
+SHA1-Digest: 9L54Xsx4+FwBLKcd9KNvIfkT2NQ=
+
+Name: icons/clcl16/properties_tsk.gif
+SHA1-Digest: Ge5KbyU3+zcAhk0SwrA+XTqKNnw=
+
+Name: icons/dlcl16/properties_tsk.gif
+SHA1-Digest: ypdbjhtOQM1aMjFCj0nKTW5i15k=
+
+Name: icons/elcl16/properties_tsk.gif
+SHA1-Digest: Ge5KbyU3+zcAhk0SwrA+XTqKNnw=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionSelection
+ DropDown.class
+SHA1-Digest: SW6ejtiH55P0SODuyr3qy+D2p/s=
+
+Name: icons/clcl16/disconnect_co.gif
+SHA1-Digest: Ja6xl+oIVbD3nivd5Jc9cxmewc0=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal.view/pom.p
+ roperties
+SHA1-Digest: a3xadEEPw9JPkwh9QHxCQd9AHS4=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$TerminalListe
+ ner$1.class
+SHA1-Digest: zjWNqJbQ6zDftBgumOHA1k1qna0=
+
+Name: org/eclipse/tm/internal/terminal/view/ITerminalViewConnectionMan
+ ager$ITerminalViewConnectionFactory.class
+SHA1-Digest: ixAPmraUyZKSKOTAv6Sq1+lTIfc=
+
+Name: icons/cview16/terminal_view.gif
+SHA1-Digest: uh8YD+cwryng0agXkGO5WWDYhSs=
+
+Name: icons/eview16/terminal_view.gif
+SHA1-Digest: uh8YD+cwryng0agXkGO5WWDYhSs=
+
+Name: org/eclipse/tm/internal/terminal/actions/ActionMessages.properti
+ es
+SHA1-Digest: ZqDtfnSr8gwXM0EJW+rWFFxxn3Q=
+
+Name: org/eclipse/tm/internal/terminal/view/ITerminalViewConnection.cl
+ ass
+SHA1-Digest: YNIZ6A4Wy8REr1AoeXfz9m0WOdE=
+
+Name: HelpContexts.xml
+SHA1-Digest: SRS+dGZjpCgnKdnWeefmio5XLkQ=
+
+Name: plugin.properties
+SHA1-Digest: kKeEODfdFQDRv6DwEtHTpkl+xE4=
+
+Name: org/eclipse/tm/internal/terminal/view/ITerminalView.class
+SHA1-Digest: 7UXXLGRQvWZ+OgzUZI9avANvDYA=
+
+Name: icons/dlcl16/newterminal.gif
+SHA1-Digest: wrw+VbQzwQ6be1t5LLv7LrK2AIY=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalViewControlDecorat
+ or.class
+SHA1-Digest: FWI/Y+Exp4p9Asnq4eKpXcbKGbA=
+
+Name: icons/elcl16/lock_co.gif
+SHA1-Digest: +/bEu81XF635b9u2CD63ALJEtK0=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView.class
+SHA1-Digest: VrUO86rjuIcHsxttAz1yRf3W/aM=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalAction.class
+SHA1-Digest: wJ65Z0+mqizFJfsS2nzu9e1CiQk=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/tm/internal/terminal/view/ITerminalViewConnectionMan
+ ager.class
+SHA1-Digest: 5iOCaOfMTX+2CNF9SFzIhTfciJU=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionSettings.
+ class
+SHA1-Digest: DyDmMuemCMLhc+hkWb0XjKt5q3k=
+
+Name: doc/html/02_terminal_page.html
+SHA1-Digest: I+vbiODfpK3wZKVTzgihBNnPadg=
+
+Name: icons/clcl16/connect_co.gif
+SHA1-Digest: SqDlVwso2fxqHrC7Os/CpEMFzsA=
+
+Name: icons/dlcl16/connect_co.gif
+SHA1-Digest: NNfRDdOj2hSpMlvR2GzKjDQemw0=
+
+Name: plugin.xml
+SHA1-Digest: 91MWkGGyLIgIrtt9x1x77cswAO4=
+
+Name: icons/elcl16/connect_co.gif
+SHA1-Digest: in6ejlRNZeIXlfji7nGc98qOTEI=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionNewTermin
+ al.class
+SHA1-Digest: 35L1shr0p9nUeO51wNq1s+T15nc=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$1.class
+SHA1-Digest: T1ZU1rz+mjdrr23vRLX2MqQSuv8=
+
+Name: icons/clcl16/command_input_field.gif
+SHA1-Digest: tQ1uLIASnMdLq2RVUQdqeO1ti8g=
+
+Name: doc/html/01_terminalview.html
+SHA1-Digest: QnuBcvaEMB3afmxeKMDqzbtcNYk=
+
+Name: org/eclipse/tm/internal/terminal/view/PageBook.class
+SHA1-Digest: hQmc+5Hngdy9gLtG+3xsD/+7nCI=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionToggleCom
+ mandInputField.class
+SHA1-Digest: ggLk3woNOLCThvelGql2ZzJz2OY=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionNewTermin
+ al$2.class
+SHA1-Digest: 3THtxzT8gtSiU1VgbozoSNU2TAk=
+
+Name: icons/elcl16/newterminal.gif
+SHA1-Digest: wrw+VbQzwQ6be1t5LLv7LrK2AIY=
+
+Name: org/eclipse/tm/internal/terminal/view/ImageConsts.class
+SHA1-Digest: tiJdA0rHBC7QSwgmzYo4Ks3Oy1Q=
+
+Name: toc.xml
+SHA1-Digest: J/wyzW0+ePlJ3L7kPb7iy7Xm/Rs=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalSettingsDlg$1.clas
+ s
+SHA1-Digest: nOUVLsajQmwvSx5F5zEYWAiGjXc=
+
+Name: doc/book.css
+SHA1-Digest: Nw+bQgCQIMKgM71WDcyIqQenxrM=
+
+Name: org/eclipse/tm/internal/terminal/actions/TerminalActionRemove.cl
+ ass
+SHA1-Digest: mB3NJ2HxcVQzqwMD2G4UNO6A8MY=
+
+Name: doc/html/04_terminal_emulation.html
+SHA1-Digest: 7y6LYxEBHnK81KtNLQmDQpQrrPk=
+
+Name: org/eclipse/tm/internal/terminal/view/TerminalView$TerminalConte
+ xtMenuHandler.class
+SHA1-Digest: AzlDQAlNQ8rLeGbFgB+rPp+nNgM=
+

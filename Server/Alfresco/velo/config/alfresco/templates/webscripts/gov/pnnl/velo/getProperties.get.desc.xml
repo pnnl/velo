@@ -1,0 +1,10 @@
+<webscript>
+  <!-- property values are sent in the request response -->
+  <shortname>Get Properties</shortname>
+  <description>Get specified properties for a resource</description>
+  <url>/velo/getProperties?wikiPath={wikiPath}&amp;props={props}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

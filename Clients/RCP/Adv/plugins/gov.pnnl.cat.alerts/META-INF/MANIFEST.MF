@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Alerts
+Bundle-SymbolicName: gov.pnnl.cat.alerts;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.alerts.AlertsPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.ui.rcp,
+ gov.pnnl.cat.core.resources;bundle-version="1.1.0",
+ gov.pnnl.cat.logging;bundle-version="1.0.0",
+ gov.pnnl.cat.ui;bundle-version="1.0.0",
+ org.apache.log4j,
+ gov.pnl.ui.utils;bundle-version="1.0.0"
+Eclipse-LazyStart: true
+Bundle-Vendor: Pacific Northwest National Laboratory
+Export-Package: gov.pnnl.cat.alerts,
+ gov.pnnl.cat.alerts.model,
+ gov.pnnl.cat.alerts.wizards

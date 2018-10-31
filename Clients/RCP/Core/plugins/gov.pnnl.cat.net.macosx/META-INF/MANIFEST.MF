@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Net Macosx
+Bundle-SymbolicName: gov.pnnl.cat.net.macosx;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Pacific Northwest National Laboratory
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources,
+ gov.pnnl.cat.logging,
+ org.apache.log4j,
+ org.eclipse.ui.workbench
+Fragment-Host: gov.pnnl.cat.net
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: gov.pnnl.cat.net
+Bundle-ClassPath: net.jar,
+ .
+Eclipse-PlatformFilter: ( osgi.os=macosx)

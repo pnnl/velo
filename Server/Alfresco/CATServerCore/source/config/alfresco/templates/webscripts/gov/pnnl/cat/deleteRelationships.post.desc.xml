@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Relationships</shortname>
+  <description>Delete one or more non-child provenance relationships connecting two nodes</description>
+  <url>/cat/deleteRelationships</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

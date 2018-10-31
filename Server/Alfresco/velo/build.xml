@@ -1,0 +1,17 @@
+<project name="velo" default="deploy">
+
+	<target name="deploy">
+		<ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="deploy-module" inheritall="false" inheritrefs="false">
+		  <property name="module.dir" value="${basedir}" />
+		  <property name="module.name" value="${ant.project.name}"/>
+	    </ant>
+	</target>
+	
+	<target name="deploy-incremental">
+		<ant antfile="${basedir}/../VeloBuild/build.xml" dir="${basedir}" target="deploy-module-incremental" inheritall="false" inheritrefs="false">
+		  <property name="module.dir" value="${basedir}" />
+		  <property name="module.name" value="${ant.project.name}"/>
+	    </ant>
+	</target>
+	
+</project>

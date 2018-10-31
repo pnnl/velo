@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+  <!-- ============================================= -->
+  <!-- Setup appender to save log to file or console -->
+  <!-- ============================================= -->
+  <!--
+  <appender name="RootFileAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="RootLog.txt"/>
+    <param name="Append" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%p [%d] %c{2}::%M:%n  %m%n"/>
+    </layout>
+  </appender>
+  -->
+  <!--
+  <appender name="CATFileAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="${logfile.path}"/>
+    <param name="Append" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p %d{ISO8601} [%c] - %m%n"/>
+    </layout>
+  </appender>
+  -->
+  
+  <!-- Use a RollingFileAppender so we don't lose previous logs every time CAT starts up -->
+  <appender name="CATFileAppender" class="org.apache.log4j.RollingFileAppender">
+  
+  	<!-- TODO: Deployments wishing to change the log file path need to set
+  	     the logfile.name System property in their product launch config.
+  	     CatLoger will set logfile.path based on logfile.name and the current workspace folder.  
+  	     If logfile.name is not found
+  	     CatLogger will set it to the default value of $APPLICATION_NAME.log -->
+    <param name="File" value="${logfile.path}"/>
+    <param name="Append" value="true"/>
+    <param name="MaxFileSize" value="2MB"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p %d{ISO8601} [%c] - %m%n"/>
+    </layout>
+  </appender>
+    
+  <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p [%c{2}][%t] - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- =================== -->
+  <!-- Setup logger levels -->
+  <!-- =================== -->
+
+<!--
+  <logger name="gov.pnnl.cat.ui.rcp.wizards.ImportTaxonomyWizard">
+    <level value="DEBUG" />
+  </logger>
+-->  
+<!--
+  <logger name="gov.pnnl.cat.resources">
+    <level value="DEBUG" />
+  </logger>
+-->
+
+<!--
+  <logger name="gov.pnnl.cat.core.internal.resources">
+    <level value="DEBUG" />
+  </logger>
+-->
+
+<!-- 
+  <logger name="gov.pnnl.cat.gang">
+    <level value="TRACE" />
+  </logger>
+ -->
+ 
+  <logger name="gov.pnnl.cat.ui.rcp.actions.jobs.UploadJob">
+    <level value="WARN" />
+  </logger>
+
+<!--
+<logger name="gov.pnnl.cat.core.internal.resources.search">
+    <level value="DEBUG" />
+  </logger>
+
+<logger name="gov.pnnl.cat.ui.rcp.views">
+    <level value="DEBUG" />
+  </logger>
+-->
+
+  <logger name="gov.pnnl.velo.filesys.callback">
+    <level value="WARN" />
+  </logger>
+
+
+
+  <logger name="gov.pnnl.cat.core.internal.resources.events">
+    <level value="WARN" />
+  </logger>
+
+
+  <logger name="org.apache.http">
+    <level value="WARN" />
+  </logger>
+  
+  <logger name="org.apache.activemq">
+    <level value="WARN" />
+  </logger>
+<!-- 
+  <logger name="out">
+    <level value="DEBUG" />
+  </logger>
+  
+  <logger name="gov.pnnl.cat.core.util.ProxyConfig">
+    <level value="DEBUG" />
+  </logger>
+ -->
+ 
+  <!-- =================================== -->
+  <!-- Assign appenders to the Root logger -->
+  <!-- =================================== -->
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="ConsoleAppender"/>
+    <appender-ref ref="CATFileAppender"/>
+  </root>
+    
+</log4j:configuration>

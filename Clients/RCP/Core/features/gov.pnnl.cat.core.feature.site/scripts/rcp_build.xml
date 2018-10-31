@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">	
+	<property environment="env"/>
+
+	<property name="current.build.home" location="${basedir}/../../.." />
+	<property name="current.rcp.checkout.dir" location="${current.build.home}/rcp" />
+	
+	<condition property="build.root.dir" value="${env.WORKSPACE}/bld">
+		<isset property="env.WORKSPACE" />
+	</condition>
+	<property name="build.root.dir" location="${basedir}/build.tmp" />
+	
+	<property name="build.rcp.dir" location="${build.root.dir}/rcp" />
+	<property name="build.lib.dir" location="${build.root.dir}/lib" /> <!-- Used for javadoc and findbugs -->
+	<property name="build.buckminster.dir" location="${build.root.dir}/bm" />
+	
+	<condition property="build.number" value="${env.BUILD_NUMBER}">
+		<isset property="env.BUILD_NUMBER" />
+	</condition>
+	
+	<!-- Set to the new build number if the build isn't already determined to be UNOFFICAL -->
+	<property name="build.number" value="0" />
+	
+	<mkdir dir="${build.root.dir}"/>
+	<propertyfile file="${build.root.dir}/build.prop.tmp">
+		<entry key="new.build.number" type="int" value="${build.number}" operation="=" pattern="0000"/>
+	</propertyfile>
+	<property file="${build.root.dir}/build.prop.tmp"/>
+	<delete file="${build.root.dir}/build.prop.tmp"/>
+	
+	<echo>Build Version: ${build.version}</echo>
+
+	<target name="clean" depends="clean.buckminster">
+		<delete dir="${build.rcp.dir}" />
+		<delete dir="${build.lib.dir}" />
+		<delete dir="${build.buckminster.dir}" />
+	</target>
+	
+	<target name="clean.buckminster" if="env.WORKSPACE">
+		<echo>Cleaning build folders...</echo>
+		<delete dir="${env.WORKSPACE}/buckminster.output" />
+		<delete dir="${env.WORKSPACE}/buckminster.temp" />
+		<delete dir="${env.WORKSPACE}/.metadata" />
+	</target>
+	
+	<target name="setup.build" depends="clean, setup.build.incremental" />
+
+	<target name="setup.build.incremental" depends="prepare.rcp.build, custom.build.setup" />
+	
+	<target name="custom.build.setup" depends="" />
+
+	<target name="prepare.rcp.build" depends="copy.rcp.build.files" />
+
+	<target name="copy.rcp.build.files">
+		<mkdir dir="${build.rcp.dir}" />
+
+		<copy todir="${build.rcp.dir}">
+			<fileset dir="${current.rcp.checkout.dir}" >
+				<exclude name="**/build/**"/>
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

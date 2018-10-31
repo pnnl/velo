@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Velo User's Guide" topic="html/toc.html">
+   <topic href="html/UserInterface.html" label="Discovering Velo User Interface">
+   </topic>
+   <topic href="html/Home.html" label="Home Perspective">
+   </topic>
+   <topic href="html/DatasetEditing.html" label="Dataset Editing">
+   </topic>
+   <topic href="html/Users.html" label="Users Perspective">
+   </topic>
+   <topic href="html/Teams.html" label="Teams Perspective">
+   </topic>
+   <topic href="html/DataBrowser.html" label="Data Browser Perspective">
+   </topic>
+   <topic href="html/Search.html" label="Search Perspective">
+   </topic>
+   <topic href="html/RemoteSystemExplorer.html" label="Remote System Explorer Perspective">
+   </topic>
+   <!--
+   <topic label="Concepts">
+      <anchor id="concepts"/>
+   </topic>
+   <topic label="Tasks">
+      <anchor id="tasks"/>
+   </topic>
+   <topic label="Reference">
+      <anchor id="reference"/>
+   </topic>
+   <topic label="Samples">
+      <anchor id="samples"/>
+   </topic>
+   -->
+</toc>

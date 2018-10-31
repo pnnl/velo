@@ -1,0 +1,15 @@
+<!-- Local history only affects text fields where user can enter any value -->
+<JobConfig name="local-history" machineName="hopper" codeId="agni">
+<!--  Machine Settings -->
+			<remoteDir>/global/homes/v/vfreedma/scratch/amanzi/Richards-1D-transport</remoteDir>
+			<remoteDir>/global/homes/v/vfreedma/scratch/amanzi/test</remoteDir>
+			<allocationAccount>m1012</allocationAccount>
+			<userName>vfreedma</userName>
+<!-- Code Settings -->
+            <executable>/project/projectdirs/m1012/agni/install/current/bin/Agni/Agni --infile=agni.xml</executable>
+		    <executable>/project/projectdirs/m1012/amanzi/install/current/bin/Agni --infile=agni.xml</executable>
+			<customParameters>
+				<simulatorPath>/project/projectdirs/m1012/amanzi/install/current/bin/amanzi</simulatorPath>
+				<simulatorPath>/project/projectdirs/m1012/amanzi/install/current/bin/amanzi</simulatorPath>
+			</customParameters>
+</JobConfig>

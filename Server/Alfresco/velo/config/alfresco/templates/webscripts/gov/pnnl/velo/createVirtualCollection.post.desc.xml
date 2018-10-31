@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Virtual Collection</shortname>
+  <description>Create new virtual folder (taxonomy) in spaces store</description>
+  <url>/velo/createVirtualCollection?parentPath={parentPath}&amp;name={name}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

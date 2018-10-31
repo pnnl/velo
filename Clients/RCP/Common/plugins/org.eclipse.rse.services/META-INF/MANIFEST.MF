@@ -1,0 +1,719 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.services;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.services";commitId=
+ 58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.services.Activator
+Require-Bundle: org.eclipse.core.runtime
+Export-Package: org.eclipse.rse.internal.services;x-internal:=true,org
+ .eclipse.rse.internal.services.clientserver.archiveutils;x-internal:=
+ true,org.eclipse.rse.internal.services.clientserver.java;x-internal:=
+ true,org.eclipse.rse.internal.services.shells;x-internal:=true,org.ec
+ lipse.rse.internal.services.terminals;x-internal:=true,org.eclipse.rs
+ e.services,org.eclipse.rse.services.clientserver,org.eclipse.rse.serv
+ ices.clientserver.archiveutils,org.eclipse.rse.services.clientserver.
+ java,org.eclipse.rse.services.clientserver.messages,org.eclipse.rse.s
+ ervices.clientserver.processes,org.eclipse.rse.services.clientserver.
+ processes.handlers,org.eclipse.rse.services.clientserver.search,org.e
+ clipse.rse.services.files,org.eclipse.rse.services.processes,org.ecli
+ pse.rse.services.search,org.eclipse.rse.services.shells,org.eclipse.r
+ se.services.terminals
+Bundle-Version: 3.2.200.201211090626
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/services/clientserver/SystemSearchString.class
+SHA1-Digest: 6cjPWe1in3oTsEJe7gTjC/LpWV0=
+
+Name: org/eclipse/rse/services/shells/IHostShell.class
+SHA1-Digest: qnqozVU8jrPycIDJoYYO5md42EM=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemTarHand
+ ler$VirtualFileSystem.class
+SHA1-Digest: edsqQACwp9fMz91Ct/cPWnj/3bU=
+
+Name: org/eclipse/rse/internal/services/clientserver/archiveutils/Syst
+ emArchiveUtil.class
+SHA1-Digest: OyaELSMLqt9nGPT7T8nhGdsJjmQ=
+
+Name: org/eclipse/rse/services/files/IFileService.class
+SHA1-Digest: MUX4n7fu6u29TF2LGhlYOg2XqIM=
+
+Name: patterns.dat
+SHA1-Digest: +VAfA9PrBmIt7fAFnXD4JqNuQ5w=
+
+Name: org/eclipse/rse/services/clientserver/VirtualSearchResult.class
+SHA1-Digest: Mb8YwoAHYPM34Doozqy27p/aFlE=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemTgzHand
+ ler.class
+SHA1-Digest: aXVUB5kxjAFn30IJ+TKGj6Lg/vI=
+
+Name: org/eclipse/rse/services/clientserver/ISearchPatternMatcher.clas
+ s
+SHA1-Digest: ZL0usQoYiJ24UK1/j4kIiyEvjxI=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alServerProcessImpl.class
+SHA1-Digest: O3KgzRk/1/m5x9HJhZlNRmkaZyY=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alLinuxProcessHandler.class
+SHA1-Digest: +bWQSHnjJDk8q+jHj8tdR3ZQh+0=
+
+Name: org/eclipse/rse/services/files/RemoteFileCancelledException.clas
+ s
+SHA1-Digest: gJxyUb8Hg3PVbTCbozE8E4AwNKo=
+
+Name: org/eclipse/rse/services/files/IFilePermissionsService.class
+SHA1-Digest: +Gyr7fSvtl9KG6+U8pukbTptTfs=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemNonRegexMatch
+ er.class
+SHA1-Digest: WOR9ZN5wCd7MI8qjph+klUr5keM=
+
+Name: org/eclipse/rse/services/clientserver/SystemOperationMonitor.cla
+ ss
+SHA1-Digest: agoXXQ/8iKjvXZYArczUQ+P9G9c=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchStringM
+ atcher.class
+SHA1-Digest: 0rR47liGP63+v1R31ykLd/MVhvw=
+
+Name: org/eclipse/rse/services/clientserver/SystemEncodingUtil.class
+SHA1-Digest: kHaXLSvO11LtdHx+EzVPDTkTN5I=
+
+Name: org/eclipse/rse/services/clientserver/IClassifierConstants.class
+SHA1-Digest: fLuxurQxlbNRA9nvw75bCmJgHS4=
+
+Name: org/eclipse/rse/services/files/PendingHostFilePermissions.class
+SHA1-Digest: n7fS97YAK34bJGH3EIIZMRBmhdM=
+
+Name: org/eclipse/rse/services/shells/IShellService.class
+SHA1-Digest: /7ZolVHSKwUWO73TmXxdWRvzhHc=
+
+Name: org/eclipse/rse/services/clientserver/messages/IndicatorExceptio
+ n.class
+SHA1-Digest: wLq48qfJZqh8M4CVEeHpY+X7BZ0=
+
+Name: org/eclipse/rse/services/search/IHostSearchResultConfigurationFa
+ ctory.class
+SHA1-Digest: 4f+9QpSoU4gRHuBdvlStOrkCsSI=
+
+Name: org/eclipse/rse/services/shells/Patterns.class
+SHA1-Digest: +frv4RsPTSZTx6ObHK9uu1QermY=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemLockTimeout
+ Exception.class
+SHA1-Digest: oeOOAogXsqvXIzpmEvLH5FjW64k=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/TarEntry.clas
+ s
+SHA1-Digest: M21Nnxq5Tz8mmJthTi6BS02X7RM=
+
+Name: org/eclipse/rse/services/files/IHostFilePermissionsContainer.cla
+ ss
+SHA1-Digest: 8liWJ4A6UDwGASRBrJK3hgLMoZM=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/FloatInfo.cl
+ ass
+SHA1-Digest: PONzftgf5+5bj7ZBAeeM8gvkQvI=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/VirtualChild.
+ class
+SHA1-Digest: vylpK0igAdyz8sxFOYYKPVOVuHs=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/AbstractComm
+ onInfo.class
+SHA1-Digest: JA+nfU7gnNa7EK9/phqQ6a91AzA=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alAIXProcessHandler.class
+SHA1-Digest: lvl3RbHsHXo3Enbu+we4KdMCk4o=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/UTF8Info.cla
+ ss
+SHA1-Digest: AlCNlJe7TT1eTFQkfRdUDtlXR0I=
+
+Name: org/eclipse/rse/services/clientserver/StringComparePatternMatche
+ r.class
+SHA1-Digest: QKXIIRJbCIetFZkiFpx/yHTRcrA=
+
+Name: org/eclipse/rse/services/files/IFileServiceCodePageConverter.cla
+ ss
+SHA1-Digest: I/21h5kJTydthNH9cJ38jfqsy7s=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Process
+ HandlerManager.class
+SHA1-Digest: bgp4j/cRZaymvXK9tg6ONTVZN5k=
+
+Name: org/eclipse/rse/services/shells/IHostShellOutputListener.class
+SHA1-Digest: /nNj/btWwBv6UshJj8HHOttshHk=
+
+Name: org/eclipse/rse/services/processes/AbstractProcessService.class
+SHA1-Digest: uahc32dqj9H/aF4NEsNetYqdfO0=
+
+Name: org/eclipse/rse/internal/services/messages.properties
+SHA1-Digest: MjS7FK/Rro+bY/yP5yq3I/Wzq4s=
+
+Name: org/eclipse/rse/services/shells/IHostShellChangeEvent.class
+SHA1-Digest: Q3gskkQGSk2aOMPoLdJia1UpnHE=
+
+Name: org/eclipse/rse/internal/services/terminals/ProcessBaseShell$1.c
+ lass
+SHA1-Digest: TYiHywWYoFxbVHsxMc5knPjew6w=
+
+Name: org/eclipse/rse/services/terminals/ITerminalShell.class
+SHA1-Digest: 1iBHJh7phVZaqV/VkGLR+RkdT+A=
+
+Name: org/eclipse/rse/services/shells/IHostShellOutputReader.class
+SHA1-Digest: LHOAICIPPzqynGolvHpGSqY3WO8=
+
+Name: org/eclipse/rse/services/files/RemoteFileIOException.class
+SHA1-Digest: ZuHb6FyE8VVlYNPHcMFPt9rJSsg=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/ClassInfo.cl
+ ass
+SHA1-Digest: mVT3bvc60LIz7a8xyR5vEGfS9c4=
+
+Name: org/eclipse/rse/services/clientserver/ISystemOperationMonitor.cl
+ ass
+SHA1-Digest: 91BfVUnXmhWejKHq8HPsWY0IVc0=
+
+Name: org/eclipse/rse/services/clientserver/processes/IHostProcess.cla
+ ss
+SHA1-Digest: LiKq/p9108zyLT0FiALt3fsth7U=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemNetworkIOEx
+ ception.class
+SHA1-Digest: ongWb3pLZHuxX69Sl3WV1eJViSw=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Process
+ Comparator.class
+SHA1-Digest: 3QxpQwYOZYz6JGCSm9IRBWxBkjs=
+
+Name: org/eclipse/rse/services/clientserver/processes/HostProcessFilte
+ rImpl.class
+SHA1-Digest: AD1sVmPRfkIpIoKqLyGLRQV053U=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/FieldInfo.cl
+ ass
+SHA1-Digest: kttuAG51xKyEsuGq55XVDSkPgho=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/EnhancedData
+ InputStream.class
+SHA1-Digest: LPZNTH/NJhZpiO8WY2r/ysJhA4o=
+
+Name: org/eclipse/rse/services/files/DefaultFileServiceCodePageConvert
+ er.class
+SHA1-Digest: tcOaIQL+gMfyDfz9K02oh3ROCpI=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/DoubleInfo.c
+ lass
+SHA1-Digest: 7HCy1TmBkud1hEovWAI4sBVdlv4=
+
+Name: org/eclipse/rse/services/terminals/AbstractDelegatingTerminalSer
+ vice.class
+SHA1-Digest: wOaW9rMBNNr+wPzyNd7v61je6+k=
+
+Name: org/eclipse/rse/services/processes/IProcessService.class
+SHA1-Digest: Ho+GIMSHhDLyfqBbp+HPG9lmJ3k=
+
+Name: org/eclipse/rse/services/clientserver/search/ISystemSearchMatche
+ r.class
+SHA1-Digest: kIE7DLQYY4Q5ftYvZtLPrzxabQQ=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/EnhancedClas
+ sLoader.class
+SHA1-Digest: ciMrcgpoPwDx356yFcn8UoRRKKE=
+
+Name: org/eclipse/rse/services/search/ISearchHandler.class
+SHA1-Digest: 7ak4qFVz8fXdmTgcWbZx4+yYWaE=
+
+Name: org/eclipse/rse/services/shells/AbstractHostShellOutputReader.cl
+ ass
+SHA1-Digest: t0yP/cDrw8kObqeeM+UY+hg4p9o=
+
+Name: org/eclipse/rse/services/clientserver/messages/SimpleSystemMessa
+ ge.class
+SHA1-Digest: rrWJKtEeUJceB+DM7dafTtgp6MM=
+
+Name: org/eclipse/rse/services/search/AbstractSearchResult$RemoteSearc
+ hResultMatch.class
+SHA1-Digest: /TOBvnI9wNCtFdG4VWhxmTjkpqI=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchStringM
+ atchLocator.class
+SHA1-Digest: 0SMWwDRSXKH2C7GH/ir0RieFx24=
+
+Name: org/eclipse/rse/services/clientserver/SystemEncodingUtil$Default
+ EncodingProvider.class
+SHA1-Digest: RcfVHAwnowspjb1OjSTullSgBVg=
+
+Name: org/eclipse/rse/services/clientserver/ISystemFileTypes.class
+SHA1-Digest: vfCJ+t6sawlOzyFIOufcJlnvevU=
+
+Name: org/eclipse/rse/services/shells/SimpleHostOutput.class
+SHA1-Digest: MDrLVvHGTwEABk37ax4RbiDxI9A=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/TarOutputStre
+ am.class
+SHA1-Digest: fxjP0X/SeDj8X88f3x6UpehWI6w=
+
+Name: org/eclipse/rse/services/clientserver/IServiceConstants.class
+SHA1-Digest: eTLY6Xub7dsJFwyQxXd+sgkRDms=
+
+Name: org/eclipse/rse/services/clientserver/processes/IHostProcessFilt
+ er.class
+SHA1-Digest: HIdvr+XDytUhb8ucbnfH4ofwgWY=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/AbstractRefI
+ nfo.class
+SHA1-Digest: zIfRq6WmfsTMnKeb3jWykGeRZzQ=
+
+Name: org/eclipse/rse/services/files/RemoteFolderNotEmptyException.cla
+ ss
+SHA1-Digest: RzKkOcaDHP+cVgaVUazn+/YYOEk=
+
+Name: org/eclipse/rse/services/clientserver/java/ClassFileUtil.class
+SHA1-Digest: dl7yvYLniKZspe5mmUutO7ZiGOY=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/MethodInfo.c
+ lass
+SHA1-Digest: Ccimi0idvFSuhDVfmNsz7yt8FiU=
+
+Name: org/eclipse/rse/services/clientserver/RegexPatternMatcher.class
+SHA1-Digest: OF9Z9RI6W6BnL0Xsqc13TVRxPaI=
+
+Name: org/eclipse/rse/services/RemoteUtil.class
+SHA1-Digest: bbYA2fVtACKB9Qb/RAqFPb3fXig=
+
+Name: org/eclipse/rse/services/search/AbstractSearchResult.class
+SHA1-Digest: jZ3Tof7TphW78wDI+6MJMsWDXJw=
+
+Name: org/eclipse/rse/internal/services/shells/TerminalServiceHostShel
+ l.class
+SHA1-Digest: TTQMSjW6NYPxyfSrGQ/pxzmrLHg=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/AbstractAttr
+ ibuteInfo.class
+SHA1-Digest: qKgVWpfXifF1Fj8CDg12jPs8Ghk=
+
+Name: org/eclipse/rse/services/shells/AbstractShellService.class
+SHA1-Digest: akXwVPt5squwHxU8zNiQ9rjSNIg=
+
+Name: org/eclipse/rse/services/processes/AbstractHostProcess.class
+SHA1-Digest: G/6Lc559IqFMJOAvBhlmndFdbGo=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchLineMat
+ ch.class
+SHA1-Digest: mbDxKT+xfKpeCH5Mev5pPtuhLeQ=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/services/files/IHostFile.class
+SHA1-Digest: 47IbLyFyVXfiPnphWv3B52bm11Y=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemRemoteSecur
+ ityException.class
+SHA1-Digest: qHb49dU3AYGYCyCUo22bFDerHHw=
+
+Name: org/eclipse/rse/services/clientserver/IClientServerConstants.cla
+ ss
+SHA1-Digest: yDF0Q1AmD3O9qaND1TNkwSgTSak=
+
+Name: org/eclipse/rse/services/RemoteUtil$1.class
+SHA1-Digest: mRwCk4uGOfT0vH4bHYvyCkelo/g=
+
+Name: org/eclipse/rse/services/clientserver/search/ISystemSearchConsta
+ nts.class
+SHA1-Digest: IF5slkN3ljV+A+7Ha7T/Yl+tQEc=
+
+Name: org/eclipse/rse/internal/services/shells/TerminalServiceShellOut
+ putReader.class
+SHA1-Digest: gnsn/pgoT1dklFDGvEakxwU5Zys=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/Abstract4Byt
+ eNumericInfo.class
+SHA1-Digest: OHfJSOyg/+PmfvzOGzubDtl/KJA=
+
+Name: org/eclipse/rse/services/Mutex.class
+SHA1-Digest: p4v/pDA+Nzq7HDNUjmCBK2LuI6I=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/ISystemArchiv
+ eHandler.class
+SHA1-Digest: kUEYhYy35Bv1qz99rru5yqmIeDs=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/FieldRefInfo
+ .class
+SHA1-Digest: 433TW7HIuKgoSBKqJ5fIkLiCOg0=
+
+Name: org/eclipse/rse/internal/services/RSEServicesMessages.class
+SHA1-Digest: /uxb66nTc4GF4bl4oCtAX+jpf9U=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/LongInfo.cla
+ ss
+SHA1-Digest: pksot5dH4ZW+LbDrmtKULkeA6yc=
+
+Name: org/eclipse/rse/services/terminals/package.html
+SHA1-Digest: K2X6OL9rkjPVdgBsYmWOgFvbGuk=
+
+Name: org/eclipse/rse/services/files/CodePageConverterManager.class
+SHA1-Digest: 9Z5kmEo3+G55lyP+JrIDGmgc7uo=
+
+Name: org/eclipse/rse/internal/services/clientserver/archiveutils/ITar
+ Constants.class
+SHA1-Digest: kcRe2TIcT3wwHGLXmQYo3szKShU=
+
+Name: org/eclipse/rse/services/search/ISearchService.class
+SHA1-Digest: oHLPcMVH8OB4zZvsskcGmBmUdsU=
+
+Name: org/eclipse/rse/services/shells/IHostOutput.class
+SHA1-Digest: vvgfN5ubnZ5+LMzYRZbwrzrtOmM=
+
+Name: org/eclipse/rse/services/clientserver/NamePatternMatcher.class
+SHA1-Digest: ZA5Rsr1yGfzmifi2OnyGGgTphxY=
+
+Name: org/eclipse/rse/services/terminals/ITerminalService.class
+SHA1-Digest: b96hEpvV7I2Jgp1QKclbVw4PpF4=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemUnexpectedE
+ rrorException.class
+SHA1-Digest: OWZOKMdSJnJXM4+HStID84zTXuw=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/ClassFileUTF
+ 8Reader.class
+SHA1-Digest: wGhc66e79Tsl+ZV7upk1qrTh454=
+
+Name: org/eclipse/rse/internal/services/shells/TerminalShellAdapterFac
+ tory.class
+SHA1-Digest: WI9qJrmV0wb2HBmryfni9RTp82w=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alSolarisProcessHandler.class
+SHA1-Digest: NHDtS+jvWLZLongwKiIct1jKG9U=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Process
+ Handler.class
+SHA1-Digest: bMjvNtdKv5qFeQ0R5Do+5KtLpnk=
+
+Name: org/eclipse/rse/services/files/RemoteFileSecurityException.class
+SHA1-Digest: p14t+zaJ3Cl/DXaex2GduPUwx8g=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/IRemote
+ ServerProcess.class
+SHA1-Digest: e8836r7OnvwA9ffqWnmVr5hpXpM=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alMacOSXProcessHandler.class
+SHA1-Digest: dsRiN3+MuCNHEgI4WYtehPbRb/U=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemTarHand
+ ler.class
+SHA1-Digest: CFXxcZyYTL5UCs1hqW9JMy7K+zA=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/AbstractCPIn
+ fo.class
+SHA1-Digest: MsTMFxC4w6nxD+mVAnEo/l8RGcs=
+
+Name: org/eclipse/rse/services/clientserver/StringCompare.class
+SHA1-Digest: B4ZLiwijpwtZShEkaZBxwtLUQf0=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/TarFile$TarEn
+ tryInputStream.class
+SHA1-Digest: sfUJfXrIii2tFxrC/kmBvMMo8KU=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/StringInfo.c
+ lass
+SHA1-Digest: HIiJ4C4YjC2AGVZl6dldWF9c//I=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemZipHand
+ ler.class
+SHA1-Digest: Y9E/QApAzrQkb/ElCFxyOpVbVHs=
+
+Name: org/eclipse/rse/services/search/IHostSearchConstants.class
+SHA1-Digest: qM4/ZhxS4CNSfo/MFybb/56Povs=
+
+Name: org/eclipse/rse/internal/services/terminals/ProcessBaseShell$Wat
+ chdog.class
+SHA1-Digest: 4ErCjpgaDBh/lp0IPp/4L2jzVB0=
+
+Name: org/eclipse/rse/services/shells/AbstractHostShell.class
+SHA1-Digest: /68BcJqh4J0UTx5dF2omb9O8c9w=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemOperationFa
+ iledException.class
+SHA1-Digest: M1tA+cpfa+8zPl4StPYptEHhbE0=
+
+Name: org/eclipse/rse/services/clientserver/SystemReentrantMutex.class
+SHA1-Digest: I3rc+45/v0553Gr+qBdDq4a4hyM=
+
+Name: org/eclipse/rse/services/clientserver/messages/ICommonMessageIds
+ .class
+SHA1-Digest: iv8VbgAU+Ul2LM+h0cyxBoDlLYQ=
+
+Name: org/eclipse/rse/internal/services/shells/TerminalShellService.cl
+ ass
+SHA1-Digest: /mb/L7Jk0/jFfwm5wl6GK01BfZQ=
+
+Name: org/eclipse/rse/internal/services/clientserver/archiveutils/Syst
+ emUniversalZipEntry.class
+SHA1-Digest: eS7iScVXcxElosuGZzXcK5JY9Kg=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemRemoteMessa
+ geException.class
+SHA1-Digest: +Hlp7fsTjiobIrj906dslvXZ87E=
+
+Name: org/eclipse/rse/services/clientserver/processes/ISystemProcessRe
+ moteConstants.class
+SHA1-Digest: vMB5MruFFPCIxAkNfsvRJf5VhZ4=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchUtil.cl
+ ass
+SHA1-Digest: Cq7WkCrsfNJkTBYE0jh0UN+0lcU=
+
+Name: org/eclipse/rse/services/terminals/TerminalShellDecorator.class
+SHA1-Digest: j2lVSovd90yNInsIWw0qRdff/s8=
+
+Name: org/eclipse/rse/internal/services/shells/CommandPattern.class
+SHA1-Digest: 5QWK8Eej9PExg1XXeDIvxmpzp8E=
+
+Name: org/eclipse/rse/services/clientserver/IMatcher.class
+SHA1-Digest: H9ML3gs3N02T2fMgLW0VT5BIf+E=
+
+Name: org/eclipse/rse/services/clientserver/SystemFileClassifier.class
+SHA1-Digest: jEWhdtTbiYizHkWL4cmVAKyTYjw=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/IClassFileCo
+ nstants.class
+SHA1-Digest: CglJ9pAXJXQliGx7ITXSsrTJpIc=
+
+Name: org/eclipse/rse/services/package.html
+SHA1-Digest: +d2tjOKXO4lYOhMkml8vPtzTmPg=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemNonRegexMatch
+ er$Position.class
+SHA1-Digest: eE4PZAXIYZu+OrOAYYrnUw6xLcQ=
+
+Name: org/eclipse/rse/services/shells/IHostShellOutputNotifier.class
+SHA1-Digest: 0kzyxEovAtHdFgiaYXd+3L9eEXk=
+
+Name: org/eclipse/rse/internal/services/shells/OutputPattern.class
+SHA1-Digest: 84zyuChBdkq1gaO4gKwDRC+pAT8=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessage.cla
+ ss
+SHA1-Digest: jnSLs0SlRf1MlXQU0vmUJdSHTHI=
+
+Name: org/eclipse/rse/internal/services/terminals/ProcessBaseShell.cla
+ ss
+SHA1-Digest: 5VS0bv7UDLrh7cZUowzewjnx/lc=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemElementNotF
+ oundException.class
+SHA1-Digest: hZVKekZZ8h5viqC2wDFtGAcGI/Q=
+
+Name: org/eclipse/rse/services/clientserver/messages/CommonMessages.pr
+ operties
+SHA1-Digest: GW/vtbq++MxUHgieaKLNQjbpPS4=
+
+Name: org/eclipse/rse/internal/services/clientserver/archiveutils/ISys
+ temArchiveHandlerConstants.class
+SHA1-Digest: 35ojxKuaoBDC86FxSkkzgUnmsA8=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/NameAndTypeI
+ nfo.class
+SHA1-Digest: s92s3hrsmudPs4UG9d2qual2Wto=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessageFile
+ $MessageFileInfo.class
+SHA1-Digest: jF3AjNfoxZVKdbl/8Weuakr9zBk=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessageExce
+ ption.class
+SHA1-Digest: 8uNkfQeuCarI2k0HHonSN91yaCw=
+
+Name: org/eclipse/rse/services/clientserver/messages/CommonMessages.cl
+ ass
+SHA1-Digest: Uw1C47I4FaPcgIMJJqoZZ8/UWcQ=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/TarFile.class
+SHA1-Digest: 1HIX1pKuA5ZfnYP+8fIppLuvQ6A=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/InterfaceMet
+ hodRefInfo.class
+SHA1-Digest: fKQeJVAwSlFnEHM2k27zk5k/DMg=
+
+Name: org/eclipse/rse/services/clientserver/processes/handlers/Univers
+ alZOSProcessHandler.class
+SHA1-Digest: KWTGOBjLO73W3MOEx45+35KitNk=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessageFile
+ $LoadThread.class
+SHA1-Digest: wVBbNQF6sI1TKmdjKgrzKWS8LKs=
+
+Name: org/eclipse/rse/services/files/HostFilePermissions.class
+SHA1-Digest: rakeqHzmUQ4MLYrsl9v1Hcg9yVg=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/MethodRefInf
+ o.class
+SHA1-Digest: DOx8FxPCE5MNGdJYS796R94yu0s=
+
+Name: org/eclipse/rse/services/search/AbstractSearchService.class
+SHA1-Digest: ahFsPyuIjiBIB4zlO/15EOpHQLU=
+
+Name: org/eclipse/rse/services/clientserver/PathUtility.class
+SHA1-Digest: p58hKvyMCQyLboFlcI1VvhotD+o=
+
+Name: org/eclipse/rse/services/shells/HostShellChangeEvent.class
+SHA1-Digest: VAsEI4FFRyrKhSQTTVrzuTmkbsU=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchFileNam
+ eMatcher.class
+SHA1-Digest: nbMbj4UuxPbJVnzsZ3dPuBsI9yM=
+
+Name: org/eclipse/rse/services/clientserver/processes/ISystemProcessRe
+ moteTypes.class
+SHA1-Digest: vfylf2BqOfl8WuNtYUxwVjRLPx0=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessageFile
+ .class
+SHA1-Digest: BLrKxGyKQuyxi+Qxl/77k95WXfQ=
+
+Name: org/eclipse/rse/services/IService.class
+SHA1-Digest: M2hCKpWQpqtNr+pykhfFtzKIp/o=
+
+Name: org/eclipse/rse/services/search/IHostSearchResultSet.class
+SHA1-Digest: nGtgpj4S/d5pfS2DqowpfZdaMmI=
+
+Name: org/eclipse/rse/services/terminals/IBaseShell.class
+SHA1-Digest: M5FCLwXbQ0f52O2o//73YvhpGyc=
+
+Name: org/eclipse/rse/services/search/HostSearchResultSet.class
+SHA1-Digest: z7LEvACvroDRtiuq9w482VXf488=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services/pom.xml
+SHA1-Digest: EIKqQ5nK76h7J7hXajG1E2nzH7E=
+
+Name: org/eclipse/rse/services/files/IHostFilePermissions.class
+SHA1-Digest: Z7VPT0LdK2PkWfdM8EWK10tHnxg=
+
+Name: org/eclipse/rse/services/search/IHostSearchResult.class
+SHA1-Digest: jMfT4ctLpBRJvdjqSQIFvnZLfVQ=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/IntegerInfo.
+ class
+SHA1-Digest: gfxP+8OETAijBP5iPinylj2OkfY=
+
+Name: plugin.properties
+SHA1-Digest: 8sKpfDHBl8WkjziFSDyA0Q34TYI=
+
+Name: org/eclipse/rse/services/clientserver/java/BasicClassFileParser.
+ class
+SHA1-Digest: 2R1J/Cs5mkBGp/jWUK20B/yoBWY=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/AbsoluteVirtu
+ alPath.class
+SHA1-Digest: 7jBCPWU4ce2AZv8ENxOAg7auGMU=
+
+Name: org/eclipse/rse/internal/services/clientserver/archiveutils/TgzF
+ ile.class
+SHA1-Digest: evUyAfq1X0IE54zDY4mbeNZOycE=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemTarHand
+ ler$VirtualFileNode.class
+SHA1-Digest: 0vB5FLWjtT93nAvA8AVC57+7PyA=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemMessageFile
+ $1.class
+SHA1-Digest: msV6hhY5tFr9m88+ZLlNULbgTcM=
+
+Name: org/eclipse/rse/services/shells/HostShellProcessAdapter.class
+SHA1-Digest: xCxXTr18UTqF+YQmBqAXVFdscT4=
+
+Name: org/eclipse/rse/services/shells/HostShellOutputStream.class
+SHA1-Digest: gwM+3wE2Oiw5fR79kl3jRL7h9Do=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/SystemJarHand
+ ler.class
+SHA1-Digest: UUCChDzbT+trP53z5LaeqedTGro=
+
+Name: plugin.xml
+SHA1-Digest: md2nwZH9s84463DFkeAgzGnUA5g=
+
+Name: org/eclipse/rse/services/clientserver/archiveutils/ArchiveHandle
+ rManager.class
+SHA1-Digest: plKUo4d+4foRVzGn+sQ2dE38jrQ=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services/pom.prope
+ rties
+SHA1-Digest: vbflPllVX5ZWTw9VljNAMWwYlzU=
+
+Name: org/eclipse/rse/services/search/IHostSearchResultConfiguration.c
+ lass
+SHA1-Digest: mNljTOvJwbzPPT0TG4i2whT6zh0=
+
+Name: org/eclipse/rse/internal/services/Activator.class
+SHA1-Digest: nQUjMasDVw44rczAPbSxpuO6J/o=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemUnsupported
+ OperationException.class
+SHA1-Digest: UrSRVwyZjpIcMduI3hCF4d5lIqU=
+
+Name: org/eclipse/rse/services/search/AbstractSearchResultConfiguratio
+ n.class
+SHA1-Digest: 2D9pkxvhDQDsFY2qo90iXI1FfAs=
+
+Name: org/eclipse/rse/services/AbstractService.class
+SHA1-Digest: qIgjbAo/9KUhMdZJnfqLLwTi60E=
+
+Name: org/eclipse/rse/services/clientserver/messages/SystemOperationCa
+ ncelledException.class
+SHA1-Digest: 1TuA54/QCuzZY4OG1dQQ2VminEY=
+
+Name: org/eclipse/rse/services/files/RemoteFileException.class
+SHA1-Digest: jTGSDX22iwLaap/gtRVIoB/q4jk=
+
+Name: org/eclipse/rse/internal/services/shells/TerminalServiceShellWri
+ terThread.class
+SHA1-Digest: uQPRxEGmtau53IEHbawLo0pqE+g=
+
+Name: org/eclipse/rse/internal/services/clientserver/java/Abstract8Byt
+ eNumericInfo.class
+SHA1-Digest: lN2bXUiWxcm/ly1qevP+r0F6y1Q=
+
+Name: org/eclipse/rse/services/terminals/AbstractTerminalShell.class
+SHA1-Digest: q+wVZ21S2rtw9+fnzvuetK8yNVI=
+
+Name: org/eclipse/rse/services/terminals/BaseShellDecorator.class
+SHA1-Digest: bgmpRxvqo4B5nCzVWDrgB9xm3CE=
+
+Name: org/eclipse/rse/services/shells/ParsedOutput.class
+SHA1-Digest: N1JOZBWu3tMjMVEuYuGVL3mqaS4=
+
+Name: org/eclipse/rse/services/terminals/AbstractTerminalService.class
+SHA1-Digest: 77DivgR5oGFC0/Ia11l07mle7ys=
+
+Name: org/eclipse/rse/services/files/AbstractFileService.class
+SHA1-Digest: oRdQTls/nqnAW5eu6+1t7H/dlxs=
+
+Name: org/eclipse/rse/services/clientserver/FileTypeMatcher.class
+SHA1-Digest: vAmh3EfadV6ljZ7Y1qHIsI/4LlU=
+
+Name: clientserver.jar
+SHA1-Digest: 0FvEfkQH6ArQMvgYwxmBc8Eakb4=
+
+Name: org/eclipse/rse/services/clientserver/search/SystemSearchMatch.c
+ lass
+SHA1-Digest: uLGrbTqDssKmbFDyxUH582XjiAk=
+

@@ -1,0 +1,125 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.services.local;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.services.local";com
+ mitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.internal.services.local.Activator
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.rse.services;bund
+ le-version="[3.0.0,4.0.0)"
+Export-Package: org.eclipse.rse.internal.services.local;x-friends:="or
+ g.eclipse.rse.subsystems.files.local,org.eclipse.rse.subsystems.proce
+ sses.local,org.eclipse.rse.subsystems.shells.local",org.eclipse.rse.i
+ nternal.services.local.files;x-friends:="org.eclipse.rse.subsystems.f
+ iles.local",org.eclipse.rse.internal.services.local.processes;x-frien
+ ds:="org.eclipse.rse.subsystems.processes.local",org.eclipse.rse.inte
+ rnal.services.local.search;x-friends:="org.eclipse.rse.subsystems.fil
+ es.local",org.eclipse.rse.internal.services.local.shells;x-friends:="
+ org.eclipse.rse.subsystems.shells.local"
+Bundle-Version: 2.1.500.201305211438
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services.local/pom
+ .properties
+SHA1-Digest: ayTMPqGl1Gj6M/Brgide8bUF+3U=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: org/eclipse/rse/internal/services/local/search/LocalSearchHandle
+ r.class
+SHA1-Digest: Uc7HnhX0xmwaq/0q94l0bmtPVoc=
+
+Name: org/eclipse/rse/internal/services/local/LocalServiceResources.pr
+ operties
+SHA1-Digest: za1F4zqNStuLlmeoyb2iVn8mDbg=
+
+Name: org/eclipse/rse/internal/services/local/processes/LocalProcessSe
+ rvice.class
+SHA1-Digest: 9PJKGlxdDgOxXwR5cbZK7YGA+Ok=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.services.local/pom
+ .xml
+SHA1-Digest: aR/xY+9vApT1OnntgCJ43AOeVzo=
+
+Name: plugin.properties
+SHA1-Digest: vQ5qhsl74A2WGVmuFjaIJHSFJ+M=
+
+Name: org/eclipse/rse/internal/services/local/files/LocalFileService.c
+ lass
+SHA1-Digest: 8/Hn/cfKGXk9N+kRbxDMAeVFSTo=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/rse/internal/services/local/search/LocalSearchResult
+ .class
+SHA1-Digest: Mlxum5Qyvgl8xF2QdFquYr4U0A8=
+
+Name: org/eclipse/rse/internal/services/local/files/LocalFileService$L
+ ocalFileNameFilter.class
+SHA1-Digest: 6p4V4QSWRXX0Tl7wSIqLqX7CtBo=
+
+Name: org/eclipse/rse/internal/services/local/ILocalMessageIds.class
+SHA1-Digest: jxEUf4Xq+41NCvfVuT14UjORBhY=
+
+Name: org/eclipse/rse/internal/services/local/files/LocalHostFile.clas
+ s
+SHA1-Digest: rNknKwP7bA6Wa203fxEdWy53PFk=
+
+Name: org/eclipse/rse/internal/services/local/LocalServiceResources.cl
+ ass
+SHA1-Digest: A458Gc4x1Qf2DQW3i8CybhHl5Lc=
+
+Name: org/eclipse/rse/internal/services/local/shells/LocalShellThread.
+ class
+SHA1-Digest: rBFNkXJOMyZkQBGwRFvc0Q+cIY0=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/rse/internal/services/local/files/LocalVirtualHostFi
+ le.class
+SHA1-Digest: q5NJHvt4Z3FmIuJ4gBwhgbcp2Oo=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/services/local/shells/LocalShellService
+ .class
+SHA1-Digest: jGdWLkAun4vekXExh2NDl5RuL/s=
+
+Name: org/eclipse/rse/internal/services/local/search/LocalSearchServic
+ e.class
+SHA1-Digest: 3UlUED/c3Eljnyxmq6YAsZVI0aU=
+
+Name: org/eclipse/rse/internal/services/local/shells/LocalHostShell.cl
+ ass
+SHA1-Digest: 00ofP0APWeAoSYiYh5aAsG6Il6s=
+
+Name: about.properties
+SHA1-Digest: Zekc+t25UTBaWyEaD3mAIrH3IMo=
+
+Name: org/eclipse/rse/internal/services/local/files/LocalFileService$C
+ heckArchiveOperationStatusThread.class
+SHA1-Digest: i8ReCBqvoYFXRBDt5jUxqjQPId4=
+
+Name: org/eclipse/rse/internal/services/local/ILocalService.class
+SHA1-Digest: 2IGSI4vnkkmqCPVxABt65p1L4Sg=
+
+Name: org/eclipse/rse/internal/services/local/Activator.class
+SHA1-Digest: Z8nd/uxVUTEdrp6BKrd8iEd9W5g=
+
+Name: org/eclipse/rse/internal/services/local/shells/LocalShellOutputR
+ eader.class
+SHA1-Digest: mz/pZbhxiuxySn2EnfsgwpOoPRY=
+

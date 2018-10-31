@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>AddUsersToGroup</shortname>
+  <description>Add one or more users to a group</description>
+  <url>/velo/addUsersToGroup?userNames={userName}&amp;groupName={?groupName}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

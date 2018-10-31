@@ -1,0 +1,200 @@
+/*******************************************************************************
+ * .
+ *                           Velo 1.0
+ *  ----------------------------------------------------------
+ * 
+ *            Pacific Northwest National Laboratory
+ *                      Richland, WA 99352
+ * 
+ *                      Copyright (c) 2013
+ *            Pacific Northwest National Laboratory
+ *                 Battelle Memorial Institute
+ * 
+ *   Velo is an open-source collaborative content management
+ *                and job execution environment
+ *              distributed under the terms of the
+ *           Educational Community License (ECL) 2.0
+ *   A copy of the license is included with this distribution
+ *                   in the LICENSE.TXT file
+ * 
+ *                        ACKNOWLEDGMENT
+ *                        --------------
+ * 
+ * This software and its documentation were developed at Pacific 
+ * Northwest National Laboratory, a multiprogram national
+ * laboratory, operated for the U.S. Department of Energy by 
+ * Battelle under Contract Number DE-AC05-76RL01830.
+ ******************************************************************************/
+package gov.pnnl.cat.core.resources;
+
+import gov.pnnl.cat.core.util.CatConstants;
+
+import java.text.ParseException;
+
+import org.alfresco.webservice.util.Constants;
+import org.eclipse.core.runtime.QualifiedName;
+
+/**
+ * This class is used for a quick reference to common Qualified Names for
+ * resource properties, so they can be easily accessed.
+ * @version $Revision: 1.0 $
+ */
+public abstract class Props {
+  public static final String DEFAULT_QUALIFIER = "cat";
+  
+  /** Remote Link Props **/
+  //public static final QualifiedName PROP_LINK_TITLE = parseQNameStringSafe(CatConstants.PROP_LINK_TITLE);
+  public static final QualifiedName PROP_LINK_URL = parseQNameStringSafe(CatConstants.PROP_LINK_URL);
+  //public static final QualifiedName PROP_LINK_DESCRIPTION = parseQNameStringSafe(CatConstants.PROP_LINK_DESCRIPTION);
+  
+  /**
+   * The title of the resource (possibly a more readable, longer name than
+   * the filename)
+   * This property applies to resource trees
+   */
+  public static final QualifiedName TITLE = parseQNameStringSafe(CatConstants.PROP_TITLE);
+  public static final QualifiedName NAME = parseQNameStringSafe(CatConstants.PROP_NAME);
+  public static final QualifiedName PATH = new QualifiedName(Constants.NAMESPACE_CONTENT_MODEL, "path");
+  public static final QualifiedName THUMBNAIL = parseQNameStringSafe(CatConstants.PROP_THUMBNAIL);
+
+  /**
+   * A description of a resource
+   * This property can be set on any resource, but applies mainly to resource trees.
+   */
+  public static final QualifiedName DESCRIPTION = parseQNameStringSafe(CatConstants.PROP_DESCRIPTION);
+
+  /**
+   * The creator of the file (i.e., the one who uploaded it into the repository)
+   * This property applies to all resources.
+   */
+  public static final QualifiedName CREATOR = parseQNameStringSafe(CatConstants.PROP_CREATOR);
+  public static final QualifiedName CREATED_ON_BEHALF_OF = parseQNameStringSafe(CatConstants.PROP_CREATED_ON_BEHALF_OF);
+  public static final QualifiedName MODIFIED_ON_BEHALF_OF = parseQNameStringSafe(CatConstants.PROP_MODIFIED_ON_BEHALF_OF);
+
+  // TODO: this property cannot currently be added
+  public static final QualifiedName AUTHOR = parseQNameStringSafe(CatConstants.PROP_AUTHOR);
+
+  /**
+   * The date the file was created
+   * This property applies to all resources.
+   */
+  public static final QualifiedName CREATION_DATE = parseQNameStringSafe(CatConstants.PROP_CREATED);
+
+  /**
+   * The date the file was last modified
+   * This property applies to all resources.
+   */
+  public static final QualifiedName LAST_MODIFIED = parseQNameStringSafe(CatConstants.PROP_MODIFIED);
+
+  /**
+   * The person that last modified this resource
+   * This property applies to all resources.
+   */
+  public static final QualifiedName MODIFIER = parseQNameStringSafe(CatConstants.PROP_MODIFIER);
+  public static final QualifiedName OWNER = parseQNameStringSafe(CatConstants.PROP_OWNER);
+  public static final QualifiedName SOURCE = parseQNameStringSafe("{http://www.alfresco.org/model/content/1.0}source");
+
+  /**
+   * The unique identifier for an item
+   * This property applies to all resources.
+   */
+  public static final QualifiedName UUID = parseQNameStringSafe(CatConstants.PROP_UUID);
+  public static final QualifiedName CHILD_COUNT = new QualifiedName(CatConstants.NAMESPACE_CAT_MODEL, "childCount"); 
+  public static final QualifiedName HASH = new QualifiedName(CatConstants.NAMESPACE_CAT_MODEL, "hash"); 
+
+  public static final QualifiedName CONTENT = parseQNameStringSafe(CatConstants.PROP_CONTENT);
+  public static final QualifiedName DESTINATION = parseQNameStringSafe(CatConstants.PROP_LINK_DESTINATION);
+
+  public static final QualifiedName TEXT_TRANSFORM = parseQNameStringSafe(CatConstants.ASPECT_TEXT_TRANSFORM);
+  public static final QualifiedName TEXT_TRANSFORMED_CONTENT = parseQNameStringSafe(CatConstants.PROP_TEXT_TRANSFORMED_CONTENT);  
+  public static final QualifiedName TEXT_TRANSFORMED_ERROR = parseQNameStringSafe(CatConstants.PROP_TEXT_TRANSFORM_ERROR);
+
+  public static final QualifiedName SIZE = new QualifiedName(CatConstants.NAMESPACE_CAT_MODEL, "size");
+  public static final QualifiedName MIMETYPE = new QualifiedName(CatConstants.NAMESPACE_VELO, "mimetype");
+  
+  // TODO: get rid of these props as they aren't used
+  public static final QualifiedName CONTENT_TYPE = MIMETYPE;
+  public static final QualifiedName CONTENT_URL = new QualifiedName(CatConstants.NAMESPACE_CAT_MODEL, "contentUrl");
+  
+  public static final QualifiedName CATEGORIES = parseQNameStringSafe(CatConstants.PROP_TAX_CATEGORIES);
+
+  public static final QualifiedName PROFILE_PICTURE = parseQNameStringSafe(CatConstants.PROP_PICTURE);
+  public static final QualifiedName PROFILE_USER_HOMEFOLDER = parseQNameStringSafe(CatConstants.PROP_USER_HOMEFOLDER);
+  public static final QualifiedName PROFILE_TEAM_HOMEFOLDER = parseQNameStringSafe(CatConstants.PROP_TEAM_HOMEFOLDER);
+
+  public static final QualifiedName USER_EMAIL = parseQNameStringSafe(CatConstants.PROP_USER_EMAIL);
+  public static final QualifiedName TEAM_EMAIL = parseQNameStringSafe(CatConstants.PROP_TEAM_EMAIL);
+  public static final QualifiedName FIRST_NAME = parseQNameStringSafe(CatConstants.PROP_USER_FIRSTNAME);
+  public static final QualifiedName LAST_NAME = parseQNameStringSafe(CatConstants.PROP_USER_LASTNAME);
+  public static final QualifiedName PHONE = parseQNameStringSafe(CatConstants.PROP_PRIMARY_PHONE);
+  public static final QualifiedName USERNAME = parseQNameStringSafe(CatConstants.PROP_USERNAME); 
+
+  public static final QualifiedName ASSOC_NAME = new QualifiedName(DEFAULT_QUALIFIER, "associationName");
+  public static final QualifiedName ASPECT_PERSONAL_LIBRARY_ROOT = parseQNameStringSafe(CatConstants.ASPECT_PERSONAL_LIBRARY_ROOT);
+
+  public static final QualifiedName ASPECT_PROJECT = parseQNameStringSafe(CatConstants.ASPECT_PROJECT);
+  public static final QualifiedName ASPECT_TAXONOMY_ROOT = parseQNameStringSafe(CatConstants.ASPECT_TAXONOMY_ROOT);
+
+  // TODO Bio KB stuff - needs to be refactored!!
+  public static final String NAMESPACE_OMICS_MODEL = "{http://www.pnl.gov/sdkdi/model/content/1.0}";
+  public static final QualifiedName ASPECT_OMICS_LINKED_DATA_RESOURCE = parseQNameStringSafe(NAMESPACE_OMICS_MODEL + "linkedDataResource");
+
+  // TODO Discussion/Comments stuff - needs to be refactored
+  private static final String DISCUSSION_QUALIFIER = "http://www.alfresco.org/model/forum/1.0";
+  public static final QualifiedName ASPECT_DISCUSSABLE = new QualifiedName(DISCUSSION_QUALIFIER, "discussable");
+  public static final QualifiedName NAME_DISCUSSION = new QualifiedName(DISCUSSION_QUALIFIER, "discussion");
+  public static final QualifiedName TYPE_DISCUSSION = new QualifiedName(DISCUSSION_QUALIFIER, "forum"); 
+  public static final QualifiedName TYPE_TOPIC = new QualifiedName(DISCUSSION_QUALIFIER, "topic"); 
+  public static final QualifiedName TYPE_POST = new QualifiedName(DISCUSSION_QUALIFIER, "post"); 
+
+  //ImagePreview
+  public static final String IMG_PREVIEW_QUALIFIER = "http://www.alfresco.org/model/content/1.0";
+  public static final QualifiedName ASSOC_NAME_IMG_PREVIEW = new QualifiedName(IMG_PREVIEW_QUALIFIER, "imgpreview");
+  public static final QualifiedName ASSOC_NAME_IMG_DOCLIB = new QualifiedName(IMG_PREVIEW_QUALIFIER, "doclib");
+  public static final QualifiedName ASSOC_NAME_IMG_PREVIEW_PANE = new QualifiedName(IMG_PREVIEW_QUALIFIER, "previewPaneImage");
+
+  /**
+   * Method createQNameString.
+   * @param qname QualifiedName
+   * @return String
+   */
+  public static String createQNameString(QualifiedName qname) {
+    return Constants.createQNameString(qname.getQualifier(), qname.getLocalName());
+  }
+
+  /**
+   * Converts Alfresco qname string to Eclipse QualifiedName object
+   * @param qname
+  
+   * @return QualifiedName
+   */
+  public static QualifiedName parseQNameStringSafe(String qname) {
+    try {
+      return parseQNameString(qname);
+    } catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
+   * 
+   * @param qname
+  
+  
+   * @return QualifiedName
+   * @throws ParseException
+   * @see Constants.createQNameString */
+  public static QualifiedName parseQNameString(String qname) throws ParseException {
+    int openBrace = qname.indexOf('{');
+    int closeBrace = qname.indexOf('}');
+
+    if (openBrace != 0 || closeBrace == -1) {
+      throw new ParseException("Unparsable qualified name: '" + qname + "'", 0);
+    }
+
+    String namespace = qname.substring(openBrace + 1, closeBrace);
+    String localName = qname.substring(closeBrace + 1);
+
+    return new QualifiedName(namespace, localName);
+  }
+}

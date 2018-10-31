@@ -1,0 +1,20 @@
+<!-- Inherit from parent Code, but can override values -->		
+<!-- important to note even boolean attributes (mergeInputs) need to have values in quotes or xstream throws "attr value delimiter missing" error -->							
+<!-- lists will have a merge option (set as attributes on the code), default is merge=false, which means override the whole list -->
+
+<code id="agni_sr" version="default" parent="agni" parentVersion="default">
+    <name>Agni SR</name>
+    <type>Simulation Ensemble Controller for SR</type>
+    <description>Agni for Single Run</description>
+
+	<jobLaunching mergeInputs="true" mergeOutputs="false" mergeJobHandlerParams="false">
+		<!-- any single-valued parameters will always be override -->
+	    <!-- will get the handler from the spring container for the given bean ID -->
+		<jobHandlerId>srJobHandler</jobHandlerId>
+		
+		<veloServerInputs>
+			<fileset includes="amanziSR.xml"/>
+		</veloServerInputs>
+
+	</jobLaunching>
+</code>

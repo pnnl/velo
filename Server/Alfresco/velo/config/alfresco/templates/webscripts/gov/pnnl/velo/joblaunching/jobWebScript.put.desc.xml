@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>update job</shortname>
+  <description>update job by jobID</description>
+  <url>/velo/joblaunching/jobs/{jobID}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

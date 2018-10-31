@@ -1,0 +1,18 @@
+<!-- This file is used to tell eclipse's help system which help books should be shown in what order -->
+<extensions>
+   <tocOrder>
+      <!-- Make Velo help be first -->
+      <toc id="/gov.pnnl.cat.help.user/toc.xml"/>
+      <toc id="/org.eclipse.rse.doc.user/toc.xml"/>
+   </tocOrder>
+   <hidden>
+      <!-- Example of hiding help books
+      <toc id="/org.abc.doc.isv/toc.xml"/>
+
+      <category id="isv.reference"/>
+      <index id="/org.abc.doc.isv/index.xml"/>
+      <index id="/com.def.doc.isv/index.xml"/>
+      -->
+   </hidden>
+
+</extensions>

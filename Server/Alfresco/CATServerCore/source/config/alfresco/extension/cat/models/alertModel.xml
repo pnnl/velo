@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="alrt:alertmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<!-- Optional meta-data about the model -->
+	<description>DMI Alerting Model</description>
+	<version>1.0</version>
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import prefix="d" uri="http://www.alfresco.org/model/dictionary/1.0"/>
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import prefix="cm" uri="http://www.alfresco.org/model/content/1.0"/>
+      <!--  Cat Namespace -->
+      <import prefix="cat" uri="http://www.pnl.gov/cat/model/content/1.0"/>      
+	</imports>
+   
+	<!-- Namespaces defined by this model -->
+	<namespaces>
+		<namespace prefix="alrt" uri="http://www.pnl.gov/dmi/model/alert/1.0"/>
+		<namespace prefix="sub" uri="http://www.pnl.gov/dmi/model/subscription/1.0"/>
+		<namespace prefix="sub.rep" uri="http://www.pnl.gov/dmi/model/subscription/repository/1.0"/>
+		<namespace prefix="sub.rep.fact" uri="http://www.pnl.gov/dmi/model/subscription/repository/factsheet/1.0"/>
+		<namespace prefix="sub.srch" uri="http://www.pnl.gov/dmi/model/subscription/repository/search/1.0"/>
+		<namespace prefix="sub.rss" uri="http://www.pnl.gov/dmi/model/subscription/rss/1.0"/>
+	</namespaces>
+	<!-- Constraints on parameter values -->
+	<constraints>
+		<constraint name="sub:deliveryChannelsConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>{http://www.pnl.gov/dmi/model/subscription/1.0}email</value>
+					<value>{http://www.pnl.gov/dmi/model/subscription/1.0}repository</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.rep:frequencyConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Hourly</value>
+					<value>Daily</value>
+					<value>Weekly</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.srch:frequencyConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Daily</value>
+					<value>Weekly</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.rss:frequencyConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Hourly</value>
+					<value>Daily</value>
+					<value>Weekly</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.rep:changeTypeConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>new</value>
+					<value>modified</value>
+					<value>deleted</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.srch:changeTypeConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>new</value>
+					<value>modified</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="sub.rss:changeTypeConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>new</value>
+					<value>modified</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	<!-- New node types -->
+	<types>
+		<!-- Persisted Alerts -->
+		<type name="alrt:alert">
+			<title>Alert</title>
+			<parent>alrt:content</parent>
+			<!-- Alert event list will be stored in the cm:content property as XML, since
+         the event list could get really long -->
+			<properties>
+				<!-- For now we can store as a username -->
+				<property name="alrt:sender">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- For now we can store as a list of usernames -->
+				<property name="alrt:recipients">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>true</multiple>
+				</property>
+				<!-- The type of subscription who created this alert -->
+				<property name="alrt:subscriptionType">
+					<type>d:qname</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- The nodeRef of the subscription node that caused this alert to be generated -->
+				<property name="alrt:subscription">
+					<type>d:noderef</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- The frequency with which this alert was sent -->
+				<property name="alrt:frequency">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- The summary of the alert -->
+				<property name="alrt:summary">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- indicates if the alert has been read by the user or not -->
+				<property name="alrt:wasRead">
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- BKMS display version of the events stored in cm:content node -->
+				<property name="alrt:bkmsDisplay">
+					<type>d:content</type>
+					<mandatory>false</mandatory>
+					<multiple>false</multiple>
+					<!--- Do not index content -->
+					<index enabled="false">
+						<atomic>false</atomic>
+						<stored>false</stored>
+						<tokenised>true</tokenised>
+           		    </index>
+				</property>
+			</properties>
+			<mandatory-aspects>
+				<aspect>cm:titled</aspect>
+			</mandatory-aspects>
+		</type>
+		
+		<!--  clone the cm:content type here.  We can't inherit from cm:content because cm:content
+		includes dmi:notifiable, and we don't want dmi:notifiable on the alert:temporaryalert nodes -->
+		<type name="alrt:content">
+         <title>Content</title>
+         <parent>cm:cmobject</parent>
+         <archive>false</archive>
+         <properties>
+            <property name="alrt:content">
+               <type>d:content</type>
+               <mandatory>false</mandatory>
+               <!--- Do not index content -->
+               <index enabled="false">
+                  <atomic>false</atomic>
+                  <stored>false</stored>
+                  <tokenised>true</tokenised>
+               </index>
+            </property>
+         </properties>
+      </type>
+		
+		<!-- Temporary alerts waiting to be digested -->
+		<!-- Don't need much info here, because it is temporary -->
+		<type name="alrt:temporaryAlert">
+			<title>Temporary Alert</title>
+			<parent>alrt:content</parent>
+			<!-- Event will be stored in the cm:content property as serialized XML-->
+		</type>
+		<!-- Base type for subscription objects -->
+		<type name="sub:subscription">
+			<title>Subscription</title>
+			<parent>cm:cmobject</parent>
+			<properties>
+				<!-- Each channel can be referenced by a QName -->
+				<property name="sub:deliveryChannels">
+					<type>d:qname</type>
+					<mandatory>true</mandatory>
+					<multiple>true</multiple>
+					<constraints>
+						<constraint ref="sub:deliveryChannelsConstraint"/>
+					</constraints>
+				</property>
+				<!-- frequency should be defined by subclass, so appropriate constraints can be applied -->
+				<!-- The last time an alert was sent -->
+				<property name="sub:lastAlertSent">
+					<type>d:datetime</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+			</properties>
+			<associations>
+				<child-association name="sub:tempAlertsContainer">
+         	    	<source>
+            	    	<mandatory>false</mandatory>
+                		<many>false</many>
+               		</source>
+               		<target>
+                		<class>cm:systemfolder</class>
+                  		<mandatory>false</mandatory>
+                  		<many>false</many>
+               		</target>
+               		<duplicate>false</duplicate>
+            </child-association>
+         </associations>
+         <mandatory-aspects>
+				<aspect>cm:ownable</aspect>
+				<aspect>cm:titled</aspect>
+		   </mandatory-aspects>
+
+		</type>
+		<!-- Use sub-types to specify the specific subscriptions that can be created -->
+		<type name="sub.rep:subscription">
+			<title>Repository Subscription</title>
+			<parent>sub:subscription</parent>
+			<properties>
+				<!-- What parent node to monitor on -->
+				<property name="sub.rep:node">
+					<type>d:noderef</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- Should we include children or not (should be false for files) -->
+				<property name="sub.rep:includeChildren">
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- What type of repository changes (e.g., delete, new, modified) should trigger an alert -->
+				<property name="sub.rep:changeType">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>true</multiple>
+					<constraints>
+						<constraint ref="sub.rep:changeTypeConstraint"/>
+					</constraints>
+				</property>
+				<!-- The frequency with which to send alerts -->
+				<property name="sub.rep:frequency">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+					<constraints>
+						<constraint ref="sub.rep:frequencyConstraint"/>
+					</constraints>
+				</property>
+			</properties>
+		</type>
+		<type name="sub.rep.fact:subscription">
+			<title>Fact Sheet Subscription</title>
+			<parent>sub.rep:subscription</parent>
+			<properties>
+				<!-- The frequency with which to send alerts -->
+				<property name="sub.rep.fact:frequency">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+					<constraints>
+						<constraint ref="sub.rep:frequencyConstraint"/>
+					</constraints>
+				</property>
+			</properties>
+		</type>
+		<type name="sub.srch:subscription">
+			<title>Repository Search Subscription</title>
+			<parent>sub:subscription</parent>
+			<properties>
+				<!-- The Lucene query to search against -->
+				<property name="sub.srch:query">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- What type of repository changes (e.g., new, modified) should trigger an alert -->
+				<property name="sub.srch:changeType">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>true</multiple>
+					<constraints>
+						<constraint ref="sub.srch:changeTypeConstraint"/>
+					</constraints>
+				</property>
+				<!-- The frequency with which to send alerts -->
+				<property name="sub.srch:frequency">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+					<constraints>
+						<constraint ref="sub.srch:frequencyConstraint"/>
+					</constraints>
+				</property>
+			</properties>
+		</type>
+		<type name="sub.rss:subscription">
+			<title>RSS Search Subscription</title>
+			<parent>sub:subscription</parent>
+			<properties>
+				<!-- The url of the RSS feed to subscribe to -->
+				<property name="sub.rss:url">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+				</property>
+				<!-- What type of repository changes (e.g., new, modified) should trigger an alert -->
+				<property name="sub.rss:changeType">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>true</multiple>
+					<constraints>
+						<constraint ref="sub.rss:changeTypeConstraint"/>
+					</constraints>
+				</property>
+				<!-- The frequency with which to send alerts -->
+				<property name="sub.rss:frequency">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<multiple>false</multiple>
+					<constraints>
+						<constraint ref="sub.rss:frequencyConstraint"/>
+					</constraints>
+				</property>
+			</properties>
+		</type>
+	</types>
+	<!-- TODO: Later if we want to add expiration dates per user
+   <aspects>   
+      <aspect name="alrt:inbox">
+         <title>Alert Inbox</title>
+         <properties>
+            <property name="alrt:timeToLive">
+               <title>Time To Live</title>
+               <type>d:int</type> 
+            </property>
+         </properties>
+      </aspect>
+   </aspects>
+   -->
+</model>

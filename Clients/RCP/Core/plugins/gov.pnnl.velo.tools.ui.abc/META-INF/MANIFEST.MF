@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ABC Tool UI Framework
+Bundle-SymbolicName: gov.pnnl.velo.tools.ui.abc;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.velo.tools.ui.abc.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources,
+ gov.pnnl.velo,
+ gov.pnnl.cat.ui.rcp,
+ org.apache.log4j,
+ gov.pnnl.cat.logging,
+ gov.pnnl.cat.ui,
+ org.eclipse.core.expressions,
+ org.springframework,
+ org.apache.commons,
+ gov.pnnl.velo.abc,
+ gov.pnnl.velo.tools
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: PNNL
+Export-Package: gov.pnnl.velo.tools.ui.abc,
+ gov.pnnl.velo.tools.ui.abc.example,
+ gov.pnnl.velo.tools.ui.abc.panels,
+ gov.pnnl.velo.tools.ui.abc.util

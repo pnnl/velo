@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<machine>
+	<name>olympus</name>
+	<fullDomainName>olympus.pnl.gov</fullDomainName>
+
+	<connectionProtocols>
+		<connectionProtocol type="ssh" />
+		<connectionProtocol type="globusOnline">
+			<parameters>
+				<parameter name="endpointId">pic#dtn</parameter>
+				<parameter name="myProxyHost">dtn.pnl.gov:7512</parameter>
+				<parameter name="globalPath">/pic</parameter>
+			</parameters>
+		</connectionProtocol>
+	</connectionProtocols>
+	
+	<!-- if run directory not provided by user, run dir will be set to userHomeParent/username/toolTitle_timestamp -->
+	<userHomeParent>/people</userHomeParent>
+	<nodes>64</nodes>
+	<procsPerNode>256</procsPerNode>
+	<scheduler name="Slurm" allocation="true" path="/usr/bin" kill="scancel">
+		<queue name="regular">
+			<timeLimit>1176:00:00</timeLimit>
+			<defaultTimeLimit>01:00:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>64</maxNodes>
+		</queue>
+		<queue name="short" default="true">
+			<timeLimit>01:00:00</timeLimit>
+			<defaultTimeLimit>00:10:00</defaultTimeLimit>
+			<minNodes>1</minNodes>
+			<maxNodes>6</maxNodes>
+		</queue>
+	</scheduler>
+	<codes>
+		<code id="segmentation">
+			<!--  default values for this machine and this code, this overrides defaults set in the code registry -->
+			<jobLaunching mergeJobHandlerParams="true">
+				<command>/pic/projects/ascr_demo/tools/growth_rates_workflow/segment_2d_image/segment_2d_img/src/run_segment_2d_img.sh /share/apps/matlab/2012a/runtime/v717/ </command>
+			</jobLaunching>
+		</code>
+		<code id="growth_rate">
+			<!--  default values for this machine and this code, this overrides defaults set in the code registry -->
+			<jobLaunching mergeJobHandlerParams="true">
+				<command>/pic/projects/ascr_demo/tools/growth_rates_workflow/growth_rate_workflow.sh</command>
+			</jobLaunching>
+		</code>
+	</codes>
+	
+	<services>
+		<service id="dataPublisher" url="http://olympus.pnl.gov/publish" description=""/>
+	</services>
+	
+	<!-- Catch all for custom parameters you want to associate with your machine -->
+	<customParameters>
+		<parameter name="accessibleFromVeloServer">true</parameter>
+	</customParameters>
+</machine>

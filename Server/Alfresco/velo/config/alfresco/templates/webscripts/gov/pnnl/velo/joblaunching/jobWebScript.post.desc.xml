@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>create and launch a new job</shortname>
+  <description>create and launch a new job</description>
+  <url>/velo/joblaunching/jobs</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+</webscript>

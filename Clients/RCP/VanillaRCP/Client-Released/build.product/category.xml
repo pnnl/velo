@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/gov.pnnl.velo.feature_1.0.0.qualifier.jar" id="gov.pnnl.velo.feature" version="1.0.0.qualifier">
+      <category name="veloCategory"/>
+   </feature>
+   <category-def name="veloCategory" label="Velo"/>
+</site>

@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Get Content URLs</shortname>
+  <description>Recursively gets the content URLS of all children nodes of the node's uuid pass in.  If no uuid is given, gets all children of company_home</description>
+  <url>/velo/registry/contenturls?rootUuid={rootUuid}</url>
+  <authentication>user</authentication>
+  <transaction>none</transaction>
+</webscript>

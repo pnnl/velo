@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<!-- Custom English langpack -->
+
+<langpack>
+  <str id="JDKPathPanel.headline" txt="JRE Path" />
+  <str id="JDKPathPanel.summaryCaption" txt="JRE Path" />
+  
+   <!-- JDKPathPanel strings -->
+  <str id="JDKPathPanel.extendedIntro"
+    txt="The application requires a ${JDKPathPanel.architecture}-bit version of JRE ${JDKPathPanel.version}." />
+  <str id="JDKPathPanel.intro"
+    txt="The application requires a ${JDKPathPanel.architecture}-bit version of JRE ${JDKPathPanel.version}." />
+  <str id="JDKPathPanel.info" txt="Select the JRE path:" />
+  <str id="JDKPathPanel.badVersion1" txt="The chosen JRE has the wrong version or architecture." />
+  <str id="JDKPathPanel.badVersion2" txt=" Required version: " />
+  <str id="JDKPathPanel.badVersion3" txt=". Required architecture: " />
+  <str id="JDKPathPanel.badVersion4" txt="-bit." />
+  <str id="JDKPathPanel.nonValidPathInReg"
+    txt="The Windows registry contains a non-valid path for this JDK. Should this JDK be used anyway?" />
+    
+</langpack>

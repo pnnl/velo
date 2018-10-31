@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Create Link</shortname>
+  <description>Create new link pointing to target file</description>
+  <url>/velo/createLink?parentPath={parentPath}&amp;targetPath={targetPath}&amp;linkName={?linkName}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

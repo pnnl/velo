@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Outlook Plug-in
+Bundle-SymbolicName: gov.pnnl.cat.outlook.win32.win32.x86;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.outlook.OutlookPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.logging;bundle-version="1.0.0",
+ gov.pnnl.cat.core.resources;bundle-version="1.1.0",
+ gov.pnl.ui.utils;bundle-version="1.0.0",
+ gov.pnnl.cat.ui.rcp;bundle-version="1.0.0",
+ org.eclipse.swt,
+ org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: ezjcom,
+ gov.pnl.ezjcom.outlook
+Bundle-ClassPath: .,
+ lib/EZJCOM_MSOUTL.jar,
+ lib/ezjcom18.jar
+Bundle-Vendor: Pacific Northwest National Laboratory
+Eclipse-PlatformFilter: (& (osgi.ws=win32)(osgi.os=win32)(|(osgi.arch=x86_64)(osgi.arch=x86)))

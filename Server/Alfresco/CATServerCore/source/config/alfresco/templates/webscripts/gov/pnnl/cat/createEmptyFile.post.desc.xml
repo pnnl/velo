@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Create Empty File</shortname>
+  <description>Create a new node that is a file but with no content set - returns the path to the file's content in the alfresco content store</description>
+  <!-- Comment text is in the request body -->
+  <url>/cat/createEmptyFile</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

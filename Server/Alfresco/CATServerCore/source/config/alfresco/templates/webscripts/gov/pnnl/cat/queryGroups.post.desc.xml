@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Query Groups</shortname>
+  <description>Query Groups</description>
+  <url>/cat/queryGroups</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

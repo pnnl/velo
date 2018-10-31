@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<?eclipse version="3.0"?>
+
+<contexts>
+	<!-- contexts for pages we link directly to from the "Steps to Publish Dataset" view --> 
+		<!-- description intentionally left blank, not using this field in our help but instead always 
+		 linking to html file (landing page website will need to link to exact same html files too) -->
+	<context id="publishingFirstStepGatheringInfo">
+		<topic label="publishingFirstStepGatheringInfo" href="html/first_step_gathering_info.html"/>
+	</context>
+	<context id="publishingSecondStepEnteringMetadata">
+		<topic label="publishingSecondStepEnteringMetadata" href="html/second_step_entering_metadata.html"/>
+	</context>
+	<context id="publishingThirdStepUploadYourData">
+		<topic label="publishingThirdStepUploadYourData" href="html/third_step_upload_your_data.html"/>
+	</context>
+	<context id="publishingFourthStepGettingDraftDoi">
+		<topic label="publishingFourthStepGettingDraftDoi" href="html/fourth_step_getting_a_draft_doi.html"/>
+	</context>
+	<context id="publishingFifthStepDatasetReview">
+		<topic label="publishingFifthStepDatasetReview" href="html/fifth_step_dataset_review.html"/>
+	</context>
+	<context id="publishingSixthStepPublishYourData">
+		<topic label="publishingSixthStepPublishYourData" href="html/sixth_step_publish_your_data.html"/>
+	</context>
+	
+	
+	<!-- Citation Information -->
+	<context id="title">
+	    <topic label="TopicLabel" href="html/title.html"/>
+    </context>
+    <context id="description">
+        <topic label="TopicLabel" href="html/description.html"/>
+    </context>
+    <context id="publisher">
+        <topic label="TopicLabel" href="html/publisher.html"/>
+    </context>
+    <context id="tags">
+                <topic label="TopicLabel" href="html/tags.html"/>
+    </context>
+    
+    <!-- Individual Author information -->
+    <context id="firstName">
+        <topic label="TopicLabel" href="html/firstName.html"/>
+    </context>
+    <context id="middleName">
+        <topic label="TopicLabel" href="html/middleName.html"/>
+    </context>
+    <context id="lastName">
+        <topic label="TopicLabel" href="html/lastName.html"/>
+    </context>
+    <context id="eMail">
+        <topic label="TopicLabel" href="html/eMail.html"/>
+    </context>
+    <context id="ORCID">
+        <topic label="TopicLabel" href="html/ORCID.html"/>
+    </context>
+    <context id="phoneNumber">
+        <topic label="TopicLabel" href="html/phoneNumber.html"/>
+    </context>
+    <context id="institution">
+        <topic label="TopicLabel" href="html/institution.html"/>
+    </context>
+    <context id="primaryAuthor">
+        <topic label="TopicLabel" href="html/primaryAuthor.html"/>
+    </context>
+    
+    <!-- Data Access -->
+    <context id="accessLevel">
+        <topic label="TopicLabel" href="html/accessLevel.html"/>
+    </context>
+    <context id="accessEndDate">
+        <topic label="TopicLabel" href="html/accessEndDate.html"/>
+    </context>
+    <context id="rights">
+        <topic label="TopicLabel" href="html/rights.html"/>
+    </context>
+    <context id="license">
+        <topic label="TopicLabel" href="html/license.html"/>
+    </context>
+    <context id="requiredSoftwares">
+        <topic label="TopicLabel" href="html/requiredSoftwares.html"/>
+    </context>
+    
+    <!-- Data Coverage -->
+    <context id="DCMIBox">
+        <topic label="TopicLabel" href="html/DCMIBox.html"/>
+    </context>
+    <context id="coverageStartDate">
+        <topic label="TopicLabel" href="html/coverageStartDate.html"/>
+    </context>
+    <context id="coverageEndDate">
+        <topic label="TopicLabel" href="html/coverageEndDate.html"/>
+    </context>
+    <context id="updateFrequency">
+        <topic label="TopicLabel" href="html/updateFrequency.html"/>
+    </context>
+    
+     <!-- Publication -->
+    <context id="publications">
+        <topic label="TopicLabel" href="html/publications.html"/>
+    </context>
+    
+    <!-- contact info -->
+    <context id="type">
+        <topic label="TopicLabel" href="html/type.html"/>
+    </context>
+	<context id="authorName">
+	    <topic label="TopicLabel" href="html/authorName.html"/>
+	</context> 
+	<context id="contactName">
+        <topic label="TopicLabel" href="html/contactName.html"/>
+    </context>
+    <context id="contactRole">
+        <topic label="TopicLabel" href="html/contactRole.html"/>
+    </context>
+    <context id="primaryContact">
+	    <topic label="TopicLabel" href="html/primaryContact.html"/>
+	</context>
+    
+    <!-- Methods -->
+    <context id="methods">
+        <topic label="TopicLabel" href="html/methods.html"/>
+    </context>
+    
+    <!-- Data Quality -->
+    <context id="qualitySummary">
+        <topic label="TopicLabel" href="html/qualitySummary.html"/>
+    </context>
+    <context id="dataQualityFiles">
+        <topic label="TopicLabel" href="html/dataQualityFiles.html"/>
+    </context>
+    
+    <!-- OSTI metadata -->
+    
+    <context id="language">
+        <topic label="TopicLabel" href="html/language.html"/>
+    </context>
+    <context id="country">
+        <topic label="TopicLabel" href="html/country.html"/>
+    </context>
+    <context id="DOEContractNumbers">
+        <topic label="TopicLabel" href="html/DOEContractNumbers.html"/>
+    </context>
+    <context id="nonDOEContractNumbers">
+        <topic label="TopicLabel" href="html/nonDOEContractNumbers.html"/>
+    </context>
+    <context id="researchOrganizations">
+        <topic label="TopicLabel" href="html/researchOrganizations.html"/>
+    </context>
+    <context id="sponsorOrganizations">
+        <topic label="TopicLabel" href="html/sponsorOrganizations.html"/>
+    </context>
+    
+    
+    <!-- Landing page configuration -->
+    
+    <context id="relatedWebsites">
+        <topic label="TopicLabel" href="html/relatedWebsites.html"/>
+    </context>
+    <context id="viewerType">
+        <topic label="TopicLabel" href="html/viewerType.html"/>
+    </context>
+    
+    <!-- Image gallery viewer -->
+    <context id="imageFiles">
+        <topic label="TopicLabel" href="html/imageFiles.html"/>
+    </context>
+    
+    <!-- video viewer -->
+    
+    <context id="filePath">
+        <topic label="TopicLabel" href="html/filePath.html"/>
+    </context>
+    <context id="fileTitle">
+        <topic label="TopicLabel" href="html/fileTitle.html"/>
+    </context>
+    <context id="fileDescription">
+        <topic label="TopicLabel" href="html/fileDescription.html"/>
+    </context>
+    
+    
+    <!-- listingDate == publish date-->
+    
+    <context id="listingDate">
+        <topic label="TopicLabel" href="html/listingDate.html"/>
+    </context>
+</contexts>

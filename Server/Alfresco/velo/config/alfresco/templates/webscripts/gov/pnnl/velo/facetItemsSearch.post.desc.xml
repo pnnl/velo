@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Facet Items Search</shortname>
+  <description>Returns requested facets to be used in the faceted search UI</description>
+  <url>/velo/facetItems?query={query}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

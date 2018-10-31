@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<registration_data version="1.0">
+   <environment>
+      <hostname>windowsxppro</hostname>
+      <hostId/>
+      <osName>Windows XP</osName>
+      <osVersion>5.1</osVersion>
+      <osArchitecture>x86</osArchitecture>
+      <systemModel>VirtualBox</systemModel>
+      <systemManufacturer>innotek GmbH</systemManufacturer>
+      <cpuManufacturer>GenuineIntel</cpuManufacturer>
+      <serialNumber>0</serialNumber>
+   </environment>
+   <registry urn="urn:st:be3f6c10-bcd4-47dc-bd50-800a20d0d051" version="1.0">
+      <service_tag>
+         <instance_urn>urn:st:a8a888dd-6e39-4e05-a64d-f3e9b04b2484</instance_urn>
+         <product_name>Java SE 7 Runtime Environment</product_name>
+         <product_version>1.7.0_05</product_version>
+         <product_urn>JSERE-007-ZZZZ</product_urn>
+         <product_parent_urn>urn:uuid:dc1704fe-264f-11dc-9482-080020a9ed93</product_parent_urn>
+         <product_parent>Java Platform Standard Edition 7 (Java SE 7)</product_parent>
+         <product_defined_inst_id>id=1.7.0_05-b05 x86,dir=C:\Program Files\Java\jre7</product_defined_inst_id>
+         <product_vendor>Oracle Corporation</product_vendor>
+         <platform_arch>x86</platform_arch>
+         <timestamp>2012-08-13 19:43:49 GMT</timestamp>
+         <container>global</container>
+         <source>Windows JRE installer</source>
+         <installer_uid>-1</installer_uid>
+      </service_tag>
+   </registry>
+</registration_data>

@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Update Relationships</shortname>
+  <description>Create or delete relationships in one batch call</description>
+  <url>/velo/updateRelationships</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+  
+   <!-- Add our webscript service beans -->
+   <!-- base web script bean -->
+    <bean id="catwebscript" abstract="true" parent="webscript">
+      <property name="namespaceService" ref="NamespaceService" />
+      <property name="nodeService" ref="NodeService" />
+      <property name="contentService" ref="ContentService" />
+      <property name="searchService" ref="SearchService" />
+      <property name="transactionService" ref="transactionService" />
+      <property name="mimetypeService" ref="mimetypeService" />
+      <property name="copyService" ref="copyService"/>
+      <property name="authorityService" ref="authorityService" />
+      <property name="permissionService" ref="permissionService" />
+      <property name="ownableService" ref="ownableService" />
+      <property name="authenticationComponent" ref="authenticationComponent" />      
+      <property name="nodeUtils" ref="nodeUtils" />      
+      <property name="dictionaryService" ref="dictionaryService" />      
+      <property name="fileFolderService" ref="FileFolderService" />      
+      <property name="versionService" ref="versionService" />
+      <property name="authenticationService" ref="AuthenticationService" />
+    </bean>
+
+    <!-- Note that the ID for a webscript must be EXACT.  It must start with webscript, 
+    followed by the package, followed by the webscript name, followed by the http method
+    by which to invoke this web script -->
+   
+    <bean id="webscript.gov.pnnl.cat.getthumbnails.get"
+      class="gov.pnnl.cat.web.scripts.GetThumbnailsWebScript">
+          <property name="nodeService" ref="NodeService" />
+          <property name="namespaceService" ref="NamespaceService" />
+          <property name="searchService" ref="SearchService" />
+          <property name="contentService" ref="ContentService" />
+    </bean>
+    
+    
+    <bean id="webscript.gov.pnnl.cat.getmimetypes.get"
+      class="gov.pnnl.cat.web.scripts.GetMimetypesWebScript">
+          <property name="mimetypeService" ref="mimetypeService" />
+    </bean>
+    
+    <bean id="webscript.gov.pnnl.cat.getChildren.get"
+      class="gov.pnnl.cat.web.scripts.GetChildren" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.landingPage.getFolderChildren.get"
+      class="gov.pnnl.cat.web.scripts.GetFolderChildren" parent="catwebscript" />
+      
+    <bean id="webscript.gov.pnnl.landingPage.getFileChildren.get"
+      class="gov.pnnl.cat.web.scripts.GetFileChildren" parent="catwebscript">
+      <property name="searchWebScript" ref="webscript.gov.pnnl.cat.search.post" />
+    </bean>
+    <!-- we are defining this web script twice so we can use it in the landing page with the guest auth filter -->
+    <bean id="webscript.gov.pnnl.landingPage.getFileContents.get"
+      class="gov.pnnl.cat.web.scripts.GetFileContents" parent="catwebscript" />
+
+    
+    <bean id="webscript.gov.pnnl.cat.getFileChildrenStats.get"
+      class="gov.pnnl.cat.web.scripts.GetFileChildrenStats" parent="catwebscript">
+    </bean>
+      
+    <bean id="webscript.gov.pnnl.cat.getPreview.get"
+      class="gov.pnnl.cat.web.scripts.GetPreview" parent="catwebscript">
+      <property name="getThumbnailWebScript" ref="webscript.gov.pnnl.cat.getThumbnail.get" />
+    </bean>
+    
+    <bean id="webscript.gov.pnnl.cat.startSession.get"
+      class="gov.pnnl.cat.web.scripts.StartSession" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.getFileContents.get"
+      class="gov.pnnl.cat.web.scripts.GetFileContents" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.updateFileContents.post"
+      class="gov.pnnl.cat.web.scripts.UpdateFileContents" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.isIdentical.get"
+      class="gov.pnnl.cat.web.scripts.IsIdentical" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.exists.get"
+      class="gov.pnnl.cat.web.scripts.Exists" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.getPath.get"
+      class="gov.pnnl.cat.web.scripts.GetPath" parent="catwebscript" />
+      
+    <bean id="webscript.gov.pnnl.cat.getThumbnail.get"
+      class="gov.pnnl.cat.web.scripts.GetThumbnail" parent="catwebscript">
+      <property name="thumbnailService" ref="ThumbnailService"/>
+      <property name="thumbnailProcessor" ref="thumbnailProcessor" />
+    </bean>
+            
+    <bean id="webscript.gov.pnnl.cat.getResourcesByPath.post"
+      class="gov.pnnl.cat.web.scripts.GetResourcesByPath" parent="catwebscript" />
+    
+    <bean id="webscript.gov.pnnl.cat.getResourcesByUuid.post"
+      class="gov.pnnl.cat.web.scripts.GetResourcesByUuid" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.getFiles.post"
+      class="gov.pnnl.cat.web.scripts.GetFiles" parent="catwebscript">
+      <property name="auditComponent" ref="auditComponent"/>
+    </bean>
+
+    <bean id="webscript.gov.pnnl.cat.delete.post"
+      class="gov.pnnl.cat.web.scripts.Delete" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.setPermissions.post"
+      class="gov.pnnl.cat.web.scripts.SetPermissions" parent="catwebscript" />
+      
+    <bean id="webscript.gov.pnnl.cat.getPermissions.get"
+      class="gov.pnnl.cat.web.scripts.GetPermissions" parent="catwebscript" />
+    
+    <bean id="webscript.gov.pnnl.cat.hasPermissions.get"
+      class="gov.pnnl.cat.web.scripts.HasPermissions" parent="catwebscript" />
+      
+    <bean id="webscript.gov.pnnl.cat.sendMail.post"
+      class="gov.pnnl.cat.web.scripts.SendMail" parent="catwebscript">
+      <property name="javaMailSender" ref="mailService" />
+    </bean>
+    
+    <bean id="webscript.gov.pnnl.cat.addComment.post"
+      class="gov.pnnl.cat.web.scripts.AddComment" parent="catwebscript" />
+
+    <bean id="webscript.gov.pnnl.cat.getComments.get"
+      class="gov.pnnl.cat.web.scripts.GetComments" parent="catwebscript" />
+            
+    <!-- Upload File(s) -->
+    <bean id="webscript.gov.pnnl.cat.upload.post"
+      class="gov.pnnl.cat.web.scripts.Upload" parent="catwebscript">
+         <property name="autoUnzip" value="${velo.upload.autoUnzip}"/> 
+         <property name="txBatchSize" value="${velo.upload.tx.batch.size}" /> 
+         <property name="numThreads" value="${velo.upload.num.threads}" /> 
+         <property name="fileContentStore" ref="fileContentStore"/>  
+         <property name="notificationUtils" ref="notificationUtils"/>  
+         <property name="taggingService" ref="taggingService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.uploadFileAsString.post"
+      class="gov.pnnl.cat.web.scripts.UploadFileAsString" parent="catwebscript" /> 
+
+	<bean id="webscript.gov.pnnl.cat.search.post"
+      class="gov.pnnl.cat.web.scripts.Search" parent="catwebscript"> 
+      <property name="nodeService" ref="nodeService" />
+      <property name="contentService" ref="contentService" />
+      <property name="dictionaryService" ref="dictionaryService" />      
+	</bean> 
+      
+    <bean id="webscript.gov.pnnl.cat.createUsers.post"
+      class="gov.pnnl.cat.web.scripts.CreateUsers" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.createGroups.post"
+      class="gov.pnnl.cat.web.scripts.CreateGroups" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.updateUsers.post"
+      class="gov.pnnl.cat.web.scripts.UpdateUsers" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.updateGroups.post"
+      class="gov.pnnl.cat.web.scripts.UpdateGroups" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean> 
+        
+    <bean id="webscript.gov.pnnl.cat.getUser.get"
+      class="gov.pnnl.cat.web.scripts.GetUser" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.getGroup.get"
+      class="gov.pnnl.cat.web.scripts.GetGroup" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean> 
+      
+    <bean id="webscript.gov.pnnl.cat.queryUsers.post"
+      class="gov.pnnl.cat.web.scripts.QueryUsers" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.queryGroups.post"
+      class="gov.pnnl.cat.web.scripts.QueryGroups" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.fetchMoreUsers.post"
+      class="gov.pnnl.cat.web.scripts.FetchMoreUsers" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean>       
+
+    <bean id="webscript.gov.pnnl.cat.fetchMoreGroups.post"
+      class="gov.pnnl.cat.web.scripts.FetchMoreGroups" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean>       
+
+    <bean id="webscript.gov.pnnl.cat.deleteUsers.post"
+      class="gov.pnnl.cat.web.scripts.DeleteUsers" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.deleteGroups.post"
+      class="gov.pnnl.cat.web.scripts.DeleteGroups" parent="catwebscript">
+      <property name="groupWebService" ref="groupWebService" />
+    </bean> 
+
+    <bean id="webscript.gov.pnnl.cat.changePassword.post"
+      class="gov.pnnl.cat.web.scripts.ChangePassword" parent="catwebscript">
+      <property name="userWebService" ref="userWebService" />
+    </bean>  
+
+    <bean id="webscript.gov.pnnl.cat.createUpdateResources.post"
+      class="gov.pnnl.cat.web.scripts.CreateUpdateResources" parent="catwebscript" /> 
+
+    <!-- webscripts for jlan to call (Velo Linux File System) -->
+    <bean id="webscript.gov.pnnl.cat.createEmptyFile.post"
+      class="gov.pnnl.cat.web.scripts.CreateEmptyFile" parent="catwebscript">
+      <property name="fileContentStore" ref="fileContentStore"/>
+    </bean>
+
+    <bean id="webscript.gov.pnnl.cat.getContentStoreFilePath.get"
+      class="gov.pnnl.cat.web.scripts.GetContentStoreFilePath" parent="catwebscript" >
+      <property name="fileContentStore" ref="fileContentStore"/>
+    </bean>
+    
+    <!-- webscripts that wrap the axis web services-->
+    <bean id="webscript.gov.pnnl.cat.executeCml.post"
+      class="gov.pnnl.cat.web.scripts.ExecuteCml" parent="catwebscript">
+      <property name="repositoryWebService" ref="repositoryWebService" />
+    </bean>
+    
+    <bean id="webscript.gov.pnnl.cat.executeActions.post"
+      class="gov.pnnl.cat.web.scripts.ExecuteActions" parent="catwebscript">
+    </bean>  
+    
+    <bean id="webscript.gov.pnnl.cat.createSubscription.post"
+      class="gov.pnnl.cat.web.scripts.CreateSubscription" parent="catwebscript">
+      <property name="subscriptionWebService" ref="subscriptionWebService" />
+    </bean>  
+    
+    <bean id="webscript.gov.pnnl.cat.deleteSubscriptions.post"
+      class="gov.pnnl.cat.web.scripts.DeleteSubscriptions" parent="catwebscript">
+      <property name="subscriptionWebService" ref="subscriptionWebService" />
+    </bean>  
+
+    <bean id="webscript.gov.pnnl.cat.getSubscriptions.get"
+      class="gov.pnnl.cat.web.scripts.GetSubscriptions" parent="catwebscript">
+      <property name="subscriptionWebService" ref="subscriptionWebService" />
+    </bean>  
+    
+    
+    
+    <bean id="webscript.gov.pnnl.cat.markAlertsAsRead.post"
+      class="gov.pnnl.cat.web.scripts.MarkAlertsAsRead" parent="catwebscript">
+      <property name="alertWebService" ref="alertWebService" />
+    </bean>  
+    
+    <bean id="webscript.gov.pnnl.cat.deleteAlerts.post"
+      class="gov.pnnl.cat.web.scripts.DeleteAlerts" parent="catwebscript">
+      <property name="alertWebService" ref="alertWebService" />
+    </bean>  
+
+    <bean id="webscript.gov.pnnl.cat.getAlerts.get"
+      class="gov.pnnl.cat.web.scripts.GetAlerts" parent="catwebscript">
+      <property name="alertWebService" ref="alertWebService" />
+    </bean>  
+    
+    <bean id="webscript.gov.pnnl.cat.importUrl.post"
+      class="gov.pnnl.cat.web.scripts.ImportUrl" parent="catwebscript">
+      <property name="importWebService" ref="importWebService" />
+    </bean>      
+    
+    <!-- getRelationships -->
+    <bean id="webscript.gov.pnnl.cat.getRelationships.get"
+      class="gov.pnnl.cat.web.scripts.GetRelationships" parent="catwebscript" />
+
+    <!-- createRelationships -->
+    <bean id="webscript.gov.pnnl.cat.createRelationships.post"
+      class="gov.pnnl.cat.web.scripts.CreateRelationships" parent="catwebscript" />
+
+    <!-- deleteRelationships -->
+    <bean id="webscript.gov.pnnl.cat.deleteRelationships.post"
+      class="gov.pnnl.cat.web.scripts.DeleteRelationships" parent="catwebscript" />
+    
+</beans>

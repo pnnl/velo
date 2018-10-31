@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Subscriptions</shortname>
+  <description>Delete Subscriptions</description>
+  <url>/cat/deleteSubscriptions</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

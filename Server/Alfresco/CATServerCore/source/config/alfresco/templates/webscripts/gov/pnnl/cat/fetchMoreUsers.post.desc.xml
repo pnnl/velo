@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Fetch More Users</shortname>
+  <description>Fetch more users from query session</description>
+  <url>/cat/fetchMoreUsers</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

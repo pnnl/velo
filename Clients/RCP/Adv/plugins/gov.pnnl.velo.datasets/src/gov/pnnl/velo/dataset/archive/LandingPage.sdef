@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition>
+
+	<import>
+		<package>gov.pnnl.velo.sapphire</package>
+		<package>gov.pnnl.velo.sapphire.ui</package>
+		<package>gov.pnnl.velo.sapphire.editor</package>
+		<package>org.eclipse.sapphire.ui.forms.swt</package>
+		<package>gov.pnnl.velo.sapphire.landingpage</package>
+	</import>
+
+	<editor-page>
+		<id>landingPage</id>
+		<page-name>Landing page configurations</page-name>
+		<page-header-text>Landing page configurations</page-header-text>
+		<element-type>gov.pnnl.velo.sapphire.landingpage.LandingPage</element-type>
+		<initial-selection>Viewers</initial-selection>
+		<action>
+            <id>LandingPage.OpenWebsite</id>
+            <label>Landing Page HTML</label>
+            <image>icons/Web.png</image>
+            <context>Sapphire.EditorPage</context>
+            <group>LandingPage.OpenWebsite</group>
+            <location>after:Sapphire.Outline.Hide</location>
+            <hint>
+                <name>style</name>
+                <value>image+text</value>
+            </hint>
+        </action>
+        <action-handler>
+            <action>LandingPage.OpenWebsite</action>
+            <id>LandingPage.OpenWebsite</id>
+            <label>Landing page html</label>
+            <impl>OpenLandingPageActionHandler</impl>
+        </action-handler>
+		<root-node>
+		  
+			<node>
+				<label>Viewers</label>
+				<section>
+					<content>
+						<actuator>
+							<action-id>Sapphire.Add</action-id>
+							<action-handler-id>Sapphire.Add.ImageGalleryViewer</action-handler-id>
+							<label>Add a image gallery viewer</label>
+						</actuator>
+						<actuator>
+							<action-id>Sapphire.Add</action-id>
+							<action-handler-id>Sapphire.Add.VideoViewer</action-handler-id>
+							<label>Add a video viewer</label>
+						</actuator>
+					</content>
+				</section>
+
+				<node-factory>
+					<property>Viewers</property>
+					<case>
+						<label>Image Gallery Viewer</label>
+						<element-type>ImageGalleryViewer</element-type>
+						<label>Image Gallery Viewer</label>
+						<section>
+							<content>
+								<property-editor>
+										<property>Type</property>
+										<hint>
+										  <name>read.only</name>
+										  <value>true</value>
+										</hint>
+							    </property-editor>
+								<property-editor>
+									<property>Files</property>
+									
+									<child-property>
+										<property>File</property>
+										<action-handler>
+											<action>Sapphire.Browse</action>
+											<impl>gov.pnnl.velo.sapphire.DatasetFilePathBrowseActionHandler</impl>
+											<param>
+												<name>extensions</name>
+												<value>jpeg,gif,png,tiff</value>
+											</param>
+                                            <param>
+                                                <name>fileDialogTitle</name>
+                                                <value>Select Image File</value>
+                                            </param>
+                                            <param>
+                                                <name>fileDialogMessage</name>
+                                                <value>Select an image file that will be displayed in the image
+                                                    gallery of this dataset's landing page.</value>
+                                            </param>
+										</action-handler>
+									</child-property>
+									<child-property>Title</child-property>
+									<child-property>Description</child-property>
+									<hint>
+									<name>assist.contributors</name>
+									<value>HelpActionContributor</value>
+									</hint>
+								</property-editor>
+							</content>
+						</section>
+					</case>
+					<case>
+						<element-type>VideoViewer</element-type>
+						<section>
+						    <documentation>
+						    	<title>landingPage.videoViewer</title>
+							</documentation>
+						    <action-handler>
+					            <action>Sapphire.Help</action>
+					            <id>Sapphire.Help</id>
+					            <impl>VeloHelpActionHandler</impl>
+					        </action-handler>
+							<content>
+								<property-editor>
+								<property>Type</property>
+									<hint>
+								  <name>read.only</name>
+								  <value>true</value>
+								</hint>
+								</property-editor>
+								<with>
+									<path>FileInfo</path>
+									<case>
+										<content>
+										    <property-editor>
+												<property>File</property>
+												<action-handler>
+													<action>Sapphire.Browse</action>
+													<impl>gov.pnnl.velo.sapphire.DatasetFilePathBrowseActionHandler</impl>
+													<param>
+														<name>extensions</name>
+														<value>mov,flv,mp4</value>
+													</param>
+                                                    <param>
+                                                    <name>fileDialogTitle</name>
+                                                    <value>Select Video File</value>
+                                                    </param>
+                                                    <param>
+                                                    <name>fileDialogMessage</name>
+                                                    <value>Select a video file that will be displayed in the video viewer of this dataset's landing page.</value>
+                                                    </param>
+												</action-handler>
+											</property-editor>
+											<property-editor>Title</property-editor>
+											<property-editor>Description</property-editor>
+										</content>
+									</case>
+                                    <hint>
+                                        <name>assist.contributors</name>
+                                        <value>HelpActionContributor</value>
+                                    </hint>
+								</with>
+							</content>
+						</section>
+						<label>VideoViewer</label>
+					</case>
+				</node-factory>
+			</node>
+			<node>
+				<label>related web sites</label>
+				<image>icons/Web.png</image>
+				<section>
+					<label>related web sites</label>
+					<content>
+						<property-editor>
+							<property>RelatedWebSites</property>
+							<child-property>
+								<property>Url</property>
+							</child-property>
+							<show-label>false</show-label>
+							<span>true</span>
+                            <hint>
+                                <name>assist.contributors</name>
+                                <value>HelpActionContributor</value>
+                            </hint>
+						</property-editor>
+					</content>
+				</section>
+			</node>
+			
+		</root-node>
+	</editor-page>
+
+</definition>
+						

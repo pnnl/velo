@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core Tests
+Bundle-SymbolicName: gov.pnnl.cat.core.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.core.test.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ gov.pnnl.cat.core.resources;bundle-version="1.1.0",
+ org.springframework,
+ org.junit,
+ org.apache.log4j,
+ gov.pnnl.velo.tools;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: gov.pnnl.cat.core.test,
+ gov.pnnl.cat.core.test.junit

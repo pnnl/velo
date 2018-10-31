@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+<!-- 
+ * This data type represents duration/interval/period as defined by the XMLSchema type
+ * duration.
+ * 
+ * The lexical representation of duration is
+ * PnYnMnDTnHnMnS.
+ * 
+ * P is a literal value that starts the expression
+ * nY is an integer number of years followed by the literal Y
+ * nM is an integer number of months followed by the literal M
+ * nD is an integer number of days followed by the literal D
+ * T is the literal that separates the date and time
+ * nH is an integer number of hours followed by a literal H
+ * nM is an integer number of minutes followed by a literal M
+ * nS is a decimal number of seconds followed by a literal S
+ * 
+ * Any numbers and designator may be absent if the value is zero.
+ * A minus sign may appear before the literal P to indicate a negative duration.
+ * If no time items are present the literal T must not appear.
+ * 
+ * 
+ * This implementation is immutable and thread safe.
+ * 
+ * There are two forms of duration common on database types.
+ * The code contains warnings wheer these are relevant.
+ *
+ *
+ -->
+	
+	<bean id="criminalIntelOptionsBean" class="gov.pnnl.cat.criminalintel.CriminalIntelOptionsBean">
+		<property name="intelTypes">
+			<map>
+				<entry key="option A" value="P30D" /><!-- 30 days -->
+				<entry key="option B" value="P90D" /><!-- 90 days -->
+				<entry key="option C" value="P1Y" /><!-- 1 year -->
+				<entry key="option D" value="P5Y" /><!-- 5 years -->
+			</map>
+		</property>
+		<property name="securityLevels">
+			<map>
+				<entry key="Sensitive" value="description of 'Sesitive'" />
+				<entry key="Confidential" value="description of 'Confidential'" />
+				<entry key="Restricted" value="description of 'Restricted'" />
+				<entry key="Unclassified" value="description of 'Unclassified'" />
+			</map>
+		</property>
+	</bean>
+    
+  <bean id="intelTypeAndSecurityLevelFileCreator" class="gov.pnnl.cat.criminalintel.IntelTypeAndSecurityLevelFileCreator" depends-on="cat.dictionaryBootstrap">
+    	 <property name="dictionaryService">
+    	 	<ref bean="dictionaryService"/>
+    	 </property>
+    	 <property name="nodeService">
+    	 	<ref bean="nodeService"/>
+    	 </property>
+    	 <property name="contentService">
+    	 	<ref bean="contentService"/>
+    	 </property>
+    	 <property name="transactionService">
+    	 	<ref bean="transactionComponent"/>
+    	 </property>
+    </bean>
+
+	<bean id="criminalIntelContentBehavior" class="gov.pnnl.cat.policy.criminalintel.CriminalIntelBehavior" parent="basePolicy">
+      <property name="criminalIntelOptions">
+    	 	<ref bean="criminalIntelOptionsBean"/>
+    	 </property>
+    </bean> 
+    
+   
+</beans>

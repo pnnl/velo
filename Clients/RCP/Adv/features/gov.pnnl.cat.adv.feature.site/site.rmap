@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.eclipse.org/buckminster/RMap-1.0"
+	xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:mp="http://www.eclipse.org/buckminster/MavenProvider-1.0"
+	xmlns:pp="http://www.eclipse.org/buckminster/PDEMapProvider-1.0">
+
+	<searchPath name="resources">
+		<provider readerType="local" componentTypes="eclipse.feature">
+			<uri format="file:///{0}/bld/rcp/features/{1}/">
+				<bc:propertyRef key="workspace.root" />
+				<bc:propertyRef key="buckminster.component" />
+			</uri>
+		</provider>
+		<provider readerType="local" componentTypes="osgi.bundle">
+			<uri format="file:///{0}/bld/rcp/plugins/{1}/">
+				<bc:propertyRef key="workspace.root" />
+				<bc:propertyRef key="buckminster.component" />
+			</uri>
+		</provider>
+		<provider readerType="p2" componentTypes="osgi.bundle,eclipse.feature">
+			<uri format="https://p2.pnnl.gov/artifactory/p2-velo/common/" />
+		</provider>
+		<provider readerType="p2" componentTypes="osgi.bundle,eclipse.feature">
+			<uri format="https://p2.pnnl.gov/artifactory/p2-velo/core/" />
+		</provider>
+		<provider readerType="p2" componentTypes="osgi.bundle,eclipse.feature">
+			<uri format="http://download.eclipse.org/sapphire/9.0.3/repository" />
+		</provider>		
+		<provider readerType="p2" componentTypes="osgi.bundle,eclipse.feature">
+			<uri format="http://download.eclipse.org/eclipse/updates/4.5" />
+		</provider>		
+		<provider readerType="p2" componentTypes="osgi.bundle,eclipse.feature">
+			<uri format="http://download.eclipse.org/releases/mars/" />
+		</provider>			
+	</searchPath>
+
+	<locator searchPathRef="resources" failOnError="false" />
+</rmap>

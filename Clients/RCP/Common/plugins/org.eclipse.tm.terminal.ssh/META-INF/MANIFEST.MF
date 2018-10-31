@@ -1,0 +1,114 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.tm.terminal.ssh;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="terminal/plugins/org.eclipse.tm.terminal.ssh";c
+ ommitId=58100b0455d0bff9c54893b6442dc72609b7ae7b
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.tm
+ .terminal;bundle-version="[3.2.0,3.3.0)",com.jcraft.jsch;bundle-versi
+ on="[0.1.31,1.0.0)",org.eclipse.jsch.core;bundle-version="[1.0.0,2.0.
+ 0)"
+Bundle-Activator: org.eclipse.tm.internal.terminal.ssh.Activator
+Export-Package: org.eclipse.tm.internal.terminal.ssh;x-internal:=true
+Bundle-Version: 2.1.300.201305201712
+Build-Jdk: 1.6.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/tm/internal/terminal/ssh/KeyboardInteractiveDialog.c
+ lass
+SHA1-Digest: oEpnehMbtsn/UjwCJBsIX4OygTw=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection$MyUserInfo$1.
+ class
+SHA1-Digest: 5ALqRdirmLzV/PKc9ON6Rk8C5yg=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection$MyUserInfo$2.
+ class
+SHA1-Digest: 2IQ3mlYrQwCOJcn+aqcvVHaCYEM=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection$MyUserInfo$3.
+ class
+SHA1-Digest: TFhHXYmtvZxW9km4WkVfTLTeyj4=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection$MyUserInfo$4.
+ class
+SHA1-Digest: eQYcYpSpApJdxshHXhSL6D0tvXo=
+
+Name: plugin.properties
+SHA1-Digest: mLIsxRyTJ/7sdsHJAfZtVwAfyMw=
+
+Name: org/eclipse/tm/internal/terminal/ssh/ISshConstants.class
+SHA1-Digest: rKdY9VCemn3UVSehrLn52j4mGxk=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal.ssh/pom.pr
+ operties
+SHA1-Digest: 59iCSANJ+F0i7h5xf4YaLJsZOwU=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshMessages.class
+SHA1-Digest: PN/Kwl2fMJm8xDiqFuQDQswzypw=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshSettingsPage.class
+SHA1-Digest: i2M0wvISvhycb+O1HidfQlRDjdk=
+
+Name: plugin.xml
+SHA1-Digest: wSkv4Dl6t5/u4C/fUdcIoDa59n4=
+
+Name: org/eclipse/tm/internal/terminal/ssh/UserValidationDialog.class
+SHA1-Digest: VwKL9HUajiL9XPEPzknRJ1Nmdhw=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection.class
+SHA1-Digest: sEJbOvFV8flKvh/l/X4yxhcu3BY=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshSettingsPage$1.class
+SHA1-Digest: fu8MlX0lossQsii1jnsndo8tYBg=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshSettings.class
+SHA1-Digest: SB0nqEaZeh78AcWZsYMqnrs82HA=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/tm/internal/terminal/ssh/UserValidationDialog$1.clas
+ s
+SHA1-Digest: gbOvPHD+qUuITprgSA1hhQPjIRY=
+
+Name: org/eclipse/tm/internal/terminal/ssh/Activator.class
+SHA1-Digest: 5Ird4AE9bOwiJvhtTVnBmK5Q764=
+
+Name: about.properties
+SHA1-Digest: Jo5MfyBK7h1GkSBy/bMU6zs+3wI=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.tm.terminal.ssh/pom.xm
+ l
+SHA1-Digest: VNFO7OX45fJX7sIYXd2Qa86wWOA=
+
+Name: org/eclipse/tm/internal/terminal/ssh/ISshSettings.class
+SHA1-Digest: Jy/mPeTiR4KM3j2sm5djzoV353c=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshMessages.properties
+SHA1-Digest: p1pcRVezHCnBDbyNEPrLn3PSVaE=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnection$MyUserInfo.cl
+ ass
+SHA1-Digest: EySshzd9Sxq8WbMl4m9xpHu1BhY=
+
+Name: org/eclipse/tm/internal/terminal/ssh/SshConnector.class
+SHA1-Digest: jZZgvX1m+t/Wrn9Ibue4eKtHGZQ=
+

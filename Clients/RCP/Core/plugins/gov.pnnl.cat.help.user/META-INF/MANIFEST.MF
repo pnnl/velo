@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: User Plug-in
+Bundle-SymbolicName: gov.pnnl.cat.help.user; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gov.pnnl.cat.help.user.UserPlugin
+Bundle-Vendor: Pacific Northwest National Laboratory
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.help,
+ org.eclipse.help.base,
+ org.eclipse.help.ui,
+ org.eclipse.help.webapp
+Eclipse-LazyStart: true

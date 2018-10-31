@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="abstractNodeVisitor"
+		class="gov.pnnl.cat.actions.crawler.AbstractNodeVisitor"
+		abstract="true">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="unprotectedNodeService">
+			<ref bean="nodeService" />
+		</property>
+		<property name="permissionService">
+			<ref bean="permissionService" />
+		</property>		
+	</bean>
+
+
+</beans>

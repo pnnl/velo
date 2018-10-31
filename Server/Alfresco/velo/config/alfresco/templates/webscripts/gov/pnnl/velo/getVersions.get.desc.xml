@@ -1,0 +1,10 @@
+<webscript>
+  <!-- versions are sent in the request response -->
+  <shortname>Get Versions</shortname>
+  <description>get all the versions of the given node</description>
+  <url>/velo/getVersions?wikiPath={wikiPath}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

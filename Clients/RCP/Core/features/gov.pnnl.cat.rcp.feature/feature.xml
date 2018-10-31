@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="gov.pnnl.cat.rcp.feature"
+      label="CAT RCP Feature"
+      version="1.0.0"
+      provider-name="Pacific Northwest National Laboratory"
+      plugin="gov.pnnl.cat.ui.rcp">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="gov.pnnl.cat.rcp.feature.source"
+         version="0.0.0"
+         optional="true"/>
+
+   <includes
+         id="gov.pnl.akea.rcp.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="gov.pnnl.cat.core.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="gov.pnnl.cat.gang.feature"
+         version="0.0.0"
+         optional="true"/>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="gov.pnnl.cat.core.resources" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="gov.pnnl.cat.ui.rcp" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="gov.pnnl.cat.logging" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.core.expressions" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.forms"/>
+   </requires>
+
+   <plugin
+         id="gov.pnnl.cat.akea"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.harvest"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.tagtimer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnl.akea.provenance"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.starlight"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="gov.pnnl.cat.criminalintel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.outlook.win32.win32.x86"
+         os="win32"
+         ws="win32"
+         arch="x86"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="gov.pnnl.cat.imageflow"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

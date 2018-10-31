@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Delete Alerts</shortname>
+  <description>Delete Alerts</description>
+  <url>/cat/deleteAlerts</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

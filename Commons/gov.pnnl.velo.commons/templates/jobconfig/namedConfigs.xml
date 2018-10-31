@@ -1,0 +1,19 @@
+<NamedConfigs>
+<!--  new run config -->
+	<JobConfig name="hopper_agni-small-job" machineId="hopper" codeId="agni">
+	 	<!-- Machine settings -->
+			<remoteDir>/global/homes/v/vfreedma/scratch/amanzi/Richards-1D-transport</remoteDir>
+			<allocationAccount>m1012</allocationAccount>
+			<userName>vfreedma</userName>
+			<nodes>10</nodes>
+			<processors>240</processors>
+			<procsPerTask>24</procsPerTask>
+			<queueName>debug</queueName>
+			<timeLimit>0:30:0</timeLimit>
+        <!-- Code Settings -->
+            <executable>/project/projectdirs/m1012/agni/install/current/bin/Agni/Agni --infile=agni.xml</executable>
+			<jobHandlerParameters>
+				<parameter name="simulatorExecutable">/project/projectdirs/m1012/amanzi/install/current/bin/amanzi</parameter>
+			</jobHandlerParameters>
+	</JobConfig>
+</NamedConfigs>

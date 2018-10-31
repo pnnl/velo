@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Definition of new Model -->
+<model name="tagtimer:model" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+   <!-- Optional meta-data about the model -->   
+   <description>Tag and Timer Model</description>
+   <version>1.0</version>
+
+   <!-- Imports are required to allow references to definitions in other models -->   
+   <imports>
+      <!-- Import Alfresco Dictionary Definitions -->
+      <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+      <!-- Import Alfresco Content Domain Model Definitions -->
+      <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+   </imports>
+
+   <!-- Introduction of new namespaces defined by this model -->
+   <!-- NOTE: The following namespace my.new.model should be changed to reflect your own namespace -->
+   <namespaces>
+      <namespace uri="http://www.pnl.gov/cat/model/tagtimer/1.0" prefix="tagtimer"/>
+   </namespaces>
+   
+   <constraints>
+		<constraint name="tagtimer:justificationReasonConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Reason 1</value>
+					<value>Reason 2</value>
+					<value>Reason 3</value>
+				</list>
+			</parameter>
+		</constraint>
+ 	</constraints>
+ 	
+   <aspects>
+      <aspect name="tagtimer:usPersonsData">
+      <title>Data contains information on U.S. person(s)</title>
+      <properties>
+        <property name="tagtimer:materialType">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="tagtimer:expireDate">
+          <type>d:datetime</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="tagtimer:justificationReason">
+          <type>d:text</type>
+          <mandatory>false</mandatory>
+          <constraints>
+				<constraint ref="tagtimer:justificationReasonConstraint"/>
+			</constraints>
+        </property>
+        <property name="tagtimer:justificationDate">
+          <type>d:datetime</type>
+          <mandatory>false</mandatory>
+        </property>
+        <property name="tagtimer:justificationUser">
+          <type>d:text</type>
+          <mandatory>false</mandatory>
+        </property>
+      </properties>
+    </aspect>
+    
+    <aspect name="tagtimer:usPersonsDataRemoved">
+      <title>Previously marked as U.S. person(s)</title>
+      <properties>
+        <property name="tagtimer:removedReason">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="tagtimer:removedDate">
+          <type>d:datetime</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="tagtimer:removedUser">
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+      </properties>
+    </aspect>
+      
+              
+   </aspects>
+   
+</model>

@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Create Remote Link</shortname>
+  <description>Create new link pointing to remote url</description>
+  <!--  link title and description are optional -->
+  <url>/velo/createRemoteLink?parentPath={parentPath}&amp;linkName={linkName)&amp;linkUrl={linkUrl}&amp;linkTitle={?linkTitle}&amp;linkDescription={?linkDescription}&amp;linkType={?linkType}&amp;hasContent={?hasContent}&amp;isCopyrighted={?isCopyrighted}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

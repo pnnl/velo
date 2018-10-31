@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans >
+	
+   
+    <!-- destinations for sending messages to -->
+  	 <bean id="subscribeDestination" class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic" autowire="constructor" abstract="false" singleton="true" lazy-init="default" dependency-check="default">
+ 		 <constructor-arg value="cat.subscribe" /> 
+       <constructor-arg value="${notification.server.id}" />
+ 	 </bean>    
+    
+     <bean id="alfrescoEventSource" class="gov.pnnl.cat.jms.common.ServerSpecificActiveMQTopic" autowire="constructor" abstract="false" singleton="true" lazy-init="default" dependency-check="default">
+ 		 <constructor-arg value="alfresco.event.source" /> 
+       <constructor-arg value="${notification.server.id}" />
+ 	 </bean> 
+ 	 
+    <!-- pooled connection factory for ActiveMQ -->
+    <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+    <property name="connectionFactory">
+      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL">
+          <value>http://localhost:61616</value>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  
+  
+
+  <!-- Spring JMS Template -->
+  <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory">
+      <ref local="jmsFactory"/>
+    </property>
+  </bean>
+
+  <bean id="catEventSubscriptionManager" class="gov.pnnl.cat.events.subscription.CATEventSubscriptionManager">
+  	<property name="listenerRegistrar">
+  		<ref bean="unmanagedListenerRegistrar" ></ref>
+  	</property>
+  	<property name="sender">
+  		<ref bean="subscribeMessageSender" />
+  	</property>
+  	<property name="listener">
+  		<ref bean="testEventListener" />
+  	</property>
+  </bean>
+  
+  <bean id="testEventListener" class="gov.pnnl.cat.events.tests.TestEventListener" />
+
+  
+      <bean id="subscribeMessageSender" class="gov.pnnl.cat.jms.common.JMSMessageSender">
+  	<property name="destination">
+  		<ref local="subscribeDestination" />
+  	</property>
+  	<property name="connectionFactory">
+  		<ref local="jmsFactory"/>
+  	</property>
+  	<property name="template">
+  		<ref local="jmsTemplate" />
+  	</property>
+  </bean>
+  
+  <bean id="subscriptionManager" class="gov.pnnl.cat.events.subscription.SubscriptionManager">
+  	<property name="userFilterManager">
+  		<ref local="userFilterManager" />
+  	</property>
+  </bean>
+  
+  <bean id="userFilterManager" class="gov.pnnl.cat.events.subscription.UserFilterManager">
+ 	 <property name="unmanagedListenerRegistrar">
+ 	 	<ref local="unmanagedListenerRegistrar" />
+ 	 </property>
+ 	 <property name="eventSource">
+ 	 	<ref local="alfrescoEventSource" />
+ 	</property>
+ 	 <property name="userEventFilterClassname">
+	  	<value>gov.pnnl.cat.events.subscription.SimpleUserEventFilter</value>
+	  </property>
+  </bean>
+  
+  
+  <bean id="unmanagedListenerRegistrar" class="gov.pnnl.cat.jms.common.UnmanagedListenerRegistrar">
+  	<property name="connectionFactory">
+  		<ref local="jmsFactory"/>
+  	</property>
+   </bean>
+   
+   <bean id="catMessageSenderFactory" class="gov.pnnl.cat.events.common.MessageSenderFactory">
+   	<property name="sender">
+   		<ref local="subscribeMessageSender" />
+   	</property>
+   </bean>
+   
+  
+  
+  <!-- activemq resource adapter, needed for jencks -->
+  	<bean id="activeMQResourceAdapter" class="org.apache.activemq.ra.ActiveMQResourceAdapter" singleton="true">
+		<property name="serverUrl" value="http://localhost:61616"/>
+	</bean>
+	
+	  <!-- bootstrap needed for jencks -->
+	<bean id="bootstrapContext" class="org.jencks.factory.BootstrapContextFactoryBean" singleton="true">
+		<property name="threadPoolSize" value="25"/>
+	</bean>
+	
+	<!-- jencks bean -->
+		<bean id="jencks" class="org.jencks.JCAContainer" singleton="true" depends-on="activeMQResourceAdapter,bootstrapContext">
+		<property name="bootstrapContext">
+			<ref bean="bootstrapContext"/>
+		</property>
+		<property name="resourceAdapter">
+			<ref bean="activeMQResourceAdapter"/>
+		</property>
+	</bean>
+  
+  
+  
+	
+	<!-- binds our listener to the destination of choice -->
+	<bean id="subscriptionEndpoint" factory-method="addConnector" factory-bean="jencks" depends-on="jencks">
+		<property name="jcaContainer" ref="jencks"/>
+
+		<property name="activationSpec">
+			<bean class="org.apache.activemq.ra.ActiveMQActivationSpec" abstract="false" singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+				<property name="destination" value="cat.subscribe"/>
+				<property name="destinationType" value="javax.jms.Topic"/>
+			</bean>
+		</property>
+		<property name="ref" value="subscriptionHandler"/>
+	</bean> 
+	
+	<bean id="subscriptionHandler" class="gov.pnnl.cat.events.subscription.UserSubscriptionMessageHandler">
+		<property name="catMessageSenderFactory">
+			<ref bean="catMessageSenderFactory" />
+		</property>
+		<property name="listener">
+			<ref bean="subscriptionListener" />
+		</property>
+	</bean>
+	
+	<bean id="subscriptionListener" class="gov.pnnl.cat.events.subscription.SubscriptionListener">
+		<property name="subscriptionManager">
+			<ref local="subscriptionManager" />
+		</property>
+	</bean>
+	
+	<bean id="repositoryPublisher" class="gov.pnnl.cat.events.tests.TestRepositoryEventPublisher">
+		<property name="sender">
+			<ref local="repositoryEventSender" />
+		</property>
+	</bean>
+	
+    <bean id="repositoryEventSender" class="gov.pnnl.cat.jms.common.JMSMessageSender">
+  	<property name="destination">
+  		<ref local="alfrescoEventSource" />
+  	</property>
+  	<property name="connectionFactory">
+  		<ref local="jmsFactory"/>
+  	</property>
+  	<property name="template">
+  		<ref local="jmsTemplate" />
+  	</property>
+  </bean>
+  
+     	<bean id="broker" class="org.apache.activemq.xbean.BrokerFactoryBean">
+	    <property name="config" value="classpath:gov/pnl/dmi/config/activemq.xml" />
+	    <property name="start" value="true" />
+	</bean>
+</beans>

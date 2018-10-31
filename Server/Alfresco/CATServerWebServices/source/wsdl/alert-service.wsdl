@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="alert-service"
+   targetNamespace="http://www.pnl.gov/cat/ws/service/alert/1.0"
+   xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+   xmlns:alert="http://www.pnl.gov/cat/ws/service/alert/1.0"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:cms="http://www.alfresco.org/ws/model/content/1.0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   
+   <!-- ************************************** -->
+   <!-- Copyright Alfresco Software, Inc. 2005 -->
+   <!-- ************************************** -->
+   <wsdl:import namespace="http://www.alfresco.org/ws/model/content/1.0" location="../wsdl/types.xsd"/>
+   <wsdl:types>
+      <schema elementFormDefault="qualified" targetNamespace="http://www.pnl.gov/cat/ws/service/alert/1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+         <!-- Type Definitions -->  
+         <complexType name="RepositoryAlert">
+         	<sequence>
+         		<element name="node" type="cms:Reference" minOccurs="0" maxOccurs="1"/>
+         		<element name="recipients" type="alert:Actor" minOccurs="0" maxOccurs="unbounded" />
+         		<element name="summary" type="xsd:string" minOccurs="0" maxOccurs="1" />
+         		<element name="alertRead" type="xsd:boolean" />
+         		<element name="frequency" type="xsd:string" />
+          		<element name="sender" type="alert:Actor" minOccurs="0" maxOccurs="1"/>
+          		<element name="title" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        		<element name="name" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="subscriptionType" type="xsd:string" />
+         		<element name="events" type="alert:Event" minOccurs="1" maxOccurs="unbounded" />
+         		<element name="created" type="xsd:dateTime"/>
+         	</sequence>
+         </complexType>
+         
+         <complexType name="Actor">
+         	<sequence>
+         		<element name="id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="type" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         	</sequence>
+         </complexType>
+         <element name="Actor" type="alert:Actor" />
+ 
+          <complexType name="Event">
+         	<sequence>
+         		<element name="resourceName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="resourceUrl" type="xsd:string" minOccurs="0" maxOccurs="1" />
+         		<element name="uuid" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="resourcePath" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         		<element name="valid" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+         		<element name="changeType" type="xsd:string" />
+         		<element name="perpetrator" type="alert:Actor" minOccurs="0" maxOccurs="1" />
+         		<element name="eventTime" type="xsd:dateTime" />
+         	</sequence>
+         </complexType>
+         <element name="Event" type="alert:Event" />                      
+     
+         
+         <complexType name="AlertFault">
+            <sequence>
+               <element name="errorCode" type="xsd:int"/>
+               <element name="message" type="xsd:string"/>
+            </sequence>
+         </complexType>
+         <element name="AlertFault" type="alert:AlertFault"/>
+         
+         <!-- Method Definitions -->                    
+         <element name="getAlerts">
+            <complexType />
+         </element>
+         
+         <element name="getAlertsResponse">
+            <complexType>
+               <sequence>
+                  <element name="alert" type="alert:RepositoryAlert" minOccurs="0" maxOccurs="unbounded" />
+               </sequence>
+            </complexType>
+         </element>
+
+
+         <element name="deleteAlerts">
+            <complexType>
+               <sequence>
+                  <element name="alerts" type="alert:RepositoryAlert" minOccurs="0" maxOccurs="unbounded"/>
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="deleteAlertsResponse">
+            <complexType />
+         </element>
+         
+          <element name="markAlertsAsRead">
+            <complexType>
+               <sequence>
+                  <element name="alerts" type="alert:RepositoryAlert" minOccurs="0" maxOccurs="unbounded"/>
+                  <element name="isRead" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+               </sequence>
+            </complexType>
+         </element>
+         
+         <element name="markAlertsAsReadResponse">
+            <complexType />
+         </element>      
+      </schema>
+   </wsdl:types>
+   
+   <!-- Message definitions -->
+   
+   <wsdl:message name="getAlertsRequest">
+      <wsdl:part element="alert:getAlerts" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="getAlertsResponse">
+      <wsdl:part element="alert:getAlertsResponse" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="deleteAlertsRequest">
+      <wsdl:part element="alert:deleteAlerts" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="deleteAlertsResponse">
+      <wsdl:part element="alert:deleteAlertsResponse" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="markAlertsAsReadRequest">
+      <wsdl:part element="alert:markAlertsAsRead" name="parameters"/>
+   </wsdl:message>
+
+   <wsdl:message name="markAlertsAsReadResponse">
+      <wsdl:part element="alert:markAlertsAsReadResponse" name="parameters"/>
+   </wsdl:message>
+   
+   <wsdl:message name="AlertFault">
+      <wsdl:part element="alert:AlertFault" name="fault"/>
+   </wsdl:message>
+   
+   <!-- Port and binding definitions -->
+   
+   <wsdl:portType name="AlertServiceSoapPort">
+      <wsdl:operation name="getAlerts">
+         <wsdl:documentation>Gets all alerts for the current user.</wsdl:documentation>
+         <wsdl:input message="alert:getAlertsRequest" name="getAlertsRequest"/>
+         <wsdl:output message="alert:getAlertsResponse" name="getAlertsResponse"/>
+         <wsdl:fault message="alert:AlertFault" name="AlertFault"/>
+      </wsdl:operation>     
+
+       <wsdl:operation name="deleteAlerts">
+         <wsdl:documentation>Delete one or more alerts.</wsdl:documentation>
+         <wsdl:input message="alert:deleteAlertsRequest" name="deleteAlertsRequest"/>
+         <wsdl:output message="alert:deleteAlertsResponse" name="deleteAlertsResponse"/>
+         <wsdl:fault message="alert:AlertFault" name="AlertFault"/>
+      </wsdl:operation>   
+
+      <wsdl:operation name="markAlertsAsRead">
+         <wsdl:documentation>Marks Alerts as being read</wsdl:documentation>
+         <wsdl:input message="alert:markAlertsAsReadRequest" name="markAlertsAsReadRequest"/>
+         <wsdl:output message="alert:markAlertsAsReadResponse" name="markAlertsAsReadResponse"/>
+         <wsdl:fault message="alert:AlertFault" name="AlertFault"/>
+      </wsdl:operation>   
+
+  </wsdl:portType>
+   
+   <wsdl:binding name="AlertServiceSoapBinding" type="alert:AlertServiceSoapPort">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="getAlerts">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/alerts/1.0/getAlerts"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AlertFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/alert/1.0" use="literal" name="AlertFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+       <wsdl:operation name="deleteAlerts">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/alerts/1.0/deleteAlerts"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AlertFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/alert/1.0" use="literal" name="AlertFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+
+      <wsdl:operation name="markAlertsAsRead">
+         <wsdlsoap:operation soapAction="http://www.pnl.gov/cat/ws/service/alerts/1.0/markAlertsAsRead"/>
+         <wsdl:input>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="AlertFault">
+            <wsdlsoap:fault namespace="http://www.pnl.gov/cat/ws/service/alert/1.0" use="literal" name="AlertFault"/>
+         </wsdl:fault>
+      </wsdl:operation> 
+    </wsdl:binding>
+
+	<!-- Service definition -->
+	
+    <wsdl:service name="AlertService">
+       <wsdl:documentation>Alert service for managing repository-persisted alerts.</wsdl:documentation>
+       <wsdl:port binding="alert:AlertServiceSoapBinding" name="AlertService">
+          <wsdlsoap:address location="http://localhost:8080/alfresco/api/AlertService"/>
+       </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

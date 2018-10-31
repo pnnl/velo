@@ -1,0 +1,10 @@
+<!-- note, getCollection and getChildren are the exact same impl webscript. defining new URL getChildren as part of a refactor to use better naming -->
+<webscript>
+  <shortname>Get Content Store File Path</shortname>
+  <description>Get the path to the file's contents in the alfresco content store</description>
+  <url>/cat/getContentStoreFilePath?path={?path}&amp;uuid={?uuid}</url>
+  <authentication>user</authentication>
+  <!--  we don't require default tx because we manage our own retrying tx -->
+  <transaction>none</transaction>
+    
+</webscript>

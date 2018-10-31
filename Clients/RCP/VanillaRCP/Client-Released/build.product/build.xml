@@ -1,0 +1,17 @@
+<project default="update.p2">
+    <!-- This target takes a locally built p2 repository and
+    updates the metadata as if it came from the remote p2 site -->
+	<target name="update.p2">
+		<echo>p2 dir: ${p2.dir}</echo>
+		<echo>product name: ${project.name}</echo>
+		<echo>p2 remote site: ${p2.remote.site}</echo>
+		<echo>version: ${version}</echo>
+
+		<p2.composite.repository>
+			<repository location="file://${p2.dir}" name="${project.name}" />
+			<add>
+				<repository location="${p2.remote.site}/${version}" />
+			</add>
+		</p2.composite.repository>
+	</target>
+</project>

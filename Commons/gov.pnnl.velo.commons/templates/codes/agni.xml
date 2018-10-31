@@ -1,0 +1,54 @@
+
+<code id="agni" version="default">
+
+    <name>Agni</name>
+    <type>Simulation Ensemble Controller</type>
+    <description>Agni wraps a simulator to perform multi-run ensembles such as UQ</description>
+
+	<jobLaunching>
+		<command>./Agni --infile=agni.xml</command>
+		
+		<!-- will get the handler from the spring container for the given bean ID -->
+		<jobHandlerId>ascemJobHandler</jobHandlerId>
+	
+		<!-- Files on user's local file system -->		
+		<localInputs>
+		    <!-- . = working dir, which is contextPath from JobConfig. default dir="." which means dir=localWorkingDir -->
+			<!-- <fileset dir="." includes="*" excludes=".*.xml,.akuna_inputs"/> -->
+		</localInputs>
+		
+		<outputs>
+		    <!-- . = remote dir from JobConfig -->
+			<!--  exitState determines when this file should be recorded; options are 'any', 'success', or 'error' -->
+			<!--  actions indicate what to do with the file; options are 'copy', 'link', or 'archive' -->
+			<!-- TODO: what did salssa do w.r.t. archiving? -->
+			<fileset dir="." includes="akunajob.*,*_sim.out,agni.out,agni.obj,agni.prm,*.res" actions="copy" conditions="exitState=any" />
+			<fileset dir="." includes="*-out.xml" actions="link" conditions="exitState=any" /> 
+		</outputs>
+		
+		<!-- TODO: this section needs to be flushed out -->
+		<!-- If this is a multi-run job, this is where we can configure run-specific things like run folder name or
+		whether to record individual runs or not -->
+		<ensembleConfiguration recordRuns="true">
+			<outputs>
+				<fileset includes="amanzi.xml,sim.out,amanzi.out" actions="copy" conditions="exitState=any"/>
+			</outputs>
+		    <recordRuns>true</recordRuns>
+		</ensembleConfiguration>
+		
+		<!-- parameters specific to the job handler class mentioned above -->
+		<jobHandlerParameters>
+			<!-- these are default values that should be set at runtime and saved in the JobConfig file -->
+			<!-- If simulatorCommand is specified, it will override code specified by simulator -->
+            <!-- <parameter name="simulatorCommand"></parameter> -->
+            <!-- Simulator code ID to use from the Machine -->
+            <!-- <parameter name="simulator">amanzi</parameter> --> 
+            <!-- <parameter name="runtimeMonitor">org.akuna.ui.sr.AmanzisRuntimeMonitor</parameter> -->
+            <parameter name="maxSimultaneousSimulations">1</parameter>
+		</jobHandlerParameters>
+	</jobLaunching>
+	
+	<!-- This is a catch all container for deployments that don't want to support their own schema -->
+	<customParameters>
+	</customParameters>
+</code>

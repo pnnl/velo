@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="springBeanProvider" name="Spring Bean Provider" schema="schema/springBeanProvider.exsd"/>
+   <extension-point id="contentType" name="CAT Content Type" schema="schema/contentType.exsd"/>
+   <extension
+         point="gov.pnnl.cat.core.resources.springBeanProvider">
+      <springBeanProvider configLocation="config/cms-services.xml"/>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFile"
+            nodeTypeQName="{http://www.alfresco.org/model/content/1.0}content">
+      </contentType>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFile"
+            nodeTypeQName="{http://www.alfresco.org/model/content/1.0}thumbnail">
+      </contentType>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/content/1.0}folder">
+      </contentType>
+   </extension>
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/site/1.0}sites">
+      </contentType>
+   </extension>   
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/content/1.0}category">
+      </contentType>
+   </extension>   
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseFolder"
+            nodeTypeQName="{http://www.alfresco.org/model/site/1.0}site">
+      </contentType>
+   </extension>   
+   <extension
+         point="gov.pnnl.cat.core.resources.contentType">
+      <contentType
+            class="gov.pnnl.cat.core.internal.resources.EclipseLinkedFile"
+            nodeTypeQName="{http://www.alfresco.org/model/content/1.0}link">
+      </contentType>
+   </extension>
+
+   
+
+</plugin>

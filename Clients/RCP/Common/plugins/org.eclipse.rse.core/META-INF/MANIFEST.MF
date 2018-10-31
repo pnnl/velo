@@ -1,0 +1,915 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Built-By: hudsonbuild
+Bundle-SymbolicName: org.eclipse.rse.core;singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/tm/org
+ .eclipse.tm.git;path="rse/plugins/org.eclipse.rse.core";commitId=5810
+ 0b0455d0bff9c54893b6442dc72609b7ae7b
+Bundle-Activator: org.eclipse.rse.core.RSECorePlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.rse.services;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.swt,
+ org.eclipse.equinox.security
+Export-Package: org.eclipse.rse.core,
+ org.eclipse.rse.core.comm,
+ org.eclipse.rse.core.events,
+ org.eclipse.rse.core.filters,
+ org.eclipse.rse.core.model,
+ org.eclipse.rse.core.references,
+ org.eclipse.rse.core.subsystems,
+ org.eclipse.rse.internal.core;x-internal:=true,
+ org.eclipse.rse.internal.core.filters;x-internal:=true,
+ org.eclipse.rse.internal.core.model;x-internal:=true,
+ org.eclipse.rse.internal.core.subsystems;x-internal:=true,
+ org.eclipse.rse.internal.logging;x-internal:=true,
+ org.eclipse.rse.internal.persistence;x-internal:=true,
+ org.eclipse.rse.internal.persistence.dom;x-internal:=true,
+ org.eclipse.rse.internal.references;x-internal:=true,
+ org.eclipse.rse.logging,
+ org.eclipse.rse.persistence,
+ org.eclipse.rse.persistence.dom
+Bundle-Version: 3.3.100.201305201712
+Build-Jdk: 1.6.0
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/rse/core/model/DummyHost.class
+SHA1-Digest: X/ZO1Mj+T0LG0yGi2dLtWUUxH9A=
+
+Name: org/eclipse/rse/core/model/IRSECallback.class
+SHA1-Digest: e2BAmxqGlzCaNQMhPzu03AELM7c=
+
+Name: about.ini
+SHA1-Digest: pKvFMTBYaqNelEkDHAY/gk7Ta1Q=
+
+Name: org/eclipse/rse/core/subsystems/IDelegatingConnectorService.clas
+ s
+SHA1-Digest: nMkON7sjvF3AalZpGE92Xrm0mrs=
+
+Name: org/eclipse/rse/core/IRSEUserIdConstants.class
+SHA1-Digest: qENNAr2UgYxLbG6P0rSqT2hyFgY=
+
+Name: org/eclipse/rse/internal/core/model/RemoteObjectId.class
+SHA1-Digest: IXAN9Vg4sxBLQpY1DhJCZrLLBww=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.core/pom.xml
+SHA1-Digest: qc7Xn5F9WySmzaKf6w7/RSUj14Y=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolReference.class
+SHA1-Digest: jQVAAXI99HxTs1L4pGmNvcFPe8Q=
+
+Name: org/eclipse/rse/core/model/ISystemMessageObject.class
+SHA1-Digest: bCj9XjqhQyljMU73aqqiSlEoLQk=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$1CreateHostOp
+ eration.class
+SHA1-Digest: CFZ+pLefcR1VSxkxhDdtXexYSfU=
+
+Name: org/eclipse/rse/core/events/ISystemResourceChangeEvents.class
+SHA1-Digest: 3j7v/sbyGlfWaKkZEsdvi0zlgxY=
+
+Name: org/eclipse/rse/core/SystemRemoteObjectMatcher.class
+SHA1-Digest: IcmOyZt4/JQcR2vUO2m6hIkj+Xk=
+
+Name: org/eclipse/rse/internal/persistence/PFFileSystemJob$Serializing
+ Rule.class
+SHA1-Digest: vRuaMsFwy83efEVXK90lRice5xg=
+
+Name: org/eclipse/rse/core/subsystems/ISystemRemoteObjectMatchProvider
+ .class
+SHA1-Digest: Amje4Lcg2rI07BjzNUCDAz3CR8A=
+
+Name: org/eclipse/rse/core/model/ISystemContentsType.class
+SHA1-Digest: ZToID2mVTVMfZ+RdQgNE9GC5F/k=
+
+Name: org/eclipse/rse/core/model/PropertySet.class
+SHA1-Digest: 8ii6jOhNeOeJu65t/caGJhjpbmI=
+
+Name: org/eclipse/rse/core/subsystems/ISubSystemConfigurationProxy.cla
+ ss
+SHA1-Digest: SF/yUFCbzjIMP7DNETpGo6V4/QQ=
+
+Name: org/eclipse/rse/core/subsystems/ISubSystemConfiguration.class
+SHA1-Digest: 4i6LkEyVMdxhKAySLnTlcUcucu8=
+
+Name: org/eclipse/rse/core/AbstractRSESystemType.class
+SHA1-Digest: lfftYUUj2v9Fh5gAza7u07z10Mk=
+
+Name: org/eclipse/rse/core/comm/ISystemKeystoreProvider.class
+SHA1-Digest: n+vzqPL+RdCwhNLseRa03jg+wF0=
+
+Name: org/eclipse/rse/core/PasswordPersistenceManager.class
+SHA1-Digest: 9KYzkCKpJ+LLPwHDVn8AByp0AzM=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterStartHere.clas
+ s
+SHA1-Digest: x/KbA+t74fQk17cfpp8hCHafm7I=
+
+Name: org/eclipse/rse/core/model/ISystemRegistry.class
+SHA1-Digest: myTxtPl/i5wmXcSjrr7BQAyhN9s=
+
+Name: org/eclipse/rse/core/events/ISystemRemoteChangeListener.class
+SHA1-Digest: TwpjkMAsZLOgbQ6oU2M/oU+h4LU=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService$SafeRun
+ ner.class
+SHA1-Digest: aH1t5eQOp/99y1C4C2GLtkQTKno=
+
+Name: icons/full/obj16/systemwinlive_obj.gif
+SHA1-Digest: O71AIeONteRD3wdnGzkGkT04Dgg=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolWrapperInformation
+ .class
+SHA1-Digest: EUEApPldVrJut6vqwrJmabpgDWY=
+
+Name: org/eclipse/rse/internal/persistence/dom/RSEDOMImporter.class
+SHA1-Digest: HQlt9Mp0qaiKK3Dq6sn2/mA32hE=
+
+Name: org/eclipse/rse/core/model/ISystemContainer.class
+SHA1-Digest: Kzg/P/cFdBVnzJUbNokDGyz2dFA=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterStringReferenc
+ e.class
+SHA1-Digest: GzNbs+25WOPNY8nq0MCMs5FnAOY=
+
+Name: org/eclipse/rse/internal/references/SystemPersistableReferencedO
+ bject.class
+SHA1-Digest: M7lds9U39xvqy1burvKnI8LOLPg=
+
+Name: org/eclipse/rse/internal/core/RSECoreRegistry.class
+SHA1-Digest: +FiXZqwwi9LlxVazr2qGO83sF70=
+
+Name: org/eclipse/rse/core/RSEPreferencesManager.class
+SHA1-Digest: IFxFyMxIUcagl+mumW7st7deq5I=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolReferenceManager.c
+ lass
+SHA1-Digest: hsuuQJkU5EWlG4FGxz6sp7+ZsUg=
+
+Name: about.properties
+SHA1-Digest: SR9P7rmZxcL8Ftg8vYtWhGC0xYs=
+
+Name: org/eclipse/rse/internal/core/model/SystemPreferenceChangeManage
+ r.class
+SHA1-Digest: WY0ljRvwu7oH7dvdtpfPa3rv9Ug=
+
+Name: org/eclipse/rse/core/events/ISystemPreferenceChangeListener.clas
+ s
+SHA1-Digest: 7yrUs5w1INz3WVZDF7zIgUIBH+g=
+
+Name: org/eclipse/rse/internal/persistence/dom/IRSEDOMExporter.class
+SHA1-Digest: /wYezPryeYts0nBETynx93/+qsY=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$NotifyPrefere
+ nceChangedRunnable.class
+SHA1-Digest: OSIdN9nPYlHvzzY51WtSeOsoMHY=
+
+Name: org/eclipse/rse/core/subsystems/ICacheManager.class
+SHA1-Digest: nVyA6tSt3wqnGpc2QtF4eWf8+fA=
+
+Name: org/eclipse/rse/core/subsystems/ServerLauncher.class
+SHA1-Digest: stoVyH4po9fJFN5iOwERyDFBq/k=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterContainerCommo
+ nMethods.class
+SHA1-Digest: /DRdRjKb5Skl22aNwa2JDZzhBco=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$PreferenceCha
+ ngedRunnable.class
+SHA1-Digest: 3mH1+n16kO+7oWpH1LTihItBcHE=
+
+Name: org/eclipse/rse/core/PasswordPersistenceManager$DefaultSystemTyp
+ e.class
+SHA1-Digest: m5QdYIz6gjoR4/TjSRGjMzKIttU=
+
+Name: org/eclipse/rse/core/subsystems/IFileConstants.class
+SHA1-Digest: 9UmYOMCd/mQr+FUgI0z+BCspf9M=
+
+Name: org/eclipse/rse/internal/core/subsystems/SubSystemConfigurationP
+ roxyComparator.class
+SHA1-Digest: K87BX+bujzaqESiHHI4aikCOhC0=
+
+Name: org/eclipse/rse/core/filters/SystemFilterUtil.class
+SHA1-Digest: /HyJtY1v5qkuOaO0uuBZ7u0wrM8=
+
+Name: org/eclipse/rse/core/events/ISystemModelChangeEvent.class
+SHA1-Digest: lSsRmji6muw/TqC00ZPWDFl9BAo=
+
+Name: org/eclipse/rse/core/IRSESystemType.class
+SHA1-Digest: BQPjKfq6AuXhqHWVQVH6NxLX6sE=
+
+Name: org/eclipse/rse/core/references/IRSEPersistableReferencedObject.
+ class
+SHA1-Digest: KbqiW6viOHnE07uzAx8VYbqON40=
+
+Name: org/eclipse/rse/core/SystemResourceHelpers.class
+SHA1-Digest: Xt7jHAlOVH0hSoc7t/ab5vCHYl4=
+
+Name: org/eclipse/rse/internal/persistence/PFFileSystemJob.class
+SHA1-Digest: VBuj5s0BnlSY7A+wJy6jf1NeKMs=
+
+Name: org/eclipse/rse/core/subsystems/IConnectorService.class
+SHA1-Digest: ap2YExoTNEOysM+KeIFKNwJtHyM=
+
+Name: org/eclipse/rse/core/IRSESystemTypeConstants.class
+SHA1-Digest: /r1tx/P11HtSvWF2zpIVOE2Ctyo=
+
+Name: org/eclipse/rse/internal/core/RSEInitJob$Phase.class
+SHA1-Digest: SYWvfVil02ki7Y4tVXnNbJGeJv0=
+
+Name: org/eclipse/rse/internal/core/model/SystemPreferenceChangeEvent.
+ class
+SHA1-Digest: +Kj8rehv3GYpK4EjGf98vz0C4gk=
+
+Name: org/eclipse/rse/core/model/ISystemProfileManager.class
+SHA1-Digest: i4L7Is03s9bYHy1MtEd8UuxWMl4=
+
+Name: org/eclipse/rse/core/model/IProperty.class
+SHA1-Digest: 2fz6xnOJKF/GrWBpzSNAYD7JC58=
+
+Name: icons/full/obj16/systemlocallive_obj.gif
+SHA1-Digest: g2it4gM0zpIHYmGABTx+jtqh8Qc=
+
+Name: org/eclipse/rse/internal/references/SystemPersistableReferencedO
+ bjectHelper.class
+SHA1-Digest: fXnPHDOWdl/7yIshAv8FVukiQJQ=
+
+Name: META-INF/maven/org.eclipse.tm/org.eclipse.rse.core/pom.propertie
+ s
+SHA1-Digest: QjDTCvQcjSPPaSbZFsd4qUJU2pg=
+
+Name: org/eclipse/rse/core/subsystems/IServerLauncher.class
+SHA1-Digest: mTxsLROyV9stq4z7zBmWkIXxnGg=
+
+Name: org/eclipse/rse/core/subsystems/IConnectorServiceManager.class
+SHA1-Digest: Lbb9/bgqN6QkO/lOJsjDjDGer1g=
+
+Name: icons/full/obj16/systemlinuxlive_obj.gif
+SHA1-Digest: rjXP+50ITq08Y3CHu9q0uLXJnL4=
+
+Name: org/eclipse/rse/core/model/IHost.class
+SHA1-Digest: snbnQn9rLaq1UIZzQXrhEwbZhB8=
+
+Name: org/eclipse/rse/internal/persistence/PFFileSystemLocation.class
+SHA1-Digest: jeZY/llWYlMbLiZOLAE5C2R2Q9Y=
+
+Name: org/eclipse/rse/internal/core/model/SystemModelChangeEventManage
+ r.class
+SHA1-Digest: EHkDsg1eChfTNMc7AQl3NmYzt+c=
+
+Name: org/eclipse/rse/core/model/ISystemModifiableContainer.class
+SHA1-Digest: CP6PCFddzddDjh7RydBJMdeBT34=
+
+Name: org/eclipse/rse/core/events/ISystemModelChangeEvents.class
+SHA1-Digest: /DTOrHG/QdjgHnoPclBrSQC3qCo=
+
+Name: org/eclipse/rse/core/model/SystemMessageObject.class
+SHA1-Digest: BylVJjZdxCwBDf1+Bd8mJPD4x9g=
+
+Name: org/eclipse/rse/core/IRSEPreferenceNames.class
+SHA1-Digest: 1sS/S1dYTtlyb51rTrki+Dg719I=
+
+Name: org/eclipse/rse/core/model/ILabeledObject.class
+SHA1-Digest: xkqrrWZYcazAyvkLZ1lBS4pF9hg=
+
+Name: icons/full/obj16/systemlocal_obj.gif
+SHA1-Digest: YJbpXj6BEnnqUBREINGqbpQ4SJo=
+
+Name: org/eclipse/rse/core/model/ISystemHostPool.class
+SHA1-Digest: D2Ct/wh7qkSz0TBwLCrD5LxdNCM=
+
+Name: org/eclipse/rse/core/RSECorePlugin.class
+SHA1-Digest: kdxjJk44vV0skIM48/iynZkR/ZQ=
+
+Name: org/eclipse/rse/core/model/IPropertySetContainer.class
+SHA1-Digest: RDK4r5ljU/vBvR8jAvXjKkSPiaE=
+
+Name: org/eclipse/rse/core/IRSEModelInitializer.class
+SHA1-Digest: HkadvooFDU7wJmfYyiadGi67ZJ4=
+
+Name: org/eclipse/rse/persistence/IRSEPersistenceProvider.class
+SHA1-Digest: f0suLbFqI2idlyOZ18R+yCu7zUY=
+
+Name: org/eclipse/rse/core/subsystems/AbstractResource.class
+SHA1-Digest: omP63x2GnhfzSJ12ogMt6BenuBA=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPoolWrapperInf
+ ormation.class
+SHA1-Digest: XWCfplFulyUol1SqnE7LlZLsUow=
+
+Name: org/eclipse/rse/core/references/SystemReferencingObjectHelper.cl
+ ass
+SHA1-Digest: XOlFozNcwGtVw5KnxTWzn8dtsfo=
+
+Name: org/eclipse/rse/core/events/ISystemPreferenceChangeEvents.class
+SHA1-Digest: qdRoyCJSJBZpbfn5g/ReY5My5ho=
+
+Name: org/eclipse/rse/persistence/dom/RSEDOM.class
+SHA1-Digest: 1uzVzvuRUZwNAgtzJxemOHQ1/dM=
+
+Name: org/eclipse/rse/core/events/ISystemModelChangeListener.class
+SHA1-Digest: ZKfpKbfNvBv5ISEkf0ilA2Y0Z/A=
+
+Name: org/eclipse/rse/core/references/IRSEBasePersistableReferencingOb
+ ject.class
+SHA1-Digest: vcn/TT9kCs6fssxcnX2CmhzyDvI=
+
+Name: org/eclipse/rse/internal/core/model/SystemRemoteChangeEventManag
+ er.class
+SHA1-Digest: GOxlPkwBK+7oVsNMgpFXTU/saog=
+
+Name: about.mappings
+SHA1-Digest: lqWPxsgpwrvKjcay47DEX991PS4=
+
+Name: org/eclipse/rse/core/model/IPropertySet.class
+SHA1-Digest: 7tb6gFw7YgsTYeR08Q0hcSIOL+w=
+
+Name: org/eclipse/rse/internal/persistence/RSEEnvelope$1.class
+SHA1-Digest: BE+htXhx4Bewyq14pEDRI8LWxIQ=
+
+Name: org/eclipse/rse/core/subsystems/ICredentialsProvider.class
+SHA1-Digest: wPcX+CcdAQ9xe2eoqtUwO8bPfVU=
+
+Name: org/eclipse/rse/internal/core/RSEPreferenceInitializer.class
+SHA1-Digest: HdZWbTibDPyfdIW5lCPfAx0Z74g=
+
+Name: org/eclipse/rse/core/subsystems/ISubSystem.class
+SHA1-Digest: b+/xQxilDkMntA515FrtpVO3eIo=
+
+Name: org/eclipse/rse/core/subsystems/CommunicationsEvent.class
+SHA1-Digest: 5Hu09J8K08IFYpO9ceJ6OoDch7c=
+
+Name: org/eclipse/rse/core/references/IRSEReferencedObject.class
+SHA1-Digest: RGB4KFid3jqK/GPHP2fyPtZr3r4=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterSimple.class
+SHA1-Digest: yq7M6cGizxf7jAvGaXVMhj0MZ2w=
+
+Name: org/eclipse/rse/core/subsystems/SubSystemHelpers.class
+SHA1-Digest: 2PkiNKQDVwEURTVVCoceGtmiwd0=
+
+Name: org/eclipse/rse/internal/core/filters/ISystemFilterConstants.cla
+ ss
+SHA1-Digest: buTkDYZnkfWpDTt4ncYL8hbz/1I=
+
+Name: org/eclipse/rse/core/IRSEInitListener.class
+SHA1-Digest: g9I9z3nGjd3mPyaekHdtcEeMjE8=
+
+Name: org/eclipse/rse/core/subsystems/RemoteChildrenContentsType.class
+SHA1-Digest: Bt1aVTQLZQy5IsVI3oxn+s1jkRc=
+
+Name: icons/full/obj16/systemwin_obj.gif
+SHA1-Digest: 8lnJKh6tsIIYkSMcSN/FhXB8ajI=
+
+Name: org/eclipse/rse/internal/core/model/ISystemProfileOperation.clas
+ s
+SHA1-Digest: bdWAuXcYY/uM+bBOMQDQGCBDfhk=
+
+Name: org/eclipse/rse/internal/core/model/SystemPostableEventNotifier.
+ class
+SHA1-Digest: rmAZ0mH9E2Xn3ha8s6CmGeZUqSQ=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$RemoteChanged
+ Runnable.class
+SHA1-Digest: fTuewmq6ojJTyfxJCZxB1lURMIU=
+
+Name: org/eclipse/rse/internal/persistence/PFFileSystemAnchor.class
+SHA1-Digest: JJ3xDeh3KyrlD1329GqthA0xjLk=
+
+Name: org/eclipse/rse/persistence/dom/RSEDOMNode.class
+SHA1-Digest: cLBK+u3rXNFNAX+kk7dCCUb7Deo=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteObjectResolver.class
+SHA1-Digest: Pds2jWSBKrjtmgUIQ2E1U7Ihhys=
+
+Name: org/eclipse/rse/core/SystemTypeMatcher$SystemTypeIdPattern.class
+SHA1-Digest: GlIhXmfYX4mhGbJlTa5Uab7Gh68=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterReference.class
+SHA1-Digest: tbEfoWOmuZ2nTDs2tQAk3KQ6dss=
+
+Name: plugin.properties
+SHA1-Digest: YpCy4CXK/dfyb6abAikPLpOGLpg=
+
+Name: org/eclipse/rse/internal/persistence/SerializingProvider.class
+SHA1-Digest: XZF8Y3AMaM8DaVyROfH7oZAtXBY=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorServiceManager.
+ class
+SHA1-Digest: M+4/Smn09OETAbP9kgaNODK00ok=
+
+Name: org/eclipse/rse/core/model/SystemEscapeCharHelper.class
+SHA1-Digest: j8rOZfAmaU2c0eId6Fij3lSEgCg=
+
+Name: org/eclipse/rse/core/references/IRSEBasePersistableReferenceMana
+ ger.class
+SHA1-Digest: rHak4C1oueIKwUIAVB6ZsnUdWxY=
+
+Name: plugin.xml
+SHA1-Digest: CVvkciWiS6qe0zd+aw7k4yrFtXE=
+
+Name: org/eclipse/rse/core/model/ISystemResourceSet.class
+SHA1-Digest: xmnZuEL4V4ZCpP7fbLInn+jz0G0=
+
+Name: org/eclipse/rse/core/references/IRSEBaseReferencedObject.class
+SHA1-Digest: d44Ou50R7BQInNIPyf/Rfmn1FCg=
+
+Name: org/eclipse/rse/internal/persistence/PFPersistenceLocation.class
+SHA1-Digest: P0+9XFKgKFp8w0Wa9KVwDRrltq4=
+
+Name: org/eclipse/rse/internal/persistence/RSEPersistenceManager$1.cla
+ ss
+SHA1-Digest: c5DAqUEVv9/kkNLalH4RyZt3anI=
+
+Name: org/eclipse/rse/core/subsystems/BasicConnectorService.class
+SHA1-Digest: spdBSr1DSDcBv62yGL+58ibVN3E=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteSystemEnvVar.class
+SHA1-Digest: GD/CMbLQuSN6+mZ2ot48OuYLQJc=
+
+Name: org/eclipse/rse/core/model/RSEPersistableObject.class
+SHA1-Digest: lfwfmiGBoDfMVs0dbcEpBVCjheo=
+
+Name: org/eclipse/rse/core/subsystems/RemoteServerLauncher.class
+SHA1-Digest: NEffQO1/NyhEOt5pURuKfhM62Nk=
+
+Name: org/eclipse/rse/persistence/dom/package.html
+SHA1-Digest: 3jhGYWJTLyBWVEsXWfbADPIXFBE=
+
+Name: org/eclipse/rse/core/events/ISystemResourceChangeListener.class
+SHA1-Digest: VJmraB30S3mYHJxB3DjaJHTxdWI=
+
+Name: org/eclipse/rse/core/model/PropertyType.class
+SHA1-Digest: 9+j4zIb4wKRIM3JMGvkEpgwuvw0=
+
+Name: org/eclipse/rse/internal/references/SystemPersistableReferencing
+ ObjectHelper.class
+SHA1-Digest: gx9TjaKolwcvwhBHSfdr/cnkmL8=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolSelectionValidator
+ .class
+SHA1-Digest: SbWeUzA+fM2Aq8B0N5K8Kv3s720=
+
+Name: org/eclipse/rse/core/subsystems/ISystemDragDropAdapter.class
+SHA1-Digest: M8lOf/uuxMiKkS/LxIL5xfToY84=
+
+Name: org/eclipse/rse/internal/core/messages.properties
+SHA1-Digest: hQaxdcixdCfE4TM5sRFrTt+h0yc=
+
+Name: org/eclipse/rse/core/events/ISystemRemoteChangeEvent.class
+SHA1-Digest: wVTor20ThdtGoa8+TM7Z8BcmbLE=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService$2.class
+SHA1-Digest: T5uklLqkMXiZZbq4oZgVBqqj0hI=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$FireNewHostEv
+ ents.class
+SHA1-Digest: tqZeghLsp4u4xi5fhiBvvNryerU=
+
+Name: org/eclipse/rse/internal/core/model/SystemProfileManager.class
+SHA1-Digest: 9vA+LMd3CW9wvOIS5ogiYgtRLQU=
+
+Name: org/eclipse/rse/internal/core/RSEInitJob$MyJobChangeListener.cla
+ ss
+SHA1-Digest: NJjZUKsGUf/v4MG8i+N4/hpp8JY=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPoolReference.
+ class
+SHA1-Digest: BpHtvaWvBOnFzqLONgaZaPqRpXM=
+
+Name: org/eclipse/rse/core/events/ISystemPreferenceChangeEvent.class
+SHA1-Digest: 3Hf961Q7pKF472crgXDKeXYk4C8=
+
+Name: org/eclipse/rse/internal/persistence/RSEPersistenceManager$RSESa
+ veParticipant.class
+SHA1-Digest: Ycchefsx8oFsjFBoCzFxKSfHNDI=
+
+Name: org/eclipse/rse/internal/core/IRemoteSystemsProject.class
+SHA1-Digest: FX9h8DXHxrF+e5dH+c3nXozkspM=
+
+Name: icons/full/obj16/systemlinux_obj.gif
+SHA1-Digest: 0s2LobMKBknYC6cHg0m9yfcO/fU=
+
+Name: org/eclipse/rse/core/model/AbstractSystemResourceSet.class
+SHA1-Digest: Unl9JcBpvz5uYQfYCYUtqcpAALQ=
+
+Name: org/eclipse/rse/internal/logging/LoggingPreferenceInitializer.cl
+ ass
+SHA1-Digest: RU70janr3HUH/8GkOgrXlZ4ScbA=
+
+Name: org/eclipse/rse/internal/core/model/SystemModelChangeEvent.class
+SHA1-Digest: ih90uff4h9OoUdHP/OcvJ/BgQ7o=
+
+Name: org/eclipse/rse/core/subsystems/AuthenticatingConnectorService.c
+ lass
+SHA1-Digest: ULRHOxUhN0mlWsAb7EJ4ic+ds6k=
+
+Name: org/eclipse/rse/core/model/ISystemViewInputProvider.class
+SHA1-Digest: YusDnrjHrx8qhN54UExrbGFc9rs=
+
+Name: org/eclipse/rse/core/SystemTypeMatcher.class
+SHA1-Digest: cYMtiKyUKSrkBcq/DUP7e7yP6qk=
+
+Name: org/eclipse/rse/internal/persistence/RSEPersistenceManager$Provi
+ derRecord.class
+SHA1-Digest: TwA8c90INGRXkyYX8/Wy2FuBCu4=
+
+Name: icons/full/obj16/systemunix_obj.gif
+SHA1-Digest: Ea8VL6Yo5z37L90kTeO6+5uaP38=
+
+Name: org/eclipse/rse/internal/persistence/PFPersistenceAnchor.class
+SHA1-Digest: eJwGIGNQDo6KDwMqBDcBWtha55w=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPoolManager.cl
+ ass
+SHA1-Digest: E03bEGfVATMnsLWpdl/abC+j4B8=
+
+Name: org/eclipse/rse/internal/persistence/RSEEnvelope$3.class
+SHA1-Digest: qBeF8/QgULtQPpd9yFMu0B2DjYU=
+
+Name: org/eclipse/rse/core/model/Host.class
+SHA1-Digest: f1GYdXbOZ/+OBtgxyIv5Em9LW3o=
+
+Name: org/eclipse/rse/persistence/dom/RSEDOMNodeAttribute.class
+SHA1-Digest: iC9f7txPh2xEHFuguwXc0E8rGiw=
+
+Name: org/eclipse/rse/core/subsystems/ICommunicationsListener.class
+SHA1-Digest: RR/4FTQ/OdTPwUphgFvgUIv1huA=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$NotifyResourc
+ eChangedRunnable.class
+SHA1-Digest: gysBzza09A4QMGLJCo7Jjbw1DIQ=
+
+Name: org/eclipse/rse/core/model/SystemRemoteResourceSet.class
+SHA1-Digest: HBXfR+NmLODA1zYI1jB7w364thw=
+
+Name: org/eclipse/rse/internal/persistence/dom/IRSEDOMImporter.class
+SHA1-Digest: Q55W3YalFx372ot3T4sNxIH6PTE=
+
+Name: org/eclipse/rse/core/events/ISystemResourceChangeEvent.class
+SHA1-Digest: RFKQoVmB0+NeaR4HUFkDDmSbb2w=
+
+Name: org/eclipse/rse/core/model/PropertySetContainer.class
+SHA1-Digest: +Syv83yRBIpOCLKCsRCl5YJvEgE=
+
+Name: org/eclipse/rse/internal/persistence/dom/RSEDOMExporter.class
+SHA1-Digest: 13jHMKfBn/b0ZtZi32eJBR50U/A=
+
+Name: org/eclipse/rse/core/model/ISubSystemConfigurationCategories.cla
+ ss
+SHA1-Digest: ya53QdEFfJ7gQo27ow2Fd66tWls=
+
+Name: org/eclipse/rse/internal/persistence/RSEPersistenceManager$RSESa
+ veJobChangeListener.class
+SHA1-Digest: /H1LX4BsOrMIVTkH3fqYRZn9s8I=
+
+Name: org/eclipse/rse/core/subsystems/IRemotePropertyHolder.class
+SHA1-Digest: +ooh/O7anCqz/OscoCB5ffLakmQ=
+
+Name: org/eclipse/rse/core/model/IPropertyType.class
+SHA1-Digest: 91NZ74MuMT6C/bx6w6duh0rZY/g=
+
+Name: org/eclipse/rse/internal/persistence/PFWorkspaceJob.class
+SHA1-Digest: PiVWYBae0YUEUa5dLvxkGnKkwvM=
+
+Name: org/eclipse/rse/core/events/ISystemRemoteChangeEvents.class
+SHA1-Digest: Ftq+q2m+n620FAlELZlABHBXJa8=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterContainerRefer
+ enceCommonMethods.class
+SHA1-Digest: nd4l2tv54G/Yf/4gob+8spIvK5c=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$RemoteResourc
+ eChangedRunnable.class
+SHA1-Digest: yshfHGCN78KB1MNN2dxybW30lD0=
+
+Name: org/eclipse/rse/core/model/ISystemProfile.class
+SHA1-Digest: tEUxCfdCvXG6EqHxYk3ixQhMm6U=
+
+Name: org/eclipse/rse/core/model/PropertyList.class
+SHA1-Digest: atpddhAmTADQWttjUjLdEAm6g8k=
+
+Name: org/eclipse/rse/core/model/SystemStartHere.class
+SHA1-Digest: NHLiHSu+gFLvDk5OH/33m07Vd7w=
+
+Name: org/eclipse/rse/core/subsystems/ICredentials.class
+SHA1-Digest: tyFaaJ2/XXi9T8hbAv9AiWxNESY=
+
+Name: org/eclipse/rse/core/subsystems/RemoteServerLauncherConstants.cl
+ ass
+SHA1-Digest: fZUbzNanDTvrwYl8SKNXt8hCLOg=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPool.class
+SHA1-Digest: Wwu14S6dHYq5qDrJMH+CNudKuJk=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterContainerReference.cla
+ ss
+SHA1-Digest: P4GDmY2ZBkJxvXKb8OxfjCEsCQw=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterString.class
+SHA1-Digest: gm0KT9kLLguadhJyhCkCtBaHI1U=
+
+Name: org/eclipse/rse/core/model/RSEModelObject.class
+SHA1-Digest: uOXeDrMjq4Dw5KO2CNNL1Wu4xwg=
+
+Name: org/eclipse/rse/internal/core/subsystems/AbstractCacheManager.cl
+ ass
+SHA1-Digest: tmIRfM+rdNUuK5PB1dPZfeWC10U=
+
+Name: org/eclipse/rse/core/filters/SystemFilterReference.class
+SHA1-Digest: 66arcSDPTFv3QZUTUOWB0G6UBbU=
+
+Name: about.html
+SHA1-Digest: 4v9K2h5TDPYXBbsI4LpBYNYHgDg=
+
+Name: org/eclipse/rse/internal/core/model/SystemHostPool$1.class
+SHA1-Digest: 3cNW3EhtFor0B+ZMRuP4bdS6PB0=
+
+Name: org/eclipse/rse/core/comm/SystemKeystoreProviderManager$Extensio
+ nInfo.class
+SHA1-Digest: SrMH6xGaDFfbqITEAOxdFs+ATNU=
+
+Name: org/eclipse/rse/internal/persistence/PropertyFileProvider.class
+SHA1-Digest: lfqDoQUyz2FZGuGocqMdu7ZJyaE=
+
+Name: org/eclipse/rse/core/model/SystemWorkspaceResourceSet.class
+SHA1-Digest: BaynaWa1Qo0gATyNui+uzctZh2g=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolManager.class
+SHA1-Digest: be1R16wdvaX/6aV3q20mGIPbljE=
+
+Name: org/eclipse/rse/core/subsystems/ServerLaunchType.class
+SHA1-Digest: MnoCTHbv1h7wdQNOlA9ih4JPKmg=
+
+Name: org/eclipse/rse/core/filters/ISystemFilter.class
+SHA1-Digest: jDXjVAKbDD/6SI+jsEPlpqMgDSQ=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$ResourceChang
+ edRunnable.class
+SHA1-Digest: NnyKLfRWojCB2caX4YqYLZXkk+U=
+
+Name: org/eclipse/rse/internal/references/SystemPersistableReferenceMa
+ nager.class
+SHA1-Digest: gD9BgLUxkSB5GthZxjlmLPRMQ/0=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry.class
+SHA1-Digest: RmrnCGEMOQvA131RLjJEWIOxbEc=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService$Timeout
+ Exception.class
+SHA1-Digest: miHOCraUTEHrRzbPQ1fYvFUcnAo=
+
+Name: org/eclipse/rse/internal/core/RSESystemType.class
+SHA1-Digest: RXe9G/KbkRcmfHkPO3scDevifNk=
+
+Name: org/eclipse/rse/core/subsystems/AbstractCredentialsProvider.clas
+ s
+SHA1-Digest: n3cRE4+mJKkvNvxCwJqe8BP7Lr0=
+
+Name: org/eclipse/rse/internal/logging/LogListener.class
+SHA1-Digest: dnCKECU9yYl3bRXVlFKlIAjyx9c=
+
+Name: org/eclipse/rse/core/model/IRSEModelObject.class
+SHA1-Digest: bWPPYntLHu3iY8PhKucsQRw4MZA=
+
+Name: org/eclipse/rse/core/IRSEInteractionProvider.class
+SHA1-Digest: PFr4CcX2yLTfRlJCrm2hlah1QsU=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterContainer.class
+SHA1-Digest: 3Rb24sv9ImrI47jxG2XexSB56HQ=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolReferenceManagerPr
+ ovider.class
+SHA1-Digest: hfJy56rc5SC/Ng0OlGURVTFa5LA=
+
+Name: org/eclipse/rse/core/references/SystemReferencedObject.class
+SHA1-Digest: cl1+02nd4AlrSUPWUQ9gsJXxEyc=
+
+Name: org/eclipse/rse/core/SystemResourceManager.class
+SHA1-Digest: ICunS+8iMMJ9K+O178kIRRCWE44=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPoolWrapper.cl
+ ass
+SHA1-Digest: 7TCBAtjSALSATKCF44nRjdUXKJ0=
+
+Name: org/eclipse/rse/core/references/SystemReferencingObject.class
+SHA1-Digest: k9pKESXyr32sJL56uOJB3nDCB9I=
+
+Name: org/eclipse/rse/core/model/SystemFilterStringContentsType.class
+SHA1-Digest: qNowzw2JQ5bwqHt3AYrZv7ym6K0=
+
+Name: icons/full/obj16/systemunixlive_obj.gif
+SHA1-Digest: TiNbCy0+oBkYR5z05WidMVxZ/Mo=
+
+Name: org/eclipse/rse/core/subsystems/AbstractDelegatingConnectorServi
+ ce.class
+SHA1-Digest: drDqFNV2q/T1abO5xqXK3puRUD0=
+
+Name: org/eclipse/rse/core/references/IRSEBasePersistableReferencedObj
+ ect.class
+SHA1-Digest: YgNHuM/9sPN6qezELLI0Gg3aHkI=
+
+Name: org/eclipse/rse/core/IRSECoreStatusCodes.class
+SHA1-Digest: EacVanNMop+rkUfPVfyzu3hRI4E=
+
+Name: org/eclipse/rse/core/events/SystemResourceChangeEvent.class
+SHA1-Digest: RNa6I8gXyx1JEY6ibkCnio35RpY=
+
+Name: org/eclipse/rse/core/model/SystemSignonInformation.class
+SHA1-Digest: c1Mti2uF8A3wbXp0Jc4++gtFbvc=
+
+Name: org/eclipse/rse/core/model/Property.class
+SHA1-Digest: axsUmCg+VrmcJv+UchGywBz5HJs=
+
+Name: org/eclipse/rse/internal/persistence/RSEPersistenceManager.class
+SHA1-Digest: WUylLlfz/dG4zgGVYrGKJ5XLDNw=
+
+Name: org/eclipse/rse/internal/persistence/PFWorkspaceAnchor.class
+SHA1-Digest: 1YSCiM2f915MbsAff6vWJTZwmq8=
+
+Name: org/eclipse/rse/core/events/SystemRemoteChangeEvent.class
+SHA1-Digest: 22uyEMIQ8tPXStY1R9h9618aPic=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilter.class
+SHA1-Digest: BSflL8jYV4pqSZiAH+sVsh8Igjo=
+
+Name: org/eclipse/rse/core/IRSERunnableWithProgress.class
+SHA1-Digest: pr8SLs/zgEMhzQwULhiWDet+Hoo=
+
+Name: org/eclipse/rse/core/RemoteSystemsTempProjectNature.class
+SHA1-Digest: iaVZSHz6ZydrtqnseNsvhNhDwl0=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteLineReference.class
+SHA1-Digest: 92w3qSjG+KWbxpeS4jmE6inLS5w=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService.class
+SHA1-Digest: tgzWRq9XdiTreezymkCW8ga1psk=
+
+Name: org/eclipse/rse/internal/core/RSEInitJob.class
+SHA1-Digest: VMBGcQAZAlkGJK4C74ZZZruBWKw=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPool.class
+SHA1-Digest: 5MN3n73/xQrFMsuev8wZApMcSN0=
+
+Name: org/eclipse/rse/core/model/IRSEPersistableContainer.class
+SHA1-Digest: f+Dcc6AMPDe+1kHa4EUFcrwSTv4=
+
+Name: org/eclipse/rse/core/IRSESystemTypeProvider.class
+SHA1-Digest: 8Jg1unSZLoiMXqSB3Aq9ziVZrgU=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterStartHere.class
+SHA1-Digest: L/6McRP6/yQ2/g1Z7JLcx64YaPE=
+
+Name: org/eclipse/rse/internal/persistence/IRSEImportExportProvider.cl
+ ass
+SHA1-Digest: JdPT3EQI4CPRc8CoOAyWvDyzFto=
+
+Name: org/eclipse/rse/core/model/RSEModelOperation.class
+SHA1-Digest: iMU4N1PgbuKPpbYUxWcPjB4SBPo=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService$1.class
+SHA1-Digest: ORCOA/9fIOh/ApQEQC7XW+Qgy6U=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$ModelResource
+ ChangedRunnable.class
+SHA1-Digest: B0iE07Xzmu8TvAYKn1QNuJPH8oA=
+
+Name: org/eclipse/rse/core/model/ISubSystemConfigurator.class
+SHA1-Digest: gxs9c0+1L9x7t8K2DtJ6TNgMLZg=
+
+Name: org/eclipse/rse/internal/core/SystemResourceConstants.class
+SHA1-Digest: ob459+0GUW2jgyAKwRgjmuS7EiQ=
+
+Name: org/eclipse/rse/internal/core/RemoteSystemsProject.class
+SHA1-Digest: M9WEqq/Oy+Q6pMaVpWavze3BwWM=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolManagerProvider.cl
+ ass
+SHA1-Digest: QBnlXOAd8G8hEsBfqLWIxls5wfA=
+
+Name: org/eclipse/rse/core/subsystems/IServerLauncherProperties.class
+SHA1-Digest: kXA9BHklNlBN8i+8eCQ0+KVy6Bo=
+
+Name: org/eclipse/rse/core/references/IRSEBaseReferencingObject.class
+SHA1-Digest: uVWbCIh2Omdp1SUampjR9q33/tM=
+
+Name: org/eclipse/rse/internal/core/model/SystemRegistry$NotifyModelCh
+ angedRunnable.class
+SHA1-Digest: IadHgKtPtQUx/CG7XUROKbf9Bvo=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterString.class
+SHA1-Digest: FuDbArX4m16vAXzyzR5Xt+ZQxdU=
+
+Name: tm32.png
+SHA1-Digest: rNCzPGxCdCjlCdT3ugo28pYHWhI=
+
+Name: org/eclipse/rse/core/IRSECoreRegistry.class
+SHA1-Digest: OiPpuVXp0736gyhjY7uwRfqkDfk=
+
+Name: org/eclipse/rse/core/references/SystemReferencedObjectHelper.cla
+ ss
+SHA1-Digest: LBTYeUScAvyKZFlOF5P0fT9V2YA=
+
+Name: org/eclipse/rse/logging/LoggerFactory.class
+SHA1-Digest: tnRNHFX0UxmFuT2i6Xx1eIwLddA=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterPoolWrapper.class
+SHA1-Digest: K2WK5/pawR67eqjYqi/qLYehl4g=
+
+Name: org/eclipse/rse/internal/persistence/PFWorkspaceLocation.class
+SHA1-Digest: lsHCve28CnHlpfi50FF99n1OcwA=
+
+Name: org/eclipse/rse/internal/persistence/RSEEnvelope.class
+SHA1-Digest: i2HEW6nauxQsNYQj8H8q25EfLJ4=
+
+Name: org/eclipse/rse/internal/core/model/SystemHostPool.class
+SHA1-Digest: faeM2vuPFfLlmLXhJVQjLz80LeQ=
+
+Name: org/eclipse/rse/internal/core/filters/SystemFilterPoolReferenceM
+ anager.class
+SHA1-Digest: iGy/NCk3u4igUIMY4/4n1lSSzu8=
+
+Name: org/eclipse/rse/persistence/IRSEPersistenceManager.class
+SHA1-Digest: sv1TMAqhAyvsB7bnewj4yV/clbc=
+
+Name: org/eclipse/rse/core/subsystems/AbstractConnectorService$UnsafeR
+ unnableWithProgress.class
+SHA1-Digest: BLOCGV+jwoOF4mZR2MF9wysfR9w=
+
+Name: org/eclipse/rse/core/references/IRSEReferencingObject.class
+SHA1-Digest: gQMY3Op5sPaQKS9qcUeZUbwoZ+U=
+
+Name: org/eclipse/rse/internal/core/model/SystemProfile.class
+SHA1-Digest: tcJxWNbPNoW/4nmdAtG+cM/RCQs=
+
+Name: org/eclipse/rse/internal/core/subsystems/SubSystemConfigurationP
+ roxy.class
+SHA1-Digest: sZjJygQ0DlTfsGHG6/kmi2uCy9c=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteServerLauncher.class
+SHA1-Digest: +X679ty/1BV0HbiaqthbdZ58s9I=
+
+Name: org/eclipse/rse/core/model/SystemChildrenContentsType.class
+SHA1-Digest: MkIQRZ+V6BjQVVSfvBmDGF1naUo=
+
+Name: org/eclipse/rse/core/comm/SystemKeystoreProviderManager.class
+SHA1-Digest: DXJixbNgVTOvOlbnR4cZRef6mpw=
+
+Name: org/eclipse/rse/internal/references/SystemPersistableReferencing
+ Object.class
+SHA1-Digest: FTEddKvkEL1W92VMHA5VC0VXhQ8=
+
+Name: org/eclipse/rse/logging/Logger.class
+SHA1-Digest: bW3gYujUQG6RA7gH52q9tGK1qEM=
+
+Name: org/eclipse/rse/internal/persistence/RSEEnvelope$2.class
+SHA1-Digest: J0clBTwyQFbzZOzI9+hIhrvgEGk=
+
+Name: org/eclipse/rse/internal/core/model/SystemResourceChangeManager.
+ class
+SHA1-Digest: B4CM4ZSUm4Ypkh2AyA+eDJ9YyR4=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteObjectIdentifier.class
+SHA1-Digest: V4Yps7euEY1O1TWq66ejtaEqsGI=
+
+Name: org/eclipse/rse/internal/core/RSELocalConnectionInitializer.clas
+ s
+SHA1-Digest: 9KruLblRHQi9g+5VEhm9DNZtNrA=
+
+Name: org/eclipse/rse/persistence/dom/IRSEDOMConstants.class
+SHA1-Digest: KCuC2Ny10vTqZiThZ96i1VFni3s=
+
+Name: org/eclipse/rse/core/ISystemResourceListener.class
+SHA1-Digest: K/1/aJXdw7/u6OQp+umQZWlBZwo=
+
+Name: org/eclipse/rse/core/references/IRSEPersistableReferencingObject
+ .class
+SHA1-Digest: gw9ybO51xuyCSFLsGLk+cTZSqaM=
+
+Name: org/eclipse/rse/core/subsystems/IRemoteContainer.class
+SHA1-Digest: iAbE9wHC91cexLQzxf9cjUJN41M=
+
+Name: org/eclipse/rse/internal/core/filters/HostOwnedFilterPoolPattern
+ .class
+SHA1-Digest: LqvVc/SDtREAtmkqNK0o8CaLHs8=
+
+Name: org/eclipse/rse/core/filters/ISystemFilterStringReference.class
+SHA1-Digest: rpLrWlsogPnHDp/WJlHYzkkXdEY=
+
+Name: org/eclipse/rse/internal/core/RSECoreMessages.class
+SHA1-Digest: JKfIGK6NQ15iPshC/e9L6cVsGtY=
+
+Name: org/eclipse/rse/core/PasswordPersistenceManager$RegisteredSystem
+ Type.class
+SHA1-Digest: BgoCAULFry9uwhpUg8EfkUss+y0=
+
+Name: org/eclipse/rse/internal/persistence/PFConstants.class
+SHA1-Digest: qWy8XwHrTWT4dTJj7NKYmGViYqg=
+
